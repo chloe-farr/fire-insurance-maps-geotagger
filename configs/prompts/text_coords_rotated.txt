@@ -1,0 +1,1 @@
+This is a fire insurance map of Victoria B.C. in 1895. It has been rotated for you to recognize text that wasn't perpendicular or parallel to the page. Return the text with coordinates.

@@ -1,0 +1,263 @@
+<title>__TITLE__</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#EFE7D2; --paper-2:#E6DCC2; --ink:#1E2229; --ink-2:#4B5059; --ink-3:#8A8F98; --rule:#CFC4A6;
+  --street:#4A6B8A; --street-lbl:#3B5772; --block:#E5C766; --block-line:#8A6E12; --block-inf:#EFDDA0;
+  --reject:#B0413E; --reject-fill:rgba(176,65,62,.10); --token:rgba(30,34,41,.55); --token-fill:rgba(30,34,41,.06);
+  --content:#1E2229; --sel:#1F5FA8; --panel:#F6F0DF; --focus:#1F5FA8;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#171A1F; --paper-2:#1F242B; --ink:#E7E4DA; --ink-2:#B8B4A8; --ink-3:#7E7B72; --rule:#333944;
+  --street:#7FA3C4; --street-lbl:#9DBCD8; --block:#C9AE55; --block-line:#E5C766; --block-inf:#6E5F2E;
+  --reject:#E07A76; --reject-fill:rgba(224,122,118,.14); --token:rgba(231,228,218,.55); --token-fill:rgba(231,228,218,.06);
+  --content:#E7E4DA; --sel:#8FB8EA; --panel:#1F242B; --focus:#8FB8EA;
+}}
+:root[data-theme="dark"]{
+  --paper:#171A1F; --paper-2:#1F242B; --ink:#E7E4DA; --ink-2:#B8B4A8; --ink-3:#7E7B72; --rule:#333944;
+  --street:#7FA3C4; --street-lbl:#9DBCD8; --block:#C9AE55; --block-line:#E5C766; --block-inf:#6E5F2E;
+  --reject:#E07A76; --reject-fill:rgba(224,122,118,.14); --token:rgba(231,228,218,.55); --token-fill:rgba(231,228,218,.06);
+  --content:#E7E4DA; --sel:#8FB8EA; --panel:#1F242B; --focus:#8FB8EA;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Libre Franklin",system-ui,sans-serif;font-size:15px;line-height:1.5;padding-block:0 32px;padding-inline:clamp(16px,3vw,40px)}
+.oswald{font-family:Oswald,"Arial Narrow",sans-serif}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding-block:22px 14px;border-bottom:1.5px solid var(--ink)}
+h1{font-family:Oswald,"Arial Narrow",sans-serif;font-weight:500;font-size:clamp(24px,3.4vw,34px);letter-spacing:.02em;margin:0;line-height:1.05;text-wrap:balance}
+h1 small{display:block;font-family:"Libre Franklin",sans-serif;font-weight:400;font-size:14px;letter-spacing:0;color:var(--ink-2);margin-top:6px}
+.tabs{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tabs .tl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-right:4px}
+.tab{font-family:Oswald,"Arial Narrow",sans-serif;font-size:17px;letter-spacing:.08em;text-transform:uppercase;padding:10px 18px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;border-radius:2px}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.tab:focus-visible,.chk:focus-within,button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.stats{display:flex;flex-wrap:wrap;gap:0 28px;padding-block:12px;border-bottom:1px solid var(--rule);color:var(--ink-2);font-size:13px}
+.stats b{font-family:"IBM Plex Mono",monospace;font-weight:500;color:var(--ink);font-size:15px;margin-right:4px}
+.stats .lbl{text-transform:uppercase;letter-spacing:.08em;font-size:11px;color:var(--ink-3)}
+main{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;margin-top:18px}
+@media (max-width:860px){main{grid-template-columns:1fr}}
+.mapwrap{position:relative;border:1.5px solid var(--ink);background:var(--paper-2);border-radius:2px;overflow:hidden}
+svg#map{display:block;width:100%;height:auto;aspect-ratio:var(--ar,1);max-height:78vh;cursor:grab;touch-action:none}
+svg#map.drag{cursor:grabbing}
+.layers{display:flex;flex-wrap:wrap;gap:6px 16px;padding:10px 12px;border-top:1px solid var(--rule);font-size:13px;background:var(--paper)}
+.chk{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.chk input{accent-color:var(--sel);margin:0}
+.swatch{display:inline-block;width:14px;height:10px;border-radius:1px}
+.sw-block{background:var(--block);border:1px solid var(--block-line)}
+.sw-rej{border:1.5px dashed var(--reject);background:var(--reject-fill)}
+.sw-street{background:var(--street);height:2px;width:16px}
+.sw-tok{border:1px solid var(--token);background:var(--token-fill)}
+.sw-content{border:1.5px dashed var(--content)}
+.zoom{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:4px}
+.zoom button{width:30px;height:30px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);font-size:18px;line-height:1;cursor:pointer;border-radius:2px}
+aside{background:var(--panel);border:1px solid var(--rule);border-radius:2px;padding:16px 18px;align-self:start;position:sticky;top:12px}
+aside h2{font-family:Oswald,"Arial Narrow",sans-serif;font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:13px;color:var(--ink-3);margin:0 0 8px}
+aside .num{font-family:Oswald,"Arial Narrow",sans-serif;font-size:40px;font-weight:600;line-height:1;margin:0 0 4px}
+aside .num small{font-size:14px;font-weight:400;color:var(--ink-3);letter-spacing:.04em;margin-left:8px;text-transform:uppercase}
+aside dl{margin:12px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:13.5px}
+aside dt{color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;font-size:11px;padding-top:3px}
+aside dd{margin:0}
+.pill{display:inline-block;padding:1px 7px;border:1px solid var(--rule);border-radius:10px;margin:0 4px 4px 0;font-size:12.5px;background:var(--paper)}
+.pill.s95{border-color:var(--block-line)}
+.pill.mod{border-color:var(--street)}
+.hint{color:var(--ink-3);font-size:13px;margin:0}
+section.table{margin-top:28px}
+section.table h2{font-family:Oswald,"Arial Narrow",sans-serif;font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:14px;color:var(--ink-2);margin:0 0 10px}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{text-align:left;font-family:Oswald,"Arial Narrow",sans-serif;font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:12px;color:var(--ink-3);padding:8px 10px;border-bottom:1.5px solid var(--ink)}
+td{padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+td.n{font-family:Oswald,"Arial Narrow",sans-serif;font-size:18px;font-weight:600}
+tr.sel td{background:var(--paper-2)}
+tr[data-i]{cursor:pointer}
+.lab{font-size:13px;margin-top:14px}
+.lab table td{padding:4px 10px}
+.out{color:var(--reject)}
+footer{margin-top:28px;color:var(--ink-3);font-size:12.5px;max-width:70ch}
+/* svg */
+.seg{stroke:var(--street);stroke-width:2.2;vector-effect:non-scaling-stroke;fill:none;stroke-linecap:round}
+.slabel{font-family:Oswald,"Arial Narrow",sans-serif;fill:var(--street-lbl);letter-spacing:.12em;text-anchor:middle;font-weight:500}
+.blk{fill:var(--block);fill-opacity:.62;stroke:var(--block-line);stroke-width:1.4;vector-effect:non-scaling-stroke;cursor:pointer;transition:fill-opacity .15s}
+.blk.inf{fill:var(--block-inf)}
+.blk:hover{fill-opacity:.85}
+.blk.sel{stroke:var(--sel);stroke-width:3}
+.bnum{font-family:Oswald,"Arial Narrow",sans-serif;fill:var(--ink);text-anchor:middle;dominant-baseline:middle;font-weight:600;pointer-events:none}
+.area{fill-opacity:.45;stroke-width:1.6;vector-effect:non-scaling-stroke;cursor:pointer}
+.area.pink{fill:#E8A2B4;stroke:#9C3F5C}.area.yellow{fill:#E9D77A;stroke:#8A6E12}.area.blue{fill:#9CC4DA;stroke:#2F6A8A}.area.green{fill:#A8D0A0;stroke:#3E7A3A}.area.purple{fill:#C9A8DA;stroke:#6E3F8A}.area.other{fill:#C8C8C8;stroke:#555}
+.area:hover{fill-opacity:.7}.area.sel{stroke:var(--sel);stroke-width:3}
+.anum{font-family:Oswald,"Arial Narrow",sans-serif;fill:var(--ink);text-anchor:middle;dominant-baseline:middle;font-weight:600;pointer-events:none;opacity:.9}
+.rej{fill:var(--reject-fill);stroke:var(--reject);stroke-width:1.4;stroke-dasharray:6 4;vector-effect:non-scaling-stroke;cursor:pointer}
+.tok{fill:var(--token-fill);stroke:var(--token);stroke-width:.6;vector-effect:non-scaling-stroke}
+.content{fill:none;stroke:var(--content);stroke-width:1.2;stroke-dasharray:10 6;vector-effect:non-scaling-stroke}
+.north{fill:var(--ink)}
+.scalebar line{stroke:var(--ink);stroke-width:2;vector-effect:non-scaling-stroke}
+.scalebar text{font-family:"IBM Plex Mono",monospace;fill:var(--ink-2);text-anchor:middle}
+@media (prefers-reduced-motion:reduce){.blk{transition:none}}
+</style>
+
+<header>
+  <h1>__TITLE__<small>__SUBTITLE__</small></h1>
+  <div class="tabs" role="tablist" id="tabs"><span class="tl">Choose a sheet</span></div>
+</header>
+<div class="stats" id="stats"></div>
+
+<main>
+  <div>
+    <div class="mapwrap">
+      <svg id="map" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of georeferenced blocks"></svg>
+      <div class="zoom"><button id="zin" title="Zoom in" aria-label="Zoom in">+</button><button id="zout" title="Zoom out" aria-label="Zoom out">−</button><button id="zfit" title="Fit sheet" aria-label="Fit sheet" style="font-size:12px">fit</button></div>
+      <div class="layers">
+        <label class="chk"><input type="checkbox" id="ly-blocks" checked><span class="swatch sw-block"></span>Blocks</label>
+        <label class="chk"><input type="checkbox" id="ly-areas" checked><span class="swatch" style="background:#9CC4DA;border:1px solid #2F6A8A"></span>Tinted areas</label>
+        <label class="chk"><input type="checkbox" id="ly-rej"><span class="swatch sw-rej"></span>Rejected shapes</label>
+        <label class="chk"><input type="checkbox" id="ly-streets" checked><span class="swatch sw-street"></span>Modern centrelines</label>
+        <label class="chk"><input type="checkbox" id="ly-tokens"><span class="swatch sw-tok"></span>Every OCR'd word</label>
+        <label class="chk"><input type="checkbox" id="ly-content" checked><span class="swatch sw-content"></span>Sheet content box</label>
+      </div>
+    </div>
+  </div>
+  <aside id="panel"></aside>
+</main>
+
+<section class="table">
+  <h2>Blocks on this sheet</h2>
+  <div class="tw"><table id="btable"><thead><tr><th>Block</th><th>1895 streets read</th><th>Modern streets bounding it</th><th>Lots</th><th>Note</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<footer>Coordinates are EPSG:__EPSG__ metres; the map is drawn to that scale, north up. Blocks come from the linework of the scanned sheet; their position comes only from fitting the OCR'd street labels to the modern centrelines, no control points. Modern centrelines: the layer named in each sheet's fit statistics.</footer>
+
+<script type="application/json" id="data">__DATA__</script>
+<script>
+const DATA = JSON.parse(document.getElementById('data').textContent);
+const KEYS = Object.keys(DATA);
+let cur = KEYS.includes(__DEFAULT__) ? __DEFAULT__ : KEYS[0], sel = null, vb = null;
+const svg = document.getElementById('map');
+const NS = 'http://www.w3.org/2000/svg';
+function el(n, a, txt){ const e=document.createElementNS(NS,n); for(const k in a) e.setAttribute(k,a[k]); if(txt!=null) e.textContent=txt; return e; }
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+// sheet-local metric coords: x east from bbox min, y = maxN - N (svg y down)
+function P(sh, p){ return [p[0]-sh.bbox[0], sh.bbox[3]-p[1]]; }
+function pts(sh, ring){ return ring.map(p=>P(sh,p).map(v=>v.toFixed(1)).join(',')).join(' '); }
+
+function render(){
+  const sh = DATA[cur];
+  const W = sh.bbox[2]-sh.bbox[0], H = sh.bbox[3]-sh.bbox[1];
+  svg.style.setProperty('--ar', (W/H).toFixed(3));
+  vb = vb || [0,0,W,H]; if (vb[2]>W*1.0001 || vb[2]<=0) vb=[0,0,W,H];
+  svg.setAttribute('viewBox', vb.join(' '));
+  svg.innerHTML = '';
+  const g = {content:el('g',{id:'g-content'}), areas:el('g',{id:'g-areas'}), tokens:el('g',{id:'g-tokens'}), streets:el('g',{id:'g-streets'}), rej:el('g',{id:'g-rej'}), blocks:el('g',{id:'g-blocks'}), deco:el('g',{id:'g-deco'})};
+  // tinted areas (key plans): below everything else
+  (sh.areas||[]).forEach((ar,i)=>{
+    const q=el('polygon',{class:'area '+ar.colour+(sel&&sel.type==='area'&&sel.i===i?' sel':''),points:pts(sh,ar.ring),'data-a':i});
+    q.addEventListener('click',()=>{ sel={type:'area',i}; update(); });
+    g.areas.appendChild(q);
+    const c=centroid(ar.ring.map(p=>P(sh,p)));
+    g.areas.appendChild(el('text',{class:'anum',x:c[0].toFixed(1),y:c[1].toFixed(1),'font-size':Math.max(9, W/45).toFixed(1),opacity:ar.num?.9:.35}, ar.num||'?'));
+  });
+  // content box
+  g.content.appendChild(el('polygon',{class:'content',points:pts(sh, sh.content)}));
+  // tokens
+  for (const t of sh.tokens){ const q=el('polygon',{class:'tok',points:pts(sh,t.r)}); q.appendChild(el('title',{}, t.t)); g.tokens.appendChild(q); }
+  // streets
+  for (const s of sh.segs){ const a=P(sh,[s[0],s[1]]), b=P(sh,[s[2],s[3]]); g.streets.appendChild(el('line',{class:'seg',x1:a[0],y1:a[1],x2:b[0],y2:b[1]})); }
+  const fs = Math.max(5, W/110);
+  for (const l of sh.slabels){ const p=P(sh,l.p); let a=-l.a; if(a>90) a-=180; if(a<-90) a+=180; g.streets.appendChild(el('text',{class:'slabel','font-size':fs.toFixed(1),transform:`translate(${p[0].toFixed(1)} ${p[1].toFixed(1)}) rotate(${a.toFixed(1)}) translate(0 ${(-fs*0.5).toFixed(1)})`}, l.n)); }
+  // rejected
+  sh.rejected.forEach((r,i)=>{ const q=el('polygon',{class:'rej',points:pts(sh,r.ring),'data-r':i}); q.appendChild(el('title',{}, r.why)); q.addEventListener('click',()=>{ sel={type:'rej',i}; update(); }); g.rej.appendChild(q); });
+  // blocks
+  sh.blocks.forEach((b,i)=>{
+    const q=el('polygon',{class:'blk'+(b.inf||!b.num?' inf':'')+(sel&&sel.type==='blk'&&sel.i===i?' sel':''),points:pts(sh,b.ring),'data-i':i,tabindex:0,role:'button','aria-label':'Block '+(b.num||'unnumbered')});
+    q.addEventListener('click',()=>{ sel={type:'blk',i}; update(); });
+    q.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); sel={type:'blk',i}; update(); }});
+    g.blocks.appendChild(q);
+    const c = centroid(b.ring.map(p=>P(sh,p)));
+    const bs = Math.max(7, W/70);
+    g.blocks.appendChild(el('text',{class:'bnum',x:c[0].toFixed(1),y:c[1].toFixed(1),'font-size':bs.toFixed(1),opacity:b.num?1:.45}, b.num || '?'));
+  });
+  // scale bar + north arrow
+  const sb = el('g',{class:'scalebar'}); const L = W>600?200:100; const x0 = 12, y0 = H-14;
+  sb.appendChild(el('line',{x1:x0,y1:y0,x2:x0+L,y2:y0})); sb.appendChild(el('line',{x1:x0,y1:y0-4,x2:x0,y2:y0+4})); sb.appendChild(el('line',{x1:x0+L,y1:y0-4,x2:x0+L,y2:y0+4}));
+  sb.appendChild(el('text',{x:x0+L/2,y:y0-6,'font-size':Math.max(5,W/120).toFixed(1)}, L+' m'));
+  g.deco.appendChild(sb);
+  const na = el('path',{class:'north',d:`M ${W-20} 12 l 5 16 l -5 -4 l -5 4 z`}); g.deco.appendChild(na);
+  g.deco.appendChild(el('text',{x:W-20,y:38,'text-anchor':'middle','font-size':Math.max(5,W/120).toFixed(1),class:'slabel'},'N'));
+  for (const k of ['content','areas','tokens','streets','rej','blocks','deco']) svg.appendChild(g[k]);
+  applyLayers();
+  renderStats(); renderTable(); renderPanel();
+}
+function centroid(r){ let a=0,cx=0,cy=0; for(let i=0;i<r.length-1;i++){ const f=r[i][0]*r[i+1][1]-r[i+1][0]*r[i][1]; a+=f; cx+=(r[i][0]+r[i+1][0])*f; cy+=(r[i][1]+r[i+1][1])*f; } if(Math.abs(a)<1e-6){ return [r[0][0],r[0][1]]; } return [cx/(3*a), cy/(3*a)]; }
+function applyLayers(){
+  const m={blocks:'ly-blocks',areas:'ly-areas',rej:'ly-rej',streets:'ly-streets',tokens:'ly-tokens',content:'ly-content'};
+  for (const k in m){ const g=document.getElementById('g-'+k); if(g) g.style.display = document.getElementById(m[k]).checked ? '' : 'none'; }
+}
+function renderStats(){
+  const f = DATA[cur].fit;
+  document.getElementById('stats').innerHTML =
+    `<div><span class="lbl">Sheet</span><br><b>${esc(DATA[cur].title)}</b></div>`+
+    `<div><span class="lbl">Drawn scale</span><br><b>${esc(DATA[cur].scale)}</b></div>`+
+    `<div><span class="lbl">Street labels fitted</span><br><b>${f.n}</b> of ${f.n+f.out} matched</div>`+
+    `<div><span class="lbl">RMS to centreline</span><br><b>${f.rms} m</b></div>`+
+    `<div><span class="lbl">Sheet rotation</span><br><b>${f.rot}°</b></div>`+
+    (f.dpi?`<div><span class="lbl">Scan resolution implied</span><br><b>${f.dpi} dpi</b></div>`:'')+
+    `<div><span class="lbl">Fitted to</span><br><b style="font-family:inherit;font-size:13px">${esc(f.layer)}</b></div>`+
+    `<div><span class="lbl">Blocks</span><br><b>${DATA[cur].blocks.length}</b> kept, ${DATA[cur].rejected.length} rejected</div>`+
+    ((DATA[cur].areas||[]).length?`<div><span class="lbl">Tinted areas</span><br><b>${DATA[cur].areas.length}</b></div>`:'');
+}
+function renderTable(){
+  const tb = document.querySelector('#btable tbody'); tb.innerHTML='';
+  DATA[cur].blocks.forEach((b,i)=>{
+    const tr=document.createElement('tr'); tr.dataset.i=i; if(sel&&sel.type==='blk'&&sel.i===i) tr.className='sel';
+    const note = b.split ? `part ${b.split.part} of ${b.split.of}, cut along ${b.split.cut_along.join(', ')}` : (b.merged ? `two blocks merged across ${b.merged}` : '');
+    tr.innerHTML = `<td class="n">${b.num?esc(b.num):'<span style="color:var(--ink-3)">?</span>'}${b.inf&&b.num?'<span style="font-size:11px;color:var(--ink-3);font-weight:400"> inferred</span>':''}</td>`+
+      `<td>${b.s1895.map(s=>`<span class="pill s95">${esc(s)}</span>`).join('')||'<span style="color:var(--ink-3)">none read</span>'}</td>`+
+      `<td>${b.smod.map(s=>`<span class="pill mod">${esc(s)}</span>`).join('')}</td>`+
+      `<td class="mono">${b.lots.length}</td><td style="color:var(--ink-2)">${esc(note)}</td>`;
+    tr.addEventListener('click',()=>{ sel={type:'blk',i}; update(); });
+    tb.appendChild(tr);
+  });
+}
+function renderPanel(){
+  const p = document.getElementById('panel'); const sh=DATA[cur];
+  if(!sel){
+    const f=sh.fit;
+    p.innerHTML = `<h2>How this sheet was placed</h2><p class="hint">Click a block for its streets and lots. Each OCR'd street name below had to land on its modern centreline; the residual is how far it missed after the fit.</p>`+
+      `<div class="lab"><table><thead><tr><th>Label read</th><th>Modern street</th><th style="text-align:right">Miss</th></tr></thead><tbody>`+
+      f.labels.map(l=>`<tr${l.o?' class="out"':''}><td>${esc(l.t)}</td><td>${esc(l.m)}</td><td class="mono" style="text-align:right">${l.r} m${l.o?' ✕':''}</td></tr>`).join('')+
+      `</tbody></table></div><p class="hint" style="margin-top:10px">✕ excluded as an outlier: the street has moved, or the label sits in an inset of another area.</p>`;
+    return;
+  }
+  if(sel.type==='area'){ const ar=sh.areas[sel.i];
+    p.innerHTML = `<h2>Tinted area</h2><p class="num">${ar.num?esc(ar.num):'?'}<small>${ar.num?'big numeral inside':'no big numeral read'}</small></p>`+
+      `<dl><dt>Tint</dt><dd>${esc(ar.colour)}${ar.lab?` <span class="hint">Lab ${ar.lab.join(', ')}</span>`:''}</dd><dt>Numerals inside</dt><dd class="mono">${ar.n_num}</dd>`+
+      `<dt>Streets read</dt><dd>${ar.s1895.map(s=>`<span class="pill s95">${esc(s)}</span>`).join('')||'<span class="hint">—</span>'}</dd></dl>`+
+      `<p class="hint" style="margin-top:10px">Traced from the colour wash, not from an outline. On a key plan the number is the sheet the area is drawn on.</p>`; return; }
+  if(sel.type==='rej'){ const r=sh.rejected[sel.i];
+    p.innerHTML = `<h2>Rejected shape</h2><p class="num" style="font-size:22px">${r.num?esc(r.num):'—'}<small>not a block</small></p><p style="margin:8px 0 0;font-size:14px">${esc(r.why)}</p><p class="hint" style="margin-top:10px">Traced from the linework but failed the block tests.</p>`; return; }
+  const b = sh.blocks[sel.i];
+  p.innerHTML = `<h2>Block</h2><p class="num">${b.num?esc(b.num):'?'}<small>${b.num?(b.inf?'number inferred':'number read on sheet'):'no number read'}</small></p>`+
+    `<dl><dt>1895 streets</dt><dd>${b.s1895.map(s=>`<span class="pill s95">${esc(s)}</span>`).join('')||'<span class="hint">none read nearby</span>'}</dd>`+
+    `<dt>Modern</dt><dd>${b.smod.map(s=>`<span class="pill mod">${esc(s)}</span>`).join('')||'<span class="hint">—</span>'}</dd>`+
+    `<dt>Lots</dt><dd class="mono" style="font-size:12.5px">${b.lots.length? esc(b.lots.join(' ')):'—'}</dd>`+
+    (b.other.length?`<dt>Other text</dt><dd class="hint">${esc(b.other.join(', '))}</dd>`:'')+
+    (b.split?`<dt>Cut</dt><dd>part ${b.split.part} of ${b.split.of} of a compound cut along ${esc(b.split.cut_along.join(', '))}</dd>`:'')+
+    (b.merged?`<dt>Note</dt><dd>two blocks merged across ${esc(b.merged)}</dd>`:'')+`</dl>`;
+}
+function update(){ document.querySelectorAll('.blk').forEach(q=>q.classList.toggle('sel', sel&&sel.type==='blk'&&+q.dataset.i===sel.i)); document.querySelectorAll('.area').forEach(q=>q.classList.toggle('sel', sel&&sel.type==='area'&&+q.dataset.a===sel.i)); document.querySelectorAll('#btable tr[data-i]').forEach(tr=>tr.classList.toggle('sel', sel&&sel.type==='blk'&&+tr.dataset.i===sel.i)); renderPanel(); }
+// tabs
+const tabs=document.getElementById('tabs');
+KEYS.forEach(k=>{ const b=document.createElement('button'); b.className='tab'; b.role='tab'; b.textContent=DATA[k].title; b.setAttribute('aria-selected', k===cur); b.addEventListener('click',()=>{ cur=k; sel=null; vb=null; tabs.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected', t===b)); render(); }); tabs.appendChild(b); });
+document.querySelectorAll('.layers input').forEach(i=>i.addEventListener('change',applyLayers));
+// zoom / pan
+function zoom(f, cx, cy){ const W=DATA[cur].bbox[2]-DATA[cur].bbox[0], H=DATA[cur].bbox[3]-DATA[cur].bbox[1]; const nw=Math.min(W*1.0, Math.max(W/12, vb[2]*f)); const nh=nw*(vb[3]/vb[2]); cx=cx==null?vb[0]+vb[2]/2:cx; cy=cy==null?vb[1]+vb[3]/2:cy; const rx=(cx-vb[0])/vb[2], ry=(cy-vb[1])/vb[3]; vb=[cx-rx*nw, cy-ry*nh, nw, nh]; svg.setAttribute('viewBox', vb.join(' ')); }
+document.getElementById('zin').addEventListener('click',()=>zoom(0.7));
+document.getElementById('zout').addEventListener('click',()=>zoom(1.4));
+document.getElementById('zfit').addEventListener('click',()=>{ vb=null; render(); });
+svg.addEventListener('wheel',e=>{ e.preventDefault(); const pt=svgPoint(e); zoom(e.deltaY>0?1.15:0.87, pt[0], pt[1]); },{passive:false});
+let drag=null;
+svg.addEventListener('pointerdown',e=>{ drag={x:e.clientX,y:e.clientY,vb:vb.slice()}; svg.classList.add('drag'); svg.setPointerCapture(e.pointerId); });
+svg.addEventListener('pointermove',e=>{ if(!drag) return; const r=svg.getBoundingClientRect(); const k=vb[2]/r.width; vb=[drag.vb[0]-(e.clientX-drag.x)*k, drag.vb[1]-(e.clientY-drag.y)*k, vb[2], vb[3]]; svg.setAttribute('viewBox', vb.join(' ')); });
+svg.addEventListener('pointerup',()=>{ drag=null; svg.classList.remove('drag'); }); svg.addEventListener('pointercancel',()=>{ drag=null; svg.classList.remove('drag'); });
+function svgPoint(e){ const r=svg.getBoundingClientRect(); return [vb[0]+(e.clientX-r.left)/r.width*vb[2], vb[1]+(e.clientY-r.top)/r.height*vb[3]]; }
+render();
+</script>

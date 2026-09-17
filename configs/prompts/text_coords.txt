@@ -1,0 +1,1 @@
+This is a fire insurance map of Victoria B.C. in 1895. Return the text with coordinates.

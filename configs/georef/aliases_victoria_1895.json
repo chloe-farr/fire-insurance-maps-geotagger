@@ -1,0 +1,38 @@
+{
+  "_comment": "1895 Goad label (as OCR'd, upper-case) -> modern canonical street names ('NAME TYPE' with the type abbreviated: ST AVE SQ ALLEY LANE RD PL). Used by scripts/fim_georef.py --alias. Streets that no longer exist (Oriental Ave) are simply not listed. KANE, BLANCHARD, RAE, COLLINSON and CHURCH WAY were found by the fit's 'alias candidates' printout on sheets 5 and 8 (2026-09-16): the unmatched label lay within a few metres of the modern centreline named here (KANE 0.7 m, PIAE=RAE 0.4 m, COLLINSON 1.9 m, CHURCH-WAY 2.8 m, BLANCHARD 5 m). A label may list several modern streets when only part of it was renamed; the fit snaps to the nearest.",
+  "BASTION": [
+    "BASTION SQ",
+    "BASTION ST"
+  ],
+  "BASTION SQUARE": [
+    "BASTION SQ"
+  ],
+  "COMMERCIAL ST": [
+    "COMMERCIAL ALLEY"
+  ],
+  "COMMERCIAL": [
+    "COMMERCIAL ALLEY"
+  ],
+  "KANE": [
+    "BROUGHTON ST"
+  ],
+  "BLANCHARD": [
+    "BLANSHARD ST"
+  ],
+  "RAE": [
+    "COURTNEY ST"
+  ],
+  "COLLINSON": [
+    "COLLINSON ST",
+    "FAIRFIELD RD"
+  ],
+  "CHURCH WAY": [
+    "BURDETT AVE"
+  ],
+  "CHURCH - WAY": [
+    "BURDETT AVE"
+  ],
+  "CHURCH-WAY": [
+    "BURDETT AVE"
+  ]
+}

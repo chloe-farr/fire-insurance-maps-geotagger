@@ -1,0 +1,1 @@
+This is a scan of a fire insurance map from 1895. Provide the coordinates on the image for the following elements: north arrow, color control patch, scale, and measuring tape.

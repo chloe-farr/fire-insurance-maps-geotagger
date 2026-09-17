@@ -1,0 +1,1 @@
+This is a fire insurance map with street names. Return the text with coordinates.

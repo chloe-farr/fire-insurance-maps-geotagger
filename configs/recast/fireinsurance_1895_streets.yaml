@@ -1,0 +1,15 @@
+# 1895 Victoria fire insurance book — inside-front-cover "Index to streets" (data/1895/inside-front-cover-index-to-streets*.jpg).
+# Reconstructed 2026-09-10 from the recast README example (columns street, relative_position, sheet; expand_dittos).
+# No Chandra table run of these crops exists yet under runs/chandra — run scripts/fim_chandra.sh with --preset index_1885_streets.
+name: fireinsurance_1895_streets
+description: 1895 index-to-streets → one row per street segment
+filename_patterns:
+  - "index-to-streets"
+  - "fireinsurance_victoria_1895"
+  - "1895"
+match_priority: 60
+columns:
+  - street
+  - relative_position
+  - sheet
+expand_dittos: true

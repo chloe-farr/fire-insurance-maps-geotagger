@@ -1,0 +1,1 @@
+This is a city plan of Vienna, Austria, from 1912, with German street names. Return the text with coordinates.

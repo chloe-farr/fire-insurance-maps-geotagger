@@ -1,0 +1,14 @@
+# Install into a virtualenv:  python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+# Everything the georeferencing pipeline needs (OCR -> blocks -> streets -> fit -> viewer).
+# The OCR stage needs an NVIDIA GPU with ~20 GB free; the other stages run on any CPU.
+torch                      # CUDA build from pypi; see https://pytorch.org for other CUDA versions
+torchvision                # the HunyuanOCR image processor needs it
+transformers>=5.13         # first pip release that ships HunyuanOCR (HunYuanVLForConditionalGeneration)
+accelerate                 # device_map="auto" when loading the model
+pillow
+numpy
+opencv-python-headless
+# Optional
+# pyproj                   # only if your street layer is in a projection other than UTM (fim_crs.py handles UTM natively)
+# pdf2image                # only to OCR a PDF page instead of an image
+# Table extraction from index pages (Chandra, Surya) is a separate toolchain: see docs/PIPELINE_NOTES.md

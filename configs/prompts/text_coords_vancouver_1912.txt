@@ -1,0 +1,1 @@
+This is a fire insurance map of Vancouver B.C. in 1912. Return the text with coordinates.

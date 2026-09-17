@@ -1,0 +1,1 @@
+This is a cropped scan of a Key from a Sanborn fire insurance map book from 1885. Provide descriptions of each element in the key. Do not return this in a table.

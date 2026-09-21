@@ -11,7 +11,7 @@ authors:
 date-released: "2026-09-20"
 version: "2026.09.20"
 license: MIT
-repository-code: "https://github.com/chloe-farr/fire-insurance-maps"
+repository-code: "https://github.com/chloe-farr/fire-insurance-maps-geotagger"
 keywords:
   - fire insurance plans
   - Goad

@@ -1,7 +1,9 @@
-# data/example — a public-domain Goad sheet for demos and tests
+# data/example — public-domain sheets for demos and tests
 
 The Victoria scans in `../1885` and `../1895` are RBCM research-only images and are never committed
-(see `../../RIGHTS.md`). This directory holds the one map that **is** committed and may be shown freely.
+(see *Licence, citation and rights* in the top-level `README.md`). This directory holds the maps that **are**
+committed and may be shown freely: a Vancouver 1912 Goad tile (input only; the README's walk-through runs it) and a
+Tampa 1889 Sanborn sheet with the complete output of one run (`tampa_1889_sheet3/`, its own `README.md`).
 
 ## Vancouver 1912, Goad's Atlas, tile MAP342a_04 (downtown / Gastown)
 
@@ -22,21 +24,11 @@ The Victoria scans in `../1885` and `../1895` are RBCM research-only images and 
 | `vancouver_1912_MAP342a_04.tfw` | its world file (same georeferencing as the GeoTIFF tags) |
 | `vancouver_1912_tiles.csv` | index of all 100 tiles |
 
-These two rasters are the only ones whitelisted in `.gitignore`. The City serves the zip from behind Cloudflare,
-which refuses non-browser clients, so re-downloading means a browser; the inner file is named `MAP342a.04.tif`.
+These two rasters, and the JPEGs in `tampa_1889_sheet3/`, are the only ones whitelisted in `.gitignore`. The City
+serves the zip from behind Cloudflare, which refuses non-browser clients, so re-downloading means a browser; the inner
+file is named `MAP342a.04.tif`.
 
-## Vienna 1912, Generalstadtplan, Innere Stadt (a European test case, added 2026-09-15)
+## Tampa 1889, Sanborn map no. 01352, sheet 3 (Library of Congress) — with the pipeline's output
 
-| | |
-|---|---|
-| Source | Stadt Wien open data, WMS layer `GENLPLAN1912OGD` ("Generalstadtplan 1912") at <https://data.wien.gv.at/daten/wms>, georeferenced by the City (Wien Kulturgut) |
-| Rights | CC BY 4.0. Required attribution: *Datenquelle: Stadt Wien – data.wien.gv.at* |
-| The plan | Generalstadtplan of Vienna, 1912 edition (Josef Lenobel, state as of 30 April 1912), lithograph at 1:3,500 reduced from the 1:2,880 sheets; street and square names, house numbers, parcel and building-line linework, construction dates. Black and white, Antiqua lettering, irregular medieval street network |
-| The original | *General-Stadt-Plan der Gemeinde Wien. Atlas zum Häuser-Kataster der k. k. Reichshaupt- und Residenzstadt Wien*, 2nd ed., Stadtbauamt / Josef Lenobel, 1912. Sheets held by the Wiener Stadt- und Landesarchiv, Kartographische Sammlung, Sammelbestand P2.1: 309; the archive's scan is viewable in Wien Kulturgut: <https://www.wien.gv.at/kulturportal/public/grafik.aspx?bookmark=LvBMRUz1i0V-aLrRGOXowRhwpYlDf> (1904 edition: `...pYpBm`). Background: <https://www.geschichtewiki.wien.gv.at/Generalstadtplan> |
-| Files | `vienna_1912_generalstadtplan_innere_stadt.png` — 4800 × 4800 px, 0.25 m/px (the service's native resolution; requests above 2400 px are refused, so this is 2 × 2 GetMap tiles stitched), EPSG:32633 (WGS 84 / UTM 33N), bbox 601350,5339800 – 602550,5341000; `.pgw` world file. Centre 48.2086 N, 16.3723 E (Stephansplatz) |
-| Ground truth | the City's georeferencing, i.e. the world file, as with the Vancouver tile |
-| Modern layer | `../modern/vienna_innere_stadt_streets_epsg32633.geojson` (OpenStreetMap via `fim_fetch_streets.py --bbox 48.195,16.355,48.222,16.395 --slug vienna_innere_stadt`) |
-
-Known matching gaps before `fim_georef.py` can fit it: the plan writes "Singer-Strasse" / "Rothenthurm-Strasse" where OSM has
-"Singerstraße" / "Rotenturmstraße" (type words fused to the name, ß, pre-1901 spelling); no feet-per-inch scale statement.
-The raster is not whitelisted in `.gitignore` yet (re-create it with the WMS request above).
+See `tampa_1889_sheet3/README.md`: source handle, rights, every file, the parameters and results of the run, and the
+commands that reproduce it.

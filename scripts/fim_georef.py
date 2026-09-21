@@ -65,6 +65,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from fim_crs import CRS, parse_epsg  # noqa: E402
+from fim_runlog import Stage, map_outputs_summary, rel, ring_centre, streets_provenance  # noqa: E402
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 NAME_FIELDS = ["name", "NAME", "STNAME", "StreetName", "FULLNAME", "FULL_NAME", "ST_NAME", "STREET", "street", "STREETNAME", "ROADNAME", "RD_NAME", "LINEARNAME_FULL", "STRUCTURED_NAME_1", "FULL_STREET_NAME"]
@@ -530,9 +531,22 @@ def main() -> None:
     args.scales_given = args.scales is not None
     args.scales = args.scales or "0.03,0.045,0.065,0.1,0.15,0.22,0.33,0.5,0.7"  # 20 ft/in .. 800 ft/in at ~300 dpi
 
-    run = args.run
-    tiles_path = next(run.glob("*_tiles.json"))
+    run = args.run.expanduser().resolve()
+    tiles_path = next(run.glob("*_tiles.json"), None)
+    if tiles_path is None:
+        raise SystemExit(f"{run}: no <stem>_tiles.json (run fim_tile_ocr.py first)")
     stem = tiles_path.name[: -len("_tiles.json")]
+    with Stage(run, "georef", sheet=stem) as rlog:
+        georef_sheet(args, run, tiles_path, stem, rlog)
+
+
+def georef_sheet(args: argparse.Namespace, run: Path, tiles_path: Path, stem: str, rlog: Stage) -> None:
+    """Steps 0-5 of the module docstring for one sheet. `rlog` is the run-log record (scripts/fim_runlog.py). Its fields:
+    the street layer and its provenance (source, WGS84 box, place names, area), alias file and entry count, --fuzzy, --near,
+    --min-labels; n_matched (labels that went into the fit), n_matched_plain (matched by name alone: no alias entry, no
+    fuzzy match — whether the sheet places without any per-city configuration), n_matched_alias, n_matched_fuzzy,
+    min_labels_met_plain; the fit (transform, RMS, scale, rotation, inliers, outliers); output counts; laps_s per step;
+    status placed | refused_min_labels | error."""
     doc = json.loads(tiles_path.read_text())
     global SPELL_FOLD
     SPELL_FOLD = args.spelling == "historic"
@@ -546,6 +560,13 @@ def main() -> None:
     aliases: dict[str, list[str]] = {}
     if args.alias:
         aliases = {k.upper(): [canon(v) for v in vs] for k, vs in json.loads(args.alias.read_text()).items() if not k.startswith("_")}
+    rlog.note(streets_file=rel(args.streets), streets=streets_provenance(args.streets), epsg=epsg, crs=f"EPSG:{epsg} ({crs.name()})", streets_fields=fields,
+             n_streets_names=len(streets), n_streets_segments=sum(len(v) for v in streets.values()), n_intersections=len(inter),
+             intersections="supplied" if args.intersections else "derived from centreline vertices",
+             alias_file=rel(args.alias) if args.alias else None, n_alias_entries=len(aliases), fuzzy=bool(args.fuzzy),
+             near=[rel(r) for r in args.near] if args.near else None, n_near=len(args.near or []), min_labels=args.min_labels, lots=args.lots,
+             spelling=args.spelling, rotation_mode=args.rotation, year=args.year, retrace=args.retrace, scales_given=args.scales_given)
+    rlog.lap("load")
 
     # 0. the traced blocks, if fim_blocks.py ran on this sheet. Street names are printed in the street corridors, business
     #    and building labels inside the blocks ("LIME / STORE" on a lot is not Store St). A word whose centre lies inside
@@ -563,9 +584,11 @@ def main() -> None:
         block_rings = []
     street_candidates(tokens, block_rings)  # stamps in_block / in_block_depth_px on every token
     labels, P, cand, skipped, building = [], [], [], [], []
+    n_alpha = 0
     for t in tokens:
         if not re.search(r"[A-Za-z]{3,}", t["text"]):
             continue
+        n_alpha += 1
         keys = match_streets(t["text"], streets, aliases)
         via = None
         if not keys and args.fuzzy:
@@ -590,8 +613,8 @@ def main() -> None:
         print(f"fuzzy: {len(fz)} labels taken for a street name they nearly spell: " + ", ".join(f"{l['text']}~{l['fuzzy']}" for l in fz) if fz else "fuzzy: no near-miss labels")
     # the streets named on one sheet lie near each other: drop labels whose modern street is farther than --lonely-m from
     # every other matched street (a water body or landmark whose name is a road elsewhere in the layer). Until 2026-09-17
-    # this asked for a shared intersection vertex instead, which on Vienna dropped Singer-Strasse, Hoher Markt and 13
-    # more real labels whose neighbours the OCR had not read.
+    # this asked for a shared intersection vertex instead, which on a plan with an irregular street net dropped 15
+    # real labels whose neighbours the OCR had not read.
     names_of = lambda l: set(l["modern"])
     all_keys = sorted(set().union(*(names_of(l) for l in labels))) if labels else []
     gap: dict[tuple, float] = {}
@@ -614,19 +637,56 @@ def main() -> None:
     P = np.array(P, float)
     print(f"{len(labels)} street labels matched: " + ", ".join(f"{l['text']}{'~' if l.get('fuzzy') else ''}->{'/'.join(l['modern'])}" for l in labels))
     print(f"{len(skipped)} alphabetic tokens not matched to a street: {sorted(set(skipped))}")
+    n_plain = sum(1 for l in labels if not l["alias"] and not l["fuzzy"])
+    rlog.note(n_tokens_kept=len(tokens), n_alpha_tokens=n_alpha, n_matched=len(labels), n_matched_plain=n_plain,
+             n_matched_alias=sum(1 for l in labels if l["alias"]), n_matched_fuzzy=sum(1 for l in labels if l["fuzzy"]),
+             n_distinct_streets=len({k for l in labels for k in l["modern"]}), n_building_labels=len(building), n_lonely_dropped=len(lonely),
+             n_unmatched_alpha=len(set(skipped)), min_labels_met=len(labels) >= args.min_labels, min_labels_met_plain=n_plain >= args.min_labels)
+    rlog.lap("match")
     if len(labels) < args.min_labels:
+        rlog.note(status="refused_min_labels")
         raise SystemExit(f"only {len(labels)} labels matched (< --min-labels {args.min_labels})")
 
     # 2. where do the named streets meet? centre + radius for candidate segments and the translation search
+    #    A seed is a vertex where two matched streets with DIFFERENT stems meet: 'HILLSBOROUGH AVE' meeting
+    #    'WEST HILLSBOROUGH AVE' is one avenue changing its prefix, not two streets (Tampa 1884: 13 of 27 seeds were such
+    #    self-junctions along a 30 km avenue and pulled the median 5.9 km off the sheet). The centre is then the densest
+    #    cluster of seeds — the spot within one sheet's reach of which the most distinct matched streets meet — not the
+    #    median of all seeds, which a long arterial or a generic name matched county-wide drags away from the sheet.
     matched = {k for l in labels for k in l["modern"]}
-    seeds = [x["xy"] for x in inter if len(set(x["names"]) & matched) >= 2]
-    if not seeds:  # fall back to the matched streets' own extent
-        seeds = [s.reshape(-1, 2).mean(0) for k, s in streets.items() if k in matched]
-    seeds = np.array(seeds, float)
-    centre = np.median(seeds, axis=0)
+    shown: dict[str, str] = {}  # spell-folded stem -> the layer's own spelling, for the printout
+    def name_stem(k: str) -> str:  # not 'stem': that is the sheet's file stem, used throughout main()
+        words = [w for i, w in enumerate(_base(k).split()) if not (i == 0 and w in DIRECTION_WORDS)]
+        key = spell_key(" ".join(words))
+        shown.setdefault(key, " ".join(words))
+        return key
+    seeds, seed_stems = [], []
+    for x in inter:
+        stems = {name_stem(k) for k in set(x["names"]) & matched}
+        if len(stems) >= 2:
+            seeds.append(x["xy"]); seed_stems.append(stems)
     sheet_diag_px = math.hypot(doc["source_size"]["w"], doc["source_size"]["h"])
     scales_pre = [float(v) for v in args.scales.split(",")]
     radius = max(args.radius_m, 0.7 * sheet_diag_px * max(scales_pre))
+    if seeds:
+        seeds = np.array(seeds, float)
+        reach = radius / 2  # about one sheet at the largest scale seed
+        best_i, best_key = 0, (-1, -1)
+        for i, s in enumerate(seeds):
+            near = np.linalg.norm(seeds - s, axis=1) <= reach
+            key = (len(set().union(*(seed_stems[j] for j in np.flatnonzero(near)))), int(near.sum()))
+            if key > best_key:
+                best_i, best_key = i, key
+        near = np.linalg.norm(seeds - seeds[best_i], axis=1) <= reach
+        centre = np.median(seeds[near], axis=0)
+        seeds = seeds[near]  # the translation window below is clipped to the seeds' extent: the cluster's, not the county's
+        cluster_names = sorted(shown[k] for k in set().union(*(seed_stems[j] for j in np.flatnonzero(near))))
+        print(f"seed centre: {len(seeds)} intersections of two matched streets; densest cluster holds {int(near.sum())} of them within {reach:.0f} m, "
+              f"where {best_key[0]} distinct streets meet ({', '.join(cluster_names)}); {int((~near).sum())} seeds elsewhere ignored")
+    else:  # fall back to the matched streets' own extent
+        seeds = np.array([s.reshape(-1, 2).mean(0) for k, s in streets.items() if k in matched], float)
+        centre = np.median(seeds, axis=0)
+        print(f"seed centre: no intersection of two matched streets in the layer; using the median of the {len(seeds)} matched streets' centres")
     # neighbouring sheets already placed: this sheet lies within one sheet of their footprints (their scale, since a book
     # is drawn at one scale) — a far tighter window than 'somewhere around the matched streets'
     near_win, near_scale = None, None
@@ -663,6 +723,7 @@ def main() -> None:
     if dropped:
         print(f"dropped (no segment of that street within {radius:.0f} m of the sheet's streets): {dropped}")
     if len(labels) < args.min_labels:
+        rlog.note(status="refused_min_labels", n_dropped_far=len(dropped), n_matched_in_reach=len(labels))
         raise SystemExit(f"only {len(labels)} labels left (< --min-labels {args.min_labels})")
 
     # 3. coarse search: rotation x scale x translation grid
@@ -754,6 +815,8 @@ def main() -> None:
                 best.append((float(cst[j]), rot, sc, np.hstack([M, (grid[j] - M @ pc)[:, None]])))
     best.sort(key=lambda b: b[0])
     print(f"coarse search: up to {n_grid} translations x {len(rots)} rotations x {len(scales)} scales; best seeds " + ", ".join(f"(rot {b[1]:.0f}, {b[2]} m/px, cost {b[0]:.0f})" for b in best[:4]))
+    rlog.note(n_rotation_seeds=len(rots), n_scale_seeds=len(scales), n_translation_grid=int(n_grid), candidate_radius_m=float(radius))
+    rlog.lap("coarse")
 
     # 4. ICP from the best seeds: similarity -> outlier rejection -> similarity -> affine (inliers only)
     #    With --rotation labels the rotation is read off the labels' text directions (a name runs along its street) and the
@@ -843,6 +906,11 @@ def main() -> None:
         A, transform = A_cur.copy(), "similarity"
         d, Q, rms, sx, sy, rot, shear = summarise(A)
     T = apply(A, P)
+    rlog.note(transform=transform, affine_rejected=bool(affine_rejected), affine_rejected_why=(affine_rejected or {}).get("why"), rotation_source=rotation_source,
+             rms_m=float(rms), median_m=float(np.median(d[inl])), max_m=float(d[inl].max()), n_inliers=int(inl.sum()), n_outliers=int((~inl).sum()), outlier_threshold_m=float(thr),
+             scale_m_per_px_x=float(sx), scale_m_per_px_y=float(sy), rotation_deg=float(rot), shear_deg=float(shear),
+             coarse_seed={"rotation_deg": float(rot0), "scale_m_per_px": float(sc0)}, stated_scale_ft_per_inch=ft_per_in, n_dropped_far=len(dropped))
+    rlog.lap("fit")
     print(f"fit ({transform}): RMS {rms:.1f} m over {int(inl.sum())} inlier labels ({len(P)} matched); scale {sx:.4f} x {sy:.4f} m/px, rotation {rot:.2f} deg, shear {shear:.2f} deg; implied scan dpi: {15.24 / sx:.0f} if the sheet is 50 ft/in, {30.48 / sx:.0f} if 100 ft/in")
     for l, di, q in zip(labels, d, Q):
         l["residual_m"] = round(float(di), 2)
@@ -876,6 +944,7 @@ def main() -> None:
             if prev is None or dist_[i_] < prev["distance_m"]:
                 suggestions[txt] = {"label": txt, "modern": str(seg_key[i_]), "distance_m": round(float(dist_[i_]), 1)}
     alias_suggestions = sorted(suggestions.values(), key=lambda s_: s_["distance_m"])
+    rlog.note(n_alias_suggestions=len(alias_suggestions), alias_suggestions=[f"{s_['label']}->{s_['modern']}" for s_ in alias_suggestions[:12]])
     if alias_suggestions:
         print(f"alias candidates (unmatched upper-case words lying within {thr:.0f} m of a modern centreline; if they are the same street, add them to --alias): "
               + ", ".join(f"{s_['label']} -> {s_['modern']} ({s_['distance_m']} m)" for s_ in alias_suggestions))
@@ -927,6 +996,7 @@ def main() -> None:
         segs_px = apply(A_inv, np.concatenate(seg_list).reshape(-1, 2)).reshape(-1, 2, 2)
         print(f"re-tracing the blocks with {len(segs_px)} modern centreline segments as street seeds (necks narrower than {2 * args.neck_px} px carved) ...", flush=True)
         fim_blocks.trace(fim_blocks.default_args(run, georef=True, neck_px=args.neck_px, legend=args.legend, floors=args.floors), segs_px)
+        rlog.lap("retrace")
     blocks_path = run / f"{stem}_blocks_px.geojson"
     if not blocks_path.exists() and (run / f"{stem}_blocks.geojson").exists():
         blocks_path = run / f"{stem}_blocks.geojson"  # pre-2026-09-14 name
@@ -1326,6 +1396,8 @@ def main() -> None:
     cv2.putText(ov, banner[:230], (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.62, (0, 0, 0), 2, cv2.LINE_AA)
     cv2.imwrite(str(run / f"{stem}_georef_overlay.jpg"), ov, [cv2.IMWRITE_JPEG_QUALITY, 88])
     print(f"overlay -> {stem}_georef_overlay.jpg;  GCPs -> {stem}_georef.points;  world file -> {stem}.jgw (EPSG:{epsg})")
+    rlog.note(**map_outputs_summary(run, stem), page_centre_wgs84=ring_centre(georef["page_corners_wgs84"]["content"]), status="placed")
+    rlog.lap("outputs")
 
 
 if __name__ == "__main__":

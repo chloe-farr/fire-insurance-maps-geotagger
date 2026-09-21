@@ -1,0 +1,41 @@
+{
+  "_comment": "1884 Sanborn label (as OCR'd, upper-case) -> modern canonical street names ('NAME TYPE', type abbreviated: ST AVE BLVD RD ...). Used by scripts/fim_georef.py --alias. An EMPTY list silences a label: HILLSBOROUGH and RIVER on this sheet name the Hillsborough River (twice each, west edge), not Hillsborough Avenue or the eleven River-named roads of the county; on 2026-09-17 they anchored a fit 5.9 km away at 3.5x the true scale. TAMPA, FRANKLIN, JACKSON, WASHINGTON are pinned to the downtown streets so Tampa Road, Franklin Road, Jackson Road do not enter the candidate set. LA FAYETTE: Lafayette Street was renamed Kennedy Boulevard in 1964.",
+  "sheet": [],
+  "see": [],
+  "FLA": [],
+  "1889": [],
+  "No Exposure": [],
+  "Library of Congress": [],
+  "Map Division": [],
+  "Sanborn Map Company": [],
+  "HILLSBOROUGH": [],
+  "RIVER": [],
+  "FLORIDA": [
+    "NORTH FLORIDA AVE"
+  ],
+  "TAMPA": [
+    "NORTH TAMPA ST",
+    "SOUTH TAMPA ST"
+  ],
+  "FRANKLIN": [
+    "NORTH FRANKLIN ST",
+    "SOUTH FRANKLIN ST"
+  ],
+  "JACKSON": [
+    "EAST JACKSON ST"
+  ],
+  "WASHINGTON": [
+    "EAST WASHINGTON ST",
+    "WEST WASHINGTON ST"
+  ],
+  "LAFAYETTE": [
+    "EAST KENNEDY BLVD",
+    "KENNEDY BLVD"
+  ],
+  "MARION":[
+    "NORTH MARION ST"
+  ],
+  "MORGAN":[
+    "NORTH MORGAN ST"
+  ]
+}

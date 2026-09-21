@@ -3,7 +3,7 @@ __pycache__/
 .venv/
 # No images in the repo. The RBCM scans are under a legal protective order (research use only, no redistribution);
 # every overlay and resized input contains the scan. Since 2026-09-17 no run outputs are tracked either (runs/ below):
-# results stay on the machine that made them until they are cleared for release (see RIGHTS.md).
+# results stay on the machine that made them until they are cleared for release (see the README's rights section).
 *.png
 *.jpg
 *.jpeg
@@ -11,15 +11,25 @@ __pycache__/
 *.tiff
 *.gif
 *.webp
-# machine-local symlinks, see scripts/fim_surya_detect.py
+*.jp2
+# machine-local symlinks for an optional external text-line detector
 .surya-extra/
 # The single committed raster (GeoTIFF + world file): a public-domain City of Vancouver Open Data sheet, see data/example/README.md.
 !data/example/vancouver_1912_MAP342a_04.tif
 !data/example/vancouver_1912_MAP342a_04.tfw
+# The Tampa 1889 example (Library of Congress Sanborn sheet, public domain): its input JPEG and the run's overlays.
+!data/example/tampa_1889_sheet3/*.jpg
 # Viewer pages from fim_viewer.py are built locally, not tracked (still rough)
 docs/viewer*.html
+viewer*.html
 # Every run output: OCR tokens, tiles, polygons, GeoJSON, logs, world files. Nothing under runs/ is tracked.
 runs/
+# The run log (scripts/fim_runlog.py): per-run run_log.json and the master runs/run_log.json. Already under runs/, named
+# here so the intent survives if runs/ is ever tracked again: they hold local paths and every run ever made.
+runs/run_log.json
+run_log.json
+run_log.csv
+*.lock
 *.log
 # Local symlinks to the protected Victoria scans (data/1885, data/1895, ...): each machine makes its own
 data/1885

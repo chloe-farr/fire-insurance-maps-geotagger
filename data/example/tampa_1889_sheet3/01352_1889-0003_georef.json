@@ -1,0 +1,610 @@
+{
+ "sheet": "01352_1889-0003",
+ "source_image": "data/Sanborn_Hillsborough-County/1889/01352_1889-0003.png",
+ "source_size": {
+  "w": 6450,
+  "h": 7650
+ },
+ "crs": "EPSG:32617 (WGS 84 / UTM zone 17N)",
+ "epsg": 32617,
+ "streets": "data/modern/tampa_streets_epsg32617.geojson",
+ "streets_fields": {
+  "name_field": "name",
+  "type_field": null
+ },
+ "intersections": "derived from centreline vertices",
+ "method": "OCR street labels -> point-to-line ICP onto modern centrelines; similarity then affine (kept only if physically plausible); Huber weights",
+ "transform": "similarity",
+ "affine_rejected": {
+  "scale_m_per_px": {
+   "x": 1.7548485459694096,
+   "y": 0.6412463150423171
+  },
+  "shear_deg": 12.26455619103767,
+  "rms_m": 2115.233064546041,
+  "why": "x/y scale differ by 173.7% (limit 4%) or shear 12.26 deg (limit 2.0): beyond paper shrink and scan skew, so the labels constrain only one direction"
+ },
+ "alias_suggestions": [
+  {
+   "label": "PLATFORM.",
+   "modern": "NORTH ASHLEY DR",
+   "distance_m": 0.1
+  },
+  {
+   "label": "WOODEN BRIDGE.",
+   "modern": "EAST JACKSON ST",
+   "distance_m": 0.4
+  },
+  {
+   "label": "LAFAYETTE",
+   "modern": "EAST KENNEDY BLVD",
+   "distance_m": 2.0
+  },
+  {
+   "label": "TAMPA STEAM STREET RY.",
+   "modern": "NORTH TAMPA ST",
+   "distance_m": 2.6
+  },
+  {
+   "label": "SHEET",
+   "modern": "NORTH TAMPA ST",
+   "distance_m": 3.4
+  },
+  {
+   "label": "SWEET",
+   "modern": "EAST JACKSON ST",
+   "distance_m": 3.7
+  },
+  {
+   "label": "FRANK",
+   "modern": "NORTH FRANKLIN ST",
+   "distance_m": 4.0
+  }
+ ],
+ "building_labels": [
+  {
+   "text": "APRIL 1889",
+   "modern": [
+    "APRIL LANE"
+   ],
+   "px": [
+    5613.0,
+    226.5
+   ],
+   "bbox_source": [
+    5475,
+    195,
+    5751,
+    258
+   ],
+   "depth_px": 72
+  },
+  {
+   "text": "TAMPA",
+   "modern": [
+    "NORTH TAMPA ST",
+    "SOUTH TAMPA ST"
+   ],
+   "px": [
+    5611.0,
+    317.0
+   ],
+   "bbox_source": [
+    5388,
+    268,
+    5834,
+    366
+   ],
+   "depth_px": 158
+  },
+  {
+   "text": "SCOTLAND",
+   "modern": [
+    "SCOTLAND CRT"
+   ],
+   "px": [
+    5334.0,
+    1102.5
+   ],
+   "bbox_source": [
+    5223,
+    1080,
+    5445,
+    1125
+   ],
+   "depth_px": 258
+  },
+  {
+   "text": "Tobacco",
+   "modern": [
+    "TOBACCO RD"
+   ],
+   "px": [
+    5019.0,
+    1903.0
+   ],
+   "bbox_source": [
+    5001,
+    1840,
+    5037,
+    1966
+   ],
+   "depth_px": 71
+  },
+  {
+   "text": "JACKSON",
+   "modern": [
+    "EAST JACKSON ST"
+   ],
+   "px": [
+    3553.5,
+    3828.0
+   ],
+   "bbox_source": [
+    3324,
+    3785,
+    3783,
+    3871
+   ],
+   "depth_px": 3
+  },
+  {
+   "text": "Creek.",
+   "modern": [
+    "EAST CREEK DR",
+    "WEST CREEK DR"
+   ],
+   "px": [
+    4940.5,
+    3930.5
+   ],
+   "bbox_source": [
+    4848,
+    3904,
+    5033,
+    3957
+   ],
+   "depth_px": 39
+  },
+  {
+   "text": "Bank",
+   "modern": [
+    "EAST BANK DR",
+    "WEST BANK AVE"
+   ],
+   "px": [
+    5578.5,
+    5910.5
+   ],
+   "bbox_source": [
+    5553,
+    5850,
+    5604,
+    5971
+   ],
+   "depth_px": 99
+  }
+ ],
+ "rotation_source": "text direction of 6 inlier labels",
+ "near": null,
+ "fuzzy": false,
+ "affine_source_px_to_map": {
+  "a11": 0.048192813945586714,
+  "a12": 0.018239485553864333,
+  "tx": 356254.20487052156,
+  "a21": 0.018239485553864333,
+  "a22": -0.048192813945586714,
+  "ty": 3092262.398419879
+ },
+ "affine_map_to_source_px": {
+  "a11": 18.150172993344906,
+  "a12": 6.869277616493466,
+  "tx": -27707684.325796578,
+  "a21": 6.869277616493467,
+  "a22": -18.15017299334491,
+  "ty": 53677888.436837696
+ },
+ "scale_m_per_px": {
+  "x": 0.05152888655175428,
+  "y": 0.05152888655175428
+ },
+ "rotation_deg": 20.730100122907437,
+ "shear_deg": 0.0,
+ "implied_dpi_if_50ft_per_inch": 295.75643915172395,
+ "implied_dpi_if_100ft_per_inch": 591.5128783034479,
+ "rms_m": 63.725038183982456,
+ "median_m": 4.06521315536444,
+ "max_m": 155.8403905313614,
+ "n_labels": 6,
+ "n_outliers": 0,
+ "outlier_threshold_m": 12.195639466093322,
+ "dropped_far": [],
+ "coarse_seed": {
+  "rotation_deg": 10.0,
+  "scale_m_per_px": 0.065
+ },
+ "stated_scale_ft_per_inch": null,
+ "implied_dpi_from_stated_scale": null,
+ "labels": [
+  {
+   "text": "MADISON",
+   "id": 312,
+   "rotation_view": 0,
+   "modern": [
+    "MADISON AVE",
+    "EAST MADISON ST"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    3570.5,
+    494.0
+   ],
+   "bbox_source": [
+    3329,
+    450,
+    3812,
+    538
+   ],
+   "text_direction_deg": 0.0,
+   "outlier": false,
+   "residual_similarity_m": 1.11,
+   "residual_m": 1.11,
+   "snapped_map": [
+    356434.898,
+    3092304.755
+   ]
+  },
+  {
+   "text": "TAMPA",
+   "id": 386,
+   "rotation_view": 0,
+   "modern": [
+    "NORTH TAMPA ST",
+    "SOUTH TAMPA ST"
+   ],
+   "fuzzy": null,
+   "alias": true,
+   "px": [
+    1081.5,
+    2597.5
+   ],
+   "bbox_source": [
+    990,
+    2572,
+    1173,
+    2623
+   ],
+   "text_direction_deg": 0.0,
+   "outlier": false,
+   "residual_similarity_m": 155.84,
+   "residual_m": 155.84,
+   "snapped_map": [
+    356499.864,
+    3092211.008
+   ]
+  },
+  {
+   "text": "ASHLEY",
+   "id": 376,
+   "rotation_view": 0,
+   "modern": [
+    "ASHLEY ST",
+    "NORTH ASHLEY ST",
+    "SOUTH ASHLEY DR",
+    "NORTH ASHLEY DR"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    2603.0,
+    3036.0
+   ],
+   "bbox_source": [
+    2537,
+    2833,
+    2669,
+    3239
+   ],
+   "text_direction_deg": 90.0,
+   "outlier": false,
+   "residual_similarity_m": 2.95,
+   "residual_m": 2.95,
+   "snapped_map": [
+    356432.447,
+    3092162.13
+   ]
+  },
+  {
+   "text": "TAMPA",
+   "id": 616,
+   "rotation_view": 0,
+   "modern": [
+    "NORTH TAMPA ST",
+    "SOUTH TAMPA ST"
+   ],
+   "fuzzy": null,
+   "alias": true,
+   "px": [
+    4157.0,
+    3349.0
+   ],
+   "bbox_source": [
+    4115,
+    3154,
+    4199,
+    3544
+   ],
+   "text_direction_deg": 90.0,
+   "outlier": false,
+   "residual_similarity_m": 2.9,
+   "residual_m": 2.9,
+   "snapped_map": [
+    356512.912,
+    3092175.795
+   ]
+  },
+  {
+   "text": "WASHINGTON",
+   "id": 344,
+   "rotation_view": 0,
+   "modern": [
+    "EAST WASHINGTON ST",
+    "WEST WASHINGTON ST"
+   ],
+   "fuzzy": null,
+   "alias": true,
+   "px": [
+    3653.0,
+    5623.0
+   ],
+   "bbox_source": [
+    3307,
+    5578,
+    3999,
+    5668
+   ],
+   "text_direction_deg": 0.0,
+   "outlier": false,
+   "residual_similarity_m": 5.18,
+   "residual_m": 5.18,
+   "snapped_map": [
+    356530.927,
+    3092062.863
+   ]
+  },
+  {
+   "text": "WHITING",
+   "id": 240,
+   "rotation_view": 0,
+   "modern": [
+    "EAST WHITING ST"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    3740.0,
+    7236.0
+   ],
+   "bbox_source": [
+    3519,
+    7194,
+    3961,
+    7278
+   ],
+   "text_direction_deg": 0.0,
+   "outlier": false,
+   "residual_similarity_m": 5.82,
+   "residual_m": 5.82,
+   "snapped_map": [
+    356568.369,
+    3091976.405
+   ]
+  }
+ ],
+ "unmatched_tokens": [
+  "& Bancry",
+  "2 Confec.",
+  "2 Vac.",
+  "ALL",
+  "AROUND.",
+  "BEING",
+  "BUILT.",
+  "Banky",
+  "Barbi's",
+  "CAST.",
+  "CENTRAL HO.",
+  "CLAD",
+  "COMMERCIAL Co. W.Ho.",
+  "DOCK.",
+  "DOCKS.",
+  "Dmg",
+  "Dmg.",
+  "Dng",
+  "Dny",
+  "ELEV'D WATER",
+  "FLA.",
+  "FRANK",
+  "Freight M.Ho.",
+  "Fruit",
+  "Gen't Storage.",
+  "Gen't W.Ho",
+  "Genit S.",
+  "Geri t 5.",
+  "Gro.",
+  "Grocky",
+  "H.R.Offs.",
+  "HAND POWER.",
+  "HHo.",
+  "HILLSBOROUGH HO.",
+  "HOTEL",
+  "HOTEL COLLINS.",
+  "Hardw",
+  "Hides.",
+  "IRON",
+  "Jewelry",
+  "KITCHEN",
+  "KITCHEN.",
+  "LAFAYETTE",
+  "Library of Congress",
+  "Mach's",
+  "Map Division",
+  "Meat",
+  "OFF",
+  "OFF.",
+  "OPERa HO.",
+  "Oils",
+  "P.R.DOCK. TO BE BUILT.",
+  "PENCER, HENDERSON MY CO. LIVERY.",
+  "PIER No.2.",
+  "PIER N\u00ba.",
+  "PLATFORM.",
+  "PRINT & PUB. HO.",
+  "Paint",
+  "RCIAL COMP.",
+  "RIMS.",
+  "River.",
+  "S.F.R.R.DOCK.",
+  "SEE",
+  "SHEDS",
+  "SHEET",
+  "SPENCER HENDERS",
+  "STAGE",
+  "STREET",
+  "SWEET",
+  "Sal",
+  "Sal.",
+  "Scale of Feet.",
+  "Shops.",
+  "Storg",
+  "Storge",
+  "TAMPA COMMERCIAL COMP",
+  "TAMPA STEAM STREET RY.",
+  "TAMPA STERM S",
+  "TAMPA TRIBUNE",
+  "TAMPA WHARF CO.",
+  "TANK",
+  "TANK.",
+  "TANKS.",
+  "THANK.",
+  "THE PLANT HO.",
+  "TIDE WATER.",
+  "Tobac.",
+  "Vac",
+  "Vac.",
+  "WIND MILL &",
+  "WOODEN BRIDGE.",
+  "West",
+  "lsborough,"
+ ],
+ "params": {
+  "run": "runs/hunyuan/Sanborn_Hillsborough-County/1889/0003",
+  "streets": "data/modern/tampa_streets_epsg32617.geojson",
+  "epsg": null,
+  "name_field": null,
+  "type_field": null,
+  "intersections": "None",
+  "alias": "configs/georef/aliases_tampa.json",
+  "scales": "0.045,0.05,0.065,0.1",
+  "rotations": "0:360:10",
+  "radius_m": 600.0,
+  "outlier_px": 60.0,
+  "outlier_m": 12.0,
+  "grid_m": 25.0,
+  "min_labels": 6,
+  "lonely_m": 300.0,
+  "spelling": "historic",
+  "fuzzy": false,
+  "near": null,
+  "rotation": "labels",
+  "year": 1889,
+  "max_shear_deg": 2.0,
+  "max_anisotropy": 0.04,
+  "huber_m": 6.0,
+  "retrace": "seeded",
+  "neck_px": 16,
+  "floors": "off",
+  "legend": null,
+  "lots": "numbered",
+  "block_street_reach_m": 16.0,
+  "overlay_px": 2400,
+  "scales_given": true
+ },
+ "generated_utc": "2026-09-18T16:03:23.126475+00:00",
+ "page_corners_wgs84": {
+  "scan": [
+   [
+    -82.4611873,
+    27.9476494
+   ],
+   [
+    -82.4580427,
+    27.9487445
+   ],
+   [
+    -82.45658,
+    27.9454325
+   ],
+   [
+    -82.4597246,
+    27.9443373
+   ]
+  ],
+  "content": [
+   [
+    -82.4611873,
+    27.9476494
+   ],
+   [
+    -82.4580427,
+    27.9487445
+   ],
+   [
+    -82.45658,
+    27.9454325
+   ],
+   [
+    -82.4597246,
+    27.9443373
+   ]
+  ]
+ },
+ "page_corners_map": {
+  "scan": [
+   [
+    356254.205,
+    3092262.398
+   ],
+   [
+    356565.049,
+    3092380.043
+   ],
+   [
+    356704.581,
+    3092011.368
+   ],
+   [
+    356393.737,
+    3091893.723
+   ]
+  ],
+  "content": [
+   [
+    356254.205,
+    3092262.398
+   ],
+   [
+    356565.049,
+    3092380.043
+   ],
+   [
+    356704.581,
+    3092011.368
+   ],
+   [
+    356393.737,
+    3091893.723
+   ]
+  ]
+ }
+}

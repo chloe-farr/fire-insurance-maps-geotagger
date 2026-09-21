@@ -1,0 +1,117 @@
+{
+ "type": "FeatureCollection",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:EPSG::32617"
+  }
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "source_image": "data/Sanborn_Hillsborough-County/1889/01352_1889-0003.png",
+    "source_size_px": [
+     6450,
+     7650
+    ],
+    "epsg_fit": 32617,
+    "rms_m": 63.73,
+    "n_labels": 6,
+    "scale_m_per_px": [
+     0.05153,
+     0.05153
+    ],
+    "rotation_deg": 20.73,
+    "shear_deg": 0.0,
+    "transform": "similarity",
+    "what": "scan",
+    "note": "outline of the whole scanned page incl. margins, colour bar and ruler"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       356254.205,
+       3092262.398
+      ],
+      [
+       356565.049,
+       3092380.043
+      ],
+      [
+       356704.581,
+       3092011.368
+      ],
+      [
+       356393.737,
+       3091893.723
+      ],
+      [
+       356254.205,
+       3092262.398
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "source_image": "data/Sanborn_Hillsborough-County/1889/01352_1889-0003.png",
+    "source_size_px": [
+     6450,
+     7650
+    ],
+    "epsg_fit": 32617,
+    "rms_m": 63.73,
+    "n_labels": 6,
+    "scale_m_per_px": [
+     0.05153,
+     0.05153
+    ],
+    "rotation_deg": 20.73,
+    "shear_deg": 0.0,
+    "transform": "similarity",
+    "what": "content",
+    "crop_source_px": [
+     0,
+     0,
+     6450,
+     7650
+    ],
+    "note": "the map content box that was tiled and OCR'd"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       356254.205,
+       3092262.398
+      ],
+      [
+       356565.049,
+       3092380.043
+      ],
+      [
+       356704.581,
+       3092011.368
+      ],
+      [
+       356393.737,
+       3091893.723
+      ],
+      [
+       356254.205,
+       3092262.398
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}

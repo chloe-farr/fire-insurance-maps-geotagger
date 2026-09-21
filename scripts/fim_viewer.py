@@ -4,7 +4,7 @@ Build a self-contained interactive HTML viewer of georeferenced sheets: blocks o
 word, the page footprint, per-label residuals, a block table — one tab per sheet. Pure SVG + vanilla JS, no basemap,
 no network: the modern centrelines each sheet was fitted to are drawn from the layer recorded in its <stem>_georef.json.
 
-    python3 scripts/fim_viewer.py runs/hunyuan/<run1> runs/hunyuan/<run2> ... -o docs/viewer.html [--title "..."]
+    python3 scripts/fim_viewer.py runs/hunyuan/<run1> runs/hunyuan/<run2> ... -o runs/viewer.html [--title "..."]
 
 Each run dir needs the fim_georef.py outputs (<stem>_georef.json, _blocks_epsg<code>.geojson, _blocks_rejected_*,
 _page_epsg<code>.geojson, _tokens_wgs84.geojson). All sheets must share one projected CRS (the layer's EPSG).
@@ -105,7 +105,7 @@ def load_sheet(run: Path, streets_cache: dict) -> tuple[str, dict]:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("runs", nargs="+", type=Path)
-    ap.add_argument("-o", "--out", type=Path, default=PROJECT_ROOT / "docs/viewer.html")
+    ap.add_argument("-o", "--out", type=Path, default=PROJECT_ROOT / "runs/viewer.html")
     ap.add_argument("--title", default="Georeferenced sheets")
     ap.add_argument("--subtitle", default="Fire insurance plan blocks placed by their own OCR'd street names onto modern street centrelines")
     ap.add_argument("--default", default=None, help="stem of the sheet to open first (default: the last run given)")

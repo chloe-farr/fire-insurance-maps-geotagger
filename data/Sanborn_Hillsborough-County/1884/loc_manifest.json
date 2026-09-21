@@ -1,0 +1,68 @@
+{
+  "source": {
+    "requested_url": [
+      "http://hdl.loc.gov/loc.gmd/g3934tm.g3934tm_g013521884",
+      "https://www.loc.gov/resource/g3934tm.g3934tm_g013521884/?sp=2&st=image&r=-0.797,-0.078,2.595,1.318,0"
+    ],
+    "institution": "Library of Congress, Geography and Map Division",
+    "handle": "http://hdl.loc.gov/loc.gmd/g3934tm.g3934tm_g013521884",
+    "resource_page": "https://www.loc.gov/resource/g3934tm.g3934tm_g013521884/",
+    "item_page": null,
+    "json_api": "https://www.loc.gov/resource/g3934tm.g3934tm_g013521884/?fo=json",
+    "storage_dir": "https://tile.loc.gov/storage-services/service/gmd/gmd393m/g3934m/g3934tm/g3934tm_g013521884"
+  },
+  "retrieved": "2026-09-17T14:50:58+00:00",
+  "retrieved_by": "scripts/fim_fetch_loc.py",
+  "catalogue_record": null,
+  "catalogue_record_source": "unavailable from this host (Cloudflare challenge); save ?fo=json from a browser and rerun with --from-json",
+  "sheets": [
+    {
+      "sheet": 1,
+      "file_number": 1,
+      "resource_page": "https://www.loc.gov/resource/g3934tm.g3934tm_g013521884/?sp=1",
+      "master": {
+        "url": "https://tile.loc.gov/storage-services/service/gmd/gmd393m/g3934m/g3934tm/g3934tm_g013521884/01352_1884-0001.jp2",
+        "file": "01352_1884-0001.jp2",
+        "bytes": 10372287,
+        "sha256": "ce77873443cc4938c8feb4ee8a152118e45ecc717a31556b3d72f0f33dc16be7",
+        "http_last_modified": "Mon, 19 Jun 2017 13:27:51 GMT",
+        "http_content_type": "image/jp2"
+      },
+      "image": {
+        "file": "01352_1884-0001.png",
+        "bytes": 55340309,
+        "sha256": "44a96b6f5ad4771a940fffc8922823c217d19942ed7a5efd6f61fce1b1ed3139",
+        "lossless_decode_of": "01352_1884-0001.jp2"
+      },
+      "iiif": {
+        "id": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd393m:g3934m:g3934tm:g3934tm_g013521884:01352_1884-0001",
+        "width": 6450,
+        "height": 7650
+      }
+    },
+    {
+      "sheet": 2,
+      "file_number": 2,
+      "resource_page": "https://www.loc.gov/resource/g3934tm.g3934tm_g013521884/?sp=2",
+      "master": {
+        "url": "https://tile.loc.gov/storage-services/service/gmd/gmd393m/g3934m/g3934tm/g3934tm_g013521884/01352_1884-0002.jp2",
+        "file": "01352_1884-0002.jp2",
+        "bytes": 10128535,
+        "sha256": "f8eb2d4cb4c7da6415dcc8faf65519df4412076fffceb3a4399bcdf427500a2d",
+        "http_last_modified": "Mon, 19 Jun 2017 13:28:35 GMT",
+        "http_content_type": "image/jp2"
+      },
+      "image": {
+        "file": "01352_1884-0002.png",
+        "bytes": 55270630,
+        "sha256": "8daf59c25dcefb1c2ee11fb21d0061b05404303a1d51bb03987efca730560bbd",
+        "lossless_decode_of": "01352_1884-0002.jp2"
+      },
+      "iiif": {
+        "id": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd393m:g3934m:g3934tm:g3934tm_g013521884:01352_1884-0002",
+        "width": 6450,
+        "height": 7650
+      }
+    }
+  ]
+}

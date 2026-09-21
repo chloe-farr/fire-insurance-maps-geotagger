@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, or GeoJSON it produced, in research or in a publication,
+  please cite it as below. The code is MIT-licensed; the citation is how attribution is asked for.
+title: "fire-insurance-maps: georeferencing historical fire insurance plans from the text printed on them"
+type: software
+authors:
+  - family-names: Farr
+    given-names: Chloe
+    affiliation: University of Victoria
+date-released: "2026-09-20"
+version: "2026.09.20"
+license: MIT
+repository-code: "https://github.com/chloe-farr/fire-insurance-maps"
+keywords:
+  - fire insurance plans
+  - Goad
+  - Sanborn
+  - georeferencing
+  - OCR
+  - historical GIS
+abstract: >-
+  Reads every word on a scanned fire insurance plan with an open-weight OCR model, traces the
+  city blocks and building outlines from the linework, matches the street names to present-day
+  street centrelines and fits the sheet to the Earth from those matches alone, writing blocks,
+  buildings, words and the sheet outline as GeoJSON with a world file.

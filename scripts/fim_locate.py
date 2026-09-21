@@ -41,6 +41,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from fim_crs import bbox_union, pad_bbox_km, utm_epsg_for  # noqa: E402
 from fim_georef import DIRECTION_WORDS, FUSED_TYPE_WORDS, TYPE_WORDS, fold, load_block_rings, norm_label, street_candidates  # noqa: E402
+from fim_runlog import Stage  # noqa: E402
 
 UA = "fire-insurance-maps/0.1 (UVic research; fim_locate.py)"
 NOMINATIM = "https://nominatim.openstreetmap.org/search"
@@ -520,8 +521,14 @@ def main() -> None:
     sc.add_argument("--core-km", type=float, default=1.5, help="a sheet is compact: candidates are ranked by the names that lie within this radius of one spot, and the proposed box is built from that spot (default 1.5; raise for a key plan covering a whole town)")
     args = ap.parse_args()
 
-    run = args.run
+    run = args.run.expanduser().resolve()
     stem, doc = load_run(run)
+    # run log (scripts/fim_runlog.py): names queried, requests made, candidates, the best one's place and box, seconds
+    with Stage(run, "locate", sheet=stem, list_only=args.list_only, country=args.country, near=args.near, bare=args.bare, core_km=args.core_km) as log:
+        locate_sheet(args, run, stem, doc, log)
+
+
+def locate_sheet(args: argparse.Namespace, run: Path, stem: str, doc: dict, log: Stage) -> None:
     tokens = kept_tokens(doc)
     block_rings = [] if args.ignore_blocks else load_block_rings(run, stem)
     street_candidates(tokens, block_rings)  # stamps in_block on every token
@@ -534,6 +541,7 @@ def main() -> None:
     print(f"type word the sheet uses most: {default_type or 'none'}" + (f" -> a bare name is asked for as '<Name> {TYPE_LONG.get(default_type, default_type).title()}' first" if default_type else ""))
     queries, skipped = select_names(tokens, min_len=args.min_len, max_names=args.max_names, bare=args.bare, force=tuple(args.name), drop=tuple(args.drop), default_type=default_type)
     print(f"{len(queries)} names to look up; skipped: " + ", ".join(f"{k} {len(v)}" for k, v in sorted(skipped.items())))
+    log.note(n_tokens_kept=len(tokens), n_names_queried=len(queries), n_names_skipped=sum(len(v) for v in skipped.values()), sheet_type_word=default_type)
     for q in queries:
         print(f"  {q['tier']}  {q['name']:<24s} x{q['occurrences']:<3d} -> {q['query']!r}")
     out_path = run / f"{stem}_locate.json"
@@ -544,9 +552,11 @@ def main() -> None:
               "params": params, "names": queries, "skipped": skipped, "candidates": [], "selected": None}
     if args.list_only:
         print("--list-only: no request made. Adjust with --bare / --min-len / --name / --drop, then run again without it.")
+        log.note(status="list_only")
         return
     if len(queries) < args.min_names:
         out_path.write_text(json.dumps(result, indent=1, ensure_ascii=False))
+        log.note(status="refused_min_names")
         raise SystemExit(f"only {len(queries)} street-like names on this sheet (< --min-names {args.min_names}), not enough to locate it; "
                          f"try --bare all, --min-len 3, or --name <a street you can read>. Written: {out_path}")
 
@@ -573,6 +583,7 @@ def main() -> None:
     print(f"looking up {len(queries)} names in Nominatim ({args.sleep:.1f} s apart; cached answers are free):")
     hits_by_name = lookup_all(queries, base, cache, throttle, classes, args.limit, args.refresh)
     print(f"{cache.requests} requests made, {cache.from_cache} answered from {cache.path.name}")
+    log.note(n_requests=cache.requests, n_from_cache=cache.from_cache)
     weights = name_weights(hits_by_name, args.radius_km)
     for q in queries:
         q["n_places"] = n_places(hits_by_name.get(q["name"]) or [], args.radius_km)
@@ -583,6 +594,7 @@ def main() -> None:
         print(f"verifying the {min(args.verify, len(cands))} best candidates (are the other names there too?):")
         verify_candidates(cands, queries, hits_by_name, base, cache, throttle, classes, args.radius_km, args.verify, args.refresh)
         print(f"{cache.requests} requests made in total, {cache.from_cache} answered from {cache.path.name}")
+        log.note(n_requests=cache.requests, n_from_cache=cache.from_cache)
     answered = [q["name"] for q in queries if q.get("n_hits_kept")]
     cands = merge_overlapping(cands, weights)
     for c in cands:
@@ -606,6 +618,8 @@ def main() -> None:
         del c["hits"]
     result["candidates"] = cands
     out_path.write_text(json.dumps(result, indent=1, ensure_ascii=False))
+    log.note(n_names_answered=len(answered), n_candidates=len(cands), status="ok" if cands else "no_candidates",
+             best_candidate={k: cands[0].get(k) for k in ("description", "core_score", "n_names", "bbox_padded_swne", "utm_epsg", "suggested_slug")} if cands else None)
 
     if not cands:
         print(f"no place where two or more of the {len(answered)} answered names meet within {args.radius_km:.0f} km. Each name's best hits, to reason by hand:")

@@ -11,4 +11,3 @@ opencv-python-headless
 # Optional
 # pyproj                   # only if your street layer is in a projection other than UTM (fim_crs.py handles UTM natively)
 # pdf2image                # only to OCR a PDF page instead of an image
-# Table extraction from index pages (Chandra, Surya) is a separate toolchain: see docs/PIPELINE_NOTES.md

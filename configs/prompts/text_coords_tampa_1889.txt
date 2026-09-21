@@ -1,0 +1,1 @@
+This is a Sanborn fire insurance map of Tampa, Florida, from 1889. Return the text with coordinates.

@@ -40,6 +40,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from fim_crs import CRS, bbox_union, pad_bbox_km, utm_epsg_for  # noqa: E402
+from fim_runlog import Stage, rel  # noqa: E402
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 UA = "fire-insurance-maps/0.1 (UVic research; fim_fetch_streets.py)"
@@ -112,7 +113,8 @@ def resolve_bbox(args) -> tuple[tuple[float, float, float, float], dict]:
     return bbox, origin
 
 
-def fetch_osm(bbox: tuple[float, float, float, float], exclude: set[str], timeout: int) -> list[dict]:
+def fetch_osm(bbox: tuple[float, float, float, float], exclude: set[str], timeout: int) -> tuple[list[dict], str]:
+    """(features, the Overpass mirror that answered)."""
     s, w, n, e = bbox
     query = f'[out:json][timeout:{timeout}];way["highway"]["name"]({s},{w},{n},{e});out geom;'
     last = None
@@ -129,7 +131,7 @@ def fetch_osm(bbox: tuple[float, float, float, float], exclude: set[str], timeou
                     continue
                 feats.append({"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[p["lon"], p["lat"]] for p in wy["geometry"]]},
                               "properties": {"name": tags["name"], "highway": tags.get("highway"), "osm_id": wy["id"], "alt_name": tags.get("alt_name"), "old_name": tags.get("old_name"), "official_name": tags.get("official_name")}})
-            return feats
+            return feats, url
         except Exception as ex:  # noqa: BLE001 — try the next mirror
             last = ex
             print(f"{url}: failed ({type(ex).__name__}: {str(ex)[:80]}), trying next mirror", file=sys.stderr)
@@ -181,30 +183,36 @@ def main() -> None:
 
     if (args.from_locate is None) != (args.candidate is None):
         ap.error("--from-locate and --candidate go together")
-    bbox, origin = resolve_bbox(args)
-    epsg = args.epsg or utm_epsg_for((bbox[1] + bbox[3]) / 2, (bbox[0] + bbox[2]) / 2)
-    crs = CRS(epsg)
+    # run log (scripts/fim_runlog.py; master only, no run dir): which area of which source was fetched and how much came back
+    with Stage(None, "fetch_streets") as log:
+        bbox, origin = resolve_bbox(args)
+        epsg = args.epsg or utm_epsg_for((bbox[1] + bbox[3]) / 2, (bbox[0] + bbox[2]) / 2)
+        crs = CRS(epsg)
 
-    if args.arcgis:
-        feats = fetch_arcgis(args.arcgis, bbox, epsg, args.timeout)
-        source = {"kind": "arcgis", "layer": args.arcgis}
-    else:
-        feats = fetch_osm(bbox, set(v for v in args.exclude.split(",") if v), args.timeout)
-        source = {"kind": "openstreetmap", "overpass": OVERPASS_MIRRORS, "licence": "ODbL 1.0 — © OpenStreetMap contributors"}
-        for f in feats:  # project lon/lat -> metric
-            c = np.array(f["geometry"]["coordinates"], float)
-            x, y = crs.from_wgs84(c[:, 0], c[:, 1])
-            f["geometry"]["coordinates"] = [[round(float(a), 3), round(float(b), 3)] for a, b in zip(x, y)]
-    if not feats:
-        raise SystemExit("no street features returned")
+        if args.arcgis:
+            feats = fetch_arcgis(args.arcgis, bbox, epsg, args.timeout)
+            mirror = None
+            source = {"kind": "arcgis", "layer": args.arcgis}
+        else:
+            feats, mirror = fetch_osm(bbox, set(v for v in args.exclude.split(",") if v), args.timeout)
+            source = {"kind": "openstreetmap", "overpass": OVERPASS_MIRRORS, "licence": "ODbL 1.0 — © OpenStreetMap contributors"}
+            for f in feats:  # project lon/lat -> metric
+                c = np.array(f["geometry"]["coordinates"], float)
+                x, y = crs.from_wgs84(c[:, 0], c[:, 1])
+                f["geometry"]["coordinates"] = [[round(float(a), 3), round(float(b), 3)] for a, b in zip(x, y)]
+        if not feats:
+            raise SystemExit("no street features returned")
 
-    out = {"type": "FeatureCollection", "crs": {"type": "name", "properties": {"name": f"urn:ogc:def:crs:EPSG::{epsg}"}}, "epsg": epsg, "crs_name": crs.name(),
-           "source": source, "bbox_wgs84_swne": list(bbox), "bbox_origin": origin, "pad_km": args.pad_km, "fetched_utc": datetime.now(timezone.utc).isoformat(), "features": feats}
-    args.out_dir.mkdir(parents=True, exist_ok=True)
-    path = args.out_dir / f"{args.slug}_streets_epsg{epsg}.geojson"
-    path.write_text(json.dumps(out))
-    names = {f["properties"].get("name") or f["properties"].get("StreetName") or f["properties"].get("STNAME") or f["properties"].get("STRUCTURED_NAME_1") or f["properties"].get("FULLNAME") for f in feats}
-    print(f"{len(feats)} segments, {len(names)} distinct names, {crs.name()} -> {path}")
+        out = {"type": "FeatureCollection", "crs": {"type": "name", "properties": {"name": f"urn:ogc:def:crs:EPSG::{epsg}"}}, "epsg": epsg, "crs_name": crs.name(),
+               "source": source, "bbox_wgs84_swne": list(bbox), "bbox_origin": origin, "pad_km": args.pad_km, "fetched_utc": datetime.now(timezone.utc).isoformat(), "features": feats}
+        args.out_dir.mkdir(parents=True, exist_ok=True)
+        path = args.out_dir / f"{args.slug}_streets_epsg{epsg}.geojson"
+        path.write_text(json.dumps(out))
+        names = {f["properties"].get("name") or f["properties"].get("StreetName") or f["properties"].get("STNAME") or f["properties"].get("STRUCTURED_NAME_1") or f["properties"].get("FULLNAME") for f in feats}
+        print(f"{len(feats)} segments, {len(names)} distinct names, {crs.name()} -> {path}")
+        log.note(output=rel(path), source_kind=source["kind"], layer=source.get("layer"), mirror=mirror, bbox_wgs84_swne=list(bbox), bbox_origin=origin,
+                 pad_km=args.pad_km, epsg=epsg, crs_name=crs.name(), n_segments=len(feats), n_distinct_names=len(names),
+                 exclude=None if args.arcgis else sorted(v for v in args.exclude.split(",") if v))
 
 
 if __name__ == "__main__":

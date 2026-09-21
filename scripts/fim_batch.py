@@ -25,14 +25,18 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 import time
+import uuid
 from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS = ROOT / "scripts"
+sys.path.insert(0, str(SCRIPTS))
+from fim_runlog import Stage, rel, streets_provenance  # noqa: E402
 
 
 def run(cmd: list[str]) -> bool:
@@ -76,6 +80,18 @@ def main() -> None:
     args = ap.parse_args()
 
     today = date.today().isoformat()
+    # run log (scripts/fim_runlog.py): one 'batch' event in the master with every sheet's outcome; the children's own
+    # events (ocr, blocks, georef ...) carry this batch_id through the environment, so a book's run can be pulled together
+    batch_id = f"{today}_{args.images[0].stem}-{args.images[-1].stem}_{uuid.uuid4().hex[:6]}"
+    os.environ["FIM_BATCH_ID"] = batch_id
+    with Stage(None, "batch", batch_id=batch_id, n_sheets=len(args.images), streets_file=rel(args.streets), streets=streets_provenance(args.streets),
+               alias_file=rel(args.alias) if args.alias else None, crop=args.crop, tile=args.tile, rotations=args.rotations, fallback_rotations=args.fallback_rotations,
+               preset=args.preset, year=args.year, min_labels_near=args.min_labels_near, georef_args=args.georef_arg, blocks_args=args.blocks_arg,
+               merge_prefix=rel(args.merge) if args.merge else None, skip_ocr=args.skip_ocr, areas=args.areas) as log:
+        run_book(args, today, log)
+
+
+def run_book(args: argparse.Namespace, today: str, log: Stage) -> None:
     sheets = []
     for img in args.images:
         stem = img.stem
@@ -144,6 +160,10 @@ def main() -> None:
 
     # summary
     print(f"\n################ summary  {stamp()}  total {(time.time() - t0) / 60:.0f} min", flush=True)
+    log.note(sheets=[{"stem": sh["stem"], "run_dir": rel(sh["run"]), "status": sh["status"]} for sh in sheets],
+             n_placed=sum(1 for sh in sheets if sh["status"].startswith("placed")), n_placed_pass1=sum(1 for sh in sheets if sh["status"] == "placed"),
+             n_placed_pass2=sum(1 for sh in sheets if sh["status"].startswith("placed (pass 2")), n_not_placed=sum(1 for sh in sheets if sh["status"] == "NOT PLACED"),
+             n_ocr_failed=sum(1 for sh in sheets if sh["status"] == "OCR failed"), total_min=round((time.time() - t0) / 60, 1))
     print(f"{'sheet':<8} {'status':<48} {'labels':>6} {'RMS m':>6} {'m/px':>7} {'rot deg':>8} {'transform':<10} alias candidates")
     for sh in sheets:
         g = next(sh["run"].glob("*_georef.json"), None) if sh["run"].exists() else None

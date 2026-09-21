@@ -1,0 +1,5576 @@
+{
+ "type": "FeatureCollection",
+ "crs_note": "Coordinates are pixels on the source scan (origin top-left, y down). Not a map: fim_georef.py places it.",
+ "source_image": "data/Sanborn_Hillsborough-County/1889/01352_1889-0003.png",
+ "source_size": {
+  "w": 6450,
+  "h": 7650
+ },
+ "from_run": "runs/hunyuan/Sanborn_Hillsborough-County/1889/0003",
+ "params": {
+  "run": "runs/hunyuan/Sanborn_Hillsborough-County/1889/0003",
+  "work_scale": 0.25,
+  "min_chroma": 3.5,
+  "blur": 15,
+  "merge_px": 12,
+  "tint_sep": 25.0,
+  "tint_width": 40.0,
+  "max_tints": 4,
+  "min_area": 0.0008,
+  "dark": 110,
+  "big_ratio": 1.9,
+  "street_reach": 60.0
+ },
+ "paper_lab": [
+  234.0,
+  127.0,
+  132.0
+ ],
+ "chroma_threshold": 3.5,
+ "tints": [
+  {
+   "name": "yellow",
+   "lab_angle_deg": 98,
+   "offset_ab": [
+    -1.513499140739441,
+    10.642755508422852
+   ]
+  },
+  {
+   "name": "blue",
+   "lab_angle_deg": 254,
+   "offset_ab": [
+    -2.106077194213867,
+    -7.172107696533203
+   ]
+  },
+  {
+   "name": "pink",
+   "lab_angle_deg": 357,
+   "offset_ab": [
+    6.743809223175049,
+    -0.30640652775764465
+   ]
+  }
+ ],
+ "generated_utc": "2026-09-18T16:02:55.202167+00:00",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     226,
+     125,
+     145
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "0",
+     "2",
+     "1",
+     "1"
+    ],
+    "numbers_inside": [
+     "0",
+     "2",
+     "1",
+     "1"
+    ],
+    "streets": [
+     {
+      "name": "PLATFORM.",
+      "distance_px": -135,
+      "label_bbox_source": [
+       2057,
+       426,
+       2105,
+       750
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Freight M.Ho.",
+      "distance_px": -98,
+      "label_bbox_source": [
+       2139,
+       1030,
+       2187,
+       1363
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "H.R.Offs.",
+      "distance_px": -105,
+      "label_bbox_source": [
+       2018,
+       1726,
+       2183,
+       1768
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "Freight M.Ho.",
+     "H.R.Offs.",
+     "PLATFORM."
+    ],
+    "area_source_px2": 519152,
+    "compactness": 0.433,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     2073,
+     1180
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       1976,
+       276
+      ],
+      [
+       1948,
+       300
+      ],
+      [
+       1940,
+       336
+      ],
+      [
+       1944,
+       376
+      ],
+      [
+       1936,
+       388
+      ],
+      [
+       1948,
+       624
+      ],
+      [
+       1948,
+       820
+      ],
+      [
+       1936,
+       852
+      ],
+      [
+       1936,
+       1832
+      ],
+      [
+       1952,
+       1880
+      ],
+      [
+       1992,
+       1904
+      ],
+      [
+       2008,
+       1948
+      ],
+      [
+       2028,
+       1956
+      ],
+      [
+       2184,
+       1956
+      ],
+      [
+       2208,
+       1928
+      ],
+      [
+       2204,
+       1684
+      ],
+      [
+       2228,
+       1652
+      ],
+      [
+       2260,
+       1640
+      ],
+      [
+       2268,
+       1608
+      ],
+      [
+       2260,
+       1404
+      ],
+      [
+       2264,
+       308
+      ],
+      [
+       2248,
+       288
+      ],
+      [
+       1976,
+       276
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     226,
+     125,
+     144
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "10",
+     "0",
+     "1",
+     "1",
+     "1",
+     "2",
+     "2"
+    ],
+    "numbers_inside": [
+     "10",
+     "0",
+     "1",
+     "1",
+     "1",
+     "2",
+     "2"
+    ],
+    "streets": [
+     {
+      "name": "THE PLANT HO.",
+      "distance_px": -167,
+      "label_bbox_source": [
+       2712,
+       871,
+       3116,
+       924
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "KITCHEN.",
+      "distance_px": -57,
+      "label_bbox_source": [
+       2967,
+       1188,
+       3092,
+       1216
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "KITCHEN.",
+     "THE PLANT HO."
+    ],
+    "area_source_px2": 293728,
+    "compactness": 0.627,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     3058,
+     1036
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       3160,
+       736
+      ],
+      [
+       3144,
+       728
+      ],
+      [
+       2688,
+       732
+      ],
+      [
+       2664,
+       744
+      ],
+      [
+       2656,
+       828
+      ],
+      [
+       2652,
+       1332
+      ],
+      [
+       2668,
+       1360
+      ],
+      [
+       2928,
+       1356
+      ],
+      [
+       2940,
+       1296
+      ],
+      [
+       2964,
+       1264
+      ],
+      [
+       3068,
+       1256
+      ],
+      [
+       3108,
+       1244
+      ],
+      [
+       3112,
+       1112
+      ],
+      [
+       3104,
+       1068
+      ],
+      [
+       3128,
+       1036
+      ],
+      [
+       3196,
+       1008
+      ],
+      [
+       3240,
+       1024
+      ],
+      [
+       3292,
+       1024
+      ],
+      [
+       3304,
+       1016
+      ],
+      [
+       3308,
+       976
+      ],
+      [
+       3296,
+       960
+      ],
+      [
+       3248,
+       956
+      ],
+      [
+       3220,
+       964
+      ],
+      [
+       3192,
+       956
+      ],
+      [
+       3168,
+       924
+      ],
+      [
+       3160,
+       736
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     223,
+     125,
+     142
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "1",
+     "1"
+    ],
+    "numbers_inside": [
+     "1",
+     "1"
+    ],
+    "streets": [
+     {
+      "name": "Dny",
+      "distance_px": -80,
+      "label_bbox_source": [
+       3788,
+       961,
+       3864,
+       1007
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "TANK.",
+      "distance_px": 42,
+      "label_bbox_source": [
+       3706,
+       1093,
+       3793,
+       1125
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "Dny",
+     "TANK."
+    ],
+    "area_source_px2": 61256,
+    "compactness": 0.335,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     3658,
+     1022
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       3908,
+       892
+      ],
+      [
+       3892,
+       876
+      ],
+      [
+       3872,
+       876
+      ],
+      [
+       3844,
+       900
+      ],
+      [
+       3700,
+       916
+      ],
+      [
+       3692,
+       928
+      ],
+      [
+       3696,
+       1028
+      ],
+      [
+       3672,
+       1060
+      ],
+      [
+       3644,
+       1068
+      ],
+      [
+       3600,
+       1064
+      ],
+      [
+       3576,
+       1044
+      ],
+      [
+       3560,
+       932
+      ],
+      [
+       3548,
+       924
+      ],
+      [
+       3504,
+       928
+      ],
+      [
+       3496,
+       940
+      ],
+      [
+       3496,
+       988
+      ],
+      [
+       3516,
+       1036
+      ],
+      [
+       3516,
+       1060
+      ],
+      [
+       3492,
+       1092
+      ],
+      [
+       3492,
+       1120
+      ],
+      [
+       3508,
+       1132
+      ],
+      [
+       3592,
+       1128
+      ],
+      [
+       3632,
+       1160
+      ],
+      [
+       3676,
+       1160
+      ],
+      [
+       3696,
+       1136
+      ],
+      [
+       3708,
+       1088
+      ],
+      [
+       3732,
+       1068
+      ],
+      [
+       3904,
+       1060
+      ],
+      [
+       3916,
+       1040
+      ],
+      [
+       3908,
+       892
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     223,
+     125,
+     143
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "2",
+     "2",
+     "1"
+    ],
+    "numbers_inside": [
+     "2",
+     "2",
+     "1"
+    ],
+    "streets": [
+     {
+      "name": "SCOTLAND",
+      "distance_px": -49,
+      "label_bbox_source": [
+       5223,
+       1080,
+       5445,
+       1125
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Gro.",
+      "distance_px": 197,
+      "label_bbox_source": [
+       5494,
+       1394,
+       5576,
+       1440
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "Gro.",
+     "SCOTLAND"
+    ],
+    "area_source_px2": 62192,
+    "compactness": 0.681,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     5268,
+     1135
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       5476,
+       1072
+      ],
+      [
+       5464,
+       1060
+      ],
+      [
+       5396,
+       1052
+      ],
+      [
+       5232,
+       1056
+      ],
+      [
+       5188,
+       1076
+      ],
+      [
+       5148,
+       1060
+      ],
+      [
+       5104,
+       1060
+      ],
+      [
+       5088,
+       1076
+      ],
+      [
+       5092,
+       1176
+      ],
+      [
+       5116,
+       1192
+      ],
+      [
+       5172,
+       1180
+      ],
+      [
+       5192,
+       1184
+      ],
+      [
+       5240,
+       1236
+      ],
+      [
+       5440,
+       1244
+      ],
+      [
+       5464,
+       1228
+      ],
+      [
+       5472,
+       1204
+      ],
+      [
+       5476,
+       1072
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     222,
+     125,
+     144
+    ],
+    "block_number": "321",
+    "block_number_inferred": false,
+    "number_is_big_numeral": true,
+    "lot_numbers": [
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "2\u00bd"
+    ],
+    "numbers_inside": [
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "2\u00bd"
+    ],
+    "streets": [
+     {
+      "name": "CENTRAL HO.",
+      "distance_px": -60,
+      "label_bbox_source": [
+       4399,
+       1235,
+       4653,
+       1273
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "CENTRAL HO."
+    ],
+    "area_source_px2": 72192,
+    "compactness": 0.478,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     4652,
+     1317
+    ],
+    "split_by_numerals": true
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       4340,
+       1216
+      ],
+      [
+       4344,
+       1360
+      ],
+      [
+       4368,
+       1380
+      ],
+      [
+       4644,
+       1376
+      ],
+      [
+       4668,
+       1368
+      ],
+      [
+       4732,
+       1376
+      ],
+      [
+       4776,
+       1368
+      ],
+      [
+       4804,
+       1376
+      ],
+      [
+       4820,
+       1392
+      ],
+      [
+       4828,
+       1432
+      ],
+      [
+       4856,
+       1368
+      ],
+      [
+       4800,
+       1364
+      ],
+      [
+       4776,
+       1332
+      ],
+      [
+       4772,
+       1280
+      ],
+      [
+       4752,
+       1268
+      ],
+      [
+       4680,
+       1260
+      ],
+      [
+       4664,
+       1244
+      ],
+      [
+       4644,
+       1196
+      ],
+      [
+       4424,
+       1192
+      ],
+      [
+       4356,
+       1200
+      ],
+      [
+       4340,
+       1216
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     222,
+     125,
+     144
+    ],
+    "block_number": "420",
+    "block_number_inferred": false,
+    "number_is_big_numeral": true,
+    "lot_numbers": [
+     "0",
+     "7",
+     "7"
+    ],
+    "numbers_inside": [
+     "0",
+     "7",
+     "7"
+    ],
+    "streets": [
+     {
+      "name": "Gro.",
+      "distance_px": -69,
+      "label_bbox_source": [
+       5494,
+       1394,
+       5576,
+       1440
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Hardw",
+      "distance_px": 21,
+      "label_bbox_source": [
+       5465,
+       1582,
+       5511,
+       1777
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Grocky",
+      "distance_px": -30,
+      "label_bbox_source": [
+       5507,
+       1584,
+       5564,
+       1732
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Grocky",
+      "distance_px": 130,
+      "label_bbox_source": [
+       5439,
+       1847,
+       5535,
+       1889
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "& Bancry",
+      "distance_px": 158,
+      "label_bbox_source": [
+       5412,
+       1886,
+       5557,
+       1929
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "& Bancry",
+     "Gro.",
+     "Grocky",
+     "Hardw"
+    ],
+    "area_source_px2": 79672,
+    "compactness": 0.511,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     5592,
+     1457
+    ],
+    "split_by_numerals": true
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       5284,
+       1348
+      ],
+      [
+       5592,
+       1792
+      ],
+      [
+       5592,
+       1536
+      ],
+      [
+       5616,
+       1504
+      ],
+      [
+       5652,
+       1496
+      ],
+      [
+       5664,
+       1484
+      ],
+      [
+       5672,
+       1456
+      ],
+      [
+       5664,
+       1360
+      ],
+      [
+       5636,
+       1348
+      ],
+      [
+       5592,
+       1356
+      ],
+      [
+       5552,
+       1348
+      ],
+      [
+       5284,
+       1348
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     223,
+     125,
+     143
+    ],
+    "block_number": "2\u00bd",
+    "block_number_inferred": false,
+    "number_is_big_numeral": true,
+    "lot_numbers": [
+     "1",
+     "1",
+     "9",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "2"
+    ],
+    "numbers_inside": [
+     "1",
+     "1",
+     "9",
+     "1",
+     "1",
+     "1",
+     "1",
+     "1",
+     "2"
+    ],
+    "streets": [
+     {
+      "name": "Gro.",
+      "distance_px": 170,
+      "label_bbox_source": [
+       5494,
+       1394,
+       5576,
+       1440
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "OPERa HO.",
+      "distance_px": -155,
+      "label_bbox_source": [
+       5162,
+       1541,
+       5214,
+       1804
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Hardw",
+      "distance_px": -19,
+      "label_bbox_source": [
+       5465,
+       1582,
+       5511,
+       1777
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Grocky",
+      "distance_px": 33,
+      "label_bbox_source": [
+       5507,
+       1584,
+       5564,
+       1732
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "STAGE",
+      "distance_px": -155,
+      "label_bbox_source": [
+       5109,
+       1689,
+       5142,
+       1775
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Barbi's",
+      "distance_px": -80,
+      "label_bbox_source": [
+       4811,
+       1818,
+       4855,
+       1969
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Tobacco",
+      "distance_px": -60,
+      "label_bbox_source": [
+       5001,
+       1840,
+       5037,
+       1966
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Grocky",
+      "distance_px": -94,
+      "label_bbox_source": [
+       5439,
+       1847,
+       5535,
+       1889
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Meat",
+      "distance_px": -35,
+      "label_bbox_source": [
+       4726,
+       1851,
+       4765,
+       1969
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Vac.",
+      "distance_px": -49,
+      "label_bbox_source": [
+       4923,
+       1883,
+       4961,
+       1962
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "& Bancry",
+      "distance_px": -55,
+      "label_bbox_source": [
+       5412,
+       1886,
+       5557,
+       1929
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "2 Confec.",
+      "distance_px": -92,
+      "label_bbox_source": [
+       5164,
+       1910,
+       5317,
+       1962
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "& Bancry",
+     "2 Confec.",
+     "Barbi's",
+     "Gro.",
+     "Grocky",
+     "Hardw",
+     "Meat",
+     "OPERa HO.",
+     "STAGE",
+     "Tobacco",
+     "Vac."
+    ],
+    "area_source_px2": 364656,
+    "compactness": 0.407,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     5047,
+     1725
+    ],
+    "split_by_numerals": true
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       5592,
+       1796
+      ],
+      [
+       5280,
+       1348
+      ],
+      [
+       5168,
+       1356
+      ],
+      [
+       5156,
+       1372
+      ],
+      [
+       5156,
+       1496
+      ],
+      [
+       5132,
+       1528
+      ],
+      [
+       5084,
+       1540
+      ],
+      [
+       4972,
+       1520
+      ],
+      [
+       4948,
+       1488
+      ],
+      [
+       4932,
+       1380
+      ],
+      [
+       4908,
+       1364
+      ],
+      [
+       4880,
+       1360
+      ],
+      [
+       4860,
+       1364
+      ],
+      [
+       4788,
+       1528
+      ],
+      [
+       4816,
+       1536
+      ],
+      [
+       4852,
+       1592
+      ],
+      [
+       4880,
+       1592
+      ],
+      [
+       4924,
+       1572
+      ],
+      [
+       4952,
+       1580
+      ],
+      [
+       4976,
+       1612
+      ],
+      [
+       4976,
+       1692
+      ],
+      [
+       4952,
+       1724
+      ],
+      [
+       4916,
+       1736
+      ],
+      [
+       4904,
+       1772
+      ],
+      [
+       4880,
+       1792
+      ],
+      [
+       4716,
+       1804
+      ],
+      [
+       4708,
+       1812
+      ],
+      [
+       4712,
+       1956
+      ],
+      [
+       4736,
+       1976
+      ],
+      [
+       4872,
+       1972
+      ],
+      [
+       4896,
+       1964
+      ],
+      [
+       4932,
+       1972
+      ],
+      [
+       5048,
+       1964
+      ],
+      [
+       5072,
+       1932
+      ],
+      [
+       5100,
+       1924
+      ],
+      [
+       5128,
+       1932
+      ],
+      [
+       5144,
+       1948
+      ],
+      [
+       5152,
+       2012
+      ],
+      [
+       5172,
+       2032
+      ],
+      [
+       5308,
+       2024
+      ],
+      [
+       5356,
+       1968
+      ],
+      [
+       5464,
+       1960
+      ],
+      [
+       5532,
+       1968
+      ],
+      [
+       5580,
+       1952
+      ],
+      [
+       5592,
+       1932
+      ],
+      [
+       5592,
+       1796
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     227,
+     125,
+     144
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [],
+    "numbers_inside": [],
+    "streets": [
+     {
+      "name": "HILLSBOROUGH HO.",
+      "distance_px": 32,
+      "label_bbox_source": [
+       2673,
+       1890,
+       3122,
+       1943
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "HHo.",
+      "distance_px": 87,
+      "label_bbox_source": [
+       3009,
+       1890,
+       3122,
+       1939
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "HHo.",
+     "HILLSBOROUGH HO."
+    ],
+    "area_source_px2": 82744,
+    "compactness": 0.773,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     2844,
+     1697
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       2796,
+       1544
+      ],
+      [
+       2792,
+       1656
+      ],
+      [
+       2768,
+       1688
+      ],
+      [
+       2720,
+       1704
+      ],
+      [
+       2712,
+       1728
+      ],
+      [
+       2724,
+       1868
+      ],
+      [
+       2752,
+       1884
+      ],
+      [
+       2960,
+       1884
+      ],
+      [
+       2992,
+       1868
+      ],
+      [
+       2992,
+       1616
+      ],
+      [
+       2984,
+       1544
+      ],
+      [
+       2960,
+       1536
+      ],
+      [
+       2820,
+       1536
+      ],
+      [
+       2796,
+       1544
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     223,
+     125,
+     143
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "1"
+    ],
+    "numbers_inside": [
+     "1"
+    ],
+    "streets": [
+     {
+      "name": "Fruit",
+      "distance_px": -85,
+      "label_bbox_source": [
+       3719,
+       1838,
+       3832,
+       1880
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "OFF",
+      "distance_px": -61,
+      "label_bbox_source": [
+       3524,
+       1900,
+       3591,
+       1929
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "LAFAYETTE",
+      "distance_px": 238,
+      "label_bbox_source": [
+       3220,
+       2177,
+       3799,
+       2259
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "Fruit",
+     "LAFAYETTE",
+     "OFF"
+    ],
+    "area_source_px2": 82008,
+    "compactness": 0.327,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     3648,
+     1801
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       3784,
+       1600
+      ],
+      [
+       3716,
+       1596
+      ],
+      [
+       3704,
+       1608
+      ],
+      [
+       3712,
+       1780
+      ],
+      [
+       3688,
+       1820
+      ],
+      [
+       3664,
+       1840
+      ],
+      [
+       3620,
+       1840
+      ],
+      [
+       3568,
+       1808
+      ],
+      [
+       3560,
+       1792
+      ],
+      [
+       3564,
+       1680
+      ],
+      [
+       3552,
+       1656
+      ],
+      [
+       3500,
+       1660
+      ],
+      [
+       3488,
+       1672
+      ],
+      [
+       3488,
+       1748
+      ],
+      [
+       3508,
+       1792
+      ],
+      [
+       3508,
+       1820
+      ],
+      [
+       3488,
+       1852
+      ],
+      [
+       3488,
+       1912
+      ],
+      [
+       3504,
+       1972
+      ],
+      [
+       3524,
+       1980
+      ],
+      [
+       3596,
+       1972
+      ],
+      [
+       3632,
+       1928
+      ],
+      [
+       3660,
+       1920
+      ],
+      [
+       3716,
+       1944
+      ],
+      [
+       3832,
+       1948
+      ],
+      [
+       3880,
+       1932
+      ],
+      [
+       3884,
+       1816
+      ],
+      [
+       3872,
+       1796
+      ],
+      [
+       3816,
+       1784
+      ],
+      [
+       3792,
+       1752
+      ],
+      [
+       3792,
+       1616
+      ],
+      [
+       3784,
+       1600
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     226,
+     125,
+     144
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "2\u00bd"
+    ],
+    "numbers_inside": [
+     "2\u00bd"
+    ],
+    "streets": [
+     {
+      "name": "Hides.",
+      "distance_px": -57,
+      "label_bbox_source": [
+       1727,
+       2423,
+       1868,
+       2473
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "COMMERCIAL Co. W.Ho.",
+      "distance_px": -68,
+      "label_bbox_source": [
+       1204,
+       2566,
+       1836,
+       2625
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "TANK.",
+      "distance_px": 72,
+      "label_bbox_source": [
+       1224,
+       2748,
+       1311,
+       2776
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "PIER No.2.",
+      "distance_px": 184,
+      "label_bbox_source": [
+       1005,
+       2814,
+       1308,
+       2887
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "COMMERCIAL Co. W.Ho.",
+     "Hides.",
+     "PIER No.2.",
+     "TANK."
+    ],
+    "area_source_px2": 269816,
+    "compactness": 0.702,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     1708,
+     2642
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       1900,
+       2392
+      ],
+      [
+       1812,
+       2388
+      ],
+      [
+       1684,
+       2408
+      ],
+      [
+       1684,
+       2492
+      ],
+      [
+       1652,
+       2528
+      ],
+      [
+       1380,
+       2528
+      ],
+      [
+       1340,
+       2544
+      ],
+      [
+       1340,
+       2832
+      ],
+      [
+       1404,
+       2836
+      ],
+      [
+       1428,
+       2856
+      ],
+      [
+       1444,
+       2956
+      ],
+      [
+       1920,
+       2952
+      ],
+      [
+       1924,
+       2836
+      ],
+      [
+       1932,
+       2824
+      ],
+      [
+       1924,
+       2800
+      ],
+      [
+       1932,
+       2620
+      ],
+      [
+       1916,
+       2536
+      ],
+      [
+       1924,
+       2460
+      ],
+      [
+       1912,
+       2404
+      ],
+      [
+       1900,
+       2392
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     224,
+     126,
+     143
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "1"
+    ],
+    "numbers_inside": [
+     "1"
+    ],
+    "streets": [
+     {
+      "name": "OFF.",
+      "distance_px": 136,
+      "label_bbox_source": [
+       5278,
+       2438,
+       5314,
+       2519
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Sal.",
+      "distance_px": -69,
+      "label_bbox_source": [
+       5060,
+       2461,
+       5109,
+       2549
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "BUILT.",
+      "distance_px": 195,
+      "label_bbox_source": [
+       4743,
+       2503,
+       4894,
+       2550
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "AROUND.",
+      "distance_px": -57,
+      "label_bbox_source": [
+       5090,
+       2625,
+       5121,
+       2829
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "CLAD",
+      "distance_px": -61,
+      "label_bbox_source": [
+       5067,
+       2648,
+       5088,
+       2732
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "IRON",
+      "distance_px": -59,
+      "label_bbox_source": [
+       5067,
+       2740,
+       5088,
+       2820
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "ALL",
+      "distance_px": -61,
+      "label_bbox_source": [
+       5089,
+       2743,
+       5116,
+       2827
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "ALL",
+     "AROUND.",
+     "BUILT.",
+     "CLAD",
+     "IRON",
+     "OFF.",
+     "Sal."
+    ],
+    "area_source_px2": 62272,
+    "compactness": 0.628,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     5089,
+     2650
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       5020,
+       2436
+      ],
+      [
+       5012,
+       2444
+      ],
+      [
+       5020,
+       2852
+      ],
+      [
+       5044,
+       2868
+      ],
+      [
+       5148,
+       2864
+      ],
+      [
+       5164,
+       2844
+      ],
+      [
+       5160,
+       2452
+      ],
+      [
+       5144,
+       2436
+      ],
+      [
+       5020,
+       2436
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     225,
+     125,
+     144
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "0",
+     "0",
+     "1",
+     "1",
+     "2",
+     "2"
+    ],
+    "numbers_inside": [
+     "0",
+     "0",
+     "1",
+     "1",
+     "2",
+     "2"
+    ],
+    "streets": [
+     {
+      "name": "Sal",
+      "distance_px": -52,
+      "label_bbox_source": [
+       3831,
+       2527,
+       3905,
+       2568
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "TANK",
+      "distance_px": 98,
+      "label_bbox_source": [
+       3545,
+       2622,
+       3627,
+       2651
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "Sal",
+     "TANK"
+    ],
+    "area_source_px2": 51048,
+    "compactness": 0.798,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     3812,
+     2591
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       3692,
+       2452
+      ],
+      [
+       3680,
+       2464
+      ],
+      [
+       3684,
+       2636
+      ],
+      [
+       3724,
+       2648
+      ],
+      [
+       3772,
+       2648
+      ],
+      [
+       3796,
+       2668
+      ],
+      [
+       3816,
+       2712
+      ],
+      [
+       3856,
+       2708
+      ],
+      [
+       3868,
+       2696
+      ],
+      [
+       3876,
+       2660
+      ],
+      [
+       3924,
+       2620
+      ],
+      [
+       3916,
+       2472
+      ],
+      [
+       3896,
+       2452
+      ],
+      [
+       3864,
+       2444
+      ],
+      [
+       3692,
+       2452
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     225,
+     125,
+     144
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [],
+    "numbers_inside": [],
+    "streets": [
+     {
+      "name": "TAMPA",
+      "distance_px": -63,
+      "label_bbox_source": [
+       990,
+       2572,
+       1173,
+       2623
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "TANK.",
+      "distance_px": 59,
+      "label_bbox_source": [
+       1224,
+       2748,
+       1311,
+       2776
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "PIER No.2.",
+      "distance_px": 79,
+      "label_bbox_source": [
+       1005,
+       2814,
+       1308,
+       2887
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "PIER No.2.",
+     "TAMPA",
+     "TANK."
+    ],
+    "area_source_px2": 55536,
+    "compactness": 0.848,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     1093,
+     2640
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       1200,
+       2540
+      ],
+      [
+       1164,
+       2528
+      ],
+      [
+       1140,
+       2536
+      ],
+      [
+       1012,
+       2532
+      ],
+      [
+       976,
+       2544
+      ],
+      [
+       968,
+       2672
+      ],
+      [
+       972,
+       2748
+      ],
+      [
+       984,
+       2768
+      ],
+      [
+       1184,
+       2772
+      ],
+      [
+       1208,
+       2764
+      ],
+      [
+       1212,
+       2636
+      ],
+      [
+       1200,
+       2540
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     225,
+     125,
+     144
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "0",
+     "7"
+    ],
+    "numbers_inside": [
+     "0",
+     "7"
+    ],
+    "streets": [
+     {
+      "name": "TANK.",
+      "distance_px": 37,
+      "label_bbox_source": [
+       4650,
+       2801,
+       4723,
+       2826
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "TANK."
+    ],
+    "area_source_px2": 45792,
+    "compactness": 0.641,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     4636,
+     2915
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       4796,
+       2868
+      ],
+      [
+       4768,
+       2844
+      ],
+      [
+       4708,
+       2844
+      ],
+      [
+       4684,
+       2868
+      ],
+      [
+       4656,
+       2876
+      ],
+      [
+       4584,
+       2860
+      ],
+      [
+       4460,
+       2856
+      ],
+      [
+       4452,
+       2868
+      ],
+      [
+       4456,
+       2984
+      ],
+      [
+       4480,
+       3004
+      ],
+      [
+       4624,
+       3008
+      ],
+      [
+       4660,
+       2980
+      ],
+      [
+       4784,
+       2976
+      ],
+      [
+       4796,
+       2968
+      ],
+      [
+       4796,
+       2868
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     227,
+     125,
+     145
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "2"
+    ],
+    "numbers_inside": [
+     "2"
+    ],
+    "streets": [],
+    "street_names": [],
+    "area_source_px2": 175768,
+    "compactness": 0.534,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     1891,
+     3745
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       2316,
+       3584
+      ],
+      [
+       2304,
+       3572
+      ],
+      [
+       2216,
+       3572
+      ],
+      [
+       1968,
+       3600
+      ],
+      [
+       1908,
+       3588
+      ],
+      [
+       1848,
+       3612
+      ],
+      [
+       1564,
+       3632
+      ],
+      [
+       1552,
+       3644
+      ],
+      [
+       1552,
+       3792
+      ],
+      [
+       1568,
+       3908
+      ],
+      [
+       1576,
+       3916
+      ],
+      [
+       1620,
+       3916
+      ],
+      [
+       1720,
+       3900
+      ],
+      [
+       1760,
+       3884
+      ],
+      [
+       1780,
+       3840
+      ],
+      [
+       1796,
+       3824
+      ],
+      [
+       1824,
+       3816
+      ],
+      [
+       2304,
+       3780
+      ],
+      [
+       2320,
+       3768
+      ],
+      [
+       2324,
+       3752
+      ],
+      [
+       2316,
+       3584
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     227,
+     125,
+     144
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "2",
+     "3"
+    ],
+    "numbers_inside": [
+     "2",
+     "3"
+    ],
+    "streets": [
+     {
+      "name": "Gen't Storage.",
+      "distance_px": -134,
+      "label_bbox_source": [
+       2169,
+       3997,
+       2472,
+       4052
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Gen't W.Ho",
+      "distance_px": -141,
+      "label_bbox_source": [
+       2433,
+       4166,
+       2495,
+       4370
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "Gen't Storage.",
+     "Gen't W.Ho"
+    ],
+    "area_source_px2": 244688,
+    "compactness": 0.676,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     2293,
+     4143
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       2476,
+       3884
+      ],
+      [
+       2268,
+       3892
+      ],
+      [
+       2172,
+       3912
+      ],
+      [
+       2024,
+       3920
+      ],
+      [
+       2008,
+       3936
+      ],
+      [
+       2024,
+       4144
+      ],
+      [
+       2036,
+       4164
+      ],
+      [
+       2064,
+       4180
+      ],
+      [
+       2152,
+       4184
+      ],
+      [
+       2176,
+       4204
+      ],
+      [
+       2188,
+       4228
+      ],
+      [
+       2204,
+       4448
+      ],
+      [
+       2212,
+       4456
+      ],
+      [
+       2588,
+       4428
+      ],
+      [
+       2612,
+       4408
+      ],
+      [
+       2600,
+       4148
+      ],
+      [
+       2588,
+       4128
+      ],
+      [
+       2512,
+       4120
+      ],
+      [
+       2488,
+       4088
+      ],
+      [
+       2476,
+       3996
+      ],
+      [
+       2476,
+       3884
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     218,
+     125,
+     143
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "1",
+     "1",
+     "1"
+    ],
+    "numbers_inside": [
+     "1",
+     "1",
+     "1"
+    ],
+    "streets": [
+     {
+      "name": "Creek.",
+      "distance_px": 219,
+      "label_bbox_source": [
+       4848,
+       3904,
+       5033,
+       3957
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Paint",
+      "distance_px": 36,
+      "label_bbox_source": [
+       4904,
+       4152,
+       4941,
+       4281
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Storge",
+      "distance_px": -32,
+      "label_bbox_source": [
+       4832,
+       4176,
+       4878,
+       4284
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Oils",
+      "distance_px": 60,
+      "label_bbox_source": [
+       4947,
+       4198,
+       4979,
+       4277
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "TANK.",
+      "distance_px": 212,
+      "label_bbox_source": [
+       5307,
+       4426,
+       5391,
+       4448
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "Creek.",
+     "Oils",
+     "Paint",
+     "Storge",
+     "TANK."
+    ],
+    "area_source_px2": 40744,
+    "compactness": 0.296,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     5004,
+     4239
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       5192,
+       4144
+      ],
+      [
+       5164,
+       4132
+      ],
+      [
+       5108,
+       4132
+      ],
+      [
+       5056,
+       4148
+      ],
+      [
+       5052,
+       4256
+      ],
+      [
+       5044,
+       4272
+      ],
+      [
+       5020,
+       4292
+      ],
+      [
+       4940,
+       4300
+      ],
+      [
+       4912,
+       4292
+      ],
+      [
+       4888,
+       4260
+      ],
+      [
+       4884,
+       4148
+      ],
+      [
+       4876,
+       4140
+      ],
+      [
+       4836,
+       4140
+      ],
+      [
+       4820,
+       4156
+      ],
+      [
+       4824,
+       4292
+      ],
+      [
+       4872,
+       4304
+      ],
+      [
+       4912,
+       4336
+      ],
+      [
+       5004,
+       4336
+      ],
+      [
+       5036,
+       4312
+      ],
+      [
+       5064,
+       4304
+      ],
+      [
+       5184,
+       4304
+      ],
+      [
+       5196,
+       4288
+      ],
+      [
+       5200,
+       4220
+      ],
+      [
+       5192,
+       4144
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     223,
+     125,
+     144
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "12"
+    ],
+    "numbers_inside": [
+     "12"
+    ],
+    "streets": [
+     {
+      "name": "PENCER, HENDERSON MY CO. LIVERY.",
+      "distance_px": -50,
+      "label_bbox_source": [
+       3015,
+       4278,
+       3867,
+       4339
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "SPENCER HENDERS",
+      "distance_px": -53,
+      "label_bbox_source": [
+       2980,
+       4281,
+       3440,
+       4340
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "TANK.",
+      "distance_px": 237,
+      "label_bbox_source": [
+       3811,
+       4582,
+       3901,
+       4611
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "PENCER, HENDERSON MY CO. LIVERY.",
+     "SPENCER HENDERS",
+     "TANK."
+    ],
+    "area_source_px2": 260992,
+    "compactness": 0.307,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     3300,
+     4445
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       3956,
+       4164
+      ],
+      [
+       3944,
+       4152
+      ],
+      [
+       3808,
+       4144
+      ],
+      [
+       3404,
+       4144
+      ],
+      [
+       3368,
+       4164
+      ],
+      [
+       3368,
+       4220
+      ],
+      [
+       3336,
+       4256
+      ],
+      [
+       3008,
+       4260
+      ],
+      [
+       2980,
+       4272
+      ],
+      [
+       2968,
+       4296
+      ],
+      [
+       2972,
+       4484
+      ],
+      [
+       3008,
+       4532
+      ],
+      [
+       3008,
+       4556
+      ],
+      [
+       2984,
+       4588
+      ],
+      [
+       2984,
+       4660
+      ],
+      [
+       3020,
+       4852
+      ],
+      [
+       3052,
+       4864
+      ],
+      [
+       3124,
+       4840
+      ],
+      [
+       3136,
+       4828
+      ],
+      [
+       3128,
+       4756
+      ],
+      [
+       3080,
+       4572
+      ],
+      [
+       3080,
+       4544
+      ],
+      [
+       3104,
+       4512
+      ],
+      [
+       3132,
+       4504
+      ],
+      [
+       3328,
+       4504
+      ],
+      [
+       3348,
+       4496
+      ],
+      [
+       3352,
+       4400
+      ],
+      [
+       3376,
+       4368
+      ],
+      [
+       3404,
+       4360
+      ],
+      [
+       3512,
+       4356
+      ],
+      [
+       3740,
+       4368
+      ],
+      [
+       3940,
+       4352
+      ],
+      [
+       3960,
+       4328
+      ],
+      [
+       3956,
+       4164
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     223,
+     125,
+     145
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "1",
+     "2",
+     "2"
+    ],
+    "numbers_inside": [
+     "1",
+     "2",
+     "2"
+    ],
+    "streets": [
+     {
+      "name": "TANK.",
+      "distance_px": 60,
+      "label_bbox_source": [
+       5307,
+       4426,
+       5391,
+       4448
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "SHEDS",
+      "distance_px": 231,
+      "label_bbox_source": [
+       5093,
+       4768,
+       5192,
+       4798
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "TANK.",
+      "distance_px": 113,
+      "label_bbox_source": [
+       5396,
+       4959,
+       5482,
+       4985
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "SHEDS",
+     "TANK."
+    ],
+    "area_source_px2": 69952,
+    "compactness": 0.597,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     5448,
+     4670
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       5328,
+       4500
+      ],
+      [
+       5320,
+       4512
+      ],
+      [
+       5312,
+       4612
+      ],
+      [
+       5324,
+       4640
+      ],
+      [
+       5360,
+       4660
+      ],
+      [
+       5384,
+       4692
+      ],
+      [
+       5380,
+       4804
+      ],
+      [
+       5404,
+       4844
+      ],
+      [
+       5456,
+       4860
+      ],
+      [
+       5492,
+       4824
+      ],
+      [
+       5628,
+       4812
+      ],
+      [
+       5644,
+       4780
+      ],
+      [
+       5640,
+       4652
+      ],
+      [
+       5616,
+       4636
+      ],
+      [
+       5480,
+       4632
+      ],
+      [
+       5448,
+       4596
+      ],
+      [
+       5444,
+       4504
+      ],
+      [
+       5396,
+       4492
+      ],
+      [
+       5328,
+       4500
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     227,
+     125,
+     143
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [],
+    "numbers_inside": [],
+    "streets": [
+     {
+      "name": "DOCK.",
+      "distance_px": -121,
+      "label_bbox_source": [
+       2086,
+       4702,
+       2251,
+       4771
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "DOCK."
+    ],
+    "area_source_px2": 210600,
+    "compactness": 0.266,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     2134,
+     4727
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       1596,
+       4596
+      ],
+      [
+       1632,
+       4876
+      ],
+      [
+       1644,
+       4884
+      ],
+      [
+       1796,
+       4860
+      ],
+      [
+       1792,
+       4756
+      ],
+      [
+       1800,
+       4740
+      ],
+      [
+       1828,
+       4716
+      ],
+      [
+       1948,
+       4696
+      ],
+      [
+       1984,
+       4704
+      ],
+      [
+       2012,
+       4744
+      ],
+      [
+       2036,
+       4876
+      ],
+      [
+       2344,
+       4836
+      ],
+      [
+       2396,
+       4812
+      ],
+      [
+       2424,
+       4820
+      ],
+      [
+       2440,
+       4836
+      ],
+      [
+       2460,
+       4884
+      ],
+      [
+       2696,
+       4852
+      ],
+      [
+       2716,
+       4840
+      ],
+      [
+       2700,
+       4716
+      ],
+      [
+       2684,
+       4676
+      ],
+      [
+       2520,
+       4688
+      ],
+      [
+       2472,
+       4704
+      ],
+      [
+       2420,
+       4736
+      ],
+      [
+       2380,
+       4736
+      ],
+      [
+       2344,
+       4692
+      ],
+      [
+       2332,
+       4596
+      ],
+      [
+       2312,
+       4568
+      ],
+      [
+       2128,
+       4608
+      ],
+      [
+       1972,
+       4624
+      ],
+      [
+       1824,
+       4652
+      ],
+      [
+       1796,
+       4648
+      ],
+      [
+       1772,
+       4628
+      ],
+      [
+       1752,
+       4552
+      ],
+      [
+       1620,
+       4576
+      ],
+      [
+       1596,
+       4596
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     226,
+     125,
+     145
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "1",
+     "2\u00bd",
+     "1\u00bd"
+    ],
+    "numbers_inside": [
+     "1",
+     "2\u00bd",
+     "1\u00bd"
+    ],
+    "streets": [
+     {
+      "name": "TANK.",
+      "distance_px": 90,
+      "label_bbox_source": [
+       3811,
+       4582,
+       3901,
+       4611
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Dng",
+      "distance_px": -76,
+      "label_bbox_source": [
+       3693,
+       4710,
+       3766,
+       4754
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "TANK.",
+      "distance_px": 67,
+      "label_bbox_source": [
+       3669,
+       4968,
+       3753,
+       4994
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Genit S.",
+      "distance_px": -100,
+      "label_bbox_source": [
+       3752,
+       5233,
+       3911,
+       5280
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "Dng",
+     "Genit S.",
+     "TANK."
+    ],
+    "area_source_px2": 163664,
+    "compactness": 0.359,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     3770,
+     4924
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       3492,
+       4656
+      ],
+      [
+       3480,
+       4672
+      ],
+      [
+       3480,
+       4732
+      ],
+      [
+       3520,
+       4756
+      ],
+      [
+       3560,
+       4748
+      ],
+      [
+       3588,
+       4756
+      ],
+      [
+       3620,
+       4808
+      ],
+      [
+       3732,
+       4820
+      ],
+      [
+       3756,
+       4852
+      ],
+      [
+       3756,
+       4932
+      ],
+      [
+       3780,
+       4944
+      ],
+      [
+       3804,
+       4976
+      ],
+      [
+       3796,
+       5016
+      ],
+      [
+       3772,
+       5036
+      ],
+      [
+       3736,
+       5044
+      ],
+      [
+       3724,
+       5072
+      ],
+      [
+       3736,
+       5360
+      ],
+      [
+       3820,
+       5376
+      ],
+      [
+       3964,
+       5368
+      ],
+      [
+       3972,
+       5360
+      ],
+      [
+       3968,
+       5040
+      ],
+      [
+       3936,
+       5016
+      ],
+      [
+       3928,
+       4972
+      ],
+      [
+       3972,
+       4924
+      ],
+      [
+       3968,
+       4840
+      ],
+      [
+       3956,
+       4828
+      ],
+      [
+       3840,
+       4820
+      ],
+      [
+       3816,
+       4800
+      ],
+      [
+       3808,
+       4784
+      ],
+      [
+       3808,
+       4676
+      ],
+      [
+       3788,
+       4656
+      ],
+      [
+       3492,
+       4656
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     225,
+     125,
+     144
+    ],
+    "block_number": "404",
+    "block_number_inferred": false,
+    "number_is_big_numeral": true,
+    "lot_numbers": [
+     "1",
+     "12",
+     "108",
+     "1",
+     "2"
+    ],
+    "numbers_inside": [
+     "1",
+     "12",
+     "108",
+     "1",
+     "2"
+    ],
+    "streets": [
+     {
+      "name": "TANK.",
+      "distance_px": 114,
+      "label_bbox_source": [
+       5396,
+       4959,
+       5482,
+       4985
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Mach's",
+      "distance_px": -73,
+      "label_bbox_source": [
+       4954,
+       5191,
+       4997,
+       5315
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Geri t 5.",
+      "distance_px": -74,
+      "label_bbox_source": [
+       5491,
+       5219,
+       5650,
+       5275
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Storg",
+      "distance_px": -39,
+      "label_bbox_source": [
+       4921,
+       5220,
+       4961,
+       5335
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "2 Vac.",
+      "distance_px": -111,
+      "label_bbox_source": [
+       5138,
+       5257,
+       5208,
+       5344
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Vac.",
+      "distance_px": -110,
+      "label_bbox_source": [
+       5047,
+       5263,
+       5083,
+       5338
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "2 Vac.",
+     "Geri t 5.",
+     "Mach's",
+     "Storg",
+     "TANK.",
+     "Vac."
+    ],
+    "area_source_px2": 245328,
+    "compactness": 0.592,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     5317,
+     5184
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       4900,
+       5112
+      ],
+      [
+       4904,
+       5392
+      ],
+      [
+       4924,
+       5408
+      ],
+      [
+       5424,
+       5416
+      ],
+      [
+       5696,
+       5408
+      ],
+      [
+       5716,
+       5388
+      ],
+      [
+       5720,
+       5200
+      ],
+      [
+       5712,
+       5184
+      ],
+      [
+       5696,
+       5176
+      ],
+      [
+       5376,
+       5168
+      ],
+      [
+       5344,
+       5132
+      ],
+      [
+       5340,
+       5028
+      ],
+      [
+       5332,
+       5016
+      ],
+      [
+       5272,
+       5016
+      ],
+      [
+       5224,
+       5040
+      ],
+      [
+       5128,
+       5040
+      ],
+      [
+       5084,
+       5088
+      ],
+      [
+       4920,
+       5096
+      ],
+      [
+       4900,
+       5112
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     226,
+     125,
+     141
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "0",
+     "1",
+     "1"
+    ],
+    "numbers_inside": [
+     "0",
+     "1",
+     "1"
+    ],
+    "streets": [
+     {
+      "name": "TAMPA WHARF CO.",
+      "distance_px": -63,
+      "label_bbox_source": [
+       2243,
+       5406,
+       2702,
+       5536
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "DOCK.",
+      "distance_px": -135,
+      "label_bbox_source": [
+       2306,
+       5608,
+       2472,
+       5678
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "OFF",
+      "distance_px": -35,
+      "label_bbox_source": [
+       2782,
+       5813,
+       2839,
+       5847
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "DOCKS.",
+      "distance_px": -4,
+      "label_bbox_source": [
+       2293,
+       5954,
+       2333,
+       6152
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "RCIAL COMP.",
+      "distance_px": -65,
+      "label_bbox_source": [
+       2283,
+       6255,
+       2337,
+       6612
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "TAMPA COMMERCIAL COMP",
+      "distance_px": -62,
+      "label_bbox_source": [
+       2283,
+       6267,
+       2336,
+       7020
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "TANK",
+      "distance_px": -132,
+      "label_bbox_source": [
+       2495,
+       6517,
+       2561,
+       6543
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "PIER N\u00ba.",
+      "distance_px": -23,
+      "label_bbox_source": [
+       2250,
+       6587,
+       2293,
+       6811
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "DOCK.",
+     "DOCKS.",
+     "OFF",
+     "PIER N\u00ba.",
+     "RCIAL COMP.",
+     "TAMPA COMMERCIAL COMP",
+     "TAMPA WHARF CO.",
+     "TANK"
+    ],
+    "area_source_px2": 623272,
+    "compactness": 0.126,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     2567,
+     6134
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       2304,
+       5284
+      ],
+      [
+       2292,
+       5292
+      ],
+      [
+       2292,
+       5340
+      ],
+      [
+       2312,
+       5372
+      ],
+      [
+       2312,
+       5396
+      ],
+      [
+       2288,
+       5428
+      ],
+      [
+       2236,
+       5452
+      ],
+      [
+       2272,
+       5836
+      ],
+      [
+       2288,
+       5860
+      ],
+      [
+       2280,
+       5952
+      ],
+      [
+       2304,
+       6076
+      ],
+      [
+       2304,
+       6172
+      ],
+      [
+       2316,
+       6192
+      ],
+      [
+       2308,
+       6232
+      ],
+      [
+       2284,
+       6252
+      ],
+      [
+       2248,
+       6260
+      ],
+      [
+       2244,
+       6508
+      ],
+      [
+       2256,
+       7028
+      ],
+      [
+       2284,
+       7040
+      ],
+      [
+       2324,
+       7088
+      ],
+      [
+       2544,
+       7088
+      ],
+      [
+       2572,
+       7096
+      ],
+      [
+       2600,
+       7136
+      ],
+      [
+       2596,
+       7264
+      ],
+      [
+       2608,
+       7528
+      ],
+      [
+       2644,
+       7536
+      ],
+      [
+       2656,
+       7528
+      ],
+      [
+       2660,
+       7508
+      ],
+      [
+       2640,
+       7064
+      ],
+      [
+       2628,
+       7048
+      ],
+      [
+       2508,
+       7044
+      ],
+      [
+       2476,
+       7008
+      ],
+      [
+       2476,
+       6984
+      ],
+      [
+       2492,
+       6956
+      ],
+      [
+       2496,
+       6700
+      ],
+      [
+       2520,
+       6668
+      ],
+      [
+       2548,
+       6660
+      ],
+      [
+       2776,
+       6660
+      ],
+      [
+       2812,
+       6652
+      ],
+      [
+       2824,
+       6632
+      ],
+      [
+       2836,
+       6424
+      ],
+      [
+       2828,
+       6388
+      ],
+      [
+       2788,
+       6368
+      ],
+      [
+       2732,
+       6364
+      ],
+      [
+       2600,
+       6376
+      ],
+      [
+       2504,
+       6368
+      ],
+      [
+       2476,
+       6332
+      ],
+      [
+       2480,
+       6252
+      ],
+      [
+       2464,
+       6188
+      ],
+      [
+       2496,
+       6152
+      ],
+      [
+       2556,
+       6152
+      ],
+      [
+       2584,
+       6132
+      ],
+      [
+       2744,
+       6108
+      ],
+      [
+       2784,
+       6128
+      ],
+      [
+       2824,
+       6128
+      ],
+      [
+       2840,
+       6112
+      ],
+      [
+       2840,
+       6080
+      ],
+      [
+       2824,
+       6068
+      ],
+      [
+       2780,
+       6068
+      ],
+      [
+       2744,
+       6084
+      ],
+      [
+       2704,
+       6076
+      ],
+      [
+       2616,
+       6100
+      ],
+      [
+       2496,
+       6112
+      ],
+      [
+       2376,
+       6148
+      ],
+      [
+       2352,
+       6144
+      ],
+      [
+       2320,
+       6108
+      ],
+      [
+       2312,
+       5964
+      ],
+      [
+       2348,
+       5924
+      ],
+      [
+       2412,
+       5920
+      ],
+      [
+       2544,
+       5892
+      ],
+      [
+       2556,
+       5876
+      ],
+      [
+       2556,
+       5824
+      ],
+      [
+       2564,
+       5808
+      ],
+      [
+       2588,
+       5788
+      ],
+      [
+       2652,
+       5776
+      ],
+      [
+       2680,
+       5784
+      ],
+      [
+       2704,
+       5816
+      ],
+      [
+       2704,
+       5868
+      ],
+      [
+       2720,
+       5896
+      ],
+      [
+       2800,
+       5900
+      ],
+      [
+       2836,
+       5892
+      ],
+      [
+       2848,
+       5880
+      ],
+      [
+       2844,
+       5788
+      ],
+      [
+       2832,
+       5776
+      ],
+      [
+       2764,
+       5768
+      ],
+      [
+       2740,
+       5736
+      ],
+      [
+       2740,
+       5688
+      ],
+      [
+       2764,
+       5656
+      ],
+      [
+       2828,
+       5640
+      ],
+      [
+       2840,
+       5628
+      ],
+      [
+       2840,
+       5592
+      ],
+      [
+       2828,
+       5528
+      ],
+      [
+       2816,
+       5512
+      ],
+      [
+       2748,
+       5508
+      ],
+      [
+       2724,
+       5488
+      ],
+      [
+       2696,
+       5364
+      ],
+      [
+       2672,
+       5360
+      ],
+      [
+       2616,
+       5380
+      ],
+      [
+       2472,
+       5408
+      ],
+      [
+       2360,
+       5412
+      ],
+      [
+       2328,
+       5376
+      ],
+      [
+       2336,
+       5336
+      ],
+      [
+       2328,
+       5292
+      ],
+      [
+       2304,
+       5284
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "yellow",
+    "lab_angle_deg": 98,
+    "median_lab": [
+     225,
+     125,
+     143
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "1",
+     "1",
+     "0",
+     "1\u00bd",
+     "9",
+     "2\u00bd",
+     "2\u00bd"
+    ],
+    "numbers_inside": [
+     "1",
+     "1",
+     "0",
+     "1\u00bd",
+     "9",
+     "2\u00bd",
+     "2\u00bd"
+    ],
+    "streets": [
+     {
+      "name": "Vac",
+      "distance_px": -56,
+      "label_bbox_source": [
+       3244,
+       5888,
+       3310,
+       5928
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "KITCHEN",
+      "distance_px": -67,
+      "label_bbox_source": [
+       3369,
+       5975,
+       3497,
+       6004
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "THANK.",
+      "distance_px": 21,
+      "label_bbox_source": [
+       3775,
+       6505,
+       3848,
+       6531
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "TANK",
+      "distance_px": 21,
+      "label_bbox_source": [
+       3508,
+       6577,
+       3573,
+       6600
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "THANK.",
+      "distance_px": 69,
+      "label_bbox_source": [
+       3750,
+       6577,
+       3822,
+       6601
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "HOTEL",
+      "distance_px": -35,
+      "label_bbox_source": [
+       3350,
+       6594,
+       3428,
+       6630
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "RIMS.",
+      "distance_px": -56,
+      "label_bbox_source": [
+       3349,
+       6620,
+       3422,
+       6657
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "HOTEL COLLINS.",
+      "distance_px": -37,
+      "label_bbox_source": [
+       3439,
+       6936,
+       3887,
+       6989
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "WHITING",
+      "distance_px": 176,
+      "label_bbox_source": [
+       3519,
+       7194,
+       3961,
+       7278
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "HOTEL",
+     "HOTEL COLLINS.",
+     "KITCHEN",
+     "RIMS.",
+     "TANK",
+     "THANK.",
+     "Vac",
+     "WHITING"
+    ],
+    "area_source_px2": 408568,
+    "compactness": 0.205,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     3625,
+     6446
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       3232,
+       5852
+      ],
+      [
+       3216,
+       5868
+      ],
+      [
+       3212,
+       6076
+      ],
+      [
+       3220,
+       6092
+      ],
+      [
+       3308,
+       6100
+      ],
+      [
+       3348,
+       6092
+      ],
+      [
+       3376,
+       6060
+      ],
+      [
+       3444,
+       6056
+      ],
+      [
+       3472,
+       6064
+      ],
+      [
+       3504,
+       6112
+      ],
+      [
+       3508,
+       6280
+      ],
+      [
+       3532,
+       6344
+      ],
+      [
+       3552,
+       6348
+      ],
+      [
+       3580,
+       6324
+      ],
+      [
+       3608,
+       6316
+      ],
+      [
+       3660,
+       6324
+      ],
+      [
+       3700,
+       6368
+      ],
+      [
+       3692,
+       6452
+      ],
+      [
+       3700,
+       6464
+      ],
+      [
+       3768,
+       6468
+      ],
+      [
+       3800,
+       6496
+      ],
+      [
+       3852,
+       6500
+      ],
+      [
+       3884,
+       6536
+      ],
+      [
+       3884,
+       6560
+      ],
+      [
+       3860,
+       6592
+      ],
+      [
+       3852,
+       6632
+      ],
+      [
+       3828,
+       6652
+      ],
+      [
+       3780,
+       6660
+      ],
+      [
+       3716,
+       6652
+      ],
+      [
+       3700,
+       6636
+      ],
+      [
+       3692,
+       6600
+      ],
+      [
+       3680,
+       6588
+      ],
+      [
+       3588,
+       6588
+      ],
+      [
+       3540,
+       6612
+      ],
+      [
+       3512,
+       6604
+      ],
+      [
+       3476,
+       6560
+      ],
+      [
+       3444,
+       6560
+      ],
+      [
+       3372,
+       6580
+      ],
+      [
+       3312,
+       6608
+      ],
+      [
+       3320,
+       6676
+      ],
+      [
+       3332,
+       6688
+      ],
+      [
+       3392,
+       6696
+      ],
+      [
+       3416,
+       6728
+      ],
+      [
+       3416,
+       6752
+      ],
+      [
+       3404,
+       6772
+      ],
+      [
+       3404,
+       7016
+      ],
+      [
+       3412,
+       7056
+      ],
+      [
+       3432,
+       7072
+      ],
+      [
+       3504,
+       7064
+      ],
+      [
+       3676,
+       7072
+      ],
+      [
+       3700,
+       7052
+      ],
+      [
+       3700,
+       6968
+      ],
+      [
+       3724,
+       6936
+      ],
+      [
+       3836,
+       6928
+      ],
+      [
+       3860,
+       6916
+      ],
+      [
+       3864,
+       6676
+      ],
+      [
+       3896,
+       6640
+      ],
+      [
+       3972,
+       6632
+      ],
+      [
+       3988,
+       6616
+      ],
+      [
+       3984,
+       6584
+      ],
+      [
+       3956,
+       6576
+      ],
+      [
+       3932,
+       6544
+      ],
+      [
+       3932,
+       6520
+      ],
+      [
+       3968,
+       6472
+      ],
+      [
+       3968,
+       6400
+      ],
+      [
+       3944,
+       6380
+      ],
+      [
+       3908,
+       6384
+      ],
+      [
+       3832,
+       6372
+      ],
+      [
+       3800,
+       6336
+      ],
+      [
+       3800,
+       6308
+      ],
+      [
+       3812,
+       6284
+      ],
+      [
+       3808,
+       6024
+      ],
+      [
+       3796,
+       6008
+      ],
+      [
+       3564,
+       5992
+      ],
+      [
+       3532,
+       5956
+      ],
+      [
+       3532,
+       5884
+      ],
+      [
+       3520,
+       5872
+      ],
+      [
+       3456,
+       5876
+      ],
+      [
+       3432,
+       5904
+      ],
+      [
+       3404,
+       5912
+      ],
+      [
+       3376,
+       5904
+      ],
+      [
+       3336,
+       5852
+      ],
+      [
+       3232,
+       5852
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "pink",
+    "lab_angle_deg": 357,
+    "median_lab": [
+     215,
+     134,
+     132
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "3",
+     "2",
+     "2",
+     "4",
+     "8",
+     "2",
+     "30",
+     "0",
+     "2",
+     "2",
+     "2"
+    ],
+    "numbers_inside": [
+     "3",
+     "2",
+     "2",
+     "4",
+     "8",
+     "2",
+     "30",
+     "0",
+     "2",
+     "2",
+     "2"
+    ],
+    "streets": [
+     {
+      "name": "OFF.",
+      "distance_px": -56,
+      "label_bbox_source": [
+       5278,
+       2438,
+       5314,
+       2519
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Sal.",
+      "distance_px": 144,
+      "label_bbox_source": [
+       5060,
+       2461,
+       5109,
+       2549
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Banky",
+      "distance_px": -71,
+      "label_bbox_source": [
+       5462,
+       2473,
+       5594,
+       2523
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "AROUND.",
+      "distance_px": 125,
+      "label_bbox_source": [
+       5090,
+       2625,
+       5121,
+       2829
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "CLAD",
+      "distance_px": 153,
+      "label_bbox_source": [
+       5067,
+       2648,
+       5088,
+       2732
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "IRON",
+      "distance_px": 154,
+      "label_bbox_source": [
+       5067,
+       2740,
+       5088,
+       2820
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "ALL",
+      "distance_px": 129,
+      "label_bbox_source": [
+       5089,
+       2743,
+       5116,
+       2827
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Vac.",
+      "distance_px": -74,
+      "label_bbox_source": [
+       5520,
+       3108,
+       5588,
+       3136
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "BEING",
+      "distance_px": -69,
+      "label_bbox_source": [
+       5419,
+       3509,
+       5467,
+       3646
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "ALL",
+     "AROUND.",
+     "BEING",
+     "Banky",
+     "CLAD",
+     "IRON",
+     "OFF.",
+     "Sal.",
+     "Vac."
+    ],
+    "area_source_px2": 468072,
+    "compactness": 0.586,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     5411,
+     3035
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       5248,
+       2428
+      ],
+      [
+       5228,
+       2440
+      ],
+      [
+       5232,
+       2856
+      ],
+      [
+       5240,
+       3036
+      ],
+      [
+       5248,
+       3048
+      ],
+      [
+       5244,
+       3276
+      ],
+      [
+       5252,
+       3320
+      ],
+      [
+       5244,
+       3364
+      ],
+      [
+       5252,
+       3636
+      ],
+      [
+       5264,
+       3648
+      ],
+      [
+       5288,
+       3652
+      ],
+      [
+       5620,
+       3640
+      ],
+      [
+       5636,
+       3596
+      ],
+      [
+       5636,
+       3452
+      ],
+      [
+       5628,
+       3424
+      ],
+      [
+       5628,
+       2912
+      ],
+      [
+       5620,
+       2896
+      ],
+      [
+       5608,
+       2444
+      ],
+      [
+       5596,
+       2428
+      ],
+      [
+       5580,
+       2424
+      ],
+      [
+       5440,
+       2432
+      ],
+      [
+       5312,
+       2420
+      ],
+      [
+       5248,
+       2428
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "pink",
+    "lab_angle_deg": 357,
+    "median_lab": [
+     216,
+     134,
+     132
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "0",
+     "0",
+     "0",
+     "1",
+     "12",
+     "8",
+     "0",
+     "0",
+     "0",
+     "1",
+     "1",
+     "1"
+    ],
+    "numbers_inside": [
+     "0",
+     "0",
+     "0",
+     "1",
+     "12",
+     "8",
+     "0",
+     "0",
+     "0",
+     "1",
+     "1",
+     "1"
+    ],
+    "streets": [
+     {
+      "name": "Sal.",
+      "distance_px": 82,
+      "label_bbox_source": [
+       5060,
+       2461,
+       5109,
+       2549
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "BUILT.",
+      "distance_px": -88,
+      "label_bbox_source": [
+       4743,
+       2503,
+       4894,
+       2550
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "BEING",
+      "distance_px": -94,
+      "label_bbox_source": [
+       4518,
+       2507,
+       4664,
+       2553
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "AROUND.",
+      "distance_px": 95,
+      "label_bbox_source": [
+       5090,
+       2625,
+       5121,
+       2829
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "CLAD",
+      "distance_px": 66,
+      "label_bbox_source": [
+       5067,
+       2648,
+       5088,
+       2732
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "IRON",
+      "distance_px": 92,
+      "label_bbox_source": [
+       5067,
+       2740,
+       5088,
+       2820
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "ALL",
+      "distance_px": 116,
+      "label_bbox_source": [
+       5089,
+       2743,
+       5116,
+       2827
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "TANK.",
+      "distance_px": 80,
+      "label_bbox_source": [
+       4650,
+       2801,
+       4723,
+       2826
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "ALL",
+     "AROUND.",
+     "BEING",
+     "BUILT.",
+     "CLAD",
+     "IRON",
+     "Sal.",
+     "TANK."
+    ],
+    "area_source_px2": 178488,
+    "compactness": 0.722,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     4628,
+     2611
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       4396,
+       2464
+      ],
+      [
+       4396,
+       2640
+      ],
+      [
+       4408,
+       2672
+      ],
+      [
+       4408,
+       2720
+      ],
+      [
+       4420,
+       2736
+      ],
+      [
+       4912,
+       2732
+      ],
+      [
+       5004,
+       2724
+      ],
+      [
+       5012,
+       2712
+      ],
+      [
+       5000,
+       2440
+      ],
+      [
+       4536,
+       2436
+      ],
+      [
+       4412,
+       2444
+      ],
+      [
+       4396,
+       2464
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "01352_1889-0003",
+    "kind": "wash_area",
+    "colour": "pink",
+    "lab_angle_deg": 357,
+    "median_lab": [
+     215,
+     134,
+     132
+    ],
+    "block_number": null,
+    "block_number_inferred": false,
+    "number_is_big_numeral": false,
+    "lot_numbers": [
+     "01",
+     "2",
+     "2",
+     "2"
+    ],
+    "numbers_inside": [
+     "01",
+     "2",
+     "2",
+     "2"
+    ],
+    "streets": [
+     {
+      "name": "Jewelry",
+      "distance_px": -90,
+      "label_bbox_source": [
+       5418,
+       5850,
+       5465,
+       5985
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "Bank",
+      "distance_px": -89,
+      "label_bbox_source": [
+       5553,
+       5850,
+       5604,
+       5971
+      ],
+      "rotation_view": 0
+     },
+     {
+      "name": "TANK.",
+      "distance_px": 50,
+      "label_bbox_source": [
+       5472,
+       6111,
+       5567,
+       6140
+      ],
+      "rotation_view": 0
+     }
+    ],
+    "street_names": [
+     "Bank",
+     "Jewelry",
+     "TANK."
+    ],
+    "area_source_px2": 106864,
+    "compactness": 0.779,
+    "touches_content_border": false,
+    "centroid_source_px": [
+     5486,
+     5955
+    ],
+    "split_by_numerals": false
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       5240,
+       5828
+      ],
+      [
+       5228,
+       6024
+      ],
+      [
+       5244,
+       6068
+      ],
+      [
+       5536,
+       6076
+      ],
+      [
+       5580,
+       6064
+      ],
+      [
+       5652,
+       6064
+      ],
+      [
+       5668,
+       6052
+      ],
+      [
+       5676,
+       5960
+      ],
+      [
+       5668,
+       5852
+      ],
+      [
+       5624,
+       5820
+      ],
+      [
+       5432,
+       5828
+      ],
+      [
+       5288,
+       5820
+      ],
+      [
+       5240,
+       5828
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}

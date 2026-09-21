@@ -33,7 +33,9 @@ from _hunyuan_compat import ensure_hunyuan_python as _ensure_hunyuan_python, hun
 
 
 def load_preset(name: str) -> str:
-    path = PROMPTS_DIR / f"{name}.txt"
+    """A preset name (stem of a file in configs/prompts/) or a path to any prompt text file."""
+    given = Path(name).expanduser()
+    path = given if given.is_file() else PROMPTS_DIR / f"{name}.txt"
     if not path.is_file():
         avail = ", ".join(sorted(p.stem for p in PROMPTS_DIR.glob("*.txt")))
         sys.exit(f"error: no preset {name!r} in {PROMPTS_DIR} (have: {avail})")
@@ -45,7 +47,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("images", nargs="+", type=Path, help="Image or PDF (first page) paths")
     g = ap.add_mutually_exclusive_group(required=True)
-    g.add_argument("--preset", help=f"Prompt preset name from {PROMPTS_DIR.relative_to(PROJECT_ROOT)}/")
+    g.add_argument("--preset", help=f"Prompt preset name from {PROMPTS_DIR.relative_to(PROJECT_ROOT)}/, or a path to a prompt .txt file")
     g.add_argument("--prompt", help="Literal prompt text")
     ap.add_argument("-o", "--output-dir", type=Path, default=None,
                     help="Default: runs/hunyuan/<YYYY-MM-DD>_<preset|custom>/")

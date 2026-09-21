@@ -33,6 +33,10 @@ from pathlib import Path
 import cv2
 import numpy as np
 
+import sys  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from fim_runlog import Stage  # noqa: E402
+
 DRAW = {"pink": (170, 120, 230), "yellow": (60, 200, 230), "green": (90, 190, 90), "blue": (230, 160, 70), "purple": (200, 90, 200), "other": (128, 128, 128)}
 
 
@@ -52,9 +56,17 @@ def main() -> None:
     ap.add_argument("--street-reach", type=float, default=60.0, help="work px from the area edge within which alphabetic tokens are recorded as nearby text (default 60)")
     args = ap.parse_args()
 
-    run = args.run
-    tiles_path = next(run.glob("*_tiles.json"))
+    run = args.run.expanduser().resolve()
+    tiles_path = next(run.glob("*_tiles.json"), None)
+    if tiles_path is None:
+        raise SystemExit(f"{run}: no <stem>_tiles.json (run fim_tile_ocr.py first)")
     stem = tiles_path.name[: -len("_tiles.json")]
+    params = {k: (str(v) if isinstance(v, Path) else v) for k, v in vars(args).items() if k != "run"}
+    with Stage(run, "areas", sheet=stem, params=params) as log:  # run log (scripts/fim_runlog.py): tints, areas, drops, seconds
+        trace_areas(args, run, tiles_path, stem, log)
+
+
+def trace_areas(args: argparse.Namespace, run: Path, tiles_path: Path, stem: str, log: Stage) -> None:
     doc = json.loads(tiles_path.read_text())
     img = cv2.imread(doc["source_image"])
     if img is None:
@@ -252,6 +264,7 @@ def main() -> None:
         w.writerows(rows)
     cv2.imwrite(str(run / f"{stem}_areas_overlay.jpg"), overlay, [cv2.IMWRITE_JPEG_QUALITY, 85])
     print(f"{len(features)} wash areas -> {run}/{stem}_areas_px.geojson (scan pixels), _areas.csv, _areas_overlay.jpg")
+    log.note(n_areas_px=len(features), n_tints=len(names), tints=list(names), dropped=dropped, chroma_threshold=float(T))
     for r in sorted(rows, key=lambda r: -r[3]):
         print(f"  {str(r[0]) or '?':>4s} {r[1]:8s} area {r[3]:>9d} compact {r[4]:.2f} numerals {r[5]:3d}  {r[6][:70]}")
 

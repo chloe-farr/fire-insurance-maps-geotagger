@@ -2,15 +2,16 @@
 
 Turn a scanned historical city plan into GeoJSON, using the text printed on it.
 
-The scripts read every word on the sheet with an OCR model, trace the city blocks from the linework, match the street
-names to today's street centrelines, and from those matches work out where the sheet sits on the Earth: no control
+The scripts read every word on the sheet with an OCR model, trace the city blocks and the building outlines inside
+them from the linework, match the street names to today's street centrelines, and from those matches work out where the sheet sits on the Earth: no control
 points to click, no GIS experience needed. Built for Chas. E. Goad's fire insurance plans of Victoria B.C. (1885–1895),
-tested on Goad's 1912 Vancouver atlas and on the 1912 Generalstadtplan of Vienna (German, no lot numbers, no colour). Any
+tested on Goad's 1912 Vancouver atlas and on the Sanborn plans of Tampa, Florida (1884–1915, Library of Congress). Any
 city with named streets on the sheet and in OpenStreetMap should work.
 
 ```
 scan  ──▶  1. OCR every word        ──▶  2. trace the blocks   ──▶  4. fit to modern streets  ──▶  GeoJSON + world file
-           (HunyuanOCR, GPU)             (OpenCV, no model)         (3. street layer from OSM)      + interactive viewer
+           (HunyuanOCR, GPU)             and the buildings           (3. street layer from OSM)      blocks, buildings, words,
+                                         (OpenCV, no model)                                          sheet outline + viewer
 ```
 
 Everything runs on your own machine with open-weight models. Nothing is sent to a paid API.
@@ -52,9 +53,9 @@ Check the CPU stages without a GPU (block tracing, name matching; a few seconds)
 python3 -m pytest tests -q
 ```
 
-## Try it on the included sheet (about 30 minutes, mostly waiting)
+## Try it on an included sheet (about 30 minutes, mostly waiting)
 
-The repo ships one public-domain sheet: a tile of Goad's 1912 Vancouver atlas covering downtown and Gastown,
+The repo ships two public-domain sheets. This walk-through uses a tile of Goad's 1912 Vancouver atlas covering downtown and Gastown,
 `data/example/vancouver_1912_MAP342a_04.tif`, together with a modern street layer for Vancouver. Four commands take it
 from scan to GeoJSON.
 
@@ -91,9 +92,14 @@ The terminal prints which street labels matched, how far each one lands from its
 line like `fit (affine): RMS 0.5 m over 12 inlier labels`. Open `..._georef_overlay.jpg`: today's streets (red) drawn
 back onto the 1912 sheet. If they run down the middle of the drawn streets, it worked. The fit then traces the blocks
 a second time with those streets as evidence (`--retrace seeded`, the default) and rewrites `..._blocks_px.geojson` and
-the overlay, so look at the overlay again: it should now show 15 blocks and the outlines inside them. Add
+the overlay, so look at the overlay again: it should now show 15 blocks and the outlines inside them.
+
+The same command puts the buildings on the Earth: every outline in `..._buildings_px.geojson` is written again as
+`..._buildings_wgs84.geojson` (and `..._buildings_epsg32610.geojson` in the street layer's CRS), linked to the block
+that finally holds it. The printout ends with a line like `buildings: 286 enclosed outlines -> ...`. Add
 `--legend configs/legend/goad_sanborn_default.json` to read each outline's wash against the Goad colour key
-(brick, frame, stone); without it the colour is recorded but not interpreted.
+(brick, frame, stone); without it the colour is recorded but not interpreted. The re-trace rewrites the buildings
+file, so `--legend` and `--floors` go on this command, not only on step 2.
 
 **4. Look at the result.**
 
@@ -102,16 +108,20 @@ python3 scripts/fim_viewer.py runs/hunyuan/demo_vancouver -o runs/hunyuan/demo_v
 ```
 
 Open `viewer.html` in a browser: blocks over modern centrelines, every word, the sheet outline, a table of residuals.
-Or drag `..._blocks_wgs84.geojson` onto <https://geojson.io>, or open the scan in QGIS: copy
+Or drag `..._blocks_wgs84.geojson` and `..._buildings_wgs84.geojson` onto <https://geojson.io> (the viewer does not
+draw the buildings yet), or open the scan in QGIS: copy
 `..._georef.jgw` next to the `.tif`, rename it `vancouver_1912_MAP342a_04.tfw`, and QGIS reads the scan georeferenced.
 
 This tile was georectified by the City of Vancouver in 2014, so you can check the answer: the fit from the OCR alone
 lands within about 3 m of the City's placement across the drawn area.
 
-**A European plan.** `data/example/README.md` says how to fetch the CC BY 1912 Vienna tile from the City's WMS and its
-OSM street layer. It is German, has no lot numbers or block numerals and no colour, so the run differs in two flags:
-`--preset text_coords_vienna_1912` for the OCR and `--lots none` for the fit (otherwise its blocks are rejected as
-"building outlines" for holding no lot numbers). Expect about 25 labels matched at under 2 m RMS and 50 blocks.
+**A finished run to look at first.** `data/example/tampa_1889_sheet3/` holds a Library of Congress Sanborn sheet of
+Tampa, Florida (1889, sheet 3) together with every file the pipeline wrote for it: words, blocks, buildings, tinted
+areas, the fit and the overlays. Open the GeoJSON on geojson.io or the overlays in any image viewer to see what comes
+out before running anything. Its `README.md` gives the source, the results and the exact commands that produced it;
+the run differs from the Vancouver one in the preset (`--preset text_coords_tampa_1889`), an alias file that pins the
+sheet's bare street names to the right streets of a county-wide layer (`--alias configs/georef/aliases_tampa.json`),
+and `fim_areas.py` for the colour-washed areas.
 
 ---
 
@@ -120,40 +130,64 @@ OSM street layer. It is German, has no lot numbers or block numerals and no colo
 You need: a scan (JPG, PNG or TIFF, any size; 300 dpi originals work best) and about an hour per sheet the first time.
 Only four things are decided by you; everything else is worked out from the data.
 
-### Step 1. Look at the sheet and pick the content box
+### Step 1. Check the scan from the console
 
 ```bash
-python3 scripts/fim_tile_ocr.py path/to/sheet.jpg --dry-run -o runs/hunyuan/mysheet
+python3 scripts/fim_tile_ocr.py path/to/sheet.png --dry-run -o runs/hunyuan/mysheet
 ```
 
-No GPU used. It writes `..._tile_overlay.jpg` showing the tile grid over the sheet. If the scan has a black margin,
-colour bar or ruler, note the pixel box that contains just the map (image viewers show pixel coordinates) and pass it
-as `--crop X0,Y0,X1,Y1` from now on. If the sheet fills the image, skip `--crop`.
+No GPU and no image viewer needed: the first two lines it prints are all Step 2 needs.
+
+```
+sheet.png: source 6450x7650 -> work 3453x4096 (scale 0.5354)
+paper extent (non-black rows/cols, source px): 0,0,6448,7648 -- the sheet fills the image, no --crop needed
+```
+
+The first line is the scan's resolution and the working size it is tiled at (longest edge 4096 px unless the scan is
+smaller). The second measures where the paper ends. If the scan has a black surround it proposes a
+`--crop X0,Y0,X1,Y1` instead; pass that box from now on. A colour bar or ruler laid on the paper is inside the box:
+if you can look at the `..._tile_overlay.jpg` the run also writes (copy it to your machine with `scp`, or open it in
+VS Code over SSH), trim the box past them; if not, leave it, the cost is a tile or two of GPU time and a few stray
+numbers in the token list. Scans already trimmed to the paper (the Library of Congress Sanborn PNGs are) need no
+`--crop`, and this step can be skipped: the same two lines print at the start of the real run.
 
 ### Step 2. Choose tile size and views, then read the words
 
-| Sheet | Settings |
+Start every sheet with `--tile 1024 --max-new-tokens 4096`; nothing about it needs to be read off the image. The
+sheet is scaled to 4096 px on its long side before tiling, so a 1024 tile is a quarter of the sheet whatever the
+scan's dpi (a 300 dpi atlas page or a 150 dpi one tile the same way; only scans under 4096 px are used as they are,
+with fewer, relatively larger tiles). On the densest downtown sheets tried so far a 1024 tile produced under 4,000
+tokens of real text.
+
+| Situation | Settings |
 |---|---|
-| Detailed plan, 50–100 ft to the inch, dense text | `--tile 1024 --max-new-tokens 4096` |
-| Less dense, or a lower-resolution scan | `--tile 1536 --max-new-tokens 8192` |
+| Any sheet, first run | `--tile 1024 --max-new-tokens 4096` |
+| The first run shows sparse tiles: most under ~700 output tokens, no `HIT CAP` | `--tile 1536 --max-new-tokens 8192` next time (half the tiles, same reading) |
 | Text runs at many angles (diagonal streets, key plans) | add `--rotations 0,30,60` (three times the GPU time) |
 | Text is mostly along the page axes | leave rotations out |
 
-The prompt tells the model what it is looking at. Pick a preset from `configs/prompts/` or write your own file there
+`--max-new-tokens` is not a share of the model's context. HunyuanOCR takes 32,768 tokens; a 1024 tile costs 1,024 of
+them as image tokens and a 1536 tile 2,304, so even 8,192 output tokens are nowhere near the limit. The cap is a
+loop guard: when the model gets stuck repeating a word it runs until the cap, and every cap it hits costs that many
+tokens of GPU time. In every capped tile so far the real text was a few dozen words and the rest were repeats (they
+are dropped when the output is parsed), so a higher cap would only have made those tiles slower. Set it at roughly
+twice the token count of the densest real tile, which for 1024 tiles is 4096.
+
+The prompt tells the model what it is looking at. Pick a preset from `configs/prompts/` by name, pass a path to any prompt text file, or write your own file there
 (one sentence, e.g. *"This is a city plan of Lyon, France, from 1900, with French street names. Return the text with
 coordinates."*). The phrase **"Return the text with coordinates"** must stay: it is what makes the model emit boxes.
 Naming the city and language is a hint, not a requirement: if you do not know where the sheet is, use the preset
 `text_coords_generic`, which says only that it is a fire insurance map with street names.
 
 ```bash
-python3 scripts/fim_tile_ocr.py path/to/sheet.jpg --crop 300,150,7000,7980 --tile 1024 --max-new-tokens 4096 \
-    --preset my_prompt -o runs/hunyuan/mysheet
+python3 scripts/fim_tile_ocr.py path/to/sheet.png --tile 1024 --max-new-tokens 4096 \
+    --preset my_prompt -o runs/hunyuan/mysheet          # add --crop X0,Y0,X1,Y1 if Step 1 proposed one
 ```
 
-Budget about 9 minutes per dense sheet without rotations. Lines saying `HIT CAP` mean the model ran out of room on a
-tile and looped; a few are normal, and the looped words (the same word five or more times in a row) are dropped when
-the output is parsed. If many tiles hit the cap, use smaller tiles. `--resume` re-uses finished tiles if you have to
-restart.
+Budget about 9 minutes per dense sheet without rotations. The run prints one line per tile with its output token
+count; lines saying `HIT CAP` mean the model looped on that tile. A few are normal and the looped words (the same word
+five or more times in a row) are dropped when the output is parsed. If many tiles hit the cap, use smaller tiles, not
+a higher cap. `--resume` re-uses finished tiles if you have to restart.
 
 ### Step 3. Trace the blocks (detailed plans) or the tinted areas (key plans)
 
@@ -220,12 +254,12 @@ python3 scripts/fim_georef.py runs/hunyuan/mysheet --streets data/modern/lyon_st
 ```
 
 Read the printout. **It needs at least six street labels, on streets running in two different directions**, to
-place a sheet. A plan without lot numbers or block numerals (a European city plan such as the Vienna Generalstadtplan)
+place a sheet. A plan without lot numbers or block numerals (a general city plan rather than an insurance plan)
 needs `--lots none`, otherwise its blocks are rejected as "building outlines" for holding no lot numbers. Run `fim_blocks.py` first: a word whose centre sits inside a traced block is a building label even if it spells a
 street name (a "LIME STORE" is not Store St), and the fit ignores it. Labels farther than 12 m from their street after the fit are reported as outliers and dropped: usually
 a street that has been moved or renamed since, which is itself a finding.
 
-Names are compared after historic spelling folds (TH→T, PH→F, hard C→K, Y→I: Rothenthurm matches Rotenturm, Carl
+Names are compared after historic spelling folds (TH→T, PH→F, hard C→K, Y→I: Thompson matches Tompson, Carl
 matches Karl; `--spelling exact` turns them off), and a matched street farther than 300 m from every other one is
 dropped (`--lonely-m`). `--fuzzy` also accepts near-misses; on a sheet with thousands of words it adds wrong hits along
 with the right ones, so try without it first.
@@ -241,7 +275,10 @@ Straße/Strasse, Avenue/AVE ...), case, accents and ß, so most spelling differe
 a label one letter away from a street name, or a fragment of one, when only one street fits (BLANCHARD → Blanshard,
 OUGLAS → Douglas). After every fit the printout lists **alias candidates**: unmatched upper-case words that lie on a
 modern centreline once the sheet is placed. Those are streets renamed since the plan (KANE → Broughton St on the 1895
-Victoria sheets); check them and add them to the alias file, and the next fit uses them.
+Victoria sheets); check them and add them to the alias file, and the next fit uses them. An **empty list silences a
+label**: `"HILLSBOROUGH": []` keeps a river or landmark whose name is also a road somewhere in the layer out of the fit
+(see `configs/georef/aliases_tampa.json`). A list can also pin a common name to the right streets
+(`"TAMPA": ["NORTH TAMPA ST", "SOUTH TAMPA ST"]`) when the layer covers a whole county.
 
 The sheet's rotation is read from the labels' **text direction**: a street name is printed along its street, so a wide
 box runs along the scan's x axis, a tall one along y, and a rotated view gives the angle. Against the modern street's
@@ -254,13 +291,29 @@ The fit ends with an affine step for paper shrink and scan skew, kept only when 
 within 4 %, shear under 2°); otherwise the labels lie on streets of one direction only, and the similarity fit is kept.
 The printout says which, and `<stem>_georef.json` records it under `transform`.
 
+**The buildings GeoJSON comes out of this step.** When the run holds `<stem>_buildings_px.geojson` (Step 3 writes it
+unless `--buildings off`), the fit writes `<stem>_buildings_wgs84.geojson` and `<stem>_buildings_epsg<code>.geojson`:
+every outline in map coordinates, re-linked to the block that holds its centroid after the blocks have been cleaned,
+split and rejected. An outline whose block was rejected is kept with `orphan: true` and the reason, so nothing
+disappears silently. Two things to know:
+
+- The default re-trace (`--retrace seeded`) runs `fim_blocks.py` again and rewrites the buildings file, so the
+  footprint flags belong on this command: `--legend configs/legend/<edition>.json` to turn each outline's wash into
+  a `material`, and `--floors single-numeral-1-3` on Sanborn plans. With `--retrace keep` the file from Step 3 is
+  used as it is, with whatever flags it was traced with.
+- To change a legend or a floors rule after the fit, run this step again: the fit itself takes a couple of minutes
+  and the buildings are written at the end of it. In a book run pass the flag through with
+  `fim_batch.py --skip-ocr --georef-arg=--legend=configs/legend/<edition>.json`.
+
 ### Step 6. View and share
 
 ```bash
 python3 scripts/fim_viewer.py runs/hunyuan/sheetA runs/hunyuan/sheetB -o runs/viewer.html --title "My book"
 ```
 
-One tab per sheet. The GeoJSON files (`*_wgs84.geojson`) open in QGIS, geojson.io, ArcGIS or any web map.
+One tab per sheet: blocks, words, sheet outline and residuals. The viewer does not draw the buildings yet; open
+`<stem>_buildings_wgs84.geojson` in QGIS or on geojson.io instead. All the GeoJSON files (`*_wgs84.geojson`) open in
+QGIS, geojson.io, ArcGIS or any web map.
 
 ## Run a whole book
 
@@ -304,6 +357,34 @@ All in the run directory, `<stem>` = the scan's file name:
 | `<stem>_tokens_wgs84.geojson`, `<stem>_page_wgs84.geojson` | every word, and the sheet outline, as polygons |
 | `<stem>_street_names_wgs84.geojson` | the street-name changes the sheet shows: labels **renamed** since the plan (via `--alias`), **respelled** (`--fuzzy`), **moved** (fit outliers) and **candidates** (unmatched words lying on a modern centreline), each with the modern street's geometry on the sheet, the name on the plan, the plan year (`--year`) and the modern name. A log for linked data; `fim_merge.py` joins them across a book |
 | `<stem>_georef_overlay.jpg` | modern streets drawn on the scan: the check for stage 4 |
+| `run_log.json` | one record per stage execution on this run (OCR, blocks, areas, locate, georef): arguments, seconds, counts, outcome — see *The run log* below |
+
+### The run log
+
+Every stage script appends a record to `<run>/run_log.json` and to the master `runs/run_log.json` when it ends —
+also when it was refused (too few labels) or crashed, so the failures are counted too. Neither file is tracked
+(`runs/` is ignored; they name local paths). The records hold what the terminal prints, as numbers:
+
+- **OCR**: scan and content pixels, tile size and grid, tiles read / blank-skipped, views (tiles × rotations),
+  pixels fed to the model, model seconds (this execution and every view of the run), tokens in and out, GPU,
+  prompt preset, tokens parsed / kept / duplicate, views that hit the token cap.
+- **georef**: the street layer with its provenance (source, WGS84 box and its area, the place names or box it was
+  fetched from), alias file and entry count, `--fuzzy`, `--near`, `--min-labels`; `n_matched` (labels in the fit)
+  and `n_matched_plain` (matched by name alone, no alias entry, no fuzzy match — whether the sheet places without
+  any per-city configuration), `min_labels_met_plain`; transform, RMS, scale, rotation, inliers, outliers; block,
+  footprint and street-name counts; seconds per step (`laps_s`); `status` placed / refused_min_labels / error.
+- **blocks, areas, locate, fetch_streets, batch**: counts, parameters, seconds; a batch stamps its `batch_id` on
+  every child record.
+
+```bash
+python3 scripts/fim_runlog.py --summary                # one line per run: latest OCR and latest fit
+python3 scripts/fim_runlog.py --csv runs/run_log.csv   # every record as one row, for pandas / a spreadsheet
+python3 scripts/fim_runlog.py --backfill               # records for runs made before the log existed, from their files
+python3 scripts/fim_runlog.py --rebuild                # master rebuilt from the per-run files
+```
+
+Backfilled records (`backfilled: true`) carry model seconds and token counts from the tile metadata but no
+wall-clock time for the fit; a fit that was refused before the log existed left no file and is not recovered.
 
 ## When something goes wrong
 
@@ -317,8 +398,8 @@ All in the run directory, `<stem>` = the scan's file name:
   `fim_batch.py`: sheets with too few labels are placed with the help of their neighbours (`--near`).
 - **`affine rejected`** in the printout: the labels sit on streets of one direction only, so the similarity fit was kept.
   Harmless; more labels in the other direction (aliases, `--fuzzy`) would let the affine step through.
-- **Most blocks rejected as "building outline or fragment"**: the plan has no lot numbers (European plans): pass
-  `--lots none`. Otherwise read the reasons in `..._blocks_rejected_wgs84.geojson`.
+- **Most blocks rejected as "building outline or fragment"**: the plan has no lot numbers (a general city plan, not an
+  insurance plan): pass `--lots none`. Otherwise read the reasons in `..._blocks_rejected_wgs84.geojson`.
 - **The traced polygons are buildings, not blocks** (residential sheets with dashed lot lines): expected before the
   fit; the fit's re-trace fixes it. If the sheet cannot be placed, try `fim_blocks.py --neck-px 16`.
 - **A real street was dropped as "farther than 300 m from every other named street"**: raise `--lonely-m`.
@@ -328,22 +409,28 @@ All in the run directory, `<stem>` = the scan's file name:
   `_metadata.json`. The scripts pin a known-good Hub revision of HunyuanOCR because the current one misreads some tiles
   (tested 2026-09-15); `HUNYUAN_REVISION=main` overrides that if you want to try a newer checkpoint.
 
-## Rights
+## Licence, citation and rights
+
+The code is released under the MIT licence (`LICENSE`): use it freely, keep the copyright notice. If you use the
+software, or GeoJSON it produced, in research or a publication, please cite it; `CITATION.cff` holds the citation
+and GitHub shows it under *Cite this repository*. The finished outputs shipped in `data/example/` are
+CC BY 4.0: reuse them with attribution to this repository.
 
 The Victoria scans this was built on are under a legal protective order (research use at UVic only) and are **not**
-in the repository, nor is anything derived from them: since 2026-09-17 no run output at all is tracked (`runs/` is
+in the repository, nor is anything derived from them: no run output of the Victoria sheets is tracked (`runs/` is
 ignored), so results stay on the machine that made them. Do not add scans, crops, overlays or outputs of the Victoria
-sheets. The Vancouver tile is public domain (City of Vancouver Open Data, Open Government Licence). The Vienna test
-tile is CC BY 4.0 (Stadt Wien). See `RIGHTS.md` and `data/example/README.md`.
+sheets. The Vancouver tile is public domain (City of Vancouver Open Data, Open Government Licence – Vancouver). The
+Tampa sheet is a Library of Congress Sanborn map published in 1889, out of copyright. The modern street layers come
+from OpenStreetMap (ODbL, © OpenStreetMap contributors) and from the City of Victoria and Capital Regional District
+open-data services; attribute them if you reuse them. Per-file details: `data/example/README.md`, `data/README.md`.
 
 ## Where the details are
 
-- `docs/PIPELINE_NOTES.md`: how each stage works and why, per-sheet results, what was tried and rejected.
-- `docs/HANDOFF_2026-09-14.md`: what is still manual, known limits, next steps.
-- `docs/run_history.md`: every OCR run so far (names and statistics, no content), regenerated by `scripts/fim_run_history.py`.
+- `data/example/README.md`: the public sheets, their sources and rights; `data/example/tampa_1889_sheet3/README.md`:
+  one complete run, file by file.
+- `data/README.md`: where the scans live, how the Library of Congress sheets are fetched, the modern street layers.
 - `configs/prompts/README.md`: the prompt presets.
-- Table extraction from the books' index pages (Chandra, Surya) is a separate toolchain described in the notes; it is
-  not part of the georeferencing pipeline.
+- `runs/run_log.json` (local, untracked): every stage execution as numbers — `python3 scripts/fim_runlog.py --summary`; see *The run log* above.
 
 ### Scripts
 
@@ -352,10 +439,11 @@ tile is CC BY 4.0 (Stadt Wien). See `RIGHTS.md` and `data/example/README.md`.
 | `fim_tile_ocr.py` | 1 · tile the sheet, OCR each tile, stitch the words |
 | `fim_blocks.py`, `fim_areas.py` | 2 · block polygons and the building footprints inside them from linework · tinted areas on key plans |
 | `fim_fetch_streets.py`, `fim_crs.py` | 3 · modern street layer (OSM or ArcGIS) · UTM maths without pyproj |
+| `fim_fetch_loc.py` | 0 · download a Library of Congress map (e.g. a Sanborn sheet) with a provenance manifest; see `data/README.md` |
 | `fim_georef.py` | 4 · the fit, and everything in map coordinates |
 | `fim_batch.py`, `fim_merge.py` | a whole book: every sheet through stages 1–4 with a neighbour-assisted second pass, then one GeoJSON per kind |
 | `fim_viewer.py` | 5 · the HTML viewer |
-| `fim_run_history.py` | regenerates `docs/run_history.md` |
+| `fim_run_history.py` | writes a table of every OCR run under `runs/` (names and statistics; local, not tracked) |
+| `fim_runlog.py` | the run log: `Stage` used by every stage script; `--summary`, `--csv`, `--backfill`, `--rebuild` |
 | `_hunyuan_compat.py` | loads HunyuanOCR, finds the right Python, parses its output |
-| `fim_hunyuan.py`, `fim_overlay.sh`, `fim_tickfilter.py`, `fim_rotation_probe.py` | single-image OCR experiments that led to the tiler (see notes) |
-| `fim_surya_*.py`, `fim_gazetteer.py`, `fim_chandra.sh`, `fim_csvify.py` | the table/index toolchain (see notes) |
+| `fim_hunyuan.py`, `fim_overlay.sh`, `fim_tickfilter.py`, `fim_rotation_probe.py` | single-image OCR experiments that led to the tiler |

@@ -55,6 +55,9 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 Image.MAX_IMAGE_PIXELS = None
+import sys  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from fim_runlog import Stage, px_outputs_summary  # noqa: E402
 
 SIDES = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
 
@@ -669,15 +672,24 @@ def main() -> None:
     args = build_parser().parse_args()
     if args.neck_px is None:
         args.neck_px = 16 if args.georef else 0
-    segs = None
-    if args.georef:
-        run = args.run.expanduser().resolve()
-        stem = Path(json.loads(next(run.glob("*_tiles.json")).read_text())["source_image"]).stem
-        segs = segments_from_georef(run, stem)
-        if segs is None:
-            raise SystemExit(f"--georef: no {stem}_georef.json in {run} — run fim_georef.py first, or trace without --georef")
-        print(f"street seeds: {len(segs)} modern centreline segments from {stem}_georef.json", flush=True)
-    trace(args, segs)
+    run = args.run.expanduser().resolve()
+    tiles = next(run.glob("*_tiles.json"), None)
+    if tiles is None:
+        raise SystemExit(f"{run}: no <stem>_tiles.json (run fim_tile_ocr.py first)")
+    stem = Path(json.loads(tiles.read_text())["source_image"]).stem
+    # run log (scripts/fim_runlog.py): seeds, parameters, block / footprint counts, white-space notes, seconds
+    params = {k: (str(v) if isinstance(v, Path) else v) for k, v in vars(args).items() if k not in ("run", "output_dir")}
+    with Stage(run, "blocks", sheet=stem, georef_seeded=bool(args.georef), neck_px=args.neck_px, params=params) as log:
+        segs = None
+        if args.georef:
+            segs = segments_from_georef(run, stem)
+            if segs is None:
+                raise SystemExit(f"--georef: no {stem}_georef.json in {run} — run fim_georef.py first, or trace without --georef")
+            print(f"street seeds: {len(segs)} modern centreline segments from {stem}_georef.json", flush=True)
+            log.note(n_street_seed_segments=len(segs))
+        fc = trace(args, segs)
+        log.note(white_space=fc.get("white_space"), n_frontage_lines_added=len(fc.get("frontage_lines_added") or []),
+                 n_manual_close_lines=len(fc.get("manual_close_lines") or []), **px_outputs_summary((args.output_dir or run), stem))
 
 
 if __name__ == "__main__":

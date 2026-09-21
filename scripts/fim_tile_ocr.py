@@ -4,7 +4,7 @@ Tile a full fire insurance sheet, HunyuanOCR each tile, and stitch the word boxe
 sheet pixel coordinates.
 
 Why: whole sheets fed at <=1536 px either collapse (a few bytes back) or hit the 16k-token cap
-with the lower half unread (see docs/run_history.md). A tile sees far less text at far higher
+with the lower half unread (measured on the first whole-sheet runs). A tile sees far less text at far higher
 resolution, so it finishes well inside the cap.
 
 Pipeline
@@ -31,6 +31,7 @@ import json
 import math
 import os
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -43,6 +44,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 PROMPTS_DIR = PROJECT_ROOT / "configs" / "prompts"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _hunyuan_compat import ensure_hunyuan_python as _ensure_hunyuan_python, extract_elements, hunyuan_infer_one, load_pil  # noqa: E402
+from fim_runlog import Stage, ocr_summary  # noqa: E402
 
 DEFAULT_MODEL = "tencent/HunyuanOCR"
 
@@ -75,6 +77,19 @@ def ink_fraction(tile_img: Image.Image, dark_below: int = 160) -> float:
     hist = g.histogram()
     dark = sum(hist[:dark_below])
     return dark / (g.width * g.height)
+
+
+def content_box(sheet: Image.Image, black_below: int = 40, step: int = 8) -> tuple[int, int, int, int]:
+    """Bounding box (source px, x0,y0,x1,y1) of the rows and columns that are mostly not black. Scanner backgrounds
+    are near-black and the sheet itself (paper, ink, tints) is not, so this is the paper's extent; a colour bar or
+    ruler laid on the paper is inside it and still has to be cut by hand. Measured on a 1/step thumbnail."""
+    import numpy as np
+    g = np.asarray(sheet.convert("L").resize((max(1, sheet.width // step), max(1, sheet.height // step)))) > black_below
+    ys = np.where(g.mean(axis=1) > 0.5)[0]
+    xs = np.where(g.mean(axis=0) > 0.5)[0]
+    if len(xs) == 0 or len(ys) == 0:
+        return 0, 0, sheet.width, sheet.height
+    return int(xs[0]) * step, int(ys[0]) * step, min(sheet.width, int(xs[-1] + 1) * step), min(sheet.height, int(ys[-1] + 1) * step)
 
 
 # --------------------------------------------------------------------------- rotated views
@@ -303,7 +318,9 @@ def draw_overlay(work: Image.Image, plan: list[dict], tokens: list[dict], skippe
 
 # --------------------------------------------------------------------------- main
 def load_preset(name: str) -> str:
-    path = PROMPTS_DIR / f"{name}.txt"
+    """A preset name (stem of a file in configs/prompts/) or a path to any prompt text file."""
+    given = Path(name).expanduser()
+    path = given if given.is_file() else PROMPTS_DIR / f"{name}.txt"
     if not path.is_file():
         sys.exit(f"error: no preset {name!r} in {PROMPTS_DIR}")
     return path.read_text(encoding="utf-8").strip()
@@ -327,10 +344,10 @@ def main() -> None:
                     help="Union the kept tokens of earlier passes (their <stem>_tiles.json) into this run before dedupe.")
     ap.add_argument("--rotations", default="0", metavar="DEG,DEG,...",
                     help="OCR each tile at these rotations (degrees, CCW) and union the results. HunyuanOCR reads text only when it is "
-                         "within ~20-30 deg of horizontal/vertical (docs/run_history.md, rotation probe), so 0,30,60 covers every text "
+                         "within ~20-30 deg of horizontal/vertical (measured with fim_rotation_probe.py), so 0,30,60 covers every text "
                          "orientation. Rotated views are cut from a sqrt(2) square around the tile so corners show real map, not white.")
     ap.add_argument("--surya-lines", type=Path, default=None, metavar="LINES_JSON",
-                    help="Output of fim_surya_detect.py for the same sheet: tag each token with the Surya line it falls in "
+                    help="Surya text-line detection JSON for the same sheet ({'lines': [{'id', 'bbox_xyxy', 'confidence'}, ...]}): tag each token with the line it falls in "
                          "(surya_line / surya_conf columns) as an independent geometric check. Tokens with none are worth a look.")
     ap.add_argument("--min-ink", type=float, default=0.004, help="Skip tiles whose dark-pixel fraction is below this (default 0.004). 0 = never skip.")
     ap.add_argument("--tiles", nargs="*", default=None, metavar="R,C", help="Only these tiles, e.g. --tiles 0,0 1,2")
@@ -338,7 +355,7 @@ def main() -> None:
     ap.add_argument("--dry-run", action="store_true", help="Plan, save tile PNGs and the grid overlay; no model.")
     ap.add_argument("--resume", action="store_true", help="Reuse tiles that already have *_content.txt in the output dir.")
     g = ap.add_mutually_exclusive_group()
-    g.add_argument("--preset", default="text_coords")
+    g.add_argument("--preset", default="text_coords", help="prompt preset name in configs/prompts/, or a path to a prompt .txt file")
     g.add_argument("--prompt")
     ap.add_argument("--max-new-tokens", type=int, default=8192)
     ap.add_argument("--dedupe-iou", type=float, default=0.4)
@@ -353,6 +370,13 @@ def main() -> None:
         sys.exit(f"error: not found: {src}")
     stem = src.stem
     out_dir = args.output_dir or (PROJECT_ROOT / "runs" / "hunyuan" / f"{datetime.now():%Y-%m-%d}_tiles_{stem}")
+    with Stage(out_dir, "ocr", sheet=stem) as log:
+        ocr_sheet(args, src, stem, out_dir, log)
+
+
+def ocr_sheet(args: argparse.Namespace, src: Path, stem: str, out_dir: Path, log: Stage) -> None:
+    """Steps 1-6 of the module docstring for one sheet. `log` is the run-log record (scripts/fim_runlog.py): tile counts,
+    pixels fed to the model, model seconds (new views and every view), tokens, GPU — see fim_runlog.ocr_summary."""
     tiles_dir = out_dir / "tiles"
     tiles_dir.mkdir(parents=True, exist_ok=True)
     prompt = args.prompt.strip() if args.prompt else load_preset(args.preset)
@@ -368,6 +392,11 @@ def main() -> None:
         work = sheet
     ww, wh = work.size
     print(f"{src.name}: source {sw}x{sh} -> work {ww}x{wh} (scale {work_scale:.4f})", flush=True)
+    cb = content_box(sheet)
+    fills = cb[0] == 0 and cb[1] == 0 and cb[2] >= sw - 16 and cb[3] >= sh - 16
+    print(f"paper extent (non-black rows/cols, source px): {cb[0]},{cb[1]},{cb[2]},{cb[3]}"
+          + (" -- the sheet fills the image, no --crop needed" if fills else
+             f" -- black surround; start from --crop {cb[0]},{cb[1]},{cb[2]},{cb[3]} and trim any colour bar or ruler"), flush=True)
 
     # 2. plan (over the content box if --crop, offsets keep coordinates in full-sheet space)
     crop_box = None
@@ -423,6 +452,8 @@ def main() -> None:
 
     tokens: list[dict[str, Any]] = []
     merged_from: list[str] = []
+    n_new = n_resumed = px_new = 0  # views inferred in this execution / reused with --resume / work px inferred now
+    load_s = gen_new = 0.0
     if not args.dry_run and todo:
         # 3. model
         rotations = [int(a) % 360 for a in args.rotations.split(",")]
@@ -432,7 +463,9 @@ def main() -> None:
         if need_model:
             from _hunyuan_compat import DEFAULT_REVISION, load_hunyuan
             print(f"Loading {args.model} (attn={args.attn}) ...", flush=True)
+            t_load = time.perf_counter()
             model, processor = load_hunyuan(args.model, args.attn, args.revision or DEFAULT_REVISION)
+            load_s += time.perf_counter() - t_load
         jobs = [(t, a) for t in todo for a in rotations]
         for i, (t, a) in enumerate(jobs, 1):
             tid = f"r{t['r']}c{t['c']}"
@@ -449,15 +482,19 @@ def main() -> None:
             if same_geom and content_path.exists():
                 content = content_path.read_text(encoding="utf-8")
                 meta = prior
+                n_resumed += 1
                 print(f"[{i}/{len(jobs)}] {tid}{sfx}: resumed ({len(content)} chars)", flush=True)
             else:
                 if model is None:  # --resume found a geometry mismatch after we decided no model was needed
                     from _hunyuan_compat import DEFAULT_REVISION, load_hunyuan
                     print(f"Loading {args.model} (attn={args.attn}) ...", flush=True)
+                    t_load = time.perf_counter()
                     model, processor = load_hunyuan(args.model, args.attn, args.revision or DEFAULT_REVISION)
+                    load_s += time.perf_counter() - t_load
                 crop = Image.open(png).convert("RGB")
                 content, m = hunyuan_infer_one(model=model, processor=processor, image_pil=crop, image_path=png,
                                                user_prompt=prompt, max_new_tokens=args.max_new_tokens)
+                n_new += 1; gen_new += float((m.get("compute") or {}).get("generate_elapsed_seconds") or 0.0); px_new += crop.width * crop.height
                 content_path.write_text(content, encoding="utf-8")
                 meta = {
                     "processed_width": m["processed_width"], "processed_height": m["processed_height"],
@@ -522,7 +559,7 @@ def main() -> None:
     doc = {
         "source_image": str(src), "source_size": {"w": sw, "h": sh},
         "work_size": {"w": ww, "h": wh}, "work_scale": work_scale,
-        "crop_source_px": args.crop, "crop_work_px": crop_box, "rotations_deg": [int(a) % 360 for a in args.rotations.split(",")], "shift_work_px": shift, "merged_from": merged_from, "surya_lines": str(args.surya_lines) if args.surya_lines else None, "tile_px": args.tile, "overlap_px": args.overlap, "grid": {"rows": rows, "cols": cols},
+        "paper_extent_source_px": list(cb), "crop_source_px": args.crop, "crop_work_px": crop_box, "rotations_deg": [int(a) % 360 for a in args.rotations.split(",")], "shift_work_px": shift, "merged_from": merged_from, "surya_lines": str(args.surya_lines) if args.surya_lines else None, "tile_px": args.tile, "overlap_px": args.overlap, "grid": {"rows": rows, "cols": cols},
         "prompt": prompt, "model": args.model, "max_new_tokens": args.max_new_tokens,
         "min_ink": args.min_ink, "dedupe_iou": args.dedupe_iou, "dry_run": args.dry_run,
         "run_utc": datetime.now(timezone.utc).isoformat(),
@@ -532,6 +569,11 @@ def main() -> None:
         "tokens": tokens,
     }
     (out_dir / f"{stem}_tiles.json").write_text(json.dumps(doc, indent=1), encoding="utf-8")
+    summary = ocr_summary(doc, out_dir)
+    summary["prompt_preset"] = "custom" if args.prompt else Path(args.preset).stem
+    log.note(**summary, n_views_inferred=n_new, n_views_resumed=n_resumed, model_load_s=round(load_s, 3), generate_s_new=round(gen_new, 3),
+             pixels_inferred_work=px_new, resume=args.resume, dry_run=args.dry_run, tiles_requested=args.tiles, max_tiles=args.max_tiles,
+             status="dry_run" if args.dry_run else None)
     if tokens:
         with open(out_dir / f"{stem}_tokens.csv", "w", newline="", encoding="utf-8") as fh:
             w = csv.writer(fh)

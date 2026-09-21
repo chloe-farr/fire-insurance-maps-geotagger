@@ -1,1 +1,0 @@
-This is a cropped scan of an Index from a Sanborn fire insurance map book from 1885. Export it as a table to markdown. Note that there are quotations many places. Those indicate that the value is the same as above. Transpose that so I don't have to manually change quotes to real string values.

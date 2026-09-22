@@ -88,7 +88,7 @@ NUM_RE = re.compile(r"(?:BL(?:OC)?K\.?\s+)?(\d+(?:½|1/2)?)", re.I)  # '17', '16
 
 
 def floors_of(numerals: list[str]) -> float | None:
-    """--floors single-numeral-1-3 (Sanborn convention, opt-in): a single numeral inside a building outline with a value
+    """--floors single-numeral-1-3 (Sanborn convention, opt-in): a single numeral inside a traced outline with a value
     from 1 to 3 inclusive is the number of floors ('1', '2', '1½' -> 1.5, '2½' -> 2.5, '3'). Anything else — no numeral,
     several, or a value outside that range (a lot number, a year) — is None. Off by default: on Goad plans the numeral
     inside a footprint is not reliably the storey count, so 'floors' stays null for a person to fill in."""
@@ -262,9 +262,9 @@ def build_parser() -> argparse.ArgumentParser:
                     help="Segments in SOURCE px drawn into the ink before segmentation, to close blocks the plan leaves open (wharf lots with no frontage line). A few per sheet; recorded in the GeoJSON.")
     ap.add_argument("--frontage-reach", type=float, default=450.0, help="Un-enclosed lot numbers are grouped with the nearest block numeral within this many work px (default 450)")
     ap.add_argument("--simplify", type=float, default=3.0, help="Polygon simplification tolerance (work px)")
-    ap.add_argument("--buildings", choices=["enclosed", "off"], default="enclosed", help="'enclosed' (default): every enclosed white region inside a traced block becomes a footprint in <stem>_buildings_px.geojson, linked to its block, carrying only the OCR tokens inside it (numerals and words, split by regex) — nothing is inferred about what the shape is. 'off': no buildings file")
-    ap.add_argument("--building-min", type=float, default=0.00008, help="smallest footprint kept, as a fraction of the content box (default 0.00008 ~ a 10 ft shed on a 50 ft/in sheet)")
-    ap.add_argument("--building-max-share", type=float, default=0.6, help="an enclosed region covering more than this share of its block is the block's own open ground, not a footprint (default 0.6)")
+    ap.add_argument("--outlines", choices=["enclosed", "off"], default="enclosed", help="'enclosed' (default): every enclosed white region inside a traced block becomes an outline in <stem>_outlines_px.geojson, linked to its block, carrying only the OCR tokens inside it (numerals and words, split by regex) — a footprint, a yard, a courtyard, an inset panel: nothing is inferred about what the shape is. 'off': no outlines file")
+    ap.add_argument("--outline-min", type=float, default=0.00008, help="smallest outline kept, as a fraction of the content box (default 0.00008 ~ a 10 ft shed on a 50 ft/in sheet)")
+    ap.add_argument("--outline-max-share", type=float, default=0.6, help="an enclosed region covering more than this share of its block is the block's own open ground, not an outline drawn on it (default 0.6)")
     ap.add_argument("--floors", choices=["off", "single-numeral-1-3"], default="off", help="how the 'floors' field of a footprint is filled. 'off' (default): always null, left for a person (Goad plans). 'single-numeral-1-3': when exactly one numeral lies inside the outline and reads 1 to 3 inclusive (1½ -> 1.5) it is the number of floors — the Sanborn convention")
     ap.add_argument("--legend", type=Path, default=None, help="the plan's colour key as a config (configs/legend/<edition>.json: min_chroma, materials with hue ranges, the meaning of 'untinted'): each outline's measured wash (wash_rgb, wash_chroma — always recorded) is looked up in it and the key's own words become 'material'. Without a legend nothing is read into the colour")
     ap.add_argument("-o", "--output-dir", type=Path, default=None, help="Default: the run dir")
@@ -517,12 +517,12 @@ def trace(args: argparse.Namespace, street_segments_source_px: np.ndarray | None
         })
         rows.append([fid, (block_no or "") + ("*" if inferred else ""), "; ".join(f"{s['name']} ({s['side']}, {s['distance_px']}px)" for s in near), " ".join(lots)])
 
-    # 6. buildings: the enclosed white regions inside each block, each linked to its block by block_id. Attributes are
+    # 6. outlines: the enclosed white regions inside each block, each linked to its block by block_id. Attributes are
     #    only what the OCR read inside the outline — numerals and words, split by regex — nothing is inferred about
     #    what the shape is (on a Goad/Sanborn plan the numeral inside a footprint is its storey count; that reading is
     #    the consumer's).
-    buildings = []
-    if args.buildings != "off" and polys:
+    outlines = []
+    if args.outlines != "off" and polys:
         legend = json.loads(args.legend.read_text()) if args.legend else None
         rgb = np.asarray(work)
         lab = cv2.cvtColor(rgb, cv2.COLOR_RGB2Lab).astype(np.float32)
@@ -570,11 +570,11 @@ def trace(args: argparse.Namespace, street_segments_source_px: np.ndarray | None
         word_re = re.compile(r"[^\W\d_]{2,}", re.UNICODE)
         for i in range(1, nreg):
             a_ = rstats[i, cv2.CC_STAT_AREA]
-            if a_ < args.building_min * area_box:
+            if a_ < args.outline_min * area_box:
                 continue
             cx_, cy_ = rcent[i]
             j = next((j_ for j_, c in block_cnts if cv2.pointPolygonTest(c, (float(cx_), float(cy_)), False) >= 0), None)
-            if j is None or a_ > args.building_max_share * block_area[j]:
+            if j is None or a_ > args.outline_max_share * block_area[j]:
                 continue
             comp = (reg == i).astype(np.uint8)
             if open_interior[comp > 0].mean() > 0.5:
@@ -595,36 +595,36 @@ def trace(args: argparse.Namespace, street_segments_source_px: np.ndarray | None
             texts = [t["text"] for t in inside_t]
             numerals = [numeral(t) for t in inside_t if numeral(t) and not t.get("rotation")]
             words = [t["text"] for t in inside_t if word_re.search(t["text"])]
-            bid = len(buildings)
+            oid = len(outlines)
             ring_ = [[round(float(p_[0][0]) / ws), round(float(p_[0][1]) / ws)] for p_ in c_]
-            buildings.append({"type": "Feature", "id": bid,
+            outlines.append({"type": "Feature", "id": oid,
                               "geometry": {"type": "Polygon", "coordinates": [ring_ + [ring_[0]]]},
-                              "properties": {"sheet": stem, "building_id": f"{features[j]['properties']['block_id']}:bldg{bid}",
+                              "properties": {"sheet": stem, "outline_id": f"{features[j]['properties']['block_id']}:outline{oid}",
                                              "block_id": features[j]["properties"]["block_id"], "block_fid": j, "block_number": features[j]["properties"]["block_number"],
                                              "text_inside": texts, "numerals_inside": numerals, "words_inside": words, "floors": floors_of(numerals) if args.floors == "single-numeral-1-3" else None,
                                              "wash_rgb": [int(v) for v in col], "wash_chroma": round(ch, 1), "wash_lightness_delta": round(dL, 1), "hue_deg": round(hue), "material": material_of(hue, ch, dL),
                                              "area_source_px2": round(float(cv2.contourArea(c_)) / ws / ws), "centroid_source_px": [round(float(cx_) / ws), round(float(cy_) / ws)]}})
         for j, f_ in enumerate(features):
-            f_["properties"]["n_enclosed"] = sum(1 for b in buildings if b["properties"]["block_fid"] == j)
+            f_["properties"]["n_outlines"] = sum(1 for b in outlines if b["properties"]["block_fid"] == j)
         bfc = {"type": "FeatureCollection",
-               "crs_note": "Coordinates are pixels on the source scan (origin top-left, y down); fim_georef.py writes <stem>_buildings_wgs84.geojson",
-               "note": "enclosed outlines inside the traced blocks (building footprints, yards, courtyards — the plan's linework, not classified); "
+               "crs_note": "Coordinates are pixels on the source scan (origin top-left, y down); fim_georef.py writes <stem>_outlines_wgs84.geojson",
+               "note": "enclosed outlines inside the traced blocks (footprints, yards, courtyards — the plan's linework, not classified); "
                        "text_inside = OCR tokens whose centre lies inside, in reading order; numerals_inside / words_inside = the same split by regex; "
                        "floors = null unless --floors single-numeral-1-3 (Sanborn): then the single numeral inside when it reads 1 to 3 inclusive (1½ -> 1.5); a field for a person to fill otherwise; "
                        "wash_rgb / wash_chroma / wash_lightness_delta / hue_deg = the measured colour inside the outline relative to the paper; material = that colour looked up in the key given with --legend (colour words or calibrated hue ranges), else null; "
                        "block_id links to <stem>_blocks_px.geojson",
                "paper_chroma": round(paper, 1), "paper_lightness": round(paper_L, 1), "legend": str(args.legend) if args.legend else None,
                "source_image": doc["source_image"], "source_size": doc["source_size"], "from_run": str(run),
-               "params": {"building_min_frac": args.building_min, "building_max_share": args.building_max_share, "floors": args.floors},
-               "generated_utc": datetime.now(timezone.utc).isoformat(), "features": buildings}
-        (out / f"{stem}_buildings_px.geojson").write_text(json.dumps(bfc, indent=1, ensure_ascii=False))
+               "params": {"outline_min_frac": args.outline_min, "outline_max_share": args.outline_max_share, "floors": args.floors},
+               "generated_utc": datetime.now(timezone.utc).isoformat(), "features": outlines}
+        (out / f"{stem}_outlines_px.geojson").write_text(json.dumps(bfc, indent=1, ensure_ascii=False))
         mats = {}
-        for b in buildings:
+        for b in outlines:
             mats[b["properties"]["material"]] = mats.get(b["properties"]["material"], 0) + 1
-        floors_note = (f"{sum(1 for b in buildings if b['properties']['floors'] is not None)} with floors read from a single 1-3 numeral" if args.floors != "off" else "floors left null")
+        floors_note = (f"{sum(1 for b in outlines if b['properties']['floors'] is not None)} with floors read from a single 1-3 numeral" if args.floors != "off" else "floors left null")
         key_note = ("; by the key: " + ", ".join(f"{v} {k}" for k, v in mats.items())) if legend else "; no --legend, colour recorded but not read"
-        print(f"{len(buildings)} enclosed outlines inside blocks -> {out}/{stem}_buildings_px.geojson ({sum(1 for b in buildings if b['properties']['numerals_inside'])} with a numeral inside, "
-              f"{floors_note}, {sum(1 for b in buildings if b['properties']['words_inside'])} with words; paper chroma {paper:.1f}{key_note})", flush=True)
+        print(f"{len(outlines)} enclosed outlines inside blocks -> {out}/{stem}_outlines_px.geojson ({sum(1 for b in outlines if b['properties']['numerals_inside'])} with a numeral inside, "
+              f"{floors_note}, {sum(1 for b in outlines if b['properties']['words_inside'])} with words; paper chroma {paper:.1f}{key_note})", flush=True)
 
     fc = {"type": "FeatureCollection",
           "crs_note": "Coordinates are pixels on the source scan (origin top-left, y down). Not georeferenced: apply the sheet's GCP transform to get geographic coordinates.",
@@ -654,7 +654,7 @@ def trace(args: argparse.Namespace, street_segments_source_px: np.ndarray | None
         m = cv2.moments(cnt); cx, cy = int(m["m10"] / max(m["m00"], 1)), int(m["m01"] / max(m["m00"], 1))
         d.text((cx - 12, cy - 14), f"#{j} {block_no or '?'}", fill=col + (255,), font=f)  # '*' = inferred from nearest bold number
         d.text((cx - 12, cy + 14), ", ".join(f"{s['name']}·{s['side']}" for s in near[:4]), fill=(0, 0, 0, 255), font=f2)
-    for b in buildings:
+    for b in outlines:
         pts_ = [(int(x * ws), int(y * ws)) for x, y in b["geometry"]["coordinates"][0]]
         d.polygon(pts_, outline=(200, 0, 120, 230), width=2)
     for fl in frontage_lines:

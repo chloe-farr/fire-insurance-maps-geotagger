@@ -11,9 +11,9 @@
   "n_labels": 6,
   "from": "01352_1889-0003_georef.json"
  },
- "source_buildings": "runs/hunyuan/Sanborn_Hillsborough-County/1889/0003/01352_1889-0003_buildings_px.geojson",
+ "source_outlines": "runs/hunyuan/Sanborn_Hillsborough-County/1889/0003/01352_1889-0003_outlines_px.geojson",
  "lot_convention": "numbered",
- "note": "enclosed outlines inside the traced blocks (building footprints, yards, courtyards — the plan's linework, not classified); text_inside = OCR tokens whose centre lies inside, in reading order; numerals_inside / words_inside = the same split by regex; floors = null unless --floors single-numeral-1-3 (Sanborn): then the single numeral inside when it reads 1 to 3 inclusive (1½ -> 1.5); a field for a person to fill otherwise; wash_rgb / wash_chroma / wash_lightness_delta / hue_deg = the measured colour inside the outline relative to the paper; material = that colour looked up in the key given with --legend (colour words or calibrated hue ranges), else null; block_id links to <stem>_blocks_px.geojson",
+ "note": "enclosed outlines inside the traced blocks (footprints, yards, courtyards — the plan's linework, not classified); text_inside = OCR tokens whose centre lies inside, in reading order; numerals_inside / words_inside = the same split by regex; floors = null unless --floors single-numeral-1-3 (Sanborn): then the single numeral inside when it reads 1 to 3 inclusive (1½ -> 1.5); a field for a person to fill otherwise; wash_rgb / wash_chroma / wash_lightness_delta / hue_deg = the measured colour inside the outline relative to the paper; material = that colour looked up in the key given with --legend (colour words or calibrated hue ranges), else null; block_id links to <stem>_blocks_px.geojson",
  "paper_chroma": 4.1,
  "legend": null,
  "features": [
@@ -100,7 +100,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid0:bldg0",
+    "outline_id": "01352_1889-0003:block:fid0:outline0",
     "block_id": null,
     "block_fid": 0,
     "block_number": null,
@@ -217,7 +217,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:3:bldg1",
+    "outline_id": "01352_1889-0003:block:3:outline1",
     "block_id": "01352_1889-0003:block:3",
     "block_fid": 1,
     "block_number": "3",
@@ -462,7 +462,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:3:bldg2",
+    "outline_id": "01352_1889-0003:block:3:outline2",
     "block_id": "01352_1889-0003:block:3",
     "block_fid": 1,
     "block_number": "3",
@@ -677,7 +677,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:2:bldg3",
+    "outline_id": "01352_1889-0003:block:2:outline3",
     "block_id": "01352_1889-0003:block:2",
     "block_fid": 2,
     "block_number": "2",
@@ -968,7 +968,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid3:bldg4",
+    "outline_id": "01352_1889-0003:block:fid3:outline4",
     "block_id": null,
     "block_fid": 3,
     "block_number": null,
@@ -1336,7 +1336,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid3:bldg5",
+    "outline_id": "01352_1889-0003:block:fid3:outline5",
     "block_id": null,
     "block_fid": 3,
     "block_number": null,
@@ -1479,7 +1479,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:2:bldg6",
+    "outline_id": "01352_1889-0003:block:2:outline6",
     "block_id": "01352_1889-0003:block:2",
     "block_fid": 2,
     "block_number": "2",
@@ -1572,7 +1572,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:3:bldg7",
+    "outline_id": "01352_1889-0003:block:3:outline7",
     "block_id": "01352_1889-0003:block:3",
     "block_fid": 1,
     "block_number": "3",
@@ -1669,7 +1669,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:3:bldg8",
+    "outline_id": "01352_1889-0003:block:3:outline8",
     "block_id": "01352_1889-0003:block:3",
     "block_fid": 1,
     "block_number": "3",
@@ -1758,7 +1758,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:3:bldg9",
+    "outline_id": "01352_1889-0003:block:3:outline9",
     "block_id": "01352_1889-0003:block:3",
     "block_fid": 1,
     "block_number": "3",
@@ -1946,7 +1946,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:3:bldg10",
+    "outline_id": "01352_1889-0003:block:3:outline10",
     "block_id": "01352_1889-0003:block:3",
     "block_fid": 1,
     "block_number": "3",
@@ -2047,7 +2047,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:3:bldg11",
+    "outline_id": "01352_1889-0003:block:3:outline11",
     "block_id": "01352_1889-0003:block:3",
     "block_fid": 1,
     "block_number": "3",
@@ -2138,7 +2138,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:3:bldg12",
+    "outline_id": "01352_1889-0003:block:3:outline12",
     "block_id": "01352_1889-0003:block:3",
     "block_fid": 1,
     "block_number": "3",
@@ -2390,7 +2390,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:3:bldg13",
+    "outline_id": "01352_1889-0003:block:3:outline13",
     "block_id": "01352_1889-0003:block:3",
     "block_fid": 1,
     "block_number": "3",
@@ -2536,7 +2536,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:2:bldg14",
+    "outline_id": "01352_1889-0003:block:2:outline14",
     "block_id": "01352_1889-0003:block:2",
     "block_fid": 2,
     "block_number": "2",
@@ -2680,7 +2680,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid3:bldg15",
+    "outline_id": "01352_1889-0003:block:fid3:outline15",
     "block_id": null,
     "block_fid": 3,
     "block_number": null,
@@ -2763,7 +2763,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:2:bldg16",
+    "outline_id": "01352_1889-0003:block:2:outline16",
     "block_id": "01352_1889-0003:block:2",
     "block_fid": 2,
     "block_number": "2",
@@ -2853,7 +2853,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:3:bldg17",
+    "outline_id": "01352_1889-0003:block:3:outline17",
     "block_id": "01352_1889-0003:block:3",
     "block_fid": 1,
     "block_number": "3",
@@ -3049,7 +3049,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:3:bldg18",
+    "outline_id": "01352_1889-0003:block:3:outline18",
     "block_id": "01352_1889-0003:block:3",
     "block_fid": 1,
     "block_number": "3",
@@ -3201,7 +3201,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:2:bldg19",
+    "outline_id": "01352_1889-0003:block:2:outline19",
     "block_id": "01352_1889-0003:block:2",
     "block_fid": 2,
     "block_number": "2",
@@ -3302,7 +3302,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:3:bldg20",
+    "outline_id": "01352_1889-0003:block:3:outline20",
     "block_id": "01352_1889-0003:block:3",
     "block_fid": 1,
     "block_number": "3",
@@ -3383,7 +3383,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:2:bldg21",
+    "outline_id": "01352_1889-0003:block:2:outline21",
     "block_id": "01352_1889-0003:block:2",
     "block_fid": 2,
     "block_number": "2",
@@ -3560,7 +3560,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:3:bldg22",
+    "outline_id": "01352_1889-0003:block:3:outline22",
     "block_id": "01352_1889-0003:block:3",
     "block_fid": 1,
     "block_number": "3",
@@ -3653,7 +3653,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid5:bldg23",
+    "outline_id": "01352_1889-0003:block:fid5:outline23",
     "block_id": null,
     "block_fid": 5,
     "block_number": null,
@@ -4111,7 +4111,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:4:bldg24",
+    "outline_id": "01352_1889-0003:block:4:outline24",
     "block_id": "01352_1889-0003:block:4",
     "block_fid": 4,
     "block_number": "4",
@@ -4296,7 +4296,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:4:bldg25",
+    "outline_id": "01352_1889-0003:block:4:outline25",
     "block_id": "01352_1889-0003:block:4",
     "block_fid": 4,
     "block_number": "4",
@@ -4485,7 +4485,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:4:bldg26",
+    "outline_id": "01352_1889-0003:block:4:outline26",
     "block_id": "01352_1889-0003:block:4",
     "block_fid": 4,
     "block_number": "4",
@@ -4584,7 +4584,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:4:bldg27",
+    "outline_id": "01352_1889-0003:block:4:outline27",
     "block_id": "01352_1889-0003:block:4",
     "block_fid": 4,
     "block_number": "4",
@@ -4768,7 +4768,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:4:bldg28",
+    "outline_id": "01352_1889-0003:block:4:outline28",
     "block_id": "01352_1889-0003:block:4",
     "block_fid": 4,
     "block_number": "4",
@@ -4971,7 +4971,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:4:bldg29",
+    "outline_id": "01352_1889-0003:block:4:outline29",
     "block_id": "01352_1889-0003:block:4",
     "block_fid": 4,
     "block_number": "4",
@@ -5182,7 +5182,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:5:bldg30",
+    "outline_id": "01352_1889-0003:block:5:outline30",
     "block_id": "01352_1889-0003:block:5",
     "block_fid": 6,
     "block_number": "5",
@@ -5356,7 +5356,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:5:bldg31",
+    "outline_id": "01352_1889-0003:block:5:outline31",
     "block_id": "01352_1889-0003:block:5",
     "block_fid": 6,
     "block_number": "5",
@@ -5553,7 +5553,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid5:bldg32",
+    "outline_id": "01352_1889-0003:block:fid5:outline32",
     "block_id": null,
     "block_fid": 5,
     "block_number": null,
@@ -5688,7 +5688,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:4:bldg33",
+    "outline_id": "01352_1889-0003:block:4:outline33",
     "block_id": "01352_1889-0003:block:4",
     "block_fid": 4,
     "block_number": "4",
@@ -5798,7 +5798,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:4:bldg34",
+    "outline_id": "01352_1889-0003:block:4:outline34",
     "block_id": "01352_1889-0003:block:4",
     "block_fid": 4,
     "block_number": "4",
@@ -6217,7 +6217,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:4:bldg35",
+    "outline_id": "01352_1889-0003:block:4:outline35",
     "block_id": "01352_1889-0003:block:4",
     "block_fid": 4,
     "block_number": "4",
@@ -6360,7 +6360,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:4:bldg36",
+    "outline_id": "01352_1889-0003:block:4:outline36",
     "block_id": "01352_1889-0003:block:4",
     "block_fid": 4,
     "block_number": "4",
@@ -6536,7 +6536,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:4:bldg37",
+    "outline_id": "01352_1889-0003:block:4:outline37",
     "block_id": "01352_1889-0003:block:4",
     "block_fid": 4,
     "block_number": "4",
@@ -6650,7 +6650,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:4:bldg38",
+    "outline_id": "01352_1889-0003:block:4:outline38",
     "block_id": "01352_1889-0003:block:4",
     "block_fid": 4,
     "block_number": "4",
@@ -6770,7 +6770,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:4:bldg39",
+    "outline_id": "01352_1889-0003:block:4:outline39",
     "block_id": "01352_1889-0003:block:4",
     "block_fid": 4,
     "block_number": "4",
@@ -6858,7 +6858,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:4:bldg40",
+    "outline_id": "01352_1889-0003:block:4:outline40",
     "block_id": "01352_1889-0003:block:4",
     "block_fid": 4,
     "block_number": "4",
@@ -6928,7 +6928,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid7:bldg41",
+    "outline_id": "01352_1889-0003:block:fid7:outline41",
     "block_id": "01352_1889-0003:block:fid7",
     "block_fid": 7,
     "block_number": null,
@@ -7044,7 +7044,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid9:bldg42",
+    "outline_id": "01352_1889-0003:block:fid9:outline42",
     "block_id": null,
     "block_fid": 9,
     "block_number": null,
@@ -7133,7 +7133,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid8:bldg43",
+    "outline_id": "01352_1889-0003:block:fid8:outline43",
     "block_id": null,
     "block_fid": 8,
     "block_number": null,
@@ -7254,7 +7254,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid9:bldg44",
+    "outline_id": "01352_1889-0003:block:fid9:outline44",
     "block_id": null,
     "block_fid": 9,
     "block_number": null,
@@ -7383,7 +7383,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid10:bldg45",
+    "outline_id": "01352_1889-0003:block:fid10:outline45",
     "block_id": "01352_1889-0003:block:fid10",
     "block_fid": 10,
     "block_number": null,
@@ -7562,7 +7562,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid10:bldg46",
+    "outline_id": "01352_1889-0003:block:fid10:outline46",
     "block_id": "01352_1889-0003:block:fid10",
     "block_fid": 10,
     "block_number": null,
@@ -7649,7 +7649,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:6:bldg47",
+    "outline_id": "01352_1889-0003:block:6:outline47",
     "block_id": "01352_1889-0003:block:6",
     "block_fid": 12,
     "block_number": "6",
@@ -7757,7 +7757,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:7:bldg48",
+    "outline_id": "01352_1889-0003:block:7:outline48",
     "block_id": "01352_1889-0003:block:7",
     "block_fid": 11,
     "block_number": "7",
@@ -7822,7 +7822,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:6:bldg49",
+    "outline_id": "01352_1889-0003:block:6:outline49",
     "block_id": "01352_1889-0003:block:6",
     "block_fid": 12,
     "block_number": "6",
@@ -7938,7 +7938,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:6:bldg50",
+    "outline_id": "01352_1889-0003:block:6:outline50",
     "block_id": "01352_1889-0003:block:6",
     "block_fid": 12,
     "block_number": "6",
@@ -8038,7 +8038,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:6:bldg51",
+    "outline_id": "01352_1889-0003:block:6:outline51",
     "block_id": "01352_1889-0003:block:6",
     "block_fid": 12,
     "block_number": "6",
@@ -8154,7 +8154,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:7:bldg52",
+    "outline_id": "01352_1889-0003:block:7:outline52",
     "block_id": "01352_1889-0003:block:7",
     "block_fid": 11,
     "block_number": "7",
@@ -8327,7 +8327,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:6:bldg53",
+    "outline_id": "01352_1889-0003:block:6:outline53",
     "block_id": "01352_1889-0003:block:6",
     "block_fid": 12,
     "block_number": "6",
@@ -8419,7 +8419,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:6:bldg54",
+    "outline_id": "01352_1889-0003:block:6:outline54",
     "block_id": "01352_1889-0003:block:6",
     "block_fid": 12,
     "block_number": "6",
@@ -8523,7 +8523,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:6:bldg55",
+    "outline_id": "01352_1889-0003:block:6:outline55",
     "block_id": "01352_1889-0003:block:6",
     "block_fid": 12,
     "block_number": "6",
@@ -8635,7 +8635,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:6:bldg56",
+    "outline_id": "01352_1889-0003:block:6:outline56",
     "block_id": "01352_1889-0003:block:6",
     "block_fid": 12,
     "block_number": "6",
@@ -8817,7 +8817,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:6:bldg57",
+    "outline_id": "01352_1889-0003:block:6:outline57",
     "block_id": "01352_1889-0003:block:6",
     "block_fid": 12,
     "block_number": "6",
@@ -8885,7 +8885,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:6:bldg58",
+    "outline_id": "01352_1889-0003:block:6:outline58",
     "block_id": "01352_1889-0003:block:6",
     "block_fid": 12,
     "block_number": "6",
@@ -8973,7 +8973,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:7:bldg59",
+    "outline_id": "01352_1889-0003:block:7:outline59",
     "block_id": "01352_1889-0003:block:7",
     "block_fid": 11,
     "block_number": "7",
@@ -9082,7 +9082,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:6:bldg60",
+    "outline_id": "01352_1889-0003:block:6:outline60",
     "block_id": "01352_1889-0003:block:6",
     "block_fid": 12,
     "block_number": "6",
@@ -9185,7 +9185,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:7:bldg61",
+    "outline_id": "01352_1889-0003:block:7:outline61",
     "block_id": "01352_1889-0003:block:7",
     "block_fid": 11,
     "block_number": "7",
@@ -9352,7 +9352,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:7:bldg62",
+    "outline_id": "01352_1889-0003:block:7:outline62",
     "block_id": "01352_1889-0003:block:7",
     "block_fid": 11,
     "block_number": "7",
@@ -9508,7 +9508,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:6:bldg63",
+    "outline_id": "01352_1889-0003:block:6:outline63",
     "block_id": "01352_1889-0003:block:6",
     "block_fid": 12,
     "block_number": "6",
@@ -9627,7 +9627,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid14:bldg64",
+    "outline_id": "01352_1889-0003:block:fid14:outline64",
     "block_id": "01352_1889-0003:block:fid14",
     "block_fid": 14,
     "block_number": null,
@@ -9718,7 +9718,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid14:bldg65",
+    "outline_id": "01352_1889-0003:block:fid14:outline65",
     "block_id": "01352_1889-0003:block:fid14",
     "block_fid": 14,
     "block_number": null,
@@ -9806,7 +9806,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:6:bldg66",
+    "outline_id": "01352_1889-0003:block:6:outline66",
     "block_id": "01352_1889-0003:block:6",
     "block_fid": 12,
     "block_number": "6",
@@ -9912,7 +9912,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid14:bldg67",
+    "outline_id": "01352_1889-0003:block:fid14:outline67",
     "block_id": "01352_1889-0003:block:fid14",
     "block_fid": 14,
     "block_number": null,
@@ -10012,7 +10012,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:6:bldg68",
+    "outline_id": "01352_1889-0003:block:6:outline68",
     "block_id": "01352_1889-0003:block:6",
     "block_fid": 12,
     "block_number": "6",
@@ -10109,7 +10109,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:7:bldg69",
+    "outline_id": "01352_1889-0003:block:7:outline69",
     "block_id": "01352_1889-0003:block:7",
     "block_fid": 11,
     "block_number": "7",
@@ -10211,7 +10211,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:6:bldg70",
+    "outline_id": "01352_1889-0003:block:6:outline70",
     "block_id": "01352_1889-0003:block:6",
     "block_fid": 12,
     "block_number": "6",
@@ -10347,7 +10347,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:7:bldg71",
+    "outline_id": "01352_1889-0003:block:7:outline71",
     "block_id": "01352_1889-0003:block:7",
     "block_fid": 11,
     "block_number": "7",
@@ -10476,7 +10476,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:7:bldg72",
+    "outline_id": "01352_1889-0003:block:7:outline72",
     "block_id": "01352_1889-0003:block:7",
     "block_fid": 11,
     "block_number": "7",
@@ -10575,7 +10575,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:7:bldg73",
+    "outline_id": "01352_1889-0003:block:7:outline73",
     "block_id": "01352_1889-0003:block:7",
     "block_fid": 11,
     "block_number": "7",
@@ -10699,7 +10699,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:7:bldg74",
+    "outline_id": "01352_1889-0003:block:7:outline74",
     "block_id": "01352_1889-0003:block:7",
     "block_fid": 11,
     "block_number": "7",
@@ -10776,7 +10776,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid14:bldg75",
+    "outline_id": "01352_1889-0003:block:fid14:outline75",
     "block_id": "01352_1889-0003:block:fid14",
     "block_fid": 14,
     "block_number": null,
@@ -10916,7 +10916,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid14:bldg76",
+    "outline_id": "01352_1889-0003:block:fid14:outline76",
     "block_id": "01352_1889-0003:block:fid14",
     "block_fid": 14,
     "block_number": null,
@@ -11004,7 +11004,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid14:bldg77",
+    "outline_id": "01352_1889-0003:block:fid14:outline77",
     "block_id": "01352_1889-0003:block:fid14",
     "block_fid": 14,
     "block_number": null,
@@ -11142,7 +11142,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid14:bldg78",
+    "outline_id": "01352_1889-0003:block:fid14:outline78",
     "block_id": "01352_1889-0003:block:fid14",
     "block_fid": 14,
     "block_number": null,
@@ -11475,7 +11475,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:8:bldg79",
+    "outline_id": "01352_1889-0003:block:8:outline79",
     "block_id": "01352_1889-0003:block:8",
     "block_fid": 15,
     "block_number": "8",
@@ -11930,7 +11930,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:9:bldg80",
+    "outline_id": "01352_1889-0003:block:9:outline80",
     "block_id": "01352_1889-0003:block:9",
     "block_fid": 16,
     "block_number": "9",
@@ -12030,7 +12030,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:9:bldg81",
+    "outline_id": "01352_1889-0003:block:9:outline81",
     "block_id": "01352_1889-0003:block:9",
     "block_fid": 16,
     "block_number": "9",
@@ -12174,7 +12174,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:9:bldg82",
+    "outline_id": "01352_1889-0003:block:9:outline82",
     "block_id": "01352_1889-0003:block:9",
     "block_fid": 16,
     "block_number": "9",
@@ -12293,7 +12293,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:9:bldg83",
+    "outline_id": "01352_1889-0003:block:9:outline83",
     "block_id": "01352_1889-0003:block:9",
     "block_fid": 16,
     "block_number": "9",
@@ -12379,7 +12379,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid17:bldg84",
+    "outline_id": "01352_1889-0003:block:fid17:outline84",
     "block_id": "01352_1889-0003:block:fid17",
     "block_fid": 17,
     "block_number": null,
@@ -12511,7 +12511,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid17:bldg85",
+    "outline_id": "01352_1889-0003:block:fid17:outline85",
     "block_id": "01352_1889-0003:block:fid17",
     "block_fid": 17,
     "block_number": null,
@@ -12739,7 +12739,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:fid17:bldg86",
+    "outline_id": "01352_1889-0003:block:fid17:outline86",
     "block_id": "01352_1889-0003:block:fid17",
     "block_fid": 17,
     "block_number": null,
@@ -12876,7 +12876,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:9:bldg87",
+    "outline_id": "01352_1889-0003:block:9:outline87",
     "block_id": "01352_1889-0003:block:9",
     "block_fid": 16,
     "block_number": "9",
@@ -12987,7 +12987,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:8:bldg88",
+    "outline_id": "01352_1889-0003:block:8:outline88",
     "block_id": "01352_1889-0003:block:8",
     "block_fid": 15,
     "block_number": "8",
@@ -13092,7 +13092,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:9:bldg89",
+    "outline_id": "01352_1889-0003:block:9:outline89",
     "block_id": "01352_1889-0003:block:9",
     "block_fid": 16,
     "block_number": "9",
@@ -13191,7 +13191,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:9:bldg90",
+    "outline_id": "01352_1889-0003:block:9:outline90",
     "block_id": "01352_1889-0003:block:9",
     "block_fid": 16,
     "block_number": "9",
@@ -13308,7 +13308,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:9:bldg91",
+    "outline_id": "01352_1889-0003:block:9:outline91",
     "block_id": "01352_1889-0003:block:9",
     "block_fid": 16,
     "block_number": "9",
@@ -13457,7 +13457,7 @@
    },
    "properties": {
     "sheet": "01352_1889-0003",
-    "building_id": "01352_1889-0003:block:8:bldg92",
+    "outline_id": "01352_1889-0003:block:8:outline92",
     "block_id": "01352_1889-0003:block:8",
     "block_fid": 15,
     "block_number": "8",

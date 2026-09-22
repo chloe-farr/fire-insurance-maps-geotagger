@@ -553,7 +553,7 @@ def main() -> None:
     ap.add_argument("--neck-px", type=int, default=16, help="fim_blocks.py --neck-px for the seeded re-trace (default 16 work px; keep it under half the narrowest street of the plan in work px)")
     ap.add_argument("--floors", choices=["off", "single-numeral-1-3"], default="off", help="fim_blocks.py --floors for the re-trace: 'off' (default, Goad: a person fills 'floors') or 'single-numeral-1-3' (Sanborn: the single 1-3 numeral inside a footprint is its floors)")
     ap.add_argument("--legend", type=Path, default=None, help="fim_blocks.py --legend for the re-trace: the plan's colour key as a config (configs/legend/goad_sanborn_default.json for Goad and Sanborn plans); without it the footprints' colour is recorded but not read")
-    ap.add_argument("--lots", choices=["numbered", "none"], default="numbered", help="lot convention of the plan. 'numbered' (default; North American fire insurance plans): a traced polygon is a block only if it holds a bold block numeral or at least two lot numbers, so building outlines and fragments are rejected. 'none' (plans without lot subdivisions or block numbers, e.g. a European city plan): no numeral test at all — every traced polygon that passes the shape and street tests is a block, block_number is null and the numerals inside go to numbers_inside")
+    ap.add_argument("--lots", choices=["numbered", "none"], default="numbered", help="lot convention of the plan. 'numbered' (default; North American fire insurance plans): a traced polygon is a block only if it holds a bold block numeral or at least two lot numbers, so outlines and fragments are rejected. 'none' (plans without lot subdivisions or block numbers, e.g. a European city plan): no numeral test at all — every traced polygon that passes the shape and street tests is a block, block_number is null and the numerals inside go to numbers_inside")
     ap.add_argument("--block-street-reach-m", type=float, default=16.0, help="a modern centreline within this many metres of a block polygon's edge counts as bounding it (default 16: half a 66 ft street plus fit error)")
     ap.add_argument("--overlay-px", type=int, default=2400, help="long edge of the overlay JPEG (default 2400)")
     args = ap.parse_args()
@@ -1209,7 +1209,7 @@ def georef_sheet(args: argparse.Namespace, run: Path, tiles_path: Path, stem: st
             elif len(through) >= 2:
                 reason = f"{len(through)} modern streets run through it {through} — an inset or compound, not one block"
             elif args.lots == "numbered" and len(lots) < 2 and not has_block_numeral:
-                reason = f"only {len(lots)} lot number(s) inside and no block numeral — a building outline or a fragment"
+                reason = f"only {len(lots)} lot number(s) inside and no block numeral — an outline or a fragment"
             props["streets_through"] = through
             props["merged_across"] = through[0] if (not reason and through) else None
             if props.get("_split_from"):
@@ -1235,7 +1235,7 @@ def georef_sheet(args: argparse.Namespace, run: Path, tiles_path: Path, stem: st
                        "georeference": {"rms_m": rms, "n_labels": int(inl.sum()), "from": f"{stem}_georef.json"}, "source_blocks": str(blocks_path), "lot_convention": args.lots,
                        "note": ("blocks: polygons with lots inside and streets around them; streets_1895 = OCR street labels around the block that matched the modern layer, "
                                 "streets_modern = modern centrelines within --block-street-reach-m of the polygon, nearby_text = other OCR text the tracer saw nearby"
-                                if not suffix else "traced shapes that are not blocks (inset frames, building outlines, fragments) — kept for inspection"),
+                                if not suffix else "traced shapes that are not blocks (inset frames, outlines, fragments) — kept for inspection"),
                        "features": []}
                 for props, g in group:
                     if g["type"] == "Polygon":
@@ -1251,10 +1251,10 @@ def georef_sheet(args: argparse.Namespace, run: Path, tiles_path: Path, stem: st
         for props, _ in accepted:
             print(f"  block {str(props.get('block_number') or '?'):>4s}: 1895 streets {props['street_names']}; modern {[d['name'] + ' ' + d['side'] for d in props['streets_modern']]}" + (f"; part {props['split_from']['part']}/{props['split_from']['of']} of a compound cut along {props['split_from']['cut_along']}" if props.get('split_from') else "") + (f"; MERGED across {props['merged_across']}" if props['merged_across'] else "") + (f"; other text {props['nearby_text'][:4]}" if props['nearby_text'] else ""))
 
-    # buildings (fim_blocks.py --buildings): footprints inside the blocks, each linked to the block that holds its centroid
+    # outlines (fim_blocks.py --outlines): enclosed shapes inside the blocks, each linked to the block that holds its centroid
     # AFTER the cleaning above (a footprint whose block was split follows the part it lies in; one whose block was rejected
     # is kept with block_id null and 'orphan' true, so nothing silently disappears)
-    bpath = run / f"{stem}_buildings_px.geojson"
+    bpath = run / f"{stem}_outlines_px.geojson"
     if blocks_path.exists() and bpath.exists():
         bl_b = json.loads(bpath.read_text())
         final_blocks = [(props_, np.array(g_["coordinates"][0] if g_["type"] == "Polygon" else g_["coordinates"][0][0], np.float32).reshape(-1, 1, 2)) for props_, g_ in accepted]
@@ -1269,17 +1269,17 @@ def georef_sheet(args: argparse.Namespace, run: Path, tiles_path: Path, stem: st
                 props_.update({"block_id": None, "block_number": None, "orphan": True, "orphan_because": "its block was rejected, split away or never traced"})
             else:
                 props_.update({"block_id": home.get("block_id"), "block_number": home.get("block_number"), "orphan": False})
-                props_["building_id"] = f"{home.get('block_id')}:bldg{f.get('id', len(b_out))}"
+                props_["outline_id"] = f"{home.get('block_id')}:outline{f.get('id', len(b_out))}"
             props_["centroid_map"] = [round(float(v), 3) for v in apply(A, np.array([[float(cx_), float(cy_)]]))[0]]
             b_out.append((props_, f["geometry"]))
         for crs_urn, conv, name in ((f"urn:ogc:def:crs:EPSG::{epsg}", to_map_ring, f"epsg{epsg}"), ("urn:ogc:def:crs:OGC:1.3:CRS84", to_wgs84_ring, "wgs84")):
             out = {"type": "FeatureCollection", **({"crs": {"type": "name", "properties": {"name": crs_urn}}} if name != "wgs84" else {}),
-                   "georeference": {"rms_m": rms, "n_labels": int(inl.sum()), "from": f"{stem}_georef.json"}, "source_buildings": str(bpath), "lot_convention": args.lots,
+                   "georeference": {"rms_m": rms, "n_labels": int(inl.sum()), "from": f"{stem}_georef.json"}, "source_outlines": str(bpath), "lot_convention": args.lots,
                    "note": bl_b.get("note"), "paper_chroma": bl_b.get("paper_chroma"), "legend": bl_b.get("legend"), "features": []}
             for props_, g_ in b_out:
                 out["features"].append({"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [conv(r) for r in g_["coordinates"]]}, "properties": props_})
-            (run / f"{stem}_buildings_{name}.geojson").write_text(json.dumps(out, indent=1, ensure_ascii=False))
-        print(f"buildings: {len(b_out)} enclosed outlines -> {stem}_buildings_epsg{epsg}.geojson, {stem}_buildings_wgs84.geojson ({n_orphan} orphans whose block was not kept)")
+            (run / f"{stem}_outlines_{name}.geojson").write_text(json.dumps(out, indent=1, ensure_ascii=False))
+        print(f"outlines: {len(b_out)} enclosed outlines -> {stem}_outlines_epsg{epsg}.geojson, {stem}_outlines_wgs84.geojson ({n_orphan} orphans whose block was not kept)")
 
     # colour-wash areas (fim_areas.py, run explicitly on tinted sheets): placed like the blocks, streets cleaned the same way,
     # but never split or rejected for lot counts — an area is a region of the sheet, not a city block

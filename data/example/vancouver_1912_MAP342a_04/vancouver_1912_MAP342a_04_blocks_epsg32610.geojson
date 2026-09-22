@@ -358,7 +358,7 @@
      876,
      2414
     ],
-    "n_enclosed": 19,
+    "n_outlines": 19,
     "compactness": 0.397,
     "streets_through": [],
     "merged_across": null,
@@ -752,7 +752,7 @@
      1322,
      2802
     ],
-    "n_enclosed": 15,
+    "n_outlines": 15,
     "compactness": 0.403,
     "streets_through": [],
     "merged_across": null,
@@ -1345,7 +1345,7 @@
      1720,
      3201
     ],
-    "n_enclosed": 15,
+    "n_outlines": 15,
     "compactness": 0.323,
     "streets_through": [],
     "merged_across": null,
@@ -1715,7 +1715,7 @@
      2261,
      3078
     ],
-    "n_enclosed": 7,
+    "n_outlines": 7,
     "compactness": 0.453,
     "streets_through": [],
     "merged_across": null,
@@ -2593,7 +2593,7 @@
      3905,
      4390
     ],
-    "n_enclosed": 31,
+    "n_outlines": 31,
     "compactness": 0.18,
     "streets_through": [],
     "merged_across": null,
@@ -3707,7 +3707,7 @@
      3045,
      3672
     ],
-    "n_enclosed": 25,
+    "n_outlines": 25,
     "block_number": null,
     "block_number_inferred": true,
     "compactness": 0.358,
@@ -4768,7 +4768,7 @@
      3053,
      3343
     ],
-    "n_enclosed": 25,
+    "n_outlines": 25,
     "block_number": "9",
     "block_number_inferred": true,
     "compactness": 0.393,
@@ -6515,7 +6515,7 @@
      2899,
      4091
     ],
-    "n_enclosed": 52,
+    "n_outlines": 52,
     "block_number": "11",
     "block_number_inferred": true,
     "compactness": 0.351,
@@ -7475,7 +7475,7 @@
      2103,
      3709
     ],
-    "n_enclosed": 52,
+    "n_outlines": 52,
     "block_number": null,
     "block_number_inferred": true,
     "compactness": 0.198,
@@ -8570,7 +8570,7 @@
      3952,
      3906
     ],
-    "n_enclosed": 32,
+    "n_outlines": 32,
     "block_number": null,
     "block_number_inferred": true,
     "compactness": 0.348,
@@ -9664,7 +9664,7 @@
      4051,
      3610
     ],
-    "n_enclosed": 32,
+    "n_outlines": 32,
     "block_number": "05",
     "block_number_inferred": true,
     "compactness": 0.402,

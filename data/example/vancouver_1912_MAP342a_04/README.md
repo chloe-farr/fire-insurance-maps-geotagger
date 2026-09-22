@@ -31,12 +31,12 @@ that rotation for itself.
 | `..._tile_overlay.jpg` | every word boxed on the sheet |
 | `..._blocks_px.geojson`, `_blocks.csv`, `_blocks_overlay.jpg` | 15 traced city blocks in scan pixels, with their numbers, lot numbers and neighbouring street labels |
 | `..._blocks_rejected_*.geojson` | 8 traced shapes the fit judged not to be blocks, kept so the decision can be inspected |
-| `..._buildings_px.geojson` | 286 enclosed outlines inside those blocks, each linked to its block, carrying only the OCR tokens inside it |
+| `..._outlines_px.geojson` | 286 enclosed outlines inside those blocks, each linked to its block, carrying only the OCR tokens inside it |
 | `..._locate.json` | what `fim_locate.py` made of the sheet from its street names alone, before any street layer was fetched |
 | `..._georef.json`, `_georef.points` | the affine fit both ways, per-label residuals, RMS; the `.points` file opens in the QGIS Georeferencer |
 | `..._georef_overlay.jpg` | today's streets drawn back onto the 1912 sheet — the picture that says whether it worked |
 | `..._MAP342a_04.jgw` | ESRI world file for the scan, written by the fit |
-| `..._blocks_epsg32610/_wgs84.geojson`, `_buildings_*`, `_page_*`, `_street_names_wgs84`, `_tokens_wgs84` | the same features on the Earth, in the layer's CRS and in WGS 84 |
+| `..._blocks_epsg32610/_wgs84.geojson`, `_outlines_*`, `_page_*`, `_street_names_wgs84`, `_tokens_wgs84` | the same features on the Earth, in the layer's CRS and in WGS 84 |
 | `vancouver_streets_epsg32610.geojson` | the modern street centrelines the sheet was fitted to (OpenStreetMap, © OpenStreetMap contributors, **ODbL**) |
 
 ## The run
@@ -63,7 +63,7 @@ OCR: `tencent/HunyuanOCR`, a 5 × 5 grid of 1536 px tiles with 192 px overlap, r
 | Labels set aside as building labels | 44 (inside a traced block, so not street names) |
 | Fit | affine, **RMS 0.49 m**, 0.173 m per scan pixel |
 | Blocks | 15 traced, 8 shapes rejected |
-| Buildings | 286 enclosed outlines |
+| Outlines | 286 enclosed outlines |
 | CRS | EPSG:32610 (WGS 84 / UTM 10 N) |
 
 0.49 m RMS is about three scan pixels. Because the City's own georectification is in the GeoTIFF, that number is a

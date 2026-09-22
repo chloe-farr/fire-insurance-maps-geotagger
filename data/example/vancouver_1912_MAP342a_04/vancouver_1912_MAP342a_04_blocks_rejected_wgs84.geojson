@@ -78,7 +78,7 @@
      1865,
      1611
     ],
-    "n_enclosed": 1,
+    "n_outlines": 1,
     "compactness": 0.516,
     "streets_through": [
      "WEST WATERFRONT RD"
@@ -1156,7 +1156,7 @@
      2713,
      2574
     ],
-    "n_enclosed": 78,
+    "n_outlines": 78,
     "compactness": 0.043,
     "streets_through": [],
     "merged_across": null,
@@ -1299,7 +1299,7 @@
      2557,
      1917
     ],
-    "n_enclosed": 1,
+    "n_outlines": 1,
     "compactness": 0.478,
     "streets_through": [
      "WEST WATERFRONT RD"
@@ -1409,7 +1409,7 @@
      4420,
      2326
     ],
-    "n_enclosed": 0,
+    "n_outlines": 0,
     "compactness": 0.432,
     "streets_through": [],
     "merged_across": null,
@@ -2092,7 +2092,7 @@
      3279,
      2243
     ],
-    "n_enclosed": 1,
+    "n_outlines": 1,
     "is_block": false,
     "rejected_because": "sliver (17% of the parent) left after cutting along ['WEST WATERFRONT RD'] \u2014 a street widened or realigned into the 1895 block"
    }
@@ -2778,7 +2778,7 @@
      3279,
      2243
     ],
-    "n_enclosed": 1,
+    "n_outlines": 1,
     "is_block": false,
     "rejected_because": "sliver (19% of the parent) left after cutting along ['WEST WATERFRONT RD'] \u2014 a street widened or realigned into the 1895 block"
    }
@@ -3004,7 +3004,7 @@
      4187,
      2707
     ],
-    "n_enclosed": 3,
+    "n_outlines": 3,
     "compactness": 0.183,
     "streets_through": [],
     "merged_across": null,
@@ -3141,7 +3141,7 @@
      2463,
      2832
     ],
-    "n_enclosed": 6,
+    "n_outlines": 6,
     "compactness": 0.73,
     "streets_through": [],
     "merged_across": null,

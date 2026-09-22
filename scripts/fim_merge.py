@@ -9,7 +9,7 @@ QGIS or a web map: one file with every block of the book, one with every page fo
 
 Every feature gets a 'sheet' property (the run's stem) if it has none. Runs that lack a kind (a sheet that did not
 georeference, a sheet without tinted areas) are skipped with a note. --what picks the kinds:
-blocks, buildings, page, street_names (default), areas, tokens, blocks_rejected. Only the WGS84 files are merged; the EPSG copies stay per run.
+blocks, outlines, page, street_names (default), areas, tokens, blocks_rejected. Only the WGS84 files are merged; the EPSG copies stay per run.
 fim_batch.py calls this with --merge.
 """
 from __future__ import annotations
@@ -19,7 +19,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-KINDS = ["blocks", "buildings", "page", "street_names", "areas", "tokens", "blocks_rejected"]
+KINDS = ["blocks", "outlines", "page", "street_names", "areas", "tokens", "blocks_rejected"]
 
 
 def stem_of(run: Path) -> str | None:
@@ -51,7 +51,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("runs", nargs="+", type=Path, help="fim_georef.py run dirs (any order; the output keeps it)")
     ap.add_argument("-o", "--out-prefix", type=Path, required=True, help="output path prefix: <prefix>_<kind>_wgs84.geojson")
-    ap.add_argument("--what", default="blocks,buildings,page,street_names", help=f"comma list of kinds to merge, from {KINDS} (default blocks,buildings,page,street_names)")
+    ap.add_argument("--what", default="blocks,outlines,page,street_names", help=f"comma list of kinds to merge, from {KINDS} (default blocks,outlines,page,street_names)")
     args = ap.parse_args()
     kinds = [k.strip() for k in args.what.split(",") if k.strip()]
     bad = [k for k in kinds if k not in KINDS]

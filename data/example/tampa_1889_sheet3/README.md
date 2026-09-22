@@ -29,11 +29,11 @@ identical; a re-run on the JPEG may differ by a word or two.
 | `01352_1889-0003_tokens.csv`, `_tiles.json` | 587 words with their boxes in scan pixels; the JSON also holds the per-tile statistics and the prompt |
 | `01352_1889-0003_tile_overlay.jpg` | every word boxed on the sheet |
 | `01352_1889-0003_blocks_px.geojson`, `_blocks.csv`, `_blocks_overlay.jpg` | 12 city blocks in scan pixels with their lot numbers and neighbouring streets, and every enclosed outline inside them in magenta |
-| `01352_1889-0003_buildings_px.geojson` | 93 building outlines: block id, the text the OCR read inside each, `floors` (null: no rule was chosen), measured wash colour (no `--legend` was passed, so no `material`) |
+| `01352_1889-0003_outlines_px.geojson` | 93 outlines: block id, the text the OCR read inside each, `floors` (null: no rule was chosen), measured wash colour (no `--legend` was passed, so no `material`) |
 | `01352_1889-0003_areas_px.geojson`, `_areas.csv`, `_areas_overlay.jpg` | 27 colour-washed areas in three tints (yellow, blue, pink), from `fim_areas.py` |
 | `01352_1889-0003_georef.json`, `_georef.points` | the transform scan pixels → EPSG:32617, per-label residuals, alias candidates, the parameters; QGIS control points |
 | `01352_1889-0003_georef_overlay.jpg` | today's streets drawn back onto the sheet |
-| `*_wgs84.geojson`, `*_epsg32617.geojson` | blocks, buildings, areas, words and the sheet outline (`_page_`) on the Earth, in WGS 84 and in UTM zone 17N |
+| `*_wgs84.geojson`, `*_epsg32617.geojson` | blocks, outlines, areas, words and the sheet outline (`_page_`) on the Earth, in WGS 84 and in UTM zone 17N |
 | `01352_1889-0003_street_names_wgs84.geojson` | 17 street-name records: labels matched through the alias file (renamed streets), labels inside blocks that spell a street name (building labels), and unmatched words that lie on a modern centreline (candidates) |
 
 ## The run
@@ -43,7 +43,7 @@ identical; a re-run on the JPEG may differ by a word or two.
 | OCR (`fim_tile_ocr.py`) | HunyuanOCR, preset `text_coords_tampa_1889`, work size 3453 × 4096, 768 px tiles with 192 px overlap (7 × 6), upright only, 4096-token cap | 41 of 42 tiles read (one blank), 905 boxes parsed → 587 kept (200 duplicates across overlaps, 52 fragments, 66 conflicts dropped; one tile hit the cap and its repeated tail was dropped); 230 s of model time on an RTX 6000 Ada |
 | Areas (`fim_areas.py`) | defaults | 27 tinted areas, tints yellow / blue / pink |
 | Street layer | OpenStreetMap for "Tampa, Florida" (`tampa_streets_epsg32617.geojson` here, 34 495 named ways) | |
-| Fit (`fim_georef.py`) | `--alias configs/georef/aliases_tampa.json --year 1889 --scales 0.045,0.05,0.065,0.1`, otherwise defaults (`--lots numbered`, `--rotation labels`, `--retrace seeded`) | 6 labels placed the sheet: MADISON, ASHLEY, WHITING by name, TAMPA (twice) and WASHINGTON through the alias file. Similarity transform; the affine step was rejected because the labels lie on streets of one direction only. Rotation 20.7°, 0.0515 m/px (50 ft/in at about 296 dpi). Median residual 4.1 m; RMS 63.7 m because one of the two TAMPA labels lands 156 m from the street it was snapped to and is still counted as an inlier. 12 blocks kept, 6 rejected; 93 building outlines re-linked; 7 alias candidates, among them LAFAYETTE → East Kennedy Blvd (renamed 1964) |
+| Fit (`fim_georef.py`) | `--alias configs/georef/aliases_tampa.json --year 1889 --scales 0.045,0.05,0.065,0.1`, otherwise defaults (`--lots numbered`, `--rotation labels`, `--retrace seeded`) | 6 labels placed the sheet: MADISON, ASHLEY, WHITING by name, TAMPA (twice) and WASHINGTON through the alias file. Similarity transform; the affine step was rejected because the labels lie on streets of one direction only. Rotation 20.7°, 0.0515 m/px (50 ft/in at about 296 dpi). Median residual 4.1 m; RMS 63.7 m because one of the two TAMPA labels lands 156 m from the street it was snapped to and is still counted as an inlier. 12 blocks kept, 6 rejected; 93 outlines re-linked; 7 alias candidates, among them LAFAYETTE → East Kennedy Blvd (renamed 1964) |
 
 Read the fit as a rough placement, not a survey: six labels on a sheet this size, half of them through aliases, is
 the minimum the script accepts. More labels in the other direction (the alias candidates, once checked) would let the

@@ -379,7 +379,7 @@ def px_outputs_summary(run_dir: Path, stem: str) -> dict[str, Any]:
     """Counts of the pixel-space products (stage 2) in a run dir."""
     run_dir = Path(run_dir)
     return {"n_blocks_px": _n_features(run_dir / f"{stem}_blocks_px.geojson"),
-            "n_buildings_px": _n_features(run_dir / f"{stem}_buildings_px.geojson"),
+            "n_outlines_px": _n_features(run_dir / f"{stem}_outlines_px.geojson"),
             "n_areas_px": _n_features(run_dir / f"{stem}_areas_px.geojson")}
 
 
@@ -388,7 +388,7 @@ def map_outputs_summary(run_dir: Path, stem: str) -> dict[str, Any]:
     run_dir = Path(run_dir)
     out: dict[str, Any] = {"n_blocks_kept": _n_features(run_dir / f"{stem}_blocks_wgs84.geojson"),
                            "n_blocks_rejected": _n_features(run_dir / f"{stem}_blocks_rejected_wgs84.geojson"),
-                           "n_buildings": _n_features(run_dir / f"{stem}_buildings_wgs84.geojson"),
+                           "n_outlines": _n_features(run_dir / f"{stem}_outlines_wgs84.geojson"),
                            "n_areas": _n_features(run_dir / f"{stem}_areas_wgs84.geojson"),
                            "n_tokens_wgs84": _n_features(run_dir / f"{stem}_tokens_wgs84.geojson")}
     sn = run_dir / f"{stem}_street_names_wgs84.geojson"

@@ -331,7 +331,7 @@
      4993,
      1359
     ],
-    "n_enclosed": 13,
+    "n_outlines": 13,
     "compactness": 0.684,
     "streets_through": [],
     "merged_across": null,
@@ -620,7 +620,7 @@
      3306,
      1381
     ],
-    "n_enclosed": 6,
+    "n_outlines": 6,
     "compactness": 0.688,
     "streets_through": [],
     "merged_across": null,
@@ -1168,7 +1168,7 @@
      5041,
      2964
     ],
-    "n_enclosed": 14,
+    "n_outlines": 14,
     "compactness": 0.543,
     "streets_through": [],
     "merged_across": null,
@@ -1448,7 +1448,7 @@
      3355,
      3051
     ],
-    "n_enclosed": 2,
+    "n_outlines": 2,
     "compactness": 0.725,
     "streets_through": [],
     "merged_across": null,
@@ -1618,7 +1618,7 @@
      1883,
      3727
     ],
-    "n_enclosed": 1,
+    "n_outlines": 1,
     "compactness": 0.487,
     "streets_through": [],
     "merged_across": null,
@@ -1820,7 +1820,7 @@
      2264,
      4204
     ],
-    "n_enclosed": 2,
+    "n_outlines": 2,
     "compactness": 0.657,
     "streets_through": [],
     "merged_across": null,
@@ -2124,7 +2124,7 @@
      5042,
      4748
     ],
-    "n_enclosed": 10,
+    "n_outlines": 10,
     "compactness": 0.701,
     "streets_through": [],
     "merged_across": null,
@@ -2383,7 +2383,7 @@
      3487,
      4746
     ],
-    "n_enclosed": 15,
+    "n_outlines": 15,
     "compactness": 0.717,
     "streets_through": [],
     "merged_across": null,
@@ -2755,7 +2755,7 @@
      2562,
      5396
     ],
-    "n_enclosed": 7,
+    "n_outlines": 7,
     "compactness": 0.22,
     "streets_through": [],
     "merged_across": null,
@@ -3156,7 +3156,7 @@
      5068,
      6439
     ],
-    "n_enclosed": 3,
+    "n_outlines": 3,
     "compactness": 0.677,
     "streets_through": [],
     "merged_across": null,
@@ -3415,7 +3415,7 @@
      3631,
      6433
     ],
-    "n_enclosed": 8,
+    "n_outlines": 8,
     "compactness": 0.67,
     "streets_through": [],
     "merged_across": null,
@@ -3655,7 +3655,7 @@
      2491,
      6499
     ],
-    "n_enclosed": 3,
+    "n_outlines": 3,
     "compactness": 0.373,
     "streets_through": [],
     "merged_across": null,

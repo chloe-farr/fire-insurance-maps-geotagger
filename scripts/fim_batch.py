@@ -75,7 +75,7 @@ def main() -> None:
     ap.add_argument("--georef-arg", action="append", default=[], help="extra argument passed to every fim_georef.py call (repeatable; e.g. --georef-arg=--lots=none for a plan without lot numbers)")
     ap.add_argument("--blocks-arg", action="append", default=[], help="extra argument passed to every fim_blocks.py call (repeatable; e.g. --blocks-arg=--neck-px=8 for a plan with narrow streets)")
     ap.add_argument("--merge", type=Path, default=None, metavar="PREFIX", help="after the fits, merge the placed sheets' GeoJSON into PREFIX_<kind>_wgs84.geojson")
-    ap.add_argument("--merge-what", default=None, help="kinds for --merge (default: blocks,buildings,page,street_names, plus areas with --areas)")
+    ap.add_argument("--merge-what", default=None, help="kinds for --merge (default: blocks,outlines,page,street_names, plus areas with --areas)")
     ap.add_argument("--year", type=int, default=None, help="year of the plans, passed to fim_georef.py for the street-name log")
     args = ap.parse_args()
 
@@ -175,7 +175,7 @@ def run_book(args: argparse.Namespace, today: str, log: Stage) -> None:
             print(f"{sh['stem']:<8} {sh['status']:<48}")
     if args.merge:
         good = [sh["run"] for sh in sheets if sh["status"].startswith("placed")]
-        what = args.merge_what or ("blocks,buildings,page,street_names,areas" if args.areas else "blocks,buildings,page,street_names")
+        what = args.merge_what or ("blocks,outlines,page,street_names,areas" if args.areas else "blocks,outlines,page,street_names")
         if good:
             run([sys.executable, SCRIPTS / "fim_merge.py", *good, "-o", args.merge, "--what", what])
         else:

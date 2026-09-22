@@ -88,8 +88,8 @@ class SelectNames(unittest.TestCase):
         self.assertEqual(len(L.select_names([a, b])[0]), 2)
 
     def test_fused_query_uses_osm_spelling(self):
-        self.assertEqual(L.build_query("SINGER", "STRASSE", ["Singer-Strasse."]), "Singerstrasse")
-        self.assertEqual(L.build_query("STOCK IM EISEN", "PLATZ", ["Stock im Eisen Platz"]), "Stock-Im-Eisen-Platz")
+        self.assertEqual(L.build_query("MUSTER", "STRASSE", ["Muster-Strasse."]), "Musterstrasse")
+        self.assertEqual(L.build_query("ALPHA IM BETA", "PLATZ", ["Alpha im Beta Platz"]), "Alpha-Im-Beta-Platz")
         self.assertEqual(L.build_query("ALPHA", "AVE"), "Alpha Avenue")
         self.assertEqual(L.build_query("ALPHA", None), "Alpha")
 

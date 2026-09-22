@@ -14,10 +14,12 @@ __pycache__/
 *.jp2
 # machine-local symlinks for an optional external text-line detector
 .surya-extra/
-# The single committed raster (GeoTIFF + world file): a public-domain City of Vancouver Open Data sheet, see data/example/README.md.
-!data/example/vancouver_1912_MAP342a_04.tif
-!data/example/vancouver_1912_MAP342a_04.tfw
-# The Tampa 1889 example (Library of Congress Sanborn sheet, public domain): its input JPEG and the run's overlays.
+# The two example runs, both on public-domain sheets: their input raster and the run's overlays. Nothing else under
+# data/ is tracked, and nothing outside data/example/ may be a raster (scripts/fim_release.sh --check enforces both).
+# The Vancouver 1912 tile (City of Vancouver Open Data) and the Tampa 1889 Sanborn sheet (Library of Congress).
+!data/example/vancouver_1912_MAP342a_04/*.tif
+!data/example/vancouver_1912_MAP342a_04/*.tfw
+!data/example/vancouver_1912_MAP342a_04/*.jpg
 !data/example/tampa_1889_sheet3/*.jpg
 # Viewer pages from fim_viewer.py are built locally, not tracked (still rough)
 docs/viewer*.html

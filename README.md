@@ -8,6 +8,11 @@ points to click, no GIS experience needed. Built for Chas. E. Goad's fire insura
 tested on Goad's 1912 Vancouver atlas and on the Sanborn plans of Tampa, Florida (1884–1915, Library of Congress). Any
 city with named streets on the sheet and in OpenStreetMap should work.
 
+> **Looking for the general tool?** This repository is the fire-insurance-plan work: the colour keys, the block and
+> lot numbering, the index and key sheets. The same pipeline, made genre-neutral for any scanned map with street
+> names on it, is **[mapfit](https://github.com/chloe-farr/mapfit)**. The two are separate copies, not a shared
+> dependency — neither needs the other installed.
+
 ```
 scan  ──▶  1. OCR every word        ──▶  2. trace the blocks   ──▶  4. fit to modern streets  ──▶  GeoJSON + world file
            (HunyuanOCR, GPU)             and the buildings           (3. street layer from OSM)      blocks, buildings, words,
@@ -56,13 +61,13 @@ python3 -m pytest tests -q
 ## Try it on an included sheet (about 30 minutes, mostly waiting)
 
 The repo ships two public-domain sheets. This walk-through uses a tile of Goad's 1912 Vancouver atlas covering downtown and Gastown,
-`data/example/vancouver_1912_MAP342a_04.tif`, together with a modern street layer for Vancouver. Four commands take it
+`data/example/vancouver_1912_MAP342a_04/vancouver_1912_MAP342a_04.tif`, together with the modern street layer beside it. Four commands take it
 from scan to GeoJSON.
 
 **1. Read the words.** About 25 minutes on the GPU; the model downloads first time.
 
 ```bash
-python3 scripts/fim_tile_ocr.py data/example/vancouver_1912_MAP342a_04.tif \
+python3 scripts/fim_tile_ocr.py data/example/vancouver_1912_MAP342a_04/vancouver_1912_MAP342a_04.tif \
     --work-max-edge 0 --tile 1536 --rotations 0,30,60 --max-new-tokens 8192 \
     --preset text_coords_vancouver_1912 -o runs/hunyuan/demo_vancouver
 ```
@@ -85,7 +90,8 @@ evidence, which also recovers residential blocks whose dashed frontage lines let
 **3. Fit the sheet to the modern streets.** A couple of minutes.
 
 ```bash
-python3 scripts/fim_georef.py runs/hunyuan/demo_vancouver --streets data/modern/vancouver_streets_epsg32610.geojson
+python3 scripts/fim_georef.py runs/hunyuan/demo_vancouver \
+    --streets data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson
 ```
 
 The terminal prints which street labels matched, how far each one lands from its modern centreline, and a summary
@@ -320,9 +326,9 @@ QGIS, geojson.io, ArcGIS or any web map.
 `fim_batch.py` runs steps 2, 3 and 5 over many sheets and merges the results, so a book is one command:
 
 ```bash
-python3 scripts/fim_batch.py data/1895/p04.jpg data/1895/p05.jpg data/1895/p06.jpg --crop 320,160,6880,7970 \
-    --streets data/modern/victoria_city_streets_epsg26910.geojson --alias configs/georef/aliases_victoria_1895.json \
-    --year 1895 --merge runs/hunyuan/victoria_1895_p04-p06
+python3 scripts/fim_batch.py sheets/p04.jpg sheets/p05.jpg sheets/p06.jpg --crop 320,160,6880,7970 \
+    --streets data/modern/<city>_streets_epsg<code>.geojson --alias configs/georef/aliases_<city>.json \
+    --year <year> --merge runs/hunyuan/<book>_p04-p06
 ```
 
 Every sheet is OCR'd (finished tiles are reused, so a re-run costs nothing), traced and fitted. A sheet whose fit is
@@ -422,13 +428,13 @@ ignored), so results stay on the machine that made them. Do not add scans, crops
 sheets. The Vancouver tile is public domain (City of Vancouver Open Data, Open Government Licence – Vancouver). The
 Tampa sheet is a Library of Congress Sanborn map published in 1889, out of copyright. The modern street layers come
 from OpenStreetMap (ODbL, © OpenStreetMap contributors) and from the City of Victoria and Capital Regional District
-open-data services; attribute them if you reuse them. Per-file details: `data/example/README.md`, `data/README.md`.
+open-data services; attribute them if you reuse them. Per-file details: `data/example/vancouver_1912_MAP342a_04/README.md` and
+`data/example/tampa_1889_sheet3/README.md`.
 
 ## Where the details are
 
-- `data/example/README.md`: the public sheets, their sources and rights; `data/example/tampa_1889_sheet3/README.md`:
+- `data/example/vancouver_1912_MAP342a_04/README.md` and `data/example/tampa_1889_sheet3/README.md`: each sheet's source and rights, and
   one complete run, file by file.
-- `data/README.md`: where the scans live, how the Library of Congress sheets are fetched, the modern street layers.
 - `configs/prompts/README.md`: the prompt presets.
 - `runs/run_log.json` (local, untracked): every stage execution as numbers — `python3 scripts/fim_runlog.py --summary`; see *The run log* above.
 
@@ -439,7 +445,7 @@ open-data services; attribute them if you reuse them. Per-file details: `data/ex
 | `fim_tile_ocr.py` | 1 · tile the sheet, OCR each tile, stitch the words |
 | `fim_blocks.py`, `fim_areas.py` | 2 · block polygons and the building footprints inside them from linework · tinted areas on key plans |
 | `fim_fetch_streets.py`, `fim_crs.py` | 3 · modern street layer (OSM or ArcGIS) · UTM maths without pyproj |
-| `fim_fetch_loc.py` | 0 · download a Library of Congress map (e.g. a Sanborn sheet) with a provenance manifest; see `data/README.md` |
+| `fim_fetch_loc.py` | 0 · download a Library of Congress map (e.g. a Sanborn sheet) with a provenance manifest |
 | `fim_georef.py` | 4 · the fit, and everything in map coordinates |
 | `fim_batch.py`, `fim_merge.py` | a whole book: every sheet through stages 1–4 with a neighbour-assisted second pass, then one GeoJSON per kind |
 | `fim_viewer.py` | 5 · the HTML viewer |

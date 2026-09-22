@@ -13,8 +13,8 @@ judged not to be blocks (`*_blocks_rejected_*`), the 41 per-tile files (`tiles/`
 | Resource page | <https://www.loc.gov/resource/g3934tm.g3934tm_g013521889/?sp=3> (sheet 3 of 7) |
 | Master file | `https://tile.loc.gov/storage-services/service/gmd/gmd393m/g3934m/g3934tm/g3934tm_g013521889/01352_1889-0003.jp2` (JPEG 2000, 10.4 MB, SHA-256 `3d2a4956be0ba0d2…`; 6450 × 7650 px) |
 | The plan | Sanborn Map & Publishing Co., *Tampa, Hillsborough Co., Florida*, April 1889, 50 feet to the inch; downtown between the Hillsborough River and Franklin Street, Madison to Whiting Streets |
-| Rights | Published in 1889, so out of copyright. The Library's catalogue record and rights advisory were not fetched from this machine (see `../../Sanborn_Hillsborough-County/1889/SOURCE.md`); read them on the resource page before reusing the image beyond this repository |
-| Fetched | 2026-09-17 with `scripts/fim_fetch_loc.py`; provenance in `../../Sanborn_Hillsborough-County/1889/loc_manifest.json` |
+| Rights | Published in 1889, so out of copyright. The Library's catalogue record and rights advisory were not fetched from this machine ; read them on the resource page before reusing the image beyond this repository |
+| Fetched | 2026-09-17 with `scripts/fim_fetch_loc.py`, which writes a `loc_manifest.json` (source URLs, SHA-256, sizes) beside the sheets it downloads |
 
 `01352_1889-0003.jpg` here is the Library's master decoded and re-encoded as JPEG (quality 90, 6.6 MB) so that it fits
 the repository; the run itself read the lossless PNG (56 MB) that `fim_fetch_loc.py` writes. Pixel coordinates are
@@ -42,7 +42,7 @@ identical; a re-run on the JPEG may differ by a word or two.
 |---|---|---|
 | OCR (`fim_tile_ocr.py`) | HunyuanOCR, preset `text_coords_tampa_1889`, work size 3453 × 4096, 768 px tiles with 192 px overlap (7 × 6), upright only, 4096-token cap | 41 of 42 tiles read (one blank), 905 boxes parsed → 587 kept (200 duplicates across overlaps, 52 fragments, 66 conflicts dropped; one tile hit the cap and its repeated tail was dropped); 230 s of model time on an RTX 6000 Ada |
 | Areas (`fim_areas.py`) | defaults | 27 tinted areas, tints yellow / blue / pink |
-| Street layer | OpenStreetMap for "Tampa, Florida" (`data/modern/tampa_streets_epsg32617.geojson`, 34 495 named ways) | |
+| Street layer | OpenStreetMap for "Tampa, Florida" (`tampa_streets_epsg32617.geojson` here, 34 495 named ways) | |
 | Fit (`fim_georef.py`) | `--alias configs/georef/aliases_tampa.json --year 1889 --scales 0.045,0.05,0.065,0.1`, otherwise defaults (`--lots numbered`, `--rotation labels`, `--retrace seeded`) | 6 labels placed the sheet: MADISON, ASHLEY, WHITING by name, TAMPA (twice) and WASHINGTON through the alias file. Similarity transform; the affine step was rejected because the labels lie on streets of one direction only. Rotation 20.7°, 0.0515 m/px (50 ft/in at about 296 dpi). Median residual 4.1 m; RMS 63.7 m because one of the two TAMPA labels lands 156 m from the street it was snapped to and is still counted as an inlier. 12 blocks kept, 6 rejected; 93 building outlines re-linked; 7 alias candidates, among them LAFAYETTE → East Kennedy Blvd (renamed 1964) |
 
 Read the fit as a rough placement, not a survey: six labels on a sheet this size, half of them through aliases, is
@@ -59,7 +59,7 @@ python3 scripts/fim_blocks.py runs/hunyuan/Sanborn_Hillsborough-County/1889/0003
 python3 scripts/fim_areas.py  runs/hunyuan/Sanborn_Hillsborough-County/1889/0003
 python3 scripts/fim_fetch_streets.py --place "Tampa, Florida" --slug tampa      # once; the layer is included
 python3 scripts/fim_georef.py runs/hunyuan/Sanborn_Hillsborough-County/1889/0003 \
-    --streets data/modern/tampa_streets_epsg32617.geojson --alias configs/georef/aliases_tampa.json \
+    --streets data/example/tampa_1889_sheet3/tampa_streets_epsg32617.geojson --alias configs/georef/aliases_tampa.json \
     --year 1889 --scales 0.045,0.05,0.065,0.1
 ```
 

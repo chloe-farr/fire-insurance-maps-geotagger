@@ -1,0 +1,10176 @@
+{
+ "type": "FeatureCollection",
+ "georeference": {
+  "rms_m": 0.4897920555996554,
+  "n_labels": 12,
+  "from": "vancouver_1912_MAP342a_04_georef.json"
+ },
+ "note": "street-name changes seen on this sheet: renamed (--alias), respelled (--fuzzy), moved (fit outlier), candidate (unmatched word on a centreline), building (spells a street name but lies inside a traced block). Geometry = the modern street's centreline within the sheet's content box (or the label point if the layer has none there); label_centre_* = where the word sits.",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.1034857,
+       49.2835497
+      ],
+      [
+       -123.1024766,
+       49.283738
+      ]
+     ],
+     [
+      [
+       -123.1002961,
+       49.2841069
+      ],
+      [
+       -123.1003947,
+       49.2841026
+      ]
+     ],
+     [
+      [
+       -123.1003947,
+       49.2841026
+      ],
+      [
+       -123.1004933,
+       49.2840926
+      ]
+     ],
+     [
+      [
+       -123.1004933,
+       49.2840926
+      ],
+      [
+       -123.1006062,
+       49.2840742
+      ]
+     ],
+     [
+      [
+       -123.1006062,
+       49.2840742
+      ],
+      [
+       -123.102058,
+       49.2837922
+      ]
+     ],
+     [
+      [
+       -123.102058,
+       49.2837922
+      ],
+      [
+       -123.1021833,
+       49.2837684
+      ]
+     ],
+     [
+      [
+       -123.1000754,
+       49.2841075
+      ],
+      [
+       -123.1001114,
+       49.2841084
+      ]
+     ],
+     [
+      [
+       -123.1001114,
+       49.2841084
+      ],
+      [
+       -123.1002961,
+       49.2841069
+      ]
+     ],
+     [
+      [
+       -123.1024766,
+       49.283738
+      ],
+      [
+       -123.1023564,
+       49.2837559
+      ]
+     ],
+     [
+      [
+       -123.1023564,
+       49.2837559
+      ],
+      [
+       -123.1022944,
+       49.2837652
+      ]
+     ],
+     [
+      [
+       -123.1022944,
+       49.2837652
+      ],
+      [
+       -123.1021833,
+       49.2837684
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Alexander",
+    "name_on_plan": "ALEXANDER",
+    "plan_year": 1912,
+    "modern_name": [
+     "ALEXANDER ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "moved",
+    "distance_m": 79.5,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1045171,
+     49.2837871
+    ],
+    "label_centre_map": [
+     492398.883,
+     5459009.086
+    ],
+    "map_epsg": 32610,
+    "how": "matched by name but 79.52 m from today's centreline (fit outlier): the street moved, or the word is not a street label"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1126108,
+     49.2854003
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Grandview",
+    "name_on_plan": "GRANDVIEW",
+    "plan_year": 1912,
+    "modern_name": [
+     "GRANDVIEW HWY",
+     "SOUTH GRANDVIEW HWY",
+     "NORTH GRANDVIEW HWY"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1126108,
+     49.2854003
+    ],
+    "label_centre_map": [
+     491810.526,
+     5459189.262
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 94 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1107249,
+     49.2854031
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Dominion",
+    "name_on_plan": "DOMINION",
+    "plan_year": 1912,
+    "modern_name": [
+     "DOMINION ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1107249,
+     49.2854031
+    ],
+    "label_centre_map": [
+     491947.68,
+     5459189.379
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 264 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1125747,
+     49.2853444
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1125747,
+     49.2853444
+    ],
+    "label_centre_map": [
+     491813.139,
+     5459183.047
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 79 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1123335,
+     49.2852238
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1123335,
+     49.2852238
+    ],
+    "label_centre_map": [
+     491830.664,
+     5459169.615
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 25 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1130034,
+     49.2851117
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Chambers",
+    "name_on_plan": "CHAMBERS",
+    "plan_year": 1912,
+    "modern_name": [
+     "CHAMBERS ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1130034,
+     49.2851117
+    ],
+    "label_centre_map": [
+     491781.927,
+     5459157.229
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 97 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.1040715,
+       49.283356
+      ],
+      [
+       -123.1041224,
+       49.2833819
+      ]
+     ],
+     [
+      [
+       -123.1041224,
+       49.2833819
+      ],
+      [
+       -123.1041688,
+       49.2834043
+      ]
+     ],
+     [
+      [
+       -123.1041688,
+       49.2834043
+      ],
+      [
+       -123.1043341,
+       49.2834894
+      ]
+     ],
+     [
+      [
+       -123.1043341,
+       49.2834894
+      ],
+      [
+       -123.1044008,
+       49.2835115
+      ]
+     ],
+     [
+      [
+       -123.1044008,
+       49.2835115
+      ],
+      [
+       -123.1044445,
+       49.2835256
+      ]
+     ],
+     [
+      [
+       -123.1044445,
+       49.2835256
+      ],
+      [
+       -123.1046098,
+       49.2835656
+      ]
+     ],
+     [
+      [
+       -123.1046098,
+       49.2835656
+      ],
+      [
+       -123.104788,
+       49.2836011
+      ]
+     ],
+     [
+      [
+       -123.104788,
+       49.2836011
+      ],
+      [
+       -123.1058341,
+       49.2837799
+      ]
+     ],
+     [
+      [
+       -123.1067039,
+       49.2839323
+      ],
+      [
+       -123.1081628,
+       49.2842001
+      ]
+     ],
+     [
+      [
+       -123.1081628,
+       49.2842001
+      ],
+      [
+       -123.108645,
+       49.2842885
+      ]
+     ],
+     [
+      [
+       -123.108645,
+       49.2842885
+      ],
+      [
+       -123.108805,
+       49.2843196
+      ]
+     ],
+     [
+      [
+       -123.108805,
+       49.2843196
+      ],
+      [
+       -123.108946,
+       49.2843451
+      ]
+     ],
+     [
+      [
+       -123.108946,
+       49.2843451
+      ],
+      [
+       -123.1090862,
+       49.2843719
+      ]
+     ],
+     [
+      [
+       -123.1104472,
+       49.2846279
+      ],
+      [
+       -123.1106825,
+       49.2846683
+      ]
+     ],
+     [
+      [
+       -123.1106825,
+       49.2846683
+      ],
+      [
+       -123.1107268,
+       49.2846745
+      ]
+     ],
+     [
+      [
+       -123.1107268,
+       49.2846745
+      ],
+      [
+       -123.110949,
+       49.2846754
+      ]
+     ],
+     [
+      [
+       -123.1090862,
+       49.2843719
+      ],
+      [
+       -123.109596,
+       49.2844695
+      ]
+     ],
+     [
+      [
+       -123.109596,
+       49.2844695
+      ],
+      [
+       -123.1104472,
+       49.2846279
+      ]
+     ],
+     [
+      [
+       -123.1038701,
+       49.2833028
+      ],
+      [
+       -123.1040715,
+       49.283356
+      ]
+     ],
+     [
+      [
+       -123.1058341,
+       49.2837799
+      ],
+      [
+       -123.1062464,
+       49.2838503
+      ]
+     ],
+     [
+      [
+       -123.1062464,
+       49.2838503
+      ],
+      [
+       -123.1063999,
+       49.2838781
+      ]
+     ],
+     [
+      [
+       -123.1063999,
+       49.2838781
+      ],
+      [
+       -123.1065608,
+       49.283906
+      ]
+     ],
+     [
+      [
+       -123.1065608,
+       49.283906
+      ],
+      [
+       -123.1067039,
+       49.2839323
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "WATER",
+    "name_on_plan": "WATER",
+    "plan_year": 1912,
+    "modern_name": [
+     "WATER ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1071024,
+     49.2840879
+    ],
+    "label_centre_map": [
+     492210.909,
+     5459042.785
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 0 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1103189,
+     49.2840385
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1103189,
+     49.2840385
+    ],
+    "label_centre_map": [
+     491976.984,
+     5459037.628
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 33 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1077499,
+     49.2839412
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1077499,
+     49.2839412
+    ],
+    "label_centre_map": [
+     492163.795,
+     5459026.547
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 53 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1112634,
+     49.2838411
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1112634,
+     49.2838411
+    ],
+    "label_centre_map": [
+     491908.259,
+     5459015.779
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 30 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.110953,
+       49.2834153
+      ],
+      [
+       -123.1108585,
+       49.2834806
+      ]
+     ],
+     [
+      [
+       -123.1108585,
+       49.2834806
+      ],
+      [
+       -123.1104521,
+       49.2837536
+      ]
+     ],
+     [
+      [
+       -123.1104521,
+       49.2837536
+      ],
+      [
+       -123.1100761,
+       49.2839951
+      ]
+     ],
+     [
+      [
+       -123.1100761,
+       49.2839951
+      ],
+      [
+       -123.110058,
+       49.2840067
+      ]
+     ],
+     [
+      [
+       -123.110058,
+       49.2840067
+      ],
+      [
+       -123.10996,
+       49.2840699
+      ]
+     ],
+     [
+      [
+       -123.111922,
+       49.2827624
+      ],
+      [
+       -123.111845,
+       49.2828139
+      ]
+     ],
+     [
+      [
+       -123.111845,
+       49.2828139
+      ],
+      [
+       -123.1114516,
+       49.2830771
+      ]
+     ],
+     [
+      [
+       -123.115198,
+       49.2805803
+      ],
+      [
+       -123.115062,
+       49.2806715
+      ]
+     ],
+     [
+      [
+       -123.115062,
+       49.2806715
+      ],
+      [
+       -123.1149823,
+       49.280725
+      ]
+     ],
+     [
+      [
+       -123.1149823,
+       49.280725
+      ],
+      [
+       -123.1136174,
+       49.2816389
+      ]
+     ],
+     [
+      [
+       -123.1136174,
+       49.2816389
+      ],
+      [
+       -123.113588,
+       49.2816586
+      ]
+     ],
+     [
+      [
+       -123.113588,
+       49.2816586
+      ],
+      [
+       -123.113504,
+       49.2817135
+      ]
+     ],
+     [
+      [
+       -123.115325,
+       49.280498
+      ],
+      [
+       -123.1153056,
+       49.2805108
+      ]
+     ],
+     [
+      [
+       -123.1153056,
+       49.2805108
+      ],
+      [
+       -123.115198,
+       49.2805803
+      ]
+     ],
+     [
+      [
+       -123.1114516,
+       49.2830771
+      ],
+      [
+       -123.1110772,
+       49.2833314
+      ]
+     ],
+     [
+      [
+       -123.1110772,
+       49.2833314
+      ],
+      [
+       -123.1110529,
+       49.2833482
+      ]
+     ],
+     [
+      [
+       -123.1110529,
+       49.2833482
+      ],
+      [
+       -123.110953,
+       49.2834153
+      ]
+     ],
+     [
+      [
+       -123.1134314,
+       49.2817616
+      ],
+      [
+       -123.1133849,
+       49.2817924
+      ]
+     ],
+     [
+      [
+       -123.1133849,
+       49.2817924
+      ],
+      [
+       -123.1124001,
+       49.2824447
+      ]
+     ],
+     [
+      [
+       -123.1124001,
+       49.2824447
+      ],
+      [
+       -123.1120283,
+       49.2826918
+      ]
+     ],
+     [
+      [
+       -123.1120283,
+       49.2826918
+      ],
+      [
+       -123.112002,
+       49.2827093
+      ]
+     ],
+     [
+      [
+       -123.112002,
+       49.2827093
+      ],
+      [
+       -123.111922,
+       49.2827624
+      ]
+     ],
+     [
+      [
+       -123.113504,
+       49.2817135
+      ],
+      [
+       -123.1134314,
+       49.2817616
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Homer",
+    "name_on_plan": "HOMER",
+    "plan_year": 1912,
+    "modern_name": [
+     "HOMER ST",
+     "HOMER MEWS"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1109571,
+     49.2836907
+    ],
+    "label_centre_map": [
+     491930.509,
+     5458999.033
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 57 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1062119,
+     49.2835855
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Dominion",
+    "name_on_plan": "DOMINION",
+    "plan_year": 1912,
+    "modern_name": [
+     "DOMINION ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1062119,
+     49.2835855
+    ],
+    "label_centre_map": [
+     492275.596,
+     5458986.841
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 73 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.1043797,
+       49.2829826
+      ],
+      [
+       -123.1044189,
+       49.2829847
+      ]
+     ],
+     [
+      [
+       -123.1044189,
+       49.2829847
+      ],
+      [
+       -123.104523,
+       49.2830048
+      ]
+     ],
+     [
+      [
+       -123.104523,
+       49.2830048
+      ],
+      [
+       -123.1047529,
+       49.2830483
+      ]
+     ],
+     [
+      [
+       -123.1047529,
+       49.2830483
+      ],
+      [
+       -123.1047747,
+       49.2830518
+      ]
+     ],
+     [
+      [
+       -123.1047747,
+       49.2830518
+      ],
+      [
+       -123.1051036,
+       49.2831133
+      ]
+     ],
+     [
+      [
+       -123.1051036,
+       49.2831133
+      ],
+      [
+       -123.1055103,
+       49.2831893
+      ]
+     ],
+     [
+      [
+       -123.1055103,
+       49.2831893
+      ],
+      [
+       -123.106518,
+       49.2833784
+      ]
+     ],
+     [
+      [
+       -123.106518,
+       49.2833784
+      ],
+      [
+       -123.1066167,
+       49.2833929
+      ]
+     ],
+     [
+      [
+       -123.1066167,
+       49.2833929
+      ],
+      [
+       -123.1067106,
+       49.2834071
+      ]
+     ],
+     [
+      [
+       -123.1067106,
+       49.2834071
+      ],
+      [
+       -123.1067259,
+       49.2834099
+      ]
+     ],
+     [
+      [
+       -123.1067259,
+       49.2834099
+      ],
+      [
+       -123.1088756,
+       49.2838058
+      ]
+     ],
+     [
+      [
+       -123.1088756,
+       49.2838058
+      ],
+      [
+       -123.1088967,
+       49.2838093
+      ]
+     ],
+     [
+      [
+       -123.1088967,
+       49.2838093
+      ],
+      [
+       -123.1089271,
+       49.2838163
+      ]
+     ],
+     [
+      [
+       -123.1089271,
+       49.2838163
+      ],
+      [
+       -123.1090216,
+       49.2838349
+      ]
+     ],
+     [
+      [
+       -123.1042821,
+       49.2829811
+      ],
+      [
+       -123.1043797,
+       49.2829826
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "TROUNCE5",
+    "name_on_plan": "TROUNCE",
+    "plan_year": 1912,
+    "modern_name": [
+     "TROUNCE ALLEY"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1079743,
+     49.2836336
+    ],
+    "label_centre_map": [
+     492147.426,
+     5458992.372
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 105 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1061837,
+     49.2836416
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "HOTEL",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1061837,
+     49.2836416
+    ],
+    "label_centre_map": [
+     492277.652,
+     5458993.075
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 67 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1067693,
+     49.2836182
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1067693,
+     49.2836182
+    ],
+    "label_centre_map": [
+     492235.061,
+     5458990.535
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 43 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1068244,
+     49.283633
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1068244,
+     49.283633
+    ],
+    "label_centre_map": [
+     492231.055,
+     5458992.184
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 68 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1062979,
+     49.2835994
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "HOTEL",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1062979,
+     49.2835994
+    ],
+    "label_centre_map": [
+     492269.343,
+     5458988.394
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 36 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1053489,
+     49.2835144
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1053489,
+     49.2835144
+    ],
+    "label_centre_map": [
+     492338.343,
+     5458978.853
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 58 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1052211,
+     49.2834936
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1052211,
+     49.2834936
+    ],
+    "label_centre_map": [
+     492347.636,
+     5458976.523
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 57 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1051673,
+     49.2834835
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Grand",
+    "name_on_plan": "GRAND",
+    "plan_year": 1912,
+    "modern_name": [
+     "GRAND BLVD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1051673,
+     49.2834835
+    ],
+    "label_centre_map": [
+     492351.547,
+     5458975.399
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 59 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1086415,
+     49.2835098
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1086415,
+     49.2835098
+    ],
+    "label_centre_map": [
+     492098.885,
+     5458978.671
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 105 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1045932,
+     49.2833649
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1045932,
+     49.2833649
+    ],
+    "label_centre_map": [
+     492393.282,
+     5458962.152
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 68 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1080831,
+     49.2833595
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1080831,
+     49.2833595
+    ],
+    "label_centre_map": [
+     492139.469,
+     5458961.913
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 76 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1080891,
+     49.2833579
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1080891,
+     49.2833579
+    ],
+    "label_centre_map": [
+     492139.04,
+     5458961.736
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 74 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.11189,
+       49.2853441
+      ],
+      [
+       -123.111793,
+       49.2852814
+      ]
+     ],
+     [
+      [
+       -123.111793,
+       49.2852814
+      ],
+      [
+       -123.1117749,
+       49.2852694
+      ]
+     ],
+     [
+      [
+       -123.1117749,
+       49.2852694
+      ],
+      [
+       -123.1117024,
+       49.2852215
+      ]
+     ],
+     [
+      [
+       -123.11189,
+       49.2853441
+      ],
+      [
+       -123.1119774,
+       49.2854009
+      ]
+     ],
+     [
+      [
+       -123.1119774,
+       49.2854009
+      ],
+      [
+       -123.1120045,
+       49.285419
+      ]
+     ],
+     [
+      [
+       -123.1120045,
+       49.285419
+      ],
+      [
+       -123.1123419,
+       49.2856374
+      ]
+     ],
+     [
+      [
+       -123.1123419,
+       49.2856374
+      ],
+      [
+       -123.1127035,
+       49.2858714
+      ]
+     ],
+     [
+      [
+       -123.1127035,
+       49.2858714
+      ],
+      [
+       -123.11274,
+       49.285895
+      ]
+     ],
+     [
+      [
+       -123.11274,
+       49.285895
+      ],
+      [
+       -123.112855,
+       49.2859672
+      ]
+     ],
+     [
+      [
+       -123.1142651,
+       49.2869
+      ],
+      [
+       -123.114466,
+       49.2870141
+      ]
+     ],
+     [
+      [
+       -123.114466,
+       49.2870141
+      ],
+      [
+       -123.114671,
+       49.2871136
+      ]
+     ],
+     [
+      [
+       -123.114671,
+       49.2871136
+      ],
+      [
+       -123.1147485,
+       49.2871454
+      ]
+     ],
+     [
+      [
+       -123.1147485,
+       49.2871454
+      ],
+      [
+       -123.114932,
+       49.2872207
+      ]
+     ],
+     [
+      [
+       -123.114932,
+       49.2872207
+      ],
+      [
+       -123.1152938,
+       49.2873645
+      ]
+     ],
+     [
+      [
+       -123.1152938,
+       49.2873645
+      ],
+      [
+       -123.1155866,
+       49.287481
+      ]
+     ],
+     [
+      [
+       -123.110949,
+       49.2846754
+      ],
+      [
+       -123.1108605,
+       49.2846217
+      ]
+     ],
+     [
+      [
+       -123.1108605,
+       49.2846217
+      ],
+      [
+       -123.1107599,
+       49.2845607
+      ]
+     ],
+     [
+      [
+       -123.1107599,
+       49.2845607
+      ],
+      [
+       -123.1107208,
+       49.2845368
+      ]
+     ],
+     [
+      [
+       -123.1107208,
+       49.2845368
+      ],
+      [
+       -123.1102039,
+       49.2842214
+      ]
+     ],
+     [
+      [
+       -123.1102039,
+       49.2842214
+      ],
+      [
+       -123.1100449,
+       49.2841234
+      ]
+     ],
+     [
+      [
+       -123.1100449,
+       49.2841234
+      ],
+      [
+       -123.10996,
+       49.2840699
+      ]
+     ],
+     [
+      [
+       -123.113516,
+       49.286357
+      ],
+      [
+       -123.1134227,
+       49.2862583
+      ]
+     ],
+     [
+      [
+       -123.1134227,
+       49.2862583
+      ],
+      [
+       -123.1133098,
+       49.2861862
+      ]
+     ],
+     [
+      [
+       -123.1133098,
+       49.2861862
+      ],
+      [
+       -123.1130622,
+       49.2860228
+      ]
+     ],
+     [
+      [
+       -123.1130622,
+       49.2860228
+      ],
+      [
+       -123.1130077,
+       49.2859862
+      ]
+     ],
+     [
+      [
+       -123.1130077,
+       49.2859862
+      ],
+      [
+       -123.112855,
+       49.2859672
+      ]
+     ],
+     [
+      [
+       -123.1084106,
+       49.2832327
+      ],
+      [
+       -123.1078241,
+       49.2831246
+      ]
+     ],
+     [
+      [
+       -123.1078241,
+       49.2831246
+      ],
+      [
+       -123.107779,
+       49.2831164
+      ]
+     ],
+     [
+      [
+       -123.107779,
+       49.2831164
+      ],
+      [
+       -123.1077297,
+       49.2831074
+      ]
+     ],
+     [
+      [
+       -123.1077297,
+       49.2831074
+      ],
+      [
+       -123.1073029,
+       49.2830295
+      ]
+     ],
+     [
+      [
+       -123.1113508,
+       49.2849744
+      ],
+      [
+       -123.1110506,
+       49.2847556
+      ]
+     ],
+     [
+      [
+       -123.1110506,
+       49.2847556
+      ],
+      [
+       -123.1110208,
+       49.2847329
+      ]
+     ],
+     [
+      [
+       -123.1110208,
+       49.2847329
+      ],
+      [
+       -123.110949,
+       49.2846754
+      ]
+     ],
+     [
+      [
+       -123.1073029,
+       49.2830295
+      ],
+      [
+       -123.1072701,
+       49.2830235
+      ]
+     ],
+     [
+      [
+       -123.1072701,
+       49.2830235
+      ],
+      [
+       -123.1069691,
+       49.2829681
+      ]
+     ],
+     [
+      [
+       -123.1069691,
+       49.2829681
+      ],
+      [
+       -123.1069282,
+       49.2829606
+      ]
+     ],
+     [
+      [
+       -123.1069282,
+       49.2829606
+      ],
+      [
+       -123.1068112,
+       49.2829391
+      ]
+     ],
+     [
+      [
+       -123.10996,
+       49.2840699
+      ],
+      [
+       -123.10985,
+       49.2839999
+      ]
+     ],
+     [
+      [
+       -123.10985,
+       49.2839999
+      ],
+      [
+       -123.10928,
+       49.2836055
+      ]
+     ],
+     [
+      [
+       -123.10928,
+       49.2836055
+      ],
+      [
+       -123.109242,
+       49.2835792
+      ]
+     ],
+     [
+      [
+       -123.109242,
+       49.2835792
+      ],
+      [
+       -123.1091493,
+       49.2835144
+      ]
+     ],
+     [
+      [
+       -123.113516,
+       49.286357
+      ],
+      [
+       -123.1137744,
+       49.2865366
+      ]
+     ],
+     [
+      [
+       -123.1137744,
+       49.2865366
+      ],
+      [
+       -123.113806,
+       49.2865586
+      ]
+     ],
+     [
+      [
+       -123.113806,
+       49.2865586
+      ],
+      [
+       -123.1138882,
+       49.2866188
+      ]
+     ],
+     [
+      [
+       -123.112855,
+       49.2859672
+      ],
+      [
+       -123.1128846,
+       49.2860712
+      ]
+     ],
+     [
+      [
+       -123.1128846,
+       49.2860712
+      ],
+      [
+       -123.1131739,
+       49.286253
+      ]
+     ],
+     [
+      [
+       -123.1131739,
+       49.286253
+      ],
+      [
+       -123.113286,
+       49.2862914
+      ]
+     ],
+     [
+      [
+       -123.1117024,
+       49.2852215
+      ],
+      [
+       -123.1113508,
+       49.2849744
+      ]
+     ],
+     [
+      [
+       -123.1138882,
+       49.2866188
+      ],
+      [
+       -123.113987,
+       49.2866989
+      ]
+     ],
+     [
+      [
+       -123.113987,
+       49.2866989
+      ],
+      [
+       -123.1140106,
+       49.286716
+      ]
+     ],
+     [
+      [
+       -123.1140106,
+       49.286716
+      ],
+      [
+       -123.1141774,
+       49.2868366
+      ]
+     ],
+     [
+      [
+       -123.1155866,
+       49.287481
+      ],
+      [
+       -123.1156924,
+       49.2875228
+      ]
+     ],
+     [
+      [
+       -123.1156924,
+       49.2875228
+      ],
+      [
+       -123.1159571,
+       49.2876197
+      ]
+     ],
+     [
+      [
+       -123.113286,
+       49.2862914
+      ],
+      [
+       -123.1133277,
+       49.2863054
+      ]
+     ],
+     [
+      [
+       -123.1133277,
+       49.2863054
+      ],
+      [
+       -123.1134129,
+       49.2863288
+      ]
+     ],
+     [
+      [
+       -123.1134129,
+       49.2863288
+      ],
+      [
+       -123.113516,
+       49.286357
+      ]
+     ],
+     [
+      [
+       -123.1068112,
+       49.2829391
+      ],
+      [
+       -123.106688,
+       49.2829164
+      ]
+     ],
+     [
+      [
+       -123.106688,
+       49.2829164
+      ],
+      [
+       -123.1066476,
+       49.282909
+      ]
+     ],
+     [
+      [
+       -123.1066476,
+       49.282909
+      ],
+      [
+       -123.1059298,
+       49.2827768
+      ]
+     ],
+     [
+      [
+       -123.1059298,
+       49.2827768
+      ],
+      [
+       -123.105555,
+       49.2827078
+      ]
+     ],
+     [
+      [
+       -123.105555,
+       49.2827078
+      ],
+      [
+       -123.1044665,
+       49.2825075
+      ]
+     ],
+     [
+      [
+       -123.1044665,
+       49.2825075
+      ],
+      [
+       -123.1044202,
+       49.2824991
+      ]
+     ],
+     [
+      [
+       -123.1044202,
+       49.2824991
+      ],
+      [
+       -123.1043666,
+       49.2824891
+      ]
+     ],
+     [
+      [
+       -123.1043666,
+       49.2824891
+      ],
+      [
+       -123.1043097,
+       49.2824785
+      ]
+     ],
+     [
+      [
+       -123.1091493,
+       49.2835144
+      ],
+      [
+       -123.1090818,
+       49.28347
+      ]
+     ],
+     [
+      [
+       -123.1090818,
+       49.28347
+      ],
+      [
+       -123.1090347,
+       49.2834431
+      ]
+     ],
+     [
+      [
+       -123.1090347,
+       49.2834431
+      ],
+      [
+       -123.1089831,
+       49.283411
+      ]
+     ],
+     [
+      [
+       -123.1089831,
+       49.283411
+      ],
+      [
+       -123.1088945,
+       49.2833634
+      ]
+     ],
+     [
+      [
+       -123.1088945,
+       49.2833634
+      ],
+      [
+       -123.1087962,
+       49.2833216
+      ]
+     ],
+     [
+      [
+       -123.1087962,
+       49.2833216
+      ],
+      [
+       -123.1086847,
+       49.2832849
+      ]
+     ],
+     [
+      [
+       -123.1086847,
+       49.2832849
+      ],
+      [
+       -123.108586,
+       49.2832608
+      ]
+     ],
+     [
+      [
+       -123.108586,
+       49.2832608
+      ],
+      [
+       -123.1084986,
+       49.2832474
+      ]
+     ],
+     [
+      [
+       -123.1084986,
+       49.2832474
+      ],
+      [
+       -123.1084651,
+       49.2832416
+      ]
+     ],
+     [
+      [
+       -123.1084651,
+       49.2832416
+      ],
+      [
+       -123.1084106,
+       49.2832327
+      ]
+     ],
+     [
+      [
+       -123.1141774,
+       49.2868366
+      ],
+      [
+       -123.1142651,
+       49.2869
+      ]
+     ],
+     [
+      [
+       -123.102227,
+       49.282331
+      ],
+      [
+       -123.1021121,
+       49.2823281
+      ]
+     ],
+     [
+      [
+       -123.1021121,
+       49.2823281
+      ],
+      [
+       -123.1020617,
+       49.2823274
+      ]
+     ],
+     [
+      [
+       -123.1020617,
+       49.2823274
+      ],
+      [
+       -123.1016836,
+       49.2823219
+      ]
+     ],
+     [
+      [
+       -123.1016836,
+       49.2823219
+      ],
+      [
+       -123.1003724,
+       49.2823029
+      ]
+     ],
+     [
+      [
+       -123.1003724,
+       49.2823029
+      ],
+      [
+       -123.099871,
+       49.2822946
+      ]
+     ],
+     [
+      [
+       -123.1043097,
+       49.2824785
+      ],
+      [
+       -123.104251,
+       49.2824671
+      ]
+     ],
+     [
+      [
+       -123.104251,
+       49.2824671
+      ],
+      [
+       -123.1041985,
+       49.2824567
+      ]
+     ],
+     [
+      [
+       -123.1041985,
+       49.2824567
+      ],
+      [
+       -123.1041542,
+       49.2824489
+      ]
+     ],
+     [
+      [
+       -123.1041542,
+       49.2824489
+      ],
+      [
+       -123.103769,
+       49.2823813
+      ]
+     ],
+     [
+      [
+       -123.103769,
+       49.2823813
+      ],
+      [
+       -123.1036487,
+       49.2823696
+      ]
+     ],
+     [
+      [
+       -123.1036487,
+       49.2823696
+      ],
+      [
+       -123.1035895,
+       49.2823672
+      ]
+     ],
+     [
+      [
+       -123.1035895,
+       49.2823672
+      ],
+      [
+       -123.1023962,
+       49.2823352
+      ]
+     ],
+     [
+      [
+       -123.1023962,
+       49.2823352
+      ],
+      [
+       -123.1023455,
+       49.2823339
+      ]
+     ],
+     [
+      [
+       -123.1023455,
+       49.2823339
+      ],
+      [
+       -123.102227,
+       49.282331
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Cordova.",
+    "name_on_plan": "CORDOVA",
+    "plan_year": 1912,
+    "modern_name": [
+     "WEST CORDOVA ST",
+     "EAST CORDOVA ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1080816,
+     49.2833051
+    ],
+    "label_centre_map": [
+     492139.572,
+     5458955.863
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 42 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1090982,
+     49.2830893
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1090982,
+     49.2830893
+    ],
+    "label_centre_map": [
+     492065.607,
+     5458931.976
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 165 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1073057,
+     49.2831572
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1073057,
+     49.2831572
+    ],
+    "label_centre_map": [
+     492195.978,
+     5458939.344
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 33 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1056727,
+     49.2830187
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1056727,
+     49.2830187
+    ],
+    "label_centre_map": [
+     492314.72,
+     5458923.778
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 124 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1061627,
+     49.2829791
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1061627,
+     49.2829791
+    ],
+    "label_centre_map": [
+     492279.078,
+     5458919.425
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 46 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1097444,
+     49.2828977
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Dominion",
+    "name_on_plan": "DOMINION",
+    "plan_year": 1912,
+    "modern_name": [
+     "DOMINION ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1097444,
+     49.2828977
+    ],
+    "label_centre_map": [
+     492018.577,
+     5458910.741
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 86 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1045253,
+     49.2829384
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1045253,
+     49.2829384
+    ],
+    "label_centre_map": [
+     492398.153,
+     5458914.734
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 38 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1090784,
+     49.2827683
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Commercial",
+    "name_on_plan": "COMMERCIAL",
+    "plan_year": 1912,
+    "modern_name": [
+     "COMMERCIAL DR",
+     "COMMERCIAL ST",
+     "NORTH COMMERCIAL DR"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1090784,
+     49.2827683
+    ],
+    "label_centre_map": [
+     492066.992,
+     5458896.294
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 268 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1090967,
+     49.2827423
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel.",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1090967,
+     49.2827423
+    ],
+    "label_centre_map": [
+     492065.658,
+     5458893.395
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 251 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.10515,
+     49.2827832
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.10515,
+     49.2827832
+    ],
+    "label_centre_map": [
+     492352.698,
+     5458897.539
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 35 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.107109,
+     49.2827163
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.107109,
+     49.2827163
+    ],
+    "label_centre_map": [
+     492210.217,
+     5458890.298
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 28 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.108628,
+     49.2825231
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.108628,
+     49.2825231
+    ],
+    "label_centre_map": [
+     492099.713,
+     5458868.981
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 195 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1058913,
+     49.2825053
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1058913,
+     49.2825053
+    ],
+    "label_centre_map": [
+     492298.741,
+     5458866.718
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 99 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1067141,
+     49.2825023
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel.",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1067141,
+     49.2825023
+    ],
+    "label_centre_map": [
+     492238.901,
+     5458866.476
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 38 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1052959,
+     49.2824727
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1052959,
+     49.2824727
+    ],
+    "label_centre_map": [
+     492342.043,
+     5458863.036
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 56 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1062647,
+     49.2822113
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1062647,
+     49.2822113
+    ],
+    "label_centre_map": [
+     492271.536,
+     5458834.077
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 61 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1063606,
+     49.282151
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1063606,
+     49.282151
+    ],
+    "label_centre_map": [
+     492264.559,
+     5458827.385
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 108 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1045932,
+     49.2821392
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1045932,
+     49.2821392
+    ],
+    "label_centre_map": [
+     492393.092,
+     5458825.889
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 39 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.105728,
+     49.2819411
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.105728,
+     49.2819411
+    ],
+    "label_centre_map": [
+     492310.531,
+     5458803.984
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 68 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1045252,
+     49.2819186
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "Hotel",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1045252,
+     49.2819186
+    ],
+    "label_centre_map": [
+     492398.007,
+     5458801.357
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 24 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1046782,
+     49.281821
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "HOTEL",
+    "name_on_plan": "HOTEL",
+    "plan_year": 1912,
+    "modern_name": [
+     "NORTH HOTEL RD"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "building",
+    "distance_m": null,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1046782,
+     49.281821
+    ],
+    "label_centre_map": [
+     492386.862,
+     5458790.527
+    ],
+    "map_epsg": 32610,
+    "how": "spells a street name but sits 29 px inside a traced block: a building or business label, not used"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.1087539,
+       49.2844117
+      ],
+      [
+       -123.1086415,
+       49.2847356
+      ]
+     ],
+     [
+      [
+       -123.1095685,
+       49.2825217
+      ],
+      [
+       -123.1095325,
+       49.2826259
+      ]
+     ],
+     [
+      [
+       -123.1095325,
+       49.2826259
+      ],
+      [
+       -123.1095058,
+       49.2826898
+      ]
+     ],
+     [
+      [
+       -123.1095058,
+       49.2826898
+      ],
+      [
+       -123.1094067,
+       49.2829087
+      ]
+     ],
+     [
+      [
+       -123.113089,
+       49.279444
+      ],
+      [
+       -123.112479,
+       49.2798478
+      ]
+     ],
+     [
+      [
+       -123.112479,
+       49.2798478
+      ],
+      [
+       -123.1121148,
+       49.2800894
+      ]
+     ],
+     [
+      [
+       -123.1121148,
+       49.2800894
+      ],
+      [
+       -123.1116855,
+       49.2803721
+      ]
+     ],
+     [
+      [
+       -123.1116855,
+       49.2803721
+      ],
+      [
+       -123.111657,
+       49.2803909
+      ]
+     ],
+     [
+      [
+       -123.111657,
+       49.2803909
+      ],
+      [
+       -123.1115477,
+       49.2804651
+      ]
+     ],
+     [
+      [
+       -123.1115477,
+       49.2804651
+      ],
+      [
+       -123.1114669,
+       49.2805177
+      ]
+     ],
+     [
+      [
+       -123.1114669,
+       49.2805177
+      ],
+      [
+       -123.1114215,
+       49.2805472
+      ]
+     ],
+     [
+      [
+       -123.1114215,
+       49.2805472
+      ],
+      [
+       -123.1113944,
+       49.2805652
+      ]
+     ],
+     [
+      [
+       -123.1113944,
+       49.2805652
+      ],
+      [
+       -123.1111495,
+       49.280728
+      ]
+     ],
+     [
+      [
+       -123.1111495,
+       49.280728
+      ],
+      [
+       -123.1108976,
+       49.2808955
+      ]
+     ],
+     [
+      [
+       -123.1108976,
+       49.2808955
+      ],
+      [
+       -123.1106659,
+       49.2810485
+      ]
+     ],
+     [
+      [
+       -123.1106659,
+       49.2810485
+      ],
+      [
+       -123.1106554,
+       49.2810551
+      ]
+     ],
+     [
+      [
+       -123.1106554,
+       49.2810551
+      ],
+      [
+       -123.1104598,
+       49.2811854
+      ]
+     ],
+     [
+      [
+       -123.1104598,
+       49.2811854
+      ],
+      [
+       -123.1103186,
+       49.2812774
+      ]
+     ],
+     [
+      [
+       -123.1103186,
+       49.2812774
+      ],
+      [
+       -123.1101035,
+       49.28142
+      ]
+     ],
+     [
+      [
+       -123.1101035,
+       49.28142
+      ],
+      [
+       -123.1100711,
+       49.2814411
+      ]
+     ],
+     [
+      [
+       -123.1100711,
+       49.2814411
+      ],
+      [
+       -123.109995,
+       49.2815521
+      ]
+     ],
+     [
+      [
+       -123.109995,
+       49.2815521
+      ],
+      [
+       -123.109937,
+       49.2816575
+      ]
+     ],
+     [
+      [
+       -123.109937,
+       49.2816575
+      ],
+      [
+       -123.109917,
+       49.2816985
+      ]
+     ],
+     [
+      [
+       -123.109917,
+       49.2816985
+      ],
+      [
+       -123.1097996,
+       49.2819886
+      ]
+     ],
+     [
+      [
+       -123.1097996,
+       49.2819886
+      ],
+      [
+       -123.1097051,
+       49.2821981
+      ]
+     ],
+     [
+      [
+       -123.1091493,
+       49.2835144
+      ],
+      [
+       -123.1091151,
+       49.283602
+      ]
+     ],
+     [
+      [
+       -123.1091151,
+       49.283602
+      ],
+      [
+       -123.109096,
+       49.2836538
+      ]
+     ],
+     [
+      [
+       -123.109096,
+       49.2836538
+      ],
+      [
+       -123.1090216,
+       49.2838349
+      ]
+     ],
+     [
+      [
+       -123.1090216,
+       49.2838349
+      ],
+      [
+       -123.1089724,
+       49.2839528
+      ]
+     ],
+     [
+      [
+       -123.1094067,
+       49.2829087
+      ],
+      [
+       -123.1093396,
+       49.2830659
+      ]
+     ],
+     [
+      [
+       -123.1092759,
+       49.2832197
+      ],
+      [
+       -123.1092143,
+       49.283363
+      ]
+     ],
+     [
+      [
+       -123.1092143,
+       49.283363
+      ],
+      [
+       -123.1091848,
+       49.2834318
+      ]
+     ],
+     [
+      [
+       -123.1091848,
+       49.2834318
+      ],
+      [
+       -123.1091493,
+       49.2835144
+      ]
+     ],
+     [
+      [
+       -123.1089724,
+       49.2839528
+      ],
+      [
+       -123.108864,
+       49.2842134
+      ]
+     ],
+     [
+      [
+       -123.108864,
+       49.2842134
+      ],
+      [
+       -123.10885,
+       49.2842449
+      ]
+     ],
+     [
+      [
+       -123.10885,
+       49.2842449
+      ],
+      [
+       -123.108805,
+       49.2843196
+      ]
+     ],
+     [
+      [
+       -123.108805,
+       49.2843196
+      ],
+      [
+       -123.1087591,
+       49.2843975
+      ]
+     ],
+     [
+      [
+       -123.1087591,
+       49.2843975
+      ],
+      [
+       -123.1087539,
+       49.2844117
+      ]
+     ],
+     [
+      [
+       -123.1097051,
+       49.2821981
+      ],
+      [
+       -123.1096514,
+       49.2823179
+      ]
+     ],
+     [
+      [
+       -123.1096514,
+       49.2823179
+      ],
+      [
+       -123.1096192,
+       49.2823889
+      ]
+     ],
+     [
+      [
+       -123.1096192,
+       49.2823889
+      ],
+      [
+       -123.1095685,
+       49.2825217
+      ]
+     ],
+     [
+      [
+       -123.1093396,
+       49.2830659
+      ],
+      [
+       -123.1092759,
+       49.2832197
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "TOWNISITE",
+    "name_on_plan": "TOWNISITE",
+    "plan_year": 1912,
+    "modern_name": [
+     "CAMBIE ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "candidate",
+    "distance_m": 0.1,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1089347,
+     49.2840387
+    ],
+    "label_centre_map": [
+     492077.648,
+     5459037.51
+    ],
+    "map_epsg": 32610,
+    "how": "unmatched word lying on this modern centreline after the fit; confirm before adding to --alias"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.1063999,
+       49.2838781
+      ],
+      [
+       -123.1063646,
+       49.2839628
+      ]
+     ],
+     [
+      [
+       -123.1063646,
+       49.2839628
+      ],
+      [
+       -123.1063592,
+       49.2839758
+      ]
+     ],
+     [
+      [
+       -123.1063592,
+       49.2839758
+      ],
+      [
+       -123.1062786,
+       49.2841697
+      ]
+     ],
+     [
+      [
+       -123.1062786,
+       49.2841697
+      ],
+      [
+       -123.1062721,
+       49.2841853
+      ]
+     ],
+     [
+      [
+       -123.1062721,
+       49.2841853
+      ],
+      [
+       -123.1062506,
+       49.2842369
+      ]
+     ],
+     [
+      [
+       -123.1062506,
+       49.2842369
+      ],
+      [
+       -123.1062346,
+       49.2842754
+      ]
+     ],
+     [
+      [
+       -123.1062346,
+       49.2842754
+      ],
+      [
+       -123.1062079,
+       49.2843395
+      ]
+     ],
+     [
+      [
+       -123.1076175,
+       49.2796272
+      ],
+      [
+       -123.107614,
+       49.2797087
+      ]
+     ],
+     [
+      [
+       -123.107614,
+       49.2797087
+      ],
+      [
+       -123.1076136,
+       49.279786
+      ]
+     ],
+     [
+      [
+       -123.1076136,
+       49.279786
+      ],
+      [
+       -123.1076134,
+       49.2798124
+      ]
+     ],
+     [
+      [
+       -123.1076134,
+       49.2798124
+      ],
+      [
+       -123.1076085,
+       49.2805253
+      ]
+     ],
+     [
+      [
+       -123.1076085,
+       49.2805253
+      ],
+      [
+       -123.1076091,
+       49.2805875
+      ]
+     ],
+     [
+      [
+       -123.1076091,
+       49.2805875
+      ],
+      [
+       -123.1076158,
+       49.2809497
+      ]
+     ],
+     [
+      [
+       -123.1076158,
+       49.2809497
+      ],
+      [
+       -123.1076165,
+       49.2809853
+      ]
+     ],
+     [
+      [
+       -123.1076165,
+       49.2809853
+      ],
+      [
+       -123.107581,
+       49.2810876
+      ]
+     ],
+     [
+      [
+       -123.107581,
+       49.2810876
+      ],
+      [
+       -123.1075484,
+       49.2811908
+      ]
+     ],
+     [
+      [
+       -123.1075484,
+       49.2811908
+      ],
+      [
+       -123.1075357,
+       49.2812209
+      ]
+     ],
+     [
+      [
+       -123.1075357,
+       49.2812209
+      ],
+      [
+       -123.1074973,
+       49.2813116
+      ]
+     ],
+     [
+      [
+       -123.1074973,
+       49.2813116
+      ],
+      [
+       -123.107459,
+       49.2814022
+      ]
+     ],
+     [
+      [
+       -123.107459,
+       49.2814022
+      ],
+      [
+       -123.1073986,
+       49.2815449
+      ]
+     ],
+     [
+      [
+       -123.1073986,
+       49.2815449
+      ],
+      [
+       -123.1072533,
+       49.2818761
+      ]
+     ],
+     [
+      [
+       -123.1072533,
+       49.2818761
+      ],
+      [
+       -123.107242,
+       49.2819018
+      ]
+     ],
+     [
+      [
+       -123.107242,
+       49.2819018
+      ],
+      [
+       -123.107205,
+       49.2819923
+      ]
+     ],
+     [
+      [
+       -123.1070061,
+       49.2824735
+      ],
+      [
+       -123.10686,
+       49.2828195
+      ]
+     ],
+     [
+      [
+       -123.10686,
+       49.2828195
+      ],
+      [
+       -123.106848,
+       49.282847
+      ]
+     ],
+     [
+      [
+       -123.106848,
+       49.282847
+      ],
+      [
+       -123.1068112,
+       49.2829391
+      ]
+     ],
+     [
+      [
+       -123.107205,
+       49.2819923
+      ],
+      [
+       -123.1071685,
+       49.2820852
+      ]
+     ],
+     [
+      [
+       -123.1071685,
+       49.2820852
+      ],
+      [
+       -123.1071594,
+       49.2821077
+      ]
+     ],
+     [
+      [
+       -123.1071594,
+       49.2821077
+      ],
+      [
+       -123.1070061,
+       49.2824735
+      ]
+     ],
+     [
+      [
+       -123.1068112,
+       49.2829391
+      ],
+      [
+       -123.1067818,
+       49.2830166
+      ]
+     ],
+     [
+      [
+       -123.1067818,
+       49.2830166
+      ],
+      [
+       -123.1067661,
+       49.2830525
+      ]
+     ],
+     [
+      [
+       -123.1067661,
+       49.2830525
+      ],
+      [
+       -123.1066167,
+       49.2833929
+      ]
+     ],
+     [
+      [
+       -123.1066167,
+       49.2833929
+      ],
+      [
+       -123.1064404,
+       49.2837869
+      ]
+     ],
+     [
+      [
+       -123.1064404,
+       49.2837869
+      ],
+      [
+       -123.1064338,
+       49.2837983
+      ]
+     ],
+     [
+      [
+       -123.1064338,
+       49.2837983
+      ],
+      [
+       -123.1063999,
+       49.2838781
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "OFFICIAL",
+    "name_on_plan": "OFFICIAL",
+    "plan_year": 1912,
+    "modern_name": [
+     "ABBOTT ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "candidate",
+    "distance_m": 0.1,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1063479,
+     49.2840677
+    ],
+    "label_centre_map": [
+     492265.776,
+     5459040.464
+    ],
+    "map_epsg": 32610,
+    "how": "unmatched word lying on this modern centreline after the fit; confirm before adding to --alias"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.11189,
+       49.2853441
+      ],
+      [
+       -123.111793,
+       49.2852814
+      ]
+     ],
+     [
+      [
+       -123.111793,
+       49.2852814
+      ],
+      [
+       -123.1117749,
+       49.2852694
+      ]
+     ],
+     [
+      [
+       -123.1117749,
+       49.2852694
+      ],
+      [
+       -123.1117024,
+       49.2852215
+      ]
+     ],
+     [
+      [
+       -123.11189,
+       49.2853441
+      ],
+      [
+       -123.1119774,
+       49.2854009
+      ]
+     ],
+     [
+      [
+       -123.1119774,
+       49.2854009
+      ],
+      [
+       -123.1120045,
+       49.285419
+      ]
+     ],
+     [
+      [
+       -123.1120045,
+       49.285419
+      ],
+      [
+       -123.1123419,
+       49.2856374
+      ]
+     ],
+     [
+      [
+       -123.1123419,
+       49.2856374
+      ],
+      [
+       -123.1127035,
+       49.2858714
+      ]
+     ],
+     [
+      [
+       -123.1127035,
+       49.2858714
+      ],
+      [
+       -123.11274,
+       49.285895
+      ]
+     ],
+     [
+      [
+       -123.11274,
+       49.285895
+      ],
+      [
+       -123.112855,
+       49.2859672
+      ]
+     ],
+     [
+      [
+       -123.1142651,
+       49.2869
+      ],
+      [
+       -123.114466,
+       49.2870141
+      ]
+     ],
+     [
+      [
+       -123.114466,
+       49.2870141
+      ],
+      [
+       -123.114671,
+       49.2871136
+      ]
+     ],
+     [
+      [
+       -123.114671,
+       49.2871136
+      ],
+      [
+       -123.1147485,
+       49.2871454
+      ]
+     ],
+     [
+      [
+       -123.1147485,
+       49.2871454
+      ],
+      [
+       -123.114932,
+       49.2872207
+      ]
+     ],
+     [
+      [
+       -123.114932,
+       49.2872207
+      ],
+      [
+       -123.1152938,
+       49.2873645
+      ]
+     ],
+     [
+      [
+       -123.1152938,
+       49.2873645
+      ],
+      [
+       -123.1155866,
+       49.287481
+      ]
+     ],
+     [
+      [
+       -123.110949,
+       49.2846754
+      ],
+      [
+       -123.1108605,
+       49.2846217
+      ]
+     ],
+     [
+      [
+       -123.1108605,
+       49.2846217
+      ],
+      [
+       -123.1107599,
+       49.2845607
+      ]
+     ],
+     [
+      [
+       -123.1107599,
+       49.2845607
+      ],
+      [
+       -123.1107208,
+       49.2845368
+      ]
+     ],
+     [
+      [
+       -123.1107208,
+       49.2845368
+      ],
+      [
+       -123.1102039,
+       49.2842214
+      ]
+     ],
+     [
+      [
+       -123.1102039,
+       49.2842214
+      ],
+      [
+       -123.1100449,
+       49.2841234
+      ]
+     ],
+     [
+      [
+       -123.1100449,
+       49.2841234
+      ],
+      [
+       -123.10996,
+       49.2840699
+      ]
+     ],
+     [
+      [
+       -123.113516,
+       49.286357
+      ],
+      [
+       -123.1134227,
+       49.2862583
+      ]
+     ],
+     [
+      [
+       -123.1134227,
+       49.2862583
+      ],
+      [
+       -123.1133098,
+       49.2861862
+      ]
+     ],
+     [
+      [
+       -123.1133098,
+       49.2861862
+      ],
+      [
+       -123.1130622,
+       49.2860228
+      ]
+     ],
+     [
+      [
+       -123.1130622,
+       49.2860228
+      ],
+      [
+       -123.1130077,
+       49.2859862
+      ]
+     ],
+     [
+      [
+       -123.1130077,
+       49.2859862
+      ],
+      [
+       -123.112855,
+       49.2859672
+      ]
+     ],
+     [
+      [
+       -123.1084106,
+       49.2832327
+      ],
+      [
+       -123.1078241,
+       49.2831246
+      ]
+     ],
+     [
+      [
+       -123.1078241,
+       49.2831246
+      ],
+      [
+       -123.107779,
+       49.2831164
+      ]
+     ],
+     [
+      [
+       -123.107779,
+       49.2831164
+      ],
+      [
+       -123.1077297,
+       49.2831074
+      ]
+     ],
+     [
+      [
+       -123.1077297,
+       49.2831074
+      ],
+      [
+       -123.1073029,
+       49.2830295
+      ]
+     ],
+     [
+      [
+       -123.1113508,
+       49.2849744
+      ],
+      [
+       -123.1110506,
+       49.2847556
+      ]
+     ],
+     [
+      [
+       -123.1110506,
+       49.2847556
+      ],
+      [
+       -123.1110208,
+       49.2847329
+      ]
+     ],
+     [
+      [
+       -123.1110208,
+       49.2847329
+      ],
+      [
+       -123.110949,
+       49.2846754
+      ]
+     ],
+     [
+      [
+       -123.1073029,
+       49.2830295
+      ],
+      [
+       -123.1072701,
+       49.2830235
+      ]
+     ],
+     [
+      [
+       -123.1072701,
+       49.2830235
+      ],
+      [
+       -123.1069691,
+       49.2829681
+      ]
+     ],
+     [
+      [
+       -123.1069691,
+       49.2829681
+      ],
+      [
+       -123.1069282,
+       49.2829606
+      ]
+     ],
+     [
+      [
+       -123.1069282,
+       49.2829606
+      ],
+      [
+       -123.1068112,
+       49.2829391
+      ]
+     ],
+     [
+      [
+       -123.10996,
+       49.2840699
+      ],
+      [
+       -123.10985,
+       49.2839999
+      ]
+     ],
+     [
+      [
+       -123.10985,
+       49.2839999
+      ],
+      [
+       -123.10928,
+       49.2836055
+      ]
+     ],
+     [
+      [
+       -123.10928,
+       49.2836055
+      ],
+      [
+       -123.109242,
+       49.2835792
+      ]
+     ],
+     [
+      [
+       -123.109242,
+       49.2835792
+      ],
+      [
+       -123.1091493,
+       49.2835144
+      ]
+     ],
+     [
+      [
+       -123.113516,
+       49.286357
+      ],
+      [
+       -123.1137744,
+       49.2865366
+      ]
+     ],
+     [
+      [
+       -123.1137744,
+       49.2865366
+      ],
+      [
+       -123.113806,
+       49.2865586
+      ]
+     ],
+     [
+      [
+       -123.113806,
+       49.2865586
+      ],
+      [
+       -123.1138882,
+       49.2866188
+      ]
+     ],
+     [
+      [
+       -123.112855,
+       49.2859672
+      ],
+      [
+       -123.1128846,
+       49.2860712
+      ]
+     ],
+     [
+      [
+       -123.1128846,
+       49.2860712
+      ],
+      [
+       -123.1131739,
+       49.286253
+      ]
+     ],
+     [
+      [
+       -123.1131739,
+       49.286253
+      ],
+      [
+       -123.113286,
+       49.2862914
+      ]
+     ],
+     [
+      [
+       -123.1117024,
+       49.2852215
+      ],
+      [
+       -123.1113508,
+       49.2849744
+      ]
+     ],
+     [
+      [
+       -123.1138882,
+       49.2866188
+      ],
+      [
+       -123.113987,
+       49.2866989
+      ]
+     ],
+     [
+      [
+       -123.113987,
+       49.2866989
+      ],
+      [
+       -123.1140106,
+       49.286716
+      ]
+     ],
+     [
+      [
+       -123.1140106,
+       49.286716
+      ],
+      [
+       -123.1141774,
+       49.2868366
+      ]
+     ],
+     [
+      [
+       -123.1155866,
+       49.287481
+      ],
+      [
+       -123.1156924,
+       49.2875228
+      ]
+     ],
+     [
+      [
+       -123.1156924,
+       49.2875228
+      ],
+      [
+       -123.1159571,
+       49.2876197
+      ]
+     ],
+     [
+      [
+       -123.113286,
+       49.2862914
+      ],
+      [
+       -123.1133277,
+       49.2863054
+      ]
+     ],
+     [
+      [
+       -123.1133277,
+       49.2863054
+      ],
+      [
+       -123.1134129,
+       49.2863288
+      ]
+     ],
+     [
+      [
+       -123.1134129,
+       49.2863288
+      ],
+      [
+       -123.113516,
+       49.286357
+      ]
+     ],
+     [
+      [
+       -123.1068112,
+       49.2829391
+      ],
+      [
+       -123.106688,
+       49.2829164
+      ]
+     ],
+     [
+      [
+       -123.106688,
+       49.2829164
+      ],
+      [
+       -123.1066476,
+       49.282909
+      ]
+     ],
+     [
+      [
+       -123.1066476,
+       49.282909
+      ],
+      [
+       -123.1059298,
+       49.2827768
+      ]
+     ],
+     [
+      [
+       -123.1059298,
+       49.2827768
+      ],
+      [
+       -123.105555,
+       49.2827078
+      ]
+     ],
+     [
+      [
+       -123.105555,
+       49.2827078
+      ],
+      [
+       -123.1044665,
+       49.2825075
+      ]
+     ],
+     [
+      [
+       -123.1044665,
+       49.2825075
+      ],
+      [
+       -123.1044202,
+       49.2824991
+      ]
+     ],
+     [
+      [
+       -123.1044202,
+       49.2824991
+      ],
+      [
+       -123.1043666,
+       49.2824891
+      ]
+     ],
+     [
+      [
+       -123.1043666,
+       49.2824891
+      ],
+      [
+       -123.1043097,
+       49.2824785
+      ]
+     ],
+     [
+      [
+       -123.1091493,
+       49.2835144
+      ],
+      [
+       -123.1090818,
+       49.28347
+      ]
+     ],
+     [
+      [
+       -123.1090818,
+       49.28347
+      ],
+      [
+       -123.1090347,
+       49.2834431
+      ]
+     ],
+     [
+      [
+       -123.1090347,
+       49.2834431
+      ],
+      [
+       -123.1089831,
+       49.283411
+      ]
+     ],
+     [
+      [
+       -123.1089831,
+       49.283411
+      ],
+      [
+       -123.1088945,
+       49.2833634
+      ]
+     ],
+     [
+      [
+       -123.1088945,
+       49.2833634
+      ],
+      [
+       -123.1087962,
+       49.2833216
+      ]
+     ],
+     [
+      [
+       -123.1087962,
+       49.2833216
+      ],
+      [
+       -123.1086847,
+       49.2832849
+      ]
+     ],
+     [
+      [
+       -123.1086847,
+       49.2832849
+      ],
+      [
+       -123.108586,
+       49.2832608
+      ]
+     ],
+     [
+      [
+       -123.108586,
+       49.2832608
+      ],
+      [
+       -123.1084986,
+       49.2832474
+      ]
+     ],
+     [
+      [
+       -123.1084986,
+       49.2832474
+      ],
+      [
+       -123.1084651,
+       49.2832416
+      ]
+     ],
+     [
+      [
+       -123.1084651,
+       49.2832416
+      ],
+      [
+       -123.1084106,
+       49.2832327
+      ]
+     ],
+     [
+      [
+       -123.1141774,
+       49.2868366
+      ],
+      [
+       -123.1142651,
+       49.2869
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "ST.WEST",
+    "name_on_plan": "ST WEST",
+    "plan_year": 1912,
+    "modern_name": [
+     "WEST CORDOVA ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "candidate",
+    "distance_m": 0.3,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1116327,
+     49.285168
+    ],
+    "label_centre_map": [
+     491881.621,
+     5459163.332
+    ],
+    "map_epsg": 32610,
+    "how": "unmatched word lying on this modern centreline after the fit; confirm before adding to --alias"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.1087539,
+       49.2844117
+      ],
+      [
+       -123.1086415,
+       49.2847356
+      ]
+     ],
+     [
+      [
+       -123.1095685,
+       49.2825217
+      ],
+      [
+       -123.1095325,
+       49.2826259
+      ]
+     ],
+     [
+      [
+       -123.1095325,
+       49.2826259
+      ],
+      [
+       -123.1095058,
+       49.2826898
+      ]
+     ],
+     [
+      [
+       -123.1095058,
+       49.2826898
+      ],
+      [
+       -123.1094067,
+       49.2829087
+      ]
+     ],
+     [
+      [
+       -123.113089,
+       49.279444
+      ],
+      [
+       -123.112479,
+       49.2798478
+      ]
+     ],
+     [
+      [
+       -123.112479,
+       49.2798478
+      ],
+      [
+       -123.1121148,
+       49.2800894
+      ]
+     ],
+     [
+      [
+       -123.1121148,
+       49.2800894
+      ],
+      [
+       -123.1116855,
+       49.2803721
+      ]
+     ],
+     [
+      [
+       -123.1116855,
+       49.2803721
+      ],
+      [
+       -123.111657,
+       49.2803909
+      ]
+     ],
+     [
+      [
+       -123.111657,
+       49.2803909
+      ],
+      [
+       -123.1115477,
+       49.2804651
+      ]
+     ],
+     [
+      [
+       -123.1115477,
+       49.2804651
+      ],
+      [
+       -123.1114669,
+       49.2805177
+      ]
+     ],
+     [
+      [
+       -123.1114669,
+       49.2805177
+      ],
+      [
+       -123.1114215,
+       49.2805472
+      ]
+     ],
+     [
+      [
+       -123.1114215,
+       49.2805472
+      ],
+      [
+       -123.1113944,
+       49.2805652
+      ]
+     ],
+     [
+      [
+       -123.1113944,
+       49.2805652
+      ],
+      [
+       -123.1111495,
+       49.280728
+      ]
+     ],
+     [
+      [
+       -123.1111495,
+       49.280728
+      ],
+      [
+       -123.1108976,
+       49.2808955
+      ]
+     ],
+     [
+      [
+       -123.1108976,
+       49.2808955
+      ],
+      [
+       -123.1106659,
+       49.2810485
+      ]
+     ],
+     [
+      [
+       -123.1106659,
+       49.2810485
+      ],
+      [
+       -123.1106554,
+       49.2810551
+      ]
+     ],
+     [
+      [
+       -123.1106554,
+       49.2810551
+      ],
+      [
+       -123.1104598,
+       49.2811854
+      ]
+     ],
+     [
+      [
+       -123.1104598,
+       49.2811854
+      ],
+      [
+       -123.1103186,
+       49.2812774
+      ]
+     ],
+     [
+      [
+       -123.1103186,
+       49.2812774
+      ],
+      [
+       -123.1101035,
+       49.28142
+      ]
+     ],
+     [
+      [
+       -123.1101035,
+       49.28142
+      ],
+      [
+       -123.1100711,
+       49.2814411
+      ]
+     ],
+     [
+      [
+       -123.1100711,
+       49.2814411
+      ],
+      [
+       -123.109995,
+       49.2815521
+      ]
+     ],
+     [
+      [
+       -123.109995,
+       49.2815521
+      ],
+      [
+       -123.109937,
+       49.2816575
+      ]
+     ],
+     [
+      [
+       -123.109937,
+       49.2816575
+      ],
+      [
+       -123.109917,
+       49.2816985
+      ]
+     ],
+     [
+      [
+       -123.109917,
+       49.2816985
+      ],
+      [
+       -123.1097996,
+       49.2819886
+      ]
+     ],
+     [
+      [
+       -123.1097996,
+       49.2819886
+      ],
+      [
+       -123.1097051,
+       49.2821981
+      ]
+     ],
+     [
+      [
+       -123.1091493,
+       49.2835144
+      ],
+      [
+       -123.1091151,
+       49.283602
+      ]
+     ],
+     [
+      [
+       -123.1091151,
+       49.283602
+      ],
+      [
+       -123.109096,
+       49.2836538
+      ]
+     ],
+     [
+      [
+       -123.109096,
+       49.2836538
+      ],
+      [
+       -123.1090216,
+       49.2838349
+      ]
+     ],
+     [
+      [
+       -123.1090216,
+       49.2838349
+      ],
+      [
+       -123.1089724,
+       49.2839528
+      ]
+     ],
+     [
+      [
+       -123.1094067,
+       49.2829087
+      ],
+      [
+       -123.1093396,
+       49.2830659
+      ]
+     ],
+     [
+      [
+       -123.1092759,
+       49.2832197
+      ],
+      [
+       -123.1092143,
+       49.283363
+      ]
+     ],
+     [
+      [
+       -123.1092143,
+       49.283363
+      ],
+      [
+       -123.1091848,
+       49.2834318
+      ]
+     ],
+     [
+      [
+       -123.1091848,
+       49.2834318
+      ],
+      [
+       -123.1091493,
+       49.2835144
+      ]
+     ],
+     [
+      [
+       -123.1089724,
+       49.2839528
+      ],
+      [
+       -123.108864,
+       49.2842134
+      ]
+     ],
+     [
+      [
+       -123.108864,
+       49.2842134
+      ],
+      [
+       -123.10885,
+       49.2842449
+      ]
+     ],
+     [
+      [
+       -123.10885,
+       49.2842449
+      ],
+      [
+       -123.108805,
+       49.2843196
+      ]
+     ],
+     [
+      [
+       -123.108805,
+       49.2843196
+      ],
+      [
+       -123.1087591,
+       49.2843975
+      ]
+     ],
+     [
+      [
+       -123.1087591,
+       49.2843975
+      ],
+      [
+       -123.1087539,
+       49.2844117
+      ]
+     ],
+     [
+      [
+       -123.1097051,
+       49.2821981
+      ],
+      [
+       -123.1096514,
+       49.2823179
+      ]
+     ],
+     [
+      [
+       -123.1096514,
+       49.2823179
+      ],
+      [
+       -123.1096192,
+       49.2823889
+      ]
+     ],
+     [
+      [
+       -123.1096192,
+       49.2823889
+      ],
+      [
+       -123.1095685,
+       49.2825217
+      ]
+     ],
+     [
+      [
+       -123.1093396,
+       49.2830659
+      ],
+      [
+       -123.1092759,
+       49.2832197
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "OLD GRANVILLE TOWN",
+    "name_on_plan": "OLD GRANVILLE TOWN",
+    "plan_year": 1912,
+    "modern_name": [
+     "CAMBIE ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "candidate",
+    "distance_m": 1.2,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1087823,
+     49.2843272
+    ],
+    "label_centre_map": [
+     492088.777,
+     5459069.56
+    ],
+    "map_epsg": 32610,
+    "how": "unmatched word lying on this modern centreline after the fit; confirm before adding to --alias"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.1063999,
+       49.2838781
+      ],
+      [
+       -123.1063646,
+       49.2839628
+      ]
+     ],
+     [
+      [
+       -123.1063646,
+       49.2839628
+      ],
+      [
+       -123.1063592,
+       49.2839758
+      ]
+     ],
+     [
+      [
+       -123.1063592,
+       49.2839758
+      ],
+      [
+       -123.1062786,
+       49.2841697
+      ]
+     ],
+     [
+      [
+       -123.1062786,
+       49.2841697
+      ],
+      [
+       -123.1062721,
+       49.2841853
+      ]
+     ],
+     [
+      [
+       -123.1062721,
+       49.2841853
+      ],
+      [
+       -123.1062506,
+       49.2842369
+      ]
+     ],
+     [
+      [
+       -123.1062506,
+       49.2842369
+      ],
+      [
+       -123.1062346,
+       49.2842754
+      ]
+     ],
+     [
+      [
+       -123.1062346,
+       49.2842754
+      ],
+      [
+       -123.1062079,
+       49.2843395
+      ]
+     ],
+     [
+      [
+       -123.1076175,
+       49.2796272
+      ],
+      [
+       -123.107614,
+       49.2797087
+      ]
+     ],
+     [
+      [
+       -123.107614,
+       49.2797087
+      ],
+      [
+       -123.1076136,
+       49.279786
+      ]
+     ],
+     [
+      [
+       -123.1076136,
+       49.279786
+      ],
+      [
+       -123.1076134,
+       49.2798124
+      ]
+     ],
+     [
+      [
+       -123.1076134,
+       49.2798124
+      ],
+      [
+       -123.1076085,
+       49.2805253
+      ]
+     ],
+     [
+      [
+       -123.1076085,
+       49.2805253
+      ],
+      [
+       -123.1076091,
+       49.2805875
+      ]
+     ],
+     [
+      [
+       -123.1076091,
+       49.2805875
+      ],
+      [
+       -123.1076158,
+       49.2809497
+      ]
+     ],
+     [
+      [
+       -123.1076158,
+       49.2809497
+      ],
+      [
+       -123.1076165,
+       49.2809853
+      ]
+     ],
+     [
+      [
+       -123.1076165,
+       49.2809853
+      ],
+      [
+       -123.107581,
+       49.2810876
+      ]
+     ],
+     [
+      [
+       -123.107581,
+       49.2810876
+      ],
+      [
+       -123.1075484,
+       49.2811908
+      ]
+     ],
+     [
+      [
+       -123.1075484,
+       49.2811908
+      ],
+      [
+       -123.1075357,
+       49.2812209
+      ]
+     ],
+     [
+      [
+       -123.1075357,
+       49.2812209
+      ],
+      [
+       -123.1074973,
+       49.2813116
+      ]
+     ],
+     [
+      [
+       -123.1074973,
+       49.2813116
+      ],
+      [
+       -123.107459,
+       49.2814022
+      ]
+     ],
+     [
+      [
+       -123.107459,
+       49.2814022
+      ],
+      [
+       -123.1073986,
+       49.2815449
+      ]
+     ],
+     [
+      [
+       -123.1073986,
+       49.2815449
+      ],
+      [
+       -123.1072533,
+       49.2818761
+      ]
+     ],
+     [
+      [
+       -123.1072533,
+       49.2818761
+      ],
+      [
+       -123.107242,
+       49.2819018
+      ]
+     ],
+     [
+      [
+       -123.107242,
+       49.2819018
+      ],
+      [
+       -123.107205,
+       49.2819923
+      ]
+     ],
+     [
+      [
+       -123.1070061,
+       49.2824735
+      ],
+      [
+       -123.10686,
+       49.2828195
+      ]
+     ],
+     [
+      [
+       -123.10686,
+       49.2828195
+      ],
+      [
+       -123.106848,
+       49.282847
+      ]
+     ],
+     [
+      [
+       -123.106848,
+       49.282847
+      ],
+      [
+       -123.1068112,
+       49.2829391
+      ]
+     ],
+     [
+      [
+       -123.107205,
+       49.2819923
+      ],
+      [
+       -123.1071685,
+       49.2820852
+      ]
+     ],
+     [
+      [
+       -123.1071685,
+       49.2820852
+      ],
+      [
+       -123.1071594,
+       49.2821077
+      ]
+     ],
+     [
+      [
+       -123.1071594,
+       49.2821077
+      ],
+      [
+       -123.1070061,
+       49.2824735
+      ]
+     ],
+     [
+      [
+       -123.1068112,
+       49.2829391
+      ],
+      [
+       -123.1067818,
+       49.2830166
+      ]
+     ],
+     [
+      [
+       -123.1067818,
+       49.2830166
+      ],
+      [
+       -123.1067661,
+       49.2830525
+      ]
+     ],
+     [
+      [
+       -123.1067661,
+       49.2830525
+      ],
+      [
+       -123.1066167,
+       49.2833929
+      ]
+     ],
+     [
+      [
+       -123.1066167,
+       49.2833929
+      ],
+      [
+       -123.1064404,
+       49.2837869
+      ]
+     ],
+     [
+      [
+       -123.1064404,
+       49.2837869
+      ],
+      [
+       -123.1064338,
+       49.2837983
+      ]
+     ],
+     [
+      [
+       -123.1064338,
+       49.2837983
+      ],
+      [
+       -123.1063999,
+       49.2838781
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "OFTICAL",
+    "name_on_plan": "OFTICAL",
+    "plan_year": 1912,
+    "modern_name": [
+     "ABBOTT ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "candidate",
+    "distance_m": 2.1,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1063515,
+     49.2840669
+    ],
+    "label_centre_map": [
+     492265.519,
+     5459040.375
+    ],
+    "map_epsg": 32610,
+    "how": "unmatched word lying on this modern centreline after the fit; confirm before adding to --alias"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.1087539,
+       49.2844117
+      ],
+      [
+       -123.1086415,
+       49.2847356
+      ]
+     ],
+     [
+      [
+       -123.1095685,
+       49.2825217
+      ],
+      [
+       -123.1095325,
+       49.2826259
+      ]
+     ],
+     [
+      [
+       -123.1095325,
+       49.2826259
+      ],
+      [
+       -123.1095058,
+       49.2826898
+      ]
+     ],
+     [
+      [
+       -123.1095058,
+       49.2826898
+      ],
+      [
+       -123.1094067,
+       49.2829087
+      ]
+     ],
+     [
+      [
+       -123.113089,
+       49.279444
+      ],
+      [
+       -123.112479,
+       49.2798478
+      ]
+     ],
+     [
+      [
+       -123.112479,
+       49.2798478
+      ],
+      [
+       -123.1121148,
+       49.2800894
+      ]
+     ],
+     [
+      [
+       -123.1121148,
+       49.2800894
+      ],
+      [
+       -123.1116855,
+       49.2803721
+      ]
+     ],
+     [
+      [
+       -123.1116855,
+       49.2803721
+      ],
+      [
+       -123.111657,
+       49.2803909
+      ]
+     ],
+     [
+      [
+       -123.111657,
+       49.2803909
+      ],
+      [
+       -123.1115477,
+       49.2804651
+      ]
+     ],
+     [
+      [
+       -123.1115477,
+       49.2804651
+      ],
+      [
+       -123.1114669,
+       49.2805177
+      ]
+     ],
+     [
+      [
+       -123.1114669,
+       49.2805177
+      ],
+      [
+       -123.1114215,
+       49.2805472
+      ]
+     ],
+     [
+      [
+       -123.1114215,
+       49.2805472
+      ],
+      [
+       -123.1113944,
+       49.2805652
+      ]
+     ],
+     [
+      [
+       -123.1113944,
+       49.2805652
+      ],
+      [
+       -123.1111495,
+       49.280728
+      ]
+     ],
+     [
+      [
+       -123.1111495,
+       49.280728
+      ],
+      [
+       -123.1108976,
+       49.2808955
+      ]
+     ],
+     [
+      [
+       -123.1108976,
+       49.2808955
+      ],
+      [
+       -123.1106659,
+       49.2810485
+      ]
+     ],
+     [
+      [
+       -123.1106659,
+       49.2810485
+      ],
+      [
+       -123.1106554,
+       49.2810551
+      ]
+     ],
+     [
+      [
+       -123.1106554,
+       49.2810551
+      ],
+      [
+       -123.1104598,
+       49.2811854
+      ]
+     ],
+     [
+      [
+       -123.1104598,
+       49.2811854
+      ],
+      [
+       -123.1103186,
+       49.2812774
+      ]
+     ],
+     [
+      [
+       -123.1103186,
+       49.2812774
+      ],
+      [
+       -123.1101035,
+       49.28142
+      ]
+     ],
+     [
+      [
+       -123.1101035,
+       49.28142
+      ],
+      [
+       -123.1100711,
+       49.2814411
+      ]
+     ],
+     [
+      [
+       -123.1100711,
+       49.2814411
+      ],
+      [
+       -123.109995,
+       49.2815521
+      ]
+     ],
+     [
+      [
+       -123.109995,
+       49.2815521
+      ],
+      [
+       -123.109937,
+       49.2816575
+      ]
+     ],
+     [
+      [
+       -123.109937,
+       49.2816575
+      ],
+      [
+       -123.109917,
+       49.2816985
+      ]
+     ],
+     [
+      [
+       -123.109917,
+       49.2816985
+      ],
+      [
+       -123.1097996,
+       49.2819886
+      ]
+     ],
+     [
+      [
+       -123.1097996,
+       49.2819886
+      ],
+      [
+       -123.1097051,
+       49.2821981
+      ]
+     ],
+     [
+      [
+       -123.1091493,
+       49.2835144
+      ],
+      [
+       -123.1091151,
+       49.283602
+      ]
+     ],
+     [
+      [
+       -123.1091151,
+       49.283602
+      ],
+      [
+       -123.109096,
+       49.2836538
+      ]
+     ],
+     [
+      [
+       -123.109096,
+       49.2836538
+      ],
+      [
+       -123.1090216,
+       49.2838349
+      ]
+     ],
+     [
+      [
+       -123.1090216,
+       49.2838349
+      ],
+      [
+       -123.1089724,
+       49.2839528
+      ]
+     ],
+     [
+      [
+       -123.1094067,
+       49.2829087
+      ],
+      [
+       -123.1093396,
+       49.2830659
+      ]
+     ],
+     [
+      [
+       -123.1092759,
+       49.2832197
+      ],
+      [
+       -123.1092143,
+       49.283363
+      ]
+     ],
+     [
+      [
+       -123.1092143,
+       49.283363
+      ],
+      [
+       -123.1091848,
+       49.2834318
+      ]
+     ],
+     [
+      [
+       -123.1091848,
+       49.2834318
+      ],
+      [
+       -123.1091493,
+       49.2835144
+      ]
+     ],
+     [
+      [
+       -123.1089724,
+       49.2839528
+      ],
+      [
+       -123.108864,
+       49.2842134
+      ]
+     ],
+     [
+      [
+       -123.108864,
+       49.2842134
+      ],
+      [
+       -123.10885,
+       49.2842449
+      ]
+     ],
+     [
+      [
+       -123.10885,
+       49.2842449
+      ],
+      [
+       -123.108805,
+       49.2843196
+      ]
+     ],
+     [
+      [
+       -123.108805,
+       49.2843196
+      ],
+      [
+       -123.1087591,
+       49.2843975
+      ]
+     ],
+     [
+      [
+       -123.1087591,
+       49.2843975
+      ],
+      [
+       -123.1087539,
+       49.2844117
+      ]
+     ],
+     [
+      [
+       -123.1097051,
+       49.2821981
+      ],
+      [
+       -123.1096514,
+       49.2823179
+      ]
+     ],
+     [
+      [
+       -123.1096514,
+       49.2823179
+      ],
+      [
+       -123.1096192,
+       49.2823889
+      ]
+     ],
+     [
+      [
+       -123.1096192,
+       49.2823889
+      ],
+      [
+       -123.1095685,
+       49.2825217
+      ]
+     ],
+     [
+      [
+       -123.1093396,
+       49.2830659
+      ],
+      [
+       -123.1092759,
+       49.2832197
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "IBIE ST.",
+    "name_on_plan": "IBIE",
+    "plan_year": 1912,
+    "modern_name": [
+     "CAMBIE ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "candidate",
+    "distance_m": 2.3,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1091649,
+     49.2835568
+    ],
+    "label_centre_map": [
+     492060.831,
+     5458983.954
+    ],
+    "map_epsg": 32610,
+    "how": "unmatched word lying on this modern centreline after the fit; confirm before adding to --alias"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.1087539,
+       49.2844117
+      ],
+      [
+       -123.1086415,
+       49.2847356
+      ]
+     ],
+     [
+      [
+       -123.1095685,
+       49.2825217
+      ],
+      [
+       -123.1095325,
+       49.2826259
+      ]
+     ],
+     [
+      [
+       -123.1095325,
+       49.2826259
+      ],
+      [
+       -123.1095058,
+       49.2826898
+      ]
+     ],
+     [
+      [
+       -123.1095058,
+       49.2826898
+      ],
+      [
+       -123.1094067,
+       49.2829087
+      ]
+     ],
+     [
+      [
+       -123.113089,
+       49.279444
+      ],
+      [
+       -123.112479,
+       49.2798478
+      ]
+     ],
+     [
+      [
+       -123.112479,
+       49.2798478
+      ],
+      [
+       -123.1121148,
+       49.2800894
+      ]
+     ],
+     [
+      [
+       -123.1121148,
+       49.2800894
+      ],
+      [
+       -123.1116855,
+       49.2803721
+      ]
+     ],
+     [
+      [
+       -123.1116855,
+       49.2803721
+      ],
+      [
+       -123.111657,
+       49.2803909
+      ]
+     ],
+     [
+      [
+       -123.111657,
+       49.2803909
+      ],
+      [
+       -123.1115477,
+       49.2804651
+      ]
+     ],
+     [
+      [
+       -123.1115477,
+       49.2804651
+      ],
+      [
+       -123.1114669,
+       49.2805177
+      ]
+     ],
+     [
+      [
+       -123.1114669,
+       49.2805177
+      ],
+      [
+       -123.1114215,
+       49.2805472
+      ]
+     ],
+     [
+      [
+       -123.1114215,
+       49.2805472
+      ],
+      [
+       -123.1113944,
+       49.2805652
+      ]
+     ],
+     [
+      [
+       -123.1113944,
+       49.2805652
+      ],
+      [
+       -123.1111495,
+       49.280728
+      ]
+     ],
+     [
+      [
+       -123.1111495,
+       49.280728
+      ],
+      [
+       -123.1108976,
+       49.2808955
+      ]
+     ],
+     [
+      [
+       -123.1108976,
+       49.2808955
+      ],
+      [
+       -123.1106659,
+       49.2810485
+      ]
+     ],
+     [
+      [
+       -123.1106659,
+       49.2810485
+      ],
+      [
+       -123.1106554,
+       49.2810551
+      ]
+     ],
+     [
+      [
+       -123.1106554,
+       49.2810551
+      ],
+      [
+       -123.1104598,
+       49.2811854
+      ]
+     ],
+     [
+      [
+       -123.1104598,
+       49.2811854
+      ],
+      [
+       -123.1103186,
+       49.2812774
+      ]
+     ],
+     [
+      [
+       -123.1103186,
+       49.2812774
+      ],
+      [
+       -123.1101035,
+       49.28142
+      ]
+     ],
+     [
+      [
+       -123.1101035,
+       49.28142
+      ],
+      [
+       -123.1100711,
+       49.2814411
+      ]
+     ],
+     [
+      [
+       -123.1100711,
+       49.2814411
+      ],
+      [
+       -123.109995,
+       49.2815521
+      ]
+     ],
+     [
+      [
+       -123.109995,
+       49.2815521
+      ],
+      [
+       -123.109937,
+       49.2816575
+      ]
+     ],
+     [
+      [
+       -123.109937,
+       49.2816575
+      ],
+      [
+       -123.109917,
+       49.2816985
+      ]
+     ],
+     [
+      [
+       -123.109917,
+       49.2816985
+      ],
+      [
+       -123.1097996,
+       49.2819886
+      ]
+     ],
+     [
+      [
+       -123.1097996,
+       49.2819886
+      ],
+      [
+       -123.1097051,
+       49.2821981
+      ]
+     ],
+     [
+      [
+       -123.1091493,
+       49.2835144
+      ],
+      [
+       -123.1091151,
+       49.283602
+      ]
+     ],
+     [
+      [
+       -123.1091151,
+       49.283602
+      ],
+      [
+       -123.109096,
+       49.2836538
+      ]
+     ],
+     [
+      [
+       -123.109096,
+       49.2836538
+      ],
+      [
+       -123.1090216,
+       49.2838349
+      ]
+     ],
+     [
+      [
+       -123.1090216,
+       49.2838349
+      ],
+      [
+       -123.1089724,
+       49.2839528
+      ]
+     ],
+     [
+      [
+       -123.1094067,
+       49.2829087
+      ],
+      [
+       -123.1093396,
+       49.2830659
+      ]
+     ],
+     [
+      [
+       -123.1092759,
+       49.2832197
+      ],
+      [
+       -123.1092143,
+       49.283363
+      ]
+     ],
+     [
+      [
+       -123.1092143,
+       49.283363
+      ],
+      [
+       -123.1091848,
+       49.2834318
+      ]
+     ],
+     [
+      [
+       -123.1091848,
+       49.2834318
+      ],
+      [
+       -123.1091493,
+       49.2835144
+      ]
+     ],
+     [
+      [
+       -123.1089724,
+       49.2839528
+      ],
+      [
+       -123.108864,
+       49.2842134
+      ]
+     ],
+     [
+      [
+       -123.108864,
+       49.2842134
+      ],
+      [
+       -123.10885,
+       49.2842449
+      ]
+     ],
+     [
+      [
+       -123.10885,
+       49.2842449
+      ],
+      [
+       -123.108805,
+       49.2843196
+      ]
+     ],
+     [
+      [
+       -123.108805,
+       49.2843196
+      ],
+      [
+       -123.1087591,
+       49.2843975
+      ]
+     ],
+     [
+      [
+       -123.1087591,
+       49.2843975
+      ],
+      [
+       -123.1087539,
+       49.2844117
+      ]
+     ],
+     [
+      [
+       -123.1097051,
+       49.2821981
+      ],
+      [
+       -123.1096514,
+       49.2823179
+      ]
+     ],
+     [
+      [
+       -123.1096514,
+       49.2823179
+      ],
+      [
+       -123.1096192,
+       49.2823889
+      ]
+     ],
+     [
+      [
+       -123.1096192,
+       49.2823889
+      ],
+      [
+       -123.1095685,
+       49.2825217
+      ]
+     ],
+     [
+      [
+       -123.1093396,
+       49.2830659
+      ],
+      [
+       -123.1092759,
+       49.2832197
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "TOMNSITE",
+    "name_on_plan": "TOMNSITE",
+    "plan_year": 1912,
+    "modern_name": [
+     "CAMBIE ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "candidate",
+    "distance_m": 2.5,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1089092,
+     49.2840183
+    ],
+    "label_centre_map": [
+     492079.502,
+     5459035.237
+    ],
+    "map_epsg": 32610,
+    "how": "unmatched word lying on this modern centreline after the fit; confirm before adding to --alias"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.1063999,
+       49.2838781
+      ],
+      [
+       -123.1063646,
+       49.2839628
+      ]
+     ],
+     [
+      [
+       -123.1063646,
+       49.2839628
+      ],
+      [
+       -123.1063592,
+       49.2839758
+      ]
+     ],
+     [
+      [
+       -123.1063592,
+       49.2839758
+      ],
+      [
+       -123.1062786,
+       49.2841697
+      ]
+     ],
+     [
+      [
+       -123.1062786,
+       49.2841697
+      ],
+      [
+       -123.1062721,
+       49.2841853
+      ]
+     ],
+     [
+      [
+       -123.1062721,
+       49.2841853
+      ],
+      [
+       -123.1062506,
+       49.2842369
+      ]
+     ],
+     [
+      [
+       -123.1062506,
+       49.2842369
+      ],
+      [
+       -123.1062346,
+       49.2842754
+      ]
+     ],
+     [
+      [
+       -123.1062346,
+       49.2842754
+      ],
+      [
+       -123.1062079,
+       49.2843395
+      ]
+     ],
+     [
+      [
+       -123.1076175,
+       49.2796272
+      ],
+      [
+       -123.107614,
+       49.2797087
+      ]
+     ],
+     [
+      [
+       -123.107614,
+       49.2797087
+      ],
+      [
+       -123.1076136,
+       49.279786
+      ]
+     ],
+     [
+      [
+       -123.1076136,
+       49.279786
+      ],
+      [
+       -123.1076134,
+       49.2798124
+      ]
+     ],
+     [
+      [
+       -123.1076134,
+       49.2798124
+      ],
+      [
+       -123.1076085,
+       49.2805253
+      ]
+     ],
+     [
+      [
+       -123.1076085,
+       49.2805253
+      ],
+      [
+       -123.1076091,
+       49.2805875
+      ]
+     ],
+     [
+      [
+       -123.1076091,
+       49.2805875
+      ],
+      [
+       -123.1076158,
+       49.2809497
+      ]
+     ],
+     [
+      [
+       -123.1076158,
+       49.2809497
+      ],
+      [
+       -123.1076165,
+       49.2809853
+      ]
+     ],
+     [
+      [
+       -123.1076165,
+       49.2809853
+      ],
+      [
+       -123.107581,
+       49.2810876
+      ]
+     ],
+     [
+      [
+       -123.107581,
+       49.2810876
+      ],
+      [
+       -123.1075484,
+       49.2811908
+      ]
+     ],
+     [
+      [
+       -123.1075484,
+       49.2811908
+      ],
+      [
+       -123.1075357,
+       49.2812209
+      ]
+     ],
+     [
+      [
+       -123.1075357,
+       49.2812209
+      ],
+      [
+       -123.1074973,
+       49.2813116
+      ]
+     ],
+     [
+      [
+       -123.1074973,
+       49.2813116
+      ],
+      [
+       -123.107459,
+       49.2814022
+      ]
+     ],
+     [
+      [
+       -123.107459,
+       49.2814022
+      ],
+      [
+       -123.1073986,
+       49.2815449
+      ]
+     ],
+     [
+      [
+       -123.1073986,
+       49.2815449
+      ],
+      [
+       -123.1072533,
+       49.2818761
+      ]
+     ],
+     [
+      [
+       -123.1072533,
+       49.2818761
+      ],
+      [
+       -123.107242,
+       49.2819018
+      ]
+     ],
+     [
+      [
+       -123.107242,
+       49.2819018
+      ],
+      [
+       -123.107205,
+       49.2819923
+      ]
+     ],
+     [
+      [
+       -123.1070061,
+       49.2824735
+      ],
+      [
+       -123.10686,
+       49.2828195
+      ]
+     ],
+     [
+      [
+       -123.10686,
+       49.2828195
+      ],
+      [
+       -123.106848,
+       49.282847
+      ]
+     ],
+     [
+      [
+       -123.106848,
+       49.282847
+      ],
+      [
+       -123.1068112,
+       49.2829391
+      ]
+     ],
+     [
+      [
+       -123.107205,
+       49.2819923
+      ],
+      [
+       -123.1071685,
+       49.2820852
+      ]
+     ],
+     [
+      [
+       -123.1071685,
+       49.2820852
+      ],
+      [
+       -123.1071594,
+       49.2821077
+      ]
+     ],
+     [
+      [
+       -123.1071594,
+       49.2821077
+      ],
+      [
+       -123.1070061,
+       49.2824735
+      ]
+     ],
+     [
+      [
+       -123.1068112,
+       49.2829391
+      ],
+      [
+       -123.1067818,
+       49.2830166
+      ]
+     ],
+     [
+      [
+       -123.1067818,
+       49.2830166
+      ],
+      [
+       -123.1067661,
+       49.2830525
+      ]
+     ],
+     [
+      [
+       -123.1067661,
+       49.2830525
+      ],
+      [
+       -123.1066167,
+       49.2833929
+      ]
+     ],
+     [
+      [
+       -123.1066167,
+       49.2833929
+      ],
+      [
+       -123.1064404,
+       49.2837869
+      ]
+     ],
+     [
+      [
+       -123.1064404,
+       49.2837869
+      ],
+      [
+       -123.1064338,
+       49.2837983
+      ]
+     ],
+     [
+      [
+       -123.1064338,
+       49.2837983
+      ],
+      [
+       -123.1063999,
+       49.2838781
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "WARDS",
+    "name_on_plan": "WARDS",
+    "plan_year": 1912,
+    "modern_name": [
+     "ABBOTT ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "candidate",
+    "distance_m": 2.7,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1069978,
+     49.2824019
+    ],
+    "label_centre_map": [
+     492218.249,
+     5458855.344
+    ],
+    "map_epsg": 32610,
+    "how": "unmatched word lying on this modern centreline after the fit; confirm before adding to --alias"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.11189,
+       49.2853441
+      ],
+      [
+       -123.111793,
+       49.2852814
+      ]
+     ],
+     [
+      [
+       -123.111793,
+       49.2852814
+      ],
+      [
+       -123.1117749,
+       49.2852694
+      ]
+     ],
+     [
+      [
+       -123.1117749,
+       49.2852694
+      ],
+      [
+       -123.1117024,
+       49.2852215
+      ]
+     ],
+     [
+      [
+       -123.11189,
+       49.2853441
+      ],
+      [
+       -123.1119774,
+       49.2854009
+      ]
+     ],
+     [
+      [
+       -123.1119774,
+       49.2854009
+      ],
+      [
+       -123.1120045,
+       49.285419
+      ]
+     ],
+     [
+      [
+       -123.1120045,
+       49.285419
+      ],
+      [
+       -123.1123419,
+       49.2856374
+      ]
+     ],
+     [
+      [
+       -123.1123419,
+       49.2856374
+      ],
+      [
+       -123.1127035,
+       49.2858714
+      ]
+     ],
+     [
+      [
+       -123.1127035,
+       49.2858714
+      ],
+      [
+       -123.11274,
+       49.285895
+      ]
+     ],
+     [
+      [
+       -123.11274,
+       49.285895
+      ],
+      [
+       -123.112855,
+       49.2859672
+      ]
+     ],
+     [
+      [
+       -123.1142651,
+       49.2869
+      ],
+      [
+       -123.114466,
+       49.2870141
+      ]
+     ],
+     [
+      [
+       -123.114466,
+       49.2870141
+      ],
+      [
+       -123.114671,
+       49.2871136
+      ]
+     ],
+     [
+      [
+       -123.114671,
+       49.2871136
+      ],
+      [
+       -123.1147485,
+       49.2871454
+      ]
+     ],
+     [
+      [
+       -123.1147485,
+       49.2871454
+      ],
+      [
+       -123.114932,
+       49.2872207
+      ]
+     ],
+     [
+      [
+       -123.114932,
+       49.2872207
+      ],
+      [
+       -123.1152938,
+       49.2873645
+      ]
+     ],
+     [
+      [
+       -123.1152938,
+       49.2873645
+      ],
+      [
+       -123.1155866,
+       49.287481
+      ]
+     ],
+     [
+      [
+       -123.110949,
+       49.2846754
+      ],
+      [
+       -123.1108605,
+       49.2846217
+      ]
+     ],
+     [
+      [
+       -123.1108605,
+       49.2846217
+      ],
+      [
+       -123.1107599,
+       49.2845607
+      ]
+     ],
+     [
+      [
+       -123.1107599,
+       49.2845607
+      ],
+      [
+       -123.1107208,
+       49.2845368
+      ]
+     ],
+     [
+      [
+       -123.1107208,
+       49.2845368
+      ],
+      [
+       -123.1102039,
+       49.2842214
+      ]
+     ],
+     [
+      [
+       -123.1102039,
+       49.2842214
+      ],
+      [
+       -123.1100449,
+       49.2841234
+      ]
+     ],
+     [
+      [
+       -123.1100449,
+       49.2841234
+      ],
+      [
+       -123.10996,
+       49.2840699
+      ]
+     ],
+     [
+      [
+       -123.113516,
+       49.286357
+      ],
+      [
+       -123.1134227,
+       49.2862583
+      ]
+     ],
+     [
+      [
+       -123.1134227,
+       49.2862583
+      ],
+      [
+       -123.1133098,
+       49.2861862
+      ]
+     ],
+     [
+      [
+       -123.1133098,
+       49.2861862
+      ],
+      [
+       -123.1130622,
+       49.2860228
+      ]
+     ],
+     [
+      [
+       -123.1130622,
+       49.2860228
+      ],
+      [
+       -123.1130077,
+       49.2859862
+      ]
+     ],
+     [
+      [
+       -123.1130077,
+       49.2859862
+      ],
+      [
+       -123.112855,
+       49.2859672
+      ]
+     ],
+     [
+      [
+       -123.1084106,
+       49.2832327
+      ],
+      [
+       -123.1078241,
+       49.2831246
+      ]
+     ],
+     [
+      [
+       -123.1078241,
+       49.2831246
+      ],
+      [
+       -123.107779,
+       49.2831164
+      ]
+     ],
+     [
+      [
+       -123.107779,
+       49.2831164
+      ],
+      [
+       -123.1077297,
+       49.2831074
+      ]
+     ],
+     [
+      [
+       -123.1077297,
+       49.2831074
+      ],
+      [
+       -123.1073029,
+       49.2830295
+      ]
+     ],
+     [
+      [
+       -123.1113508,
+       49.2849744
+      ],
+      [
+       -123.1110506,
+       49.2847556
+      ]
+     ],
+     [
+      [
+       -123.1110506,
+       49.2847556
+      ],
+      [
+       -123.1110208,
+       49.2847329
+      ]
+     ],
+     [
+      [
+       -123.1110208,
+       49.2847329
+      ],
+      [
+       -123.110949,
+       49.2846754
+      ]
+     ],
+     [
+      [
+       -123.1073029,
+       49.2830295
+      ],
+      [
+       -123.1072701,
+       49.2830235
+      ]
+     ],
+     [
+      [
+       -123.1072701,
+       49.2830235
+      ],
+      [
+       -123.1069691,
+       49.2829681
+      ]
+     ],
+     [
+      [
+       -123.1069691,
+       49.2829681
+      ],
+      [
+       -123.1069282,
+       49.2829606
+      ]
+     ],
+     [
+      [
+       -123.1069282,
+       49.2829606
+      ],
+      [
+       -123.1068112,
+       49.2829391
+      ]
+     ],
+     [
+      [
+       -123.10996,
+       49.2840699
+      ],
+      [
+       -123.10985,
+       49.2839999
+      ]
+     ],
+     [
+      [
+       -123.10985,
+       49.2839999
+      ],
+      [
+       -123.10928,
+       49.2836055
+      ]
+     ],
+     [
+      [
+       -123.10928,
+       49.2836055
+      ],
+      [
+       -123.109242,
+       49.2835792
+      ]
+     ],
+     [
+      [
+       -123.109242,
+       49.2835792
+      ],
+      [
+       -123.1091493,
+       49.2835144
+      ]
+     ],
+     [
+      [
+       -123.113516,
+       49.286357
+      ],
+      [
+       -123.1137744,
+       49.2865366
+      ]
+     ],
+     [
+      [
+       -123.1137744,
+       49.2865366
+      ],
+      [
+       -123.113806,
+       49.2865586
+      ]
+     ],
+     [
+      [
+       -123.113806,
+       49.2865586
+      ],
+      [
+       -123.1138882,
+       49.2866188
+      ]
+     ],
+     [
+      [
+       -123.112855,
+       49.2859672
+      ],
+      [
+       -123.1128846,
+       49.2860712
+      ]
+     ],
+     [
+      [
+       -123.1128846,
+       49.2860712
+      ],
+      [
+       -123.1131739,
+       49.286253
+      ]
+     ],
+     [
+      [
+       -123.1131739,
+       49.286253
+      ],
+      [
+       -123.113286,
+       49.2862914
+      ]
+     ],
+     [
+      [
+       -123.1117024,
+       49.2852215
+      ],
+      [
+       -123.1113508,
+       49.2849744
+      ]
+     ],
+     [
+      [
+       -123.1138882,
+       49.2866188
+      ],
+      [
+       -123.113987,
+       49.2866989
+      ]
+     ],
+     [
+      [
+       -123.113987,
+       49.2866989
+      ],
+      [
+       -123.1140106,
+       49.286716
+      ]
+     ],
+     [
+      [
+       -123.1140106,
+       49.286716
+      ],
+      [
+       -123.1141774,
+       49.2868366
+      ]
+     ],
+     [
+      [
+       -123.1155866,
+       49.287481
+      ],
+      [
+       -123.1156924,
+       49.2875228
+      ]
+     ],
+     [
+      [
+       -123.1156924,
+       49.2875228
+      ],
+      [
+       -123.1159571,
+       49.2876197
+      ]
+     ],
+     [
+      [
+       -123.113286,
+       49.2862914
+      ],
+      [
+       -123.1133277,
+       49.2863054
+      ]
+     ],
+     [
+      [
+       -123.1133277,
+       49.2863054
+      ],
+      [
+       -123.1134129,
+       49.2863288
+      ]
+     ],
+     [
+      [
+       -123.1134129,
+       49.2863288
+      ],
+      [
+       -123.113516,
+       49.286357
+      ]
+     ],
+     [
+      [
+       -123.1068112,
+       49.2829391
+      ],
+      [
+       -123.106688,
+       49.2829164
+      ]
+     ],
+     [
+      [
+       -123.106688,
+       49.2829164
+      ],
+      [
+       -123.1066476,
+       49.282909
+      ]
+     ],
+     [
+      [
+       -123.1066476,
+       49.282909
+      ],
+      [
+       -123.1059298,
+       49.2827768
+      ]
+     ],
+     [
+      [
+       -123.1059298,
+       49.2827768
+      ],
+      [
+       -123.105555,
+       49.2827078
+      ]
+     ],
+     [
+      [
+       -123.105555,
+       49.2827078
+      ],
+      [
+       -123.1044665,
+       49.2825075
+      ]
+     ],
+     [
+      [
+       -123.1044665,
+       49.2825075
+      ],
+      [
+       -123.1044202,
+       49.2824991
+      ]
+     ],
+     [
+      [
+       -123.1044202,
+       49.2824991
+      ],
+      [
+       -123.1043666,
+       49.2824891
+      ]
+     ],
+     [
+      [
+       -123.1043666,
+       49.2824891
+      ],
+      [
+       -123.1043097,
+       49.2824785
+      ]
+     ],
+     [
+      [
+       -123.1091493,
+       49.2835144
+      ],
+      [
+       -123.1090818,
+       49.28347
+      ]
+     ],
+     [
+      [
+       -123.1090818,
+       49.28347
+      ],
+      [
+       -123.1090347,
+       49.2834431
+      ]
+     ],
+     [
+      [
+       -123.1090347,
+       49.2834431
+      ],
+      [
+       -123.1089831,
+       49.283411
+      ]
+     ],
+     [
+      [
+       -123.1089831,
+       49.283411
+      ],
+      [
+       -123.1088945,
+       49.2833634
+      ]
+     ],
+     [
+      [
+       -123.1088945,
+       49.2833634
+      ],
+      [
+       -123.1087962,
+       49.2833216
+      ]
+     ],
+     [
+      [
+       -123.1087962,
+       49.2833216
+      ],
+      [
+       -123.1086847,
+       49.2832849
+      ]
+     ],
+     [
+      [
+       -123.1086847,
+       49.2832849
+      ],
+      [
+       -123.108586,
+       49.2832608
+      ]
+     ],
+     [
+      [
+       -123.108586,
+       49.2832608
+      ],
+      [
+       -123.1084986,
+       49.2832474
+      ]
+     ],
+     [
+      [
+       -123.1084986,
+       49.2832474
+      ],
+      [
+       -123.1084651,
+       49.2832416
+      ]
+     ],
+     [
+      [
+       -123.1084651,
+       49.2832416
+      ],
+      [
+       -123.1084106,
+       49.2832327
+      ]
+     ],
+     [
+      [
+       -123.1141774,
+       49.2868366
+      ],
+      [
+       -123.1142651,
+       49.2869
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "WALLER BLK",
+    "name_on_plan": "WALLER BLK",
+    "plan_year": 1912,
+    "modern_name": [
+     "WEST CORDOVA ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "candidate",
+    "distance_m": 5.4,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1052173,
+     49.2825952
+    ],
+    "label_centre_map": [
+     492347.778,
+     5458876.65
+    ],
+    "map_epsg": 32610,
+    "how": "unmatched word lying on this modern centreline after the fit; confirm before adding to --alias"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.11189,
+       49.2853441
+      ],
+      [
+       -123.111793,
+       49.2852814
+      ]
+     ],
+     [
+      [
+       -123.111793,
+       49.2852814
+      ],
+      [
+       -123.1117749,
+       49.2852694
+      ]
+     ],
+     [
+      [
+       -123.1117749,
+       49.2852694
+      ],
+      [
+       -123.1117024,
+       49.2852215
+      ]
+     ],
+     [
+      [
+       -123.11189,
+       49.2853441
+      ],
+      [
+       -123.1119774,
+       49.2854009
+      ]
+     ],
+     [
+      [
+       -123.1119774,
+       49.2854009
+      ],
+      [
+       -123.1120045,
+       49.285419
+      ]
+     ],
+     [
+      [
+       -123.1120045,
+       49.285419
+      ],
+      [
+       -123.1123419,
+       49.2856374
+      ]
+     ],
+     [
+      [
+       -123.1123419,
+       49.2856374
+      ],
+      [
+       -123.1127035,
+       49.2858714
+      ]
+     ],
+     [
+      [
+       -123.1127035,
+       49.2858714
+      ],
+      [
+       -123.11274,
+       49.285895
+      ]
+     ],
+     [
+      [
+       -123.11274,
+       49.285895
+      ],
+      [
+       -123.112855,
+       49.2859672
+      ]
+     ],
+     [
+      [
+       -123.1142651,
+       49.2869
+      ],
+      [
+       -123.114466,
+       49.2870141
+      ]
+     ],
+     [
+      [
+       -123.114466,
+       49.2870141
+      ],
+      [
+       -123.114671,
+       49.2871136
+      ]
+     ],
+     [
+      [
+       -123.114671,
+       49.2871136
+      ],
+      [
+       -123.1147485,
+       49.2871454
+      ]
+     ],
+     [
+      [
+       -123.1147485,
+       49.2871454
+      ],
+      [
+       -123.114932,
+       49.2872207
+      ]
+     ],
+     [
+      [
+       -123.114932,
+       49.2872207
+      ],
+      [
+       -123.1152938,
+       49.2873645
+      ]
+     ],
+     [
+      [
+       -123.1152938,
+       49.2873645
+      ],
+      [
+       -123.1155866,
+       49.287481
+      ]
+     ],
+     [
+      [
+       -123.110949,
+       49.2846754
+      ],
+      [
+       -123.1108605,
+       49.2846217
+      ]
+     ],
+     [
+      [
+       -123.1108605,
+       49.2846217
+      ],
+      [
+       -123.1107599,
+       49.2845607
+      ]
+     ],
+     [
+      [
+       -123.1107599,
+       49.2845607
+      ],
+      [
+       -123.1107208,
+       49.2845368
+      ]
+     ],
+     [
+      [
+       -123.1107208,
+       49.2845368
+      ],
+      [
+       -123.1102039,
+       49.2842214
+      ]
+     ],
+     [
+      [
+       -123.1102039,
+       49.2842214
+      ],
+      [
+       -123.1100449,
+       49.2841234
+      ]
+     ],
+     [
+      [
+       -123.1100449,
+       49.2841234
+      ],
+      [
+       -123.10996,
+       49.2840699
+      ]
+     ],
+     [
+      [
+       -123.113516,
+       49.286357
+      ],
+      [
+       -123.1134227,
+       49.2862583
+      ]
+     ],
+     [
+      [
+       -123.1134227,
+       49.2862583
+      ],
+      [
+       -123.1133098,
+       49.2861862
+      ]
+     ],
+     [
+      [
+       -123.1133098,
+       49.2861862
+      ],
+      [
+       -123.1130622,
+       49.2860228
+      ]
+     ],
+     [
+      [
+       -123.1130622,
+       49.2860228
+      ],
+      [
+       -123.1130077,
+       49.2859862
+      ]
+     ],
+     [
+      [
+       -123.1130077,
+       49.2859862
+      ],
+      [
+       -123.112855,
+       49.2859672
+      ]
+     ],
+     [
+      [
+       -123.1084106,
+       49.2832327
+      ],
+      [
+       -123.1078241,
+       49.2831246
+      ]
+     ],
+     [
+      [
+       -123.1078241,
+       49.2831246
+      ],
+      [
+       -123.107779,
+       49.2831164
+      ]
+     ],
+     [
+      [
+       -123.107779,
+       49.2831164
+      ],
+      [
+       -123.1077297,
+       49.2831074
+      ]
+     ],
+     [
+      [
+       -123.1077297,
+       49.2831074
+      ],
+      [
+       -123.1073029,
+       49.2830295
+      ]
+     ],
+     [
+      [
+       -123.1113508,
+       49.2849744
+      ],
+      [
+       -123.1110506,
+       49.2847556
+      ]
+     ],
+     [
+      [
+       -123.1110506,
+       49.2847556
+      ],
+      [
+       -123.1110208,
+       49.2847329
+      ]
+     ],
+     [
+      [
+       -123.1110208,
+       49.2847329
+      ],
+      [
+       -123.110949,
+       49.2846754
+      ]
+     ],
+     [
+      [
+       -123.1073029,
+       49.2830295
+      ],
+      [
+       -123.1072701,
+       49.2830235
+      ]
+     ],
+     [
+      [
+       -123.1072701,
+       49.2830235
+      ],
+      [
+       -123.1069691,
+       49.2829681
+      ]
+     ],
+     [
+      [
+       -123.1069691,
+       49.2829681
+      ],
+      [
+       -123.1069282,
+       49.2829606
+      ]
+     ],
+     [
+      [
+       -123.1069282,
+       49.2829606
+      ],
+      [
+       -123.1068112,
+       49.2829391
+      ]
+     ],
+     [
+      [
+       -123.10996,
+       49.2840699
+      ],
+      [
+       -123.10985,
+       49.2839999
+      ]
+     ],
+     [
+      [
+       -123.10985,
+       49.2839999
+      ],
+      [
+       -123.10928,
+       49.2836055
+      ]
+     ],
+     [
+      [
+       -123.10928,
+       49.2836055
+      ],
+      [
+       -123.109242,
+       49.2835792
+      ]
+     ],
+     [
+      [
+       -123.109242,
+       49.2835792
+      ],
+      [
+       -123.1091493,
+       49.2835144
+      ]
+     ],
+     [
+      [
+       -123.113516,
+       49.286357
+      ],
+      [
+       -123.1137744,
+       49.2865366
+      ]
+     ],
+     [
+      [
+       -123.1137744,
+       49.2865366
+      ],
+      [
+       -123.113806,
+       49.2865586
+      ]
+     ],
+     [
+      [
+       -123.113806,
+       49.2865586
+      ],
+      [
+       -123.1138882,
+       49.2866188
+      ]
+     ],
+     [
+      [
+       -123.112855,
+       49.2859672
+      ],
+      [
+       -123.1128846,
+       49.2860712
+      ]
+     ],
+     [
+      [
+       -123.1128846,
+       49.2860712
+      ],
+      [
+       -123.1131739,
+       49.286253
+      ]
+     ],
+     [
+      [
+       -123.1131739,
+       49.286253
+      ],
+      [
+       -123.113286,
+       49.2862914
+      ]
+     ],
+     [
+      [
+       -123.1117024,
+       49.2852215
+      ],
+      [
+       -123.1113508,
+       49.2849744
+      ]
+     ],
+     [
+      [
+       -123.1138882,
+       49.2866188
+      ],
+      [
+       -123.113987,
+       49.2866989
+      ]
+     ],
+     [
+      [
+       -123.113987,
+       49.2866989
+      ],
+      [
+       -123.1140106,
+       49.286716
+      ]
+     ],
+     [
+      [
+       -123.1140106,
+       49.286716
+      ],
+      [
+       -123.1141774,
+       49.2868366
+      ]
+     ],
+     [
+      [
+       -123.1155866,
+       49.287481
+      ],
+      [
+       -123.1156924,
+       49.2875228
+      ]
+     ],
+     [
+      [
+       -123.1156924,
+       49.2875228
+      ],
+      [
+       -123.1159571,
+       49.2876197
+      ]
+     ],
+     [
+      [
+       -123.113286,
+       49.2862914
+      ],
+      [
+       -123.1133277,
+       49.2863054
+      ]
+     ],
+     [
+      [
+       -123.1133277,
+       49.2863054
+      ],
+      [
+       -123.1134129,
+       49.2863288
+      ]
+     ],
+     [
+      [
+       -123.1134129,
+       49.2863288
+      ],
+      [
+       -123.113516,
+       49.286357
+      ]
+     ],
+     [
+      [
+       -123.1068112,
+       49.2829391
+      ],
+      [
+       -123.106688,
+       49.2829164
+      ]
+     ],
+     [
+      [
+       -123.106688,
+       49.2829164
+      ],
+      [
+       -123.1066476,
+       49.282909
+      ]
+     ],
+     [
+      [
+       -123.1066476,
+       49.282909
+      ],
+      [
+       -123.1059298,
+       49.2827768
+      ]
+     ],
+     [
+      [
+       -123.1059298,
+       49.2827768
+      ],
+      [
+       -123.105555,
+       49.2827078
+      ]
+     ],
+     [
+      [
+       -123.105555,
+       49.2827078
+      ],
+      [
+       -123.1044665,
+       49.2825075
+      ]
+     ],
+     [
+      [
+       -123.1044665,
+       49.2825075
+      ],
+      [
+       -123.1044202,
+       49.2824991
+      ]
+     ],
+     [
+      [
+       -123.1044202,
+       49.2824991
+      ],
+      [
+       -123.1043666,
+       49.2824891
+      ]
+     ],
+     [
+      [
+       -123.1043666,
+       49.2824891
+      ],
+      [
+       -123.1043097,
+       49.2824785
+      ]
+     ],
+     [
+      [
+       -123.1091493,
+       49.2835144
+      ],
+      [
+       -123.1090818,
+       49.28347
+      ]
+     ],
+     [
+      [
+       -123.1090818,
+       49.28347
+      ],
+      [
+       -123.1090347,
+       49.2834431
+      ]
+     ],
+     [
+      [
+       -123.1090347,
+       49.2834431
+      ],
+      [
+       -123.1089831,
+       49.283411
+      ]
+     ],
+     [
+      [
+       -123.1089831,
+       49.283411
+      ],
+      [
+       -123.1088945,
+       49.2833634
+      ]
+     ],
+     [
+      [
+       -123.1088945,
+       49.2833634
+      ],
+      [
+       -123.1087962,
+       49.2833216
+      ]
+     ],
+     [
+      [
+       -123.1087962,
+       49.2833216
+      ],
+      [
+       -123.1086847,
+       49.2832849
+      ]
+     ],
+     [
+      [
+       -123.1086847,
+       49.2832849
+      ],
+      [
+       -123.108586,
+       49.2832608
+      ]
+     ],
+     [
+      [
+       -123.108586,
+       49.2832608
+      ],
+      [
+       -123.1084986,
+       49.2832474
+      ]
+     ],
+     [
+      [
+       -123.1084986,
+       49.2832474
+      ],
+      [
+       -123.1084651,
+       49.2832416
+      ]
+     ],
+     [
+      [
+       -123.1084651,
+       49.2832416
+      ],
+      [
+       -123.1084106,
+       49.2832327
+      ]
+     ],
+     [
+      [
+       -123.1141774,
+       49.2868366
+      ],
+      [
+       -123.1142651,
+       49.2869
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "BRISBERRY BLACK",
+    "name_on_plan": "BRISBERRY BLACK",
+    "plan_year": 1912,
+    "modern_name": [
+     "WEST CORDOVA ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "candidate",
+    "distance_m": 7.4,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1096822,
+     49.2839801
+    ],
+    "label_centre_map": [
+     492023.275,
+     5459031.064
+    ],
+    "map_epsg": 32610,
+    "how": "unmatched word lying on this modern centreline after the fit; confirm before adding to --alias"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.1087539,
+       49.2844117
+      ],
+      [
+       -123.1086415,
+       49.2847356
+      ]
+     ],
+     [
+      [
+       -123.1095685,
+       49.2825217
+      ],
+      [
+       -123.1095325,
+       49.2826259
+      ]
+     ],
+     [
+      [
+       -123.1095325,
+       49.2826259
+      ],
+      [
+       -123.1095058,
+       49.2826898
+      ]
+     ],
+     [
+      [
+       -123.1095058,
+       49.2826898
+      ],
+      [
+       -123.1094067,
+       49.2829087
+      ]
+     ],
+     [
+      [
+       -123.113089,
+       49.279444
+      ],
+      [
+       -123.112479,
+       49.2798478
+      ]
+     ],
+     [
+      [
+       -123.112479,
+       49.2798478
+      ],
+      [
+       -123.1121148,
+       49.2800894
+      ]
+     ],
+     [
+      [
+       -123.1121148,
+       49.2800894
+      ],
+      [
+       -123.1116855,
+       49.2803721
+      ]
+     ],
+     [
+      [
+       -123.1116855,
+       49.2803721
+      ],
+      [
+       -123.111657,
+       49.2803909
+      ]
+     ],
+     [
+      [
+       -123.111657,
+       49.2803909
+      ],
+      [
+       -123.1115477,
+       49.2804651
+      ]
+     ],
+     [
+      [
+       -123.1115477,
+       49.2804651
+      ],
+      [
+       -123.1114669,
+       49.2805177
+      ]
+     ],
+     [
+      [
+       -123.1114669,
+       49.2805177
+      ],
+      [
+       -123.1114215,
+       49.2805472
+      ]
+     ],
+     [
+      [
+       -123.1114215,
+       49.2805472
+      ],
+      [
+       -123.1113944,
+       49.2805652
+      ]
+     ],
+     [
+      [
+       -123.1113944,
+       49.2805652
+      ],
+      [
+       -123.1111495,
+       49.280728
+      ]
+     ],
+     [
+      [
+       -123.1111495,
+       49.280728
+      ],
+      [
+       -123.1108976,
+       49.2808955
+      ]
+     ],
+     [
+      [
+       -123.1108976,
+       49.2808955
+      ],
+      [
+       -123.1106659,
+       49.2810485
+      ]
+     ],
+     [
+      [
+       -123.1106659,
+       49.2810485
+      ],
+      [
+       -123.1106554,
+       49.2810551
+      ]
+     ],
+     [
+      [
+       -123.1106554,
+       49.2810551
+      ],
+      [
+       -123.1104598,
+       49.2811854
+      ]
+     ],
+     [
+      [
+       -123.1104598,
+       49.2811854
+      ],
+      [
+       -123.1103186,
+       49.2812774
+      ]
+     ],
+     [
+      [
+       -123.1103186,
+       49.2812774
+      ],
+      [
+       -123.1101035,
+       49.28142
+      ]
+     ],
+     [
+      [
+       -123.1101035,
+       49.28142
+      ],
+      [
+       -123.1100711,
+       49.2814411
+      ]
+     ],
+     [
+      [
+       -123.1100711,
+       49.2814411
+      ],
+      [
+       -123.109995,
+       49.2815521
+      ]
+     ],
+     [
+      [
+       -123.109995,
+       49.2815521
+      ],
+      [
+       -123.109937,
+       49.2816575
+      ]
+     ],
+     [
+      [
+       -123.109937,
+       49.2816575
+      ],
+      [
+       -123.109917,
+       49.2816985
+      ]
+     ],
+     [
+      [
+       -123.109917,
+       49.2816985
+      ],
+      [
+       -123.1097996,
+       49.2819886
+      ]
+     ],
+     [
+      [
+       -123.1097996,
+       49.2819886
+      ],
+      [
+       -123.1097051,
+       49.2821981
+      ]
+     ],
+     [
+      [
+       -123.1091493,
+       49.2835144
+      ],
+      [
+       -123.1091151,
+       49.283602
+      ]
+     ],
+     [
+      [
+       -123.1091151,
+       49.283602
+      ],
+      [
+       -123.109096,
+       49.2836538
+      ]
+     ],
+     [
+      [
+       -123.109096,
+       49.2836538
+      ],
+      [
+       -123.1090216,
+       49.2838349
+      ]
+     ],
+     [
+      [
+       -123.1090216,
+       49.2838349
+      ],
+      [
+       -123.1089724,
+       49.2839528
+      ]
+     ],
+     [
+      [
+       -123.1094067,
+       49.2829087
+      ],
+      [
+       -123.1093396,
+       49.2830659
+      ]
+     ],
+     [
+      [
+       -123.1092759,
+       49.2832197
+      ],
+      [
+       -123.1092143,
+       49.283363
+      ]
+     ],
+     [
+      [
+       -123.1092143,
+       49.283363
+      ],
+      [
+       -123.1091848,
+       49.2834318
+      ]
+     ],
+     [
+      [
+       -123.1091848,
+       49.2834318
+      ],
+      [
+       -123.1091493,
+       49.2835144
+      ]
+     ],
+     [
+      [
+       -123.1089724,
+       49.2839528
+      ],
+      [
+       -123.108864,
+       49.2842134
+      ]
+     ],
+     [
+      [
+       -123.108864,
+       49.2842134
+      ],
+      [
+       -123.10885,
+       49.2842449
+      ]
+     ],
+     [
+      [
+       -123.10885,
+       49.2842449
+      ],
+      [
+       -123.108805,
+       49.2843196
+      ]
+     ],
+     [
+      [
+       -123.108805,
+       49.2843196
+      ],
+      [
+       -123.1087591,
+       49.2843975
+      ]
+     ],
+     [
+      [
+       -123.1087591,
+       49.2843975
+      ],
+      [
+       -123.1087539,
+       49.2844117
+      ]
+     ],
+     [
+      [
+       -123.1097051,
+       49.2821981
+      ],
+      [
+       -123.1096514,
+       49.2823179
+      ]
+     ],
+     [
+      [
+       -123.1096514,
+       49.2823179
+      ],
+      [
+       -123.1096192,
+       49.2823889
+      ]
+     ],
+     [
+      [
+       -123.1096192,
+       49.2823889
+      ],
+      [
+       -123.1095685,
+       49.2825217
+      ]
+     ],
+     [
+      [
+       -123.1093396,
+       49.2830659
+      ],
+      [
+       -123.1092759,
+       49.2832197
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "LOT SAL",
+    "name_on_plan": "LOT SAL",
+    "plan_year": 1912,
+    "modern_name": [
+     "CAMBIE ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "candidate",
+    "distance_m": 7.9,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1090367,
+     49.2840699
+    ],
+    "label_centre_map": [
+     492070.238,
+     5459040.987
+    ],
+    "map_epsg": 32610,
+    "how": "unmatched word lying on this modern centreline after the fit; confirm before adding to --alias"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.1040715,
+       49.283356
+      ],
+      [
+       -123.1041224,
+       49.2833819
+      ]
+     ],
+     [
+      [
+       -123.1041224,
+       49.2833819
+      ],
+      [
+       -123.1041688,
+       49.2834043
+      ]
+     ],
+     [
+      [
+       -123.1041688,
+       49.2834043
+      ],
+      [
+       -123.1043341,
+       49.2834894
+      ]
+     ],
+     [
+      [
+       -123.1043341,
+       49.2834894
+      ],
+      [
+       -123.1044008,
+       49.2835115
+      ]
+     ],
+     [
+      [
+       -123.1044008,
+       49.2835115
+      ],
+      [
+       -123.1044445,
+       49.2835256
+      ]
+     ],
+     [
+      [
+       -123.1044445,
+       49.2835256
+      ],
+      [
+       -123.1046098,
+       49.2835656
+      ]
+     ],
+     [
+      [
+       -123.1046098,
+       49.2835656
+      ],
+      [
+       -123.104788,
+       49.2836011
+      ]
+     ],
+     [
+      [
+       -123.104788,
+       49.2836011
+      ],
+      [
+       -123.1058341,
+       49.2837799
+      ]
+     ],
+     [
+      [
+       -123.1067039,
+       49.2839323
+      ],
+      [
+       -123.1081628,
+       49.2842001
+      ]
+     ],
+     [
+      [
+       -123.1081628,
+       49.2842001
+      ],
+      [
+       -123.108645,
+       49.2842885
+      ]
+     ],
+     [
+      [
+       -123.108645,
+       49.2842885
+      ],
+      [
+       -123.108805,
+       49.2843196
+      ]
+     ],
+     [
+      [
+       -123.108805,
+       49.2843196
+      ],
+      [
+       -123.108946,
+       49.2843451
+      ]
+     ],
+     [
+      [
+       -123.108946,
+       49.2843451
+      ],
+      [
+       -123.1090862,
+       49.2843719
+      ]
+     ],
+     [
+      [
+       -123.1104472,
+       49.2846279
+      ],
+      [
+       -123.1106825,
+       49.2846683
+      ]
+     ],
+     [
+      [
+       -123.1106825,
+       49.2846683
+      ],
+      [
+       -123.1107268,
+       49.2846745
+      ]
+     ],
+     [
+      [
+       -123.1107268,
+       49.2846745
+      ],
+      [
+       -123.110949,
+       49.2846754
+      ]
+     ],
+     [
+      [
+       -123.1090862,
+       49.2843719
+      ],
+      [
+       -123.109596,
+       49.2844695
+      ]
+     ],
+     [
+      [
+       -123.109596,
+       49.2844695
+      ],
+      [
+       -123.1104472,
+       49.2846279
+      ]
+     ],
+     [
+      [
+       -123.1038701,
+       49.2833028
+      ],
+      [
+       -123.1040715,
+       49.283356
+      ]
+     ],
+     [
+      [
+       -123.1058341,
+       49.2837799
+      ],
+      [
+       -123.1062464,
+       49.2838503
+      ]
+     ],
+     [
+      [
+       -123.1062464,
+       49.2838503
+      ],
+      [
+       -123.1063999,
+       49.2838781
+      ]
+     ],
+     [
+      [
+       -123.1063999,
+       49.2838781
+      ],
+      [
+       -123.1065608,
+       49.283906
+      ]
+     ],
+     [
+      [
+       -123.1065608,
+       49.283906
+      ],
+      [
+       -123.1067039,
+       49.2839323
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "DISTRICT",
+    "name_on_plan": "DISTRICT",
+    "plan_year": 1912,
+    "modern_name": [
+     "WATER ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "candidate",
+    "distance_m": 8.0,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1064854,
+     49.2839671
+    ],
+    "label_centre_map": [
+     492255.762,
+     5459029.288
+    ],
+    "map_epsg": 32610,
+    "how": "unmatched word lying on this modern centreline after the fit; confirm before adding to --alias"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.112894,
+       49.2846714
+      ],
+      [
+       -123.112805,
+       49.2846138
+      ]
+     ],
+     [
+      [
+       -123.112805,
+       49.2846138
+      ],
+      [
+       -123.1127686,
+       49.2845903
+      ]
+     ],
+     [
+      [
+       -123.1127686,
+       49.2845903
+      ],
+      [
+       -123.1120483,
+       49.2841245
+      ]
+     ],
+     [
+      [
+       -123.1120483,
+       49.2841245
+      ],
+      [
+       -123.1120138,
+       49.2841022
+      ]
+     ],
+     [
+      [
+       -123.1120138,
+       49.2841022
+      ],
+      [
+       -123.1119467,
+       49.2840586
+      ]
+     ],
+     [
+      [
+       -123.1099786,
+       49.2827848
+      ],
+      [
+       -123.1098951,
+       49.2827346
+      ]
+     ],
+     [
+      [
+       -123.1098951,
+       49.2827346
+      ],
+      [
+       -123.1097112,
+       49.2826239
+      ]
+     ],
+     [
+      [
+       -123.1097112,
+       49.2826239
+      ],
+      [
+       -123.1096768,
+       49.2825997
+      ]
+     ],
+     [
+      [
+       -123.1096768,
+       49.2825997
+      ],
+      [
+       -123.1095685,
+       49.2825217
+      ]
+     ],
+     [
+      [
+       -123.1119467,
+       49.2840586
+      ],
+      [
+       -123.111873,
+       49.2840112
+      ]
+     ],
+     [
+      [
+       -123.111873,
+       49.2840112
+      ],
+      [
+       -123.1118287,
+       49.2839823
+      ]
+     ],
+     [
+      [
+       -123.1118287,
+       49.2839823
+      ],
+      [
+       -123.1117946,
+       49.2839601
+      ]
+     ],
+     [
+      [
+       -123.1117946,
+       49.2839601
+      ],
+      [
+       -123.1110638,
+       49.2834877
+      ]
+     ],
+     [
+      [
+       -123.1110638,
+       49.2834877
+      ],
+      [
+       -123.111032,
+       49.2834672
+      ]
+     ],
+     [
+      [
+       -123.111032,
+       49.2834672
+      ],
+      [
+       -123.110953,
+       49.2834153
+      ]
+     ],
+     [
+      [
+       -123.110953,
+       49.2834153
+      ],
+      [
+       -123.110872,
+       49.2833634
+      ]
+     ],
+     [
+      [
+       -123.110872,
+       49.2833634
+      ],
+      [
+       -123.1108559,
+       49.2833517
+      ]
+     ],
+     [
+      [
+       -123.1108559,
+       49.2833517
+      ],
+      [
+       -123.1100535,
+       49.2828348
+      ]
+     ],
+     [
+      [
+       -123.1100535,
+       49.2828348
+      ],
+      [
+       -123.1099786,
+       49.2827848
+      ]
+     ],
+     [
+      [
+       -123.1142993,
+       49.2855934
+      ],
+      [
+       -123.1139992,
+       49.2854057
+      ]
+     ],
+     [
+      [
+       -123.1139992,
+       49.2854057
+      ],
+      [
+       -123.113973,
+       49.2853893
+      ]
+     ],
+     [
+      [
+       -123.113973,
+       49.2853893
+      ],
+      [
+       -123.113874,
+       49.2853165
+      ]
+     ],
+     [
+      [
+       -123.1134106,
+       49.2850061
+      ],
+      [
+       -123.1130241,
+       49.2847558
+      ]
+     ],
+     [
+      [
+       -123.1130241,
+       49.2847558
+      ],
+      [
+       -123.1129832,
+       49.2847284
+      ]
+     ],
+     [
+      [
+       -123.1129832,
+       49.2847284
+      ],
+      [
+       -123.112894,
+       49.2846714
+      ]
+     ],
+     [
+      [
+       -123.1095685,
+       49.2825217
+      ],
+      [
+       -123.1094959,
+       49.2824773
+      ]
+     ],
+     [
+      [
+       -123.1094959,
+       49.2824773
+      ],
+      [
+       -123.1094539,
+       49.2824552
+      ]
+     ],
+     [
+      [
+       -123.1094539,
+       49.2824552
+      ],
+      [
+       -123.1094211,
+       49.2824378
+      ]
+     ],
+     [
+      [
+       -123.1094211,
+       49.2824378
+      ],
+      [
+       -123.1093401,
+       49.2824005
+      ]
+     ],
+     [
+      [
+       -123.1093401,
+       49.2824005
+      ],
+      [
+       -123.1092607,
+       49.2823792
+      ]
+     ],
+     [
+      [
+       -123.1092607,
+       49.2823792
+      ],
+      [
+       -123.1086071,
+       49.2822519
+      ]
+     ],
+     [
+      [
+       -123.1086071,
+       49.2822519
+      ],
+      [
+       -123.108564,
+       49.2822436
+      ]
+     ],
+     [
+      [
+       -123.107205,
+       49.2819923
+      ],
+      [
+       -123.107089,
+       49.2819718
+      ]
+     ],
+     [
+      [
+       -123.107089,
+       49.2819718
+      ],
+      [
+       -123.1070501,
+       49.2819649
+      ]
+     ],
+     [
+      [
+       -123.1070501,
+       49.2819649
+      ],
+      [
+       -123.1059845,
+       49.2817746
+      ]
+     ],
+     [
+      [
+       -123.1059845,
+       49.2817746
+      ],
+      [
+       -123.1047825,
+       49.2815592
+      ]
+     ],
+     [
+      [
+       -123.1047825,
+       49.2815592
+      ],
+      [
+       -123.1045122,
+       49.2815087
+      ]
+     ],
+     [
+      [
+       -123.1045122,
+       49.2815087
+      ],
+      [
+       -123.1044693,
+       49.2815002
+      ]
+     ],
+     [
+      [
+       -123.1044693,
+       49.2815002
+      ],
+      [
+       -123.104406,
+       49.2814886
+      ]
+     ],
+     [
+      [
+       -123.104406,
+       49.2814886
+      ],
+      [
+       -123.1043453,
+       49.2814799
+      ]
+     ],
+     [
+      [
+       -123.115872,
+       49.2865839
+      ],
+      [
+       -123.115809,
+       49.2865436
+      ]
+     ],
+     [
+      [
+       -123.115809,
+       49.2865436
+      ],
+      [
+       -123.115779,
+       49.2865248
+      ]
+     ],
+     [
+      [
+       -123.115779,
+       49.2865248
+      ],
+      [
+       -123.1157462,
+       49.2865039
+      ]
+     ],
+     [
+      [
+       -123.1157462,
+       49.2865039
+      ],
+      [
+       -123.1152763,
+       49.2862075
+      ]
+     ],
+     [
+      [
+       -123.108564,
+       49.2822436
+      ],
+      [
+       -123.108516,
+       49.2822345
+      ]
+     ],
+     [
+      [
+       -123.108516,
+       49.2822345
+      ],
+      [
+       -123.1076638,
+       49.2820724
+      ]
+     ],
+     [
+      [
+       -123.1076638,
+       49.2820724
+      ],
+      [
+       -123.1073665,
+       49.2820204
+      ]
+     ],
+     [
+      [
+       -123.1073665,
+       49.2820204
+      ],
+      [
+       -123.1073306,
+       49.2820141
+      ]
+     ],
+     [
+      [
+       -123.1073306,
+       49.2820141
+      ],
+      [
+       -123.107205,
+       49.2819923
+      ]
+     ],
+     [
+      [
+       -123.1152763,
+       49.2862075
+      ],
+      [
+       -123.1149909,
+       49.2860268
+      ]
+     ],
+     [
+      [
+       -123.1149909,
+       49.2860268
+      ],
+      [
+       -123.114966,
+       49.286011
+      ]
+     ],
+     [
+      [
+       -123.114966,
+       49.286011
+      ],
+      [
+       -123.114876,
+       49.2859545
+      ]
+     ],
+     [
+      [
+       -123.114876,
+       49.2859545
+      ],
+      [
+       -123.1147904,
+       49.2858998
+      ]
+     ],
+     [
+      [
+       -123.1147904,
+       49.2858998
+      ],
+      [
+       -123.114768,
+       49.2858866
+      ]
+     ],
+     [
+      [
+       -123.114768,
+       49.2858866
+      ],
+      [
+       -123.1144579,
+       49.2856926
+      ]
+     ],
+     [
+      [
+       -123.1144579,
+       49.2856926
+      ],
+      [
+       -123.1142993,
+       49.2855934
+      ]
+     ],
+     [
+      [
+       -123.113874,
+       49.2853165
+      ],
+      [
+       -123.113783,
+       49.2852472
+      ]
+     ],
+     [
+      [
+       -123.113783,
+       49.2852472
+      ],
+      [
+       -123.1137495,
+       49.2852255
+      ]
+     ],
+     [
+      [
+       -123.1137495,
+       49.2852255
+      ],
+      [
+       -123.1134106,
+       49.2850061
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "MAHON BLK",
+    "name_on_plan": "MAHON BLK",
+    "plan_year": 1912,
+    "modern_name": [
+     "WEST HASTINGS ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "candidate",
+    "distance_m": 9.0,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1104789,
+     49.2832224
+    ],
+    "label_centre_map": [
+     491965.209,
+     5458946.914
+    ],
+    "map_epsg": 32610,
+    "how": "unmatched word lying on this modern centreline after the fit; confirm before adding to --alias"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+     [
+      [
+       -123.1087539,
+       49.2844117
+      ],
+      [
+       -123.1086415,
+       49.2847356
+      ]
+     ],
+     [
+      [
+       -123.1095685,
+       49.2825217
+      ],
+      [
+       -123.1095325,
+       49.2826259
+      ]
+     ],
+     [
+      [
+       -123.1095325,
+       49.2826259
+      ],
+      [
+       -123.1095058,
+       49.2826898
+      ]
+     ],
+     [
+      [
+       -123.1095058,
+       49.2826898
+      ],
+      [
+       -123.1094067,
+       49.2829087
+      ]
+     ],
+     [
+      [
+       -123.113089,
+       49.279444
+      ],
+      [
+       -123.112479,
+       49.2798478
+      ]
+     ],
+     [
+      [
+       -123.112479,
+       49.2798478
+      ],
+      [
+       -123.1121148,
+       49.2800894
+      ]
+     ],
+     [
+      [
+       -123.1121148,
+       49.2800894
+      ],
+      [
+       -123.1116855,
+       49.2803721
+      ]
+     ],
+     [
+      [
+       -123.1116855,
+       49.2803721
+      ],
+      [
+       -123.111657,
+       49.2803909
+      ]
+     ],
+     [
+      [
+       -123.111657,
+       49.2803909
+      ],
+      [
+       -123.1115477,
+       49.2804651
+      ]
+     ],
+     [
+      [
+       -123.1115477,
+       49.2804651
+      ],
+      [
+       -123.1114669,
+       49.2805177
+      ]
+     ],
+     [
+      [
+       -123.1114669,
+       49.2805177
+      ],
+      [
+       -123.1114215,
+       49.2805472
+      ]
+     ],
+     [
+      [
+       -123.1114215,
+       49.2805472
+      ],
+      [
+       -123.1113944,
+       49.2805652
+      ]
+     ],
+     [
+      [
+       -123.1113944,
+       49.2805652
+      ],
+      [
+       -123.1111495,
+       49.280728
+      ]
+     ],
+     [
+      [
+       -123.1111495,
+       49.280728
+      ],
+      [
+       -123.1108976,
+       49.2808955
+      ]
+     ],
+     [
+      [
+       -123.1108976,
+       49.2808955
+      ],
+      [
+       -123.1106659,
+       49.2810485
+      ]
+     ],
+     [
+      [
+       -123.1106659,
+       49.2810485
+      ],
+      [
+       -123.1106554,
+       49.2810551
+      ]
+     ],
+     [
+      [
+       -123.1106554,
+       49.2810551
+      ],
+      [
+       -123.1104598,
+       49.2811854
+      ]
+     ],
+     [
+      [
+       -123.1104598,
+       49.2811854
+      ],
+      [
+       -123.1103186,
+       49.2812774
+      ]
+     ],
+     [
+      [
+       -123.1103186,
+       49.2812774
+      ],
+      [
+       -123.1101035,
+       49.28142
+      ]
+     ],
+     [
+      [
+       -123.1101035,
+       49.28142
+      ],
+      [
+       -123.1100711,
+       49.2814411
+      ]
+     ],
+     [
+      [
+       -123.1100711,
+       49.2814411
+      ],
+      [
+       -123.109995,
+       49.2815521
+      ]
+     ],
+     [
+      [
+       -123.109995,
+       49.2815521
+      ],
+      [
+       -123.109937,
+       49.2816575
+      ]
+     ],
+     [
+      [
+       -123.109937,
+       49.2816575
+      ],
+      [
+       -123.109917,
+       49.2816985
+      ]
+     ],
+     [
+      [
+       -123.109917,
+       49.2816985
+      ],
+      [
+       -123.1097996,
+       49.2819886
+      ]
+     ],
+     [
+      [
+       -123.1097996,
+       49.2819886
+      ],
+      [
+       -123.1097051,
+       49.2821981
+      ]
+     ],
+     [
+      [
+       -123.1091493,
+       49.2835144
+      ],
+      [
+       -123.1091151,
+       49.283602
+      ]
+     ],
+     [
+      [
+       -123.1091151,
+       49.283602
+      ],
+      [
+       -123.109096,
+       49.2836538
+      ]
+     ],
+     [
+      [
+       -123.109096,
+       49.2836538
+      ],
+      [
+       -123.1090216,
+       49.2838349
+      ]
+     ],
+     [
+      [
+       -123.1090216,
+       49.2838349
+      ],
+      [
+       -123.1089724,
+       49.2839528
+      ]
+     ],
+     [
+      [
+       -123.1094067,
+       49.2829087
+      ],
+      [
+       -123.1093396,
+       49.2830659
+      ]
+     ],
+     [
+      [
+       -123.1092759,
+       49.2832197
+      ],
+      [
+       -123.1092143,
+       49.283363
+      ]
+     ],
+     [
+      [
+       -123.1092143,
+       49.283363
+      ],
+      [
+       -123.1091848,
+       49.2834318
+      ]
+     ],
+     [
+      [
+       -123.1091848,
+       49.2834318
+      ],
+      [
+       -123.1091493,
+       49.2835144
+      ]
+     ],
+     [
+      [
+       -123.1089724,
+       49.2839528
+      ],
+      [
+       -123.108864,
+       49.2842134
+      ]
+     ],
+     [
+      [
+       -123.108864,
+       49.2842134
+      ],
+      [
+       -123.10885,
+       49.2842449
+      ]
+     ],
+     [
+      [
+       -123.10885,
+       49.2842449
+      ],
+      [
+       -123.108805,
+       49.2843196
+      ]
+     ],
+     [
+      [
+       -123.108805,
+       49.2843196
+      ],
+      [
+       -123.1087591,
+       49.2843975
+      ]
+     ],
+     [
+      [
+       -123.1087591,
+       49.2843975
+      ],
+      [
+       -123.1087539,
+       49.2844117
+      ]
+     ],
+     [
+      [
+       -123.1097051,
+       49.2821981
+      ],
+      [
+       -123.1096514,
+       49.2823179
+      ]
+     ],
+     [
+      [
+       -123.1096514,
+       49.2823179
+      ],
+      [
+       -123.1096192,
+       49.2823889
+      ]
+     ],
+     [
+      [
+       -123.1096192,
+       49.2823889
+      ],
+      [
+       -123.1095685,
+       49.2825217
+      ]
+     ],
+     [
+      [
+       -123.1093396,
+       49.2830659
+      ],
+      [
+       -123.1092759,
+       49.2832197
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "label_on_plan": "TOMINSITE",
+    "name_on_plan": "TOMINSITE",
+    "plan_year": 1912,
+    "modern_name": [
+     "CAMBIE ST"
+    ],
+    "modern_source": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+    "kind": "candidate",
+    "distance_m": 9.3,
+    "used_in_fit": false,
+    "label_centre_wgs84": [
+     -123.1088072,
+     49.2840297
+    ],
+    "label_centre_map": [
+     492086.918,
+     5459036.495
+    ],
+    "map_epsg": 32610,
+    "how": "unmatched word lying on this modern centreline after the fit; confirm before adding to --alias"
+   }
+  }
+ ]
+}

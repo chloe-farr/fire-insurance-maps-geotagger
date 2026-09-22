@@ -29,7 +29,10 @@ their footprints, with their scale added to the seeds. With that prior four labe
 
 Intersections come from the centrelines themselves (vertices shared by differently named features) unless
 --intersections supplies a layer. Names are matched after normalising the type word (Street/ST, Avenue/AVE,
-Square/SQ ...), so an OSM "X Street" and a municipal STNAME "X" + STTYPE "ST" both become "X ST".
+Square/SQ ...), so an OSM "X Street" and a municipal STNAME "X" + STTYPE "ST" both become "X ST". A type word fused onto
+the name, in full or abbreviated (Kronenstraße, Kronenstr.), is split off; a name that matches nothing as written is
+compared once more with leading articles and prepositions stripped on both sides (<Name>markt / Am <Name>markt,
+Strand / The Strand): LEADING_WORDS, a language-level list.
 
 Outputs in <run>/  (<code> = the reference layer's EPSG):
   <stem>_georef.json               affine source px -> EPSG:<code> (+ inverse), per-label residuals, RMS, implied dpi
@@ -73,19 +76,27 @@ TYPE_FIELDS = ["STTYPE", "ST_TYPE", "StreetType", "SUFFIX", "TYPE"]
 
 TYPE_WORDS = {"ST": "ST", "STREET": "ST", "AVE": "AVE", "AV": "AVE", "AVENUE": "AVE", "SQ": "SQ", "SQUARE": "SQ", "ALLEY": "ALLEY", "ALY": "ALLEY", "LANE": "LANE", "LN": "LANE", "RD": "RD", "ROAD": "RD", "PL": "PL", "PLACE": "PL", "DR": "DR", "DRIVE": "DR", "BLVD": "BLVD", "BOULEVARD": "BLVD", "CRES": "CRES", "CRESCENT": "CRES", "TERR": "TERR", "TERRACE": "TERR", "CT": "CRT", "CRT": "CRT", "COURT": "CRT", "WAY": "WAY", "HWY": "HWY", "HIGHWAY": "HWY", "MEWS": "MEWS", "ROW": "ROW"}
 DIRECTION_WORDS = {"N", "S", "E", "W", "NORTH", "SOUTH", "EAST", "WEST", "NE", "NW", "SE", "SW"}
-# Type words that German/Dutch plans and OSM fuse onto the name ("Singerstraße", "Stock-im-Eisen-Platz"); the OCR reads
-# them spaced, hyphenated or fused ("Singer-Strasse"), so a trailing word that ENDS in one of these is split off. Five letters
+# Type words that German/Dutch plans and OSM fuse onto the name ("<Name>straße", "<A>-<B>-Platz"); the OCR reads
+# them spaced, hyphenated or fused ("<Name>-Strasse"), so a trailing word that ENDS in one of these is split off. Five letters
 # or more only, so English names ending in -ring/-hof/-weg are left alone.
 FUSED_TYPE_WORDS = {"STRASSE": "STRASSE", "STR": "STRASSE", "GASSE": "GASSE", "PLATZ": "PLATZ", "MARKT": "MARKT", "STEIG": "STEIG",
                     "ZEILE": "ZEILE", "ALLEE": "ALLEE", "BRUECKE": "BRUECKE", "BRUCKE": "BRUECKE", "PROMENADE": "PROMENADE",
                     "STRAAT": "STRAAT", "GRACHT": "GRACHT", "PLEIN": "PLEIN", "SINGEL": "SINGEL"}
 TYPE_WORDS.update(FUSED_TYPE_WORDS)
 _FUSED_SUFFIXES = sorted((k for k in FUSED_TYPE_WORDS if len(k) >= 5), key=len, reverse=True)
+# Articles and prepositions a layer may lead a name with and a plan may drop, or the reverse ("Am <Name>markt" /
+# "<Name>markt", "An der <Name>" / "<Name>", "The Strand" / "Strand", "Rue de la Paix" / "de la Paix"): every
+# language does this, so when a name matches nothing as written, both sides are compared again with such leading words
+# stripped. Language-level, not a city fact; applied only as a fallback so a bare word does not gain extra streets.
+LEADING_WORDS = {"AM", "AN", "IM", "IN", "AUF", "ZUM", "ZUR", "ZU", "BEI", "BEIM", "HINTER", "VOR", "UNTER", "UEBER", "DER", "DEM", "DEN", "DIE", "DAS",  # German
+                 "AAN", "OP", "DE", "HET",  # Dutch
+                 "RUE", "PLACE", "LA", "LE", "LES", "DU", "DES",  # French (RUE/PLACE lead the name in the layer: "Rue de la Paix")
+                 "THE"}  # English. No single letters: "L. Bergstrasse" is an initial, not the article of L'Eglise
 
 
 def fold(text: str) -> str:
-    """ß -> ss and diacritics -> base letter, applied to labels AND layer names, so 'Singerstraße', 'SINGERSTRASSE' and the
-    OCR's 'Singer-Strasse' compare equal, and 'Kärntner' matches whether the OCR kept the umlaut or not."""
+    """ß -> ss and diacritics -> base letter, applied to labels AND layer names, so '<Name>straße', '<NAME>STRASSE' and
+    the OCR's '<Name>-Strasse' compare equal, and a name with an umlaut matches whether the OCR kept it or not."""
     text = text.replace("ß", "ss").replace("ẞ", "SS")
     return "".join(ch for ch in unicodedata.normalize("NFKD", text) if not unicodedata.combining(ch))
 
@@ -284,11 +295,14 @@ def norm_label(text: str) -> tuple[str, str | None]:
         words = words[:-1]
     if not words:
         return "", None
-    if words[-1] not in TYPE_WORDS:  # "SINGERSTRASSE" -> "SINGER", "STRASSE" (fused type word, see FUSED_TYPE_WORDS)
+    if words[-1] not in TYPE_WORDS:  # "<NAME>STRASSE" -> "<NAME>", "STRASSE" (fused type word, see FUSED_TYPE_WORDS)
         for suf in _FUSED_SUFFIXES:
             if words[-1].endswith(suf) and len(words[-1]) - len(suf) >= 3:
                 words = words[:-1] + [words[-1][: -len(suf)], suf]
                 break
+        else:  # the abbreviation fused on: "Kronenstr", "Hochstr." -> "KRONEN"/"HOCH" + STRASSE; a 4+ letter stem, so WEBSTER stays a name
+            if words[-1].endswith("STR") and len(words[-1]) >= 7:
+                words = words[:-1] + [words[-1][:-3], "STR"]
     typ = TYPE_WORDS.get(words[-1]) if len(words) > 1 else None
     name = " ".join(words[:-1] if typ else words)
     return name, typ
@@ -383,9 +397,9 @@ SPELL_FOLD = True  # --spelling historic (default) | exact
 
 def spell_key(name: str) -> str:
     """Compare-key for a street name: orthographic equivalences a plan and today's layer may spell differently, applied to
-    BOTH sides so the comparison is symmetric. Language-level, not a city fact: German 1901 reform TH->T (Rothenthurm ->
-    Rotenturm, Karnthner -> Karntner), PH->F (Josephs -> Josefs), DT->T (Stadt/Stat), hard C->K (Carl -> Karl,
-    Concordia -> Konkordia), non-initial Y->I (Freyung -> Freiung, Mayer -> Maier). English names pass through unchanged
+    BOTH sides so the comparison is symmetric. Language-level, not a city fact: German 1901 reform TH->T (Thurm ->
+    Turm), PH->F (Josephs -> Josefs), DT->T (Stadt/Stat), hard C->K (Carl -> Karl, Concordia -> Konkordia),
+    non-initial Y->I (Freytag -> Freitag, Mayer -> Maier). English names pass through unchanged
     in effect (SEYMOUR and SEIMOUR would compare equal, which no layer needs to tell apart). Off with --spelling exact."""
     if not SPELL_FOLD:
         return name
@@ -428,6 +442,15 @@ def fuzzy_streets(label: str, streets: dict[str, np.ndarray], aliases: dict[str,
     return keys, pool[c]
 
 
+def strip_leading(name: str) -> str:
+    """'AM <NAME>' -> '<NAME>'; 'AN DER <NAME>' -> '<NAME>'; a name that is all leading words is returned whole."""
+    words = name.split()
+    i = 0
+    while i < len(words) - 1 and words[i] in LEADING_WORDS:
+        i += 1
+    return " ".join(words[i:])
+
+
 def match_streets(label: str, streets: dict[str, np.ndarray], aliases: dict[str, list[str]]) -> list[str]:
     if label.upper().strip() in aliases:
         return [k for k in aliases[label.upper().strip()] if k in streets]
@@ -441,6 +464,11 @@ def match_streets(label: str, streets: dict[str, np.ndarray], aliases: dict[str,
     # may omit it: also accept the layer name without its leading direction word; when the plan gives a direction,
     # keep only the layer streets with that direction (if any have one)
     hits += [k for k in streets if k not in hits and (lambda b: len(b) > 1 and b[0] in DIRECTION_WORDS and spell_key(" ".join(b[1:])) == key)(base(k).split())]
+    if not hits:  # "<Name>markt" vs the layer's "Am <Name>markt", or the plan's "An der <Name>" vs a layer "<Name>":
+        # compare with leading articles/prepositions stripped on both sides (LEADING_WORDS); a fallback only
+        bare = spell_key(strip_leading(name))
+        if bare and len(bare) >= 3:
+            hits = [k for k in streets if spell_key(strip_leading(base(k))) == bare]
     words = [w for w in re.sub(r"[^A-Za-z' ]+", " ", label).upper().split() if w]
     want = words[-1] if len(words) > 2 and words[-1] in DIRECTION_WORDS else None
     if want:
@@ -512,7 +540,8 @@ def main() -> None:
     ap.add_argument("--grid-m", type=float, default=25.0, help="translation search step in metres (default 25)")
     ap.add_argument("--min-labels", type=int, default=6, help="refuse to fit with fewer matched labels (default 6; 4 is workable with --near)")
     ap.add_argument("--lonely-m", type=float, default=300.0, help="a matched label whose modern street lies farther than this from every other matched street is dropped (default 300 m: a landmark or water body whose name is a road elsewhere in the layer)")
-    ap.add_argument("--spelling", choices=["historic", "exact"], default="historic", help="'historic' (default): street names are compared after orthographic folds a plan and today's layer may differ by (TH->T, PH->F, DT->T, hard C->K, Y->I: Rothenthurm/Rotenturm, Carl/Karl, Freyung/Freiung), applied to both sides. 'exact': letters must match")
+    ap.add_argument("--spelling", choices=["historic", "exact"], default="historic", help="'historic' (default): street names are compared after orthographic folds a plan and today's layer may differ by (TH->T, PH->F, DT->T, hard C->K, Y->I: Thurm/Turm, Carl/Karl, Freytag/Freitag), applied to both sides. 'exact': letters must match")
+    ap.add_argument("--skip-type-words", default="", metavar="WORD,WORD", help="labels whose type word (after normalising: PLATZ, MARKT, SQ, ...) is one of these are not matched: a square's name sits in the middle of the square, tens of metres from any centreline, and the layer often carries the stem only as a street (a square matching the like-named street, ~180 m off). Default: none skipped")
     ap.add_argument("--fuzzy", action="store_true", help="also accept a 6+ letter label one edit away from a street or alias name (two edits for 9+ letters), or a 5+ letter prefix/suffix of one missing at most two letters, when exactly one name fits: OCR slips and period spellings (BLANCHARD -> Blanshard, OUGLAS -> Douglas). Such labels are marked 'fuzzy' in the outputs and go through the same outlier test")
     ap.add_argument("--near", nargs="+", type=Path, default=None, metavar="RUN", help="georeferenced runs of neighbouring sheets of the same book (same --streets CRS): this sheet must lie within one sheet of their footprints, so the translation search is limited to that window and their scale joins the seeds; lets a sheet with few labels be placed")
     ap.add_argument("--rotation", choices=["labels", "free"], default="labels", help="'labels' (default): the sheet's rotation is set by the text direction of the street labels against their modern streets (a name is printed along its street; wide box = along x, tall box = along y, rotated views give the angle), and the labels' positions fix only scale and translation; a position-only fit is run as well and wins only if it places at least half again as many labels (the text direction is coarse on sheets whose streets run diagonally). 'free': rotation is fitted from the positions only (used automatically when fewer than 3 labels have a readable direction)")
@@ -585,10 +614,16 @@ def georef_sheet(args: argparse.Namespace, run: Path, tiles_path: Path, stem: st
     street_candidates(tokens, block_rings)  # stamps in_block / in_block_depth_px on every token
     labels, P, cand, skipped, building = [], [], [], [], []
     n_alpha = 0
+    skip_types = {TYPE_WORDS.get(w.strip().upper(), w.strip().upper()) for w in args.skip_type_words.split(",") if w.strip()}
+    n_skipped_type = 0
     for t in tokens:
         if not re.search(r"[A-Za-z]{3,}", t["text"]):
             continue
         n_alpha += 1
+        if skip_types and norm_label(t["text"])[1] in skip_types:  # --skip-type-words: a square, not a street
+            skipped.append(t["text"])
+            n_skipped_type += 1
+            continue
         keys = match_streets(t["text"], streets, aliases)
         via = None
         if not keys and args.fuzzy:
@@ -608,6 +643,8 @@ def georef_sheet(args: argparse.Namespace, run: Path, tiles_path: Path, stem: st
         print(f"inside a traced block (building labels that happen to spell a street name; not used): " + ", ".join(f"{b['text']} ({b['depth_px']} px deep)" for b in building))
     elif not block_rings:
         print("no traced blocks in this run: labels inside blocks cannot be told from street names (run fim_blocks.py first)")
+    if skip_types:
+        print(f"--skip-type-words {sorted(skip_types)}: {n_skipped_type} labels with that type word set aside")
     if args.fuzzy:
         fz = [l for l in labels if l["fuzzy"]]
         print(f"fuzzy: {len(fz)} labels taken for a street name they nearly spell: " + ", ".join(f"{l['text']}~{l['fuzzy']}" for l in fz) if fz else "fuzzy: no near-miss labels")
@@ -638,7 +675,7 @@ def georef_sheet(args: argparse.Namespace, run: Path, tiles_path: Path, stem: st
     print(f"{len(labels)} street labels matched: " + ", ".join(f"{l['text']}{'~' if l.get('fuzzy') else ''}->{'/'.join(l['modern'])}" for l in labels))
     print(f"{len(skipped)} alphabetic tokens not matched to a street: {sorted(set(skipped))}")
     n_plain = sum(1 for l in labels if not l["alias"] and not l["fuzzy"])
-    rlog.note(n_tokens_kept=len(tokens), n_alpha_tokens=n_alpha, n_matched=len(labels), n_matched_plain=n_plain,
+    rlog.note(n_tokens_kept=len(tokens), n_alpha_tokens=n_alpha, n_skipped_type_word=n_skipped_type, n_matched=len(labels), n_matched_plain=n_plain,
              n_matched_alias=sum(1 for l in labels if l["alias"]), n_matched_fuzzy=sum(1 for l in labels if l["fuzzy"]),
              n_distinct_streets=len({k for l in labels for k in l["modern"]}), n_building_labels=len(building), n_lonely_dropped=len(lonely),
              n_unmatched_alpha=len(set(skipped)), min_labels_met=len(labels) >= args.min_labels, min_labels_met_plain=n_plain >= args.min_labels)

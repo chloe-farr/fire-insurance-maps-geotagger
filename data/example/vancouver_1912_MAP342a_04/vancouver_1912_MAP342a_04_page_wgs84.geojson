@@ -1,0 +1,111 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "source_image": "data/example/vancouver_1912_MAP342a_04/vancouver_1912_MAP342a_04.tif",
+    "source_size_px": [
+     5991,
+     5719
+    ],
+    "epsg_fit": 32610,
+    "rms_m": 0.49,
+    "n_labels": 12,
+    "scale_m_per_px": [
+     0.17295,
+     0.17538
+    ],
+    "rotation_deg": 0.23,
+    "shear_deg": -0.74,
+    "transform": "affine",
+    "what": "scan",
+    "note": "outline of the whole scanned page incl. margins, colour bar and ruler"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -123.1151666,
+       49.2891004
+      ],
+      [
+       -123.1009182,
+       49.2891515
+      ],
+      [
+       -123.1006652,
+       49.2801307
+      ],
+      [
+       -123.114911,
+       49.2800797
+      ],
+      [
+       -123.1151666,
+       49.2891004
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "sheet": "vancouver_1912_MAP342a_04",
+    "source_image": "data/example/vancouver_1912_MAP342a_04/vancouver_1912_MAP342a_04.tif",
+    "source_size_px": [
+     5991,
+     5719
+    ],
+    "epsg_fit": 32610,
+    "rms_m": 0.49,
+    "n_labels": 12,
+    "scale_m_per_px": [
+     0.17295,
+     0.17538
+    ],
+    "rotation_deg": 0.23,
+    "shear_deg": -0.74,
+    "transform": "affine",
+    "what": "content",
+    "crop_source_px": [
+     0,
+     0,
+     5991,
+     5719
+    ],
+    "note": "the map content box that was tiled and OCR'd"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -123.1151666,
+       49.2891004
+      ],
+      [
+       -123.1009182,
+       49.2891515
+      ],
+      [
+       -123.1006652,
+       49.2801307
+      ],
+      [
+       -123.114911,
+       49.2800797
+      ],
+      [
+       -123.1151666,
+       49.2891004
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}

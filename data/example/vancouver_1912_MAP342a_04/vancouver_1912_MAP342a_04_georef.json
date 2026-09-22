@@ -1,0 +1,1488 @@
+{
+ "sheet": "vancouver_1912_MAP342a_04",
+ "source_image": "data/example/vancouver_1912_MAP342a_04/vancouver_1912_MAP342a_04.tif",
+ "source_size": {
+  "w": 5991,
+  "h": 5719
+ },
+ "crs": "EPSG:32610 (WGS 84 / UTM zone 10N)",
+ "epsg": 32610,
+ "streets": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+ "streets_fields": {
+  "name_field": "name",
+  "type_field": null
+ },
+ "intersections": "derived from centreline vertices",
+ "method": "OCR street labels -> point-to-line ICP onto modern centrelines; similarity then affine (kept only if physically plausible); Huber weights",
+ "transform": "affine",
+ "affine_rejected": null,
+ "alias_suggestions": [
+  {
+   "label": "TOWNISITE",
+   "modern": "CAMBIE ST",
+   "distance_m": 0.1
+  },
+  {
+   "label": "OFFICIAL",
+   "modern": "ABBOTT ST",
+   "distance_m": 0.1
+  },
+  {
+   "label": "ST.WEST",
+   "modern": "WEST CORDOVA ST",
+   "distance_m": 0.3
+  },
+  {
+   "label": "OLD GRANVILLE TOWN",
+   "modern": "CAMBIE ST",
+   "distance_m": 1.2
+  },
+  {
+   "label": "OFTICAL",
+   "modern": "ABBOTT ST",
+   "distance_m": 2.1
+  },
+  {
+   "label": "IBIE ST.",
+   "modern": "CAMBIE ST",
+   "distance_m": 2.3
+  },
+  {
+   "label": "TOMNSITE",
+   "modern": "CAMBIE ST",
+   "distance_m": 2.5
+  },
+  {
+   "label": "WARDS",
+   "modern": "ABBOTT ST",
+   "distance_m": 2.7
+  },
+  {
+   "label": "WALLER BLK",
+   "modern": "WEST CORDOVA ST",
+   "distance_m": 5.4
+  },
+  {
+   "label": "BRISBERRY BLACK",
+   "modern": "WEST CORDOVA ST",
+   "distance_m": 7.4
+  },
+  {
+   "label": "LOT SAL",
+   "modern": "CAMBIE ST",
+   "distance_m": 7.9
+  },
+  {
+   "label": "DISTRICT",
+   "modern": "WATER ST",
+   "distance_m": 8.0
+  },
+  {
+   "label": "MAHON BLK",
+   "modern": "WEST HASTINGS ST",
+   "distance_m": 9.0
+  },
+  {
+   "label": "TOMINSITE",
+   "modern": "CAMBIE ST",
+   "distance_m": 9.3
+  }
+ ],
+ "building_labels": [
+  {
+   "text": "Grandview",
+   "modern": [
+    "GRANDVIEW HWY",
+    "SOUTH GRANDVIEW HWY",
+    "NORTH GRANDVIEW HWY"
+   ],
+   "px": [
+    1030.5,
+    2351.5
+   ],
+   "bbox_source": [
+    974,
+    2295,
+    1087,
+    2408
+   ],
+   "depth_px": 94
+  },
+  {
+   "text": "Dominion",
+   "modern": [
+    "DOMINION ST"
+   ],
+   "px": [
+    1823.5,
+    2354.0
+   ],
+   "bbox_source": [
+    1765,
+    2321,
+    1882,
+    2387
+   ],
+   "depth_px": 264
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    1045.0,
+    2387.0
+   ],
+   "bbox_source": [
+    1012,
+    2353,
+    1078,
+    2421
+   ],
+   "depth_px": 79
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    1145.0,
+    2464.0
+   ],
+   "bbox_source": [
+    1112,
+    2427,
+    1178,
+    2501
+   ],
+   "depth_px": 25
+  },
+  {
+   "text": "Chambers",
+   "modern": [
+    "CHAMBERS ST"
+   ],
+   "px": [
+    862.0,
+    2533.5
+   ],
+   "bbox_source": [
+    809,
+    2485,
+    915,
+    2582
+   ],
+   "depth_px": 97
+  },
+  {
+   "text": "WATER",
+   "modern": [
+    "WATER ST"
+   ],
+   "px": [
+    3331.0,
+    3196.0
+   ],
+   "bbox_source": [
+    3311,
+    3178,
+    3351,
+    3214
+   ],
+   "depth_px": 0
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    1978.0,
+    3220.0
+   ],
+   "bbox_source": [
+    1945,
+    3205,
+    2011,
+    3235
+   ],
+   "depth_px": 33
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    3057.0,
+    3287.5
+   ],
+   "bbox_source": [
+    3009,
+    3240,
+    3105,
+    3335
+   ],
+   "depth_px": 53
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    1578.5,
+    3343.0
+   ],
+   "bbox_source": [
+    1534,
+    3303,
+    1623,
+    3383
+   ],
+   "depth_px": 30
+  },
+  {
+   "text": "Homer",
+   "modern": [
+    "HOMER ST",
+    "HOMER MEWS"
+   ],
+   "px": [
+    1705.5,
+    3439.0
+   ],
+   "bbox_source": [
+    1661,
+    3403,
+    1750,
+    3475
+   ],
+   "depth_px": 57
+  },
+  {
+   "text": "Dominion",
+   "modern": [
+    "DOMINION ST"
+   ],
+   "px": [
+    3699.5,
+    3516.5
+   ],
+   "bbox_source": [
+    3611,
+    3426,
+    3788,
+    3607
+   ],
+   "depth_px": 73
+  },
+  {
+   "text": "TROUNCE5",
+   "modern": [
+    "TROUNCE ALLEY"
+   ],
+   "px": [
+    2959.0,
+    3482.0
+   ],
+   "bbox_source": [
+    2836,
+    3438,
+    3082,
+    3526
+   ],
+   "depth_px": 105
+  },
+  {
+   "text": "HOTEL",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    3712.0,
+    3481.0
+   ],
+   "bbox_source": [
+    3693,
+    3442,
+    3731,
+    3520
+   ],
+   "depth_px": 67
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    3465.5,
+    3494.5
+   ],
+   "bbox_source": [
+    3431,
+    3443,
+    3500,
+    3546
+   ],
+   "depth_px": 43
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    3442.5,
+    3485.0
+   ],
+   "bbox_source": [
+    3411,
+    3447,
+    3474,
+    3523
+   ],
+   "depth_px": 68
+  },
+  {
+   "text": "HOTEL",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    3663.5,
+    3507.5
+   ],
+   "bbox_source": [
+    3647,
+    3458,
+    3680,
+    3557
+   ],
+   "depth_px": 36
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    4061.5,
+    3563.5
+   ],
+   "bbox_source": [
+    4022,
+    3517,
+    4101,
+    3610
+   ],
+   "depth_px": 58
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    4115.0,
+    3577.0
+   ],
+   "bbox_source": [
+    4077,
+    3531,
+    4153,
+    3623
+   ],
+   "depth_px": 57
+  },
+  {
+   "text": "Grand",
+   "modern": [
+    "GRAND BLVD"
+   ],
+   "px": [
+    4137.5,
+    3583.5
+   ],
+   "bbox_source": [
+    4099,
+    3536,
+    4176,
+    3631
+   ],
+   "depth_px": 59
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    2677.0,
+    3559.0
+   ],
+   "bbox_source": [
+    2653,
+    3539,
+    2701,
+    3579
+   ],
+   "depth_px": 105
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    4377.5,
+    3660.0
+   ],
+   "bbox_source": [
+    4321,
+    3605,
+    4434,
+    3715
+   ],
+   "depth_px": 68
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    2910.0,
+    3655.5
+   ],
+   "bbox_source": [
+    2867,
+    3630,
+    2953,
+    3681
+   ],
+   "depth_px": 76
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    2907.5,
+    3656.5
+   ],
+   "bbox_source": [
+    2865,
+    3632,
+    2950,
+    3681
+   ],
+   "depth_px": 74
+  },
+  {
+   "text": "Cordova.",
+   "modern": [
+    "WEST CORDOVA ST",
+    "EAST CORDOVA ST"
+   ],
+   "px": [
+    2910.0,
+    3690.0
+   ],
+   "bbox_source": [
+    2851,
+    3643,
+    2969,
+    3737
+   ],
+   "depth_px": 42
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    2480.0,
+    3824.5
+   ],
+   "bbox_source": [
+    2422,
+    3762,
+    2538,
+    3887
+   ],
+   "depth_px": 165
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    3234.5,
+    3785.5
+   ],
+   "bbox_source": [
+    3190,
+    3767,
+    3279,
+    3804
+   ],
+   "depth_px": 33
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    3919.5,
+    3877.0
+   ],
+   "bbox_source": [
+    3885,
+    3784,
+    3954,
+    3970
+   ],
+   "depth_px": 124
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    3713.0,
+    3901.0
+   ],
+   "bbox_source": [
+    3673,
+    3868,
+    3753,
+    3934
+   ],
+   "depth_px": 46
+  },
+  {
+   "text": "Dominion",
+   "modern": [
+    "DOMINION ST"
+   ],
+   "px": [
+    2206.0,
+    3944.5
+   ],
+   "bbox_source": [
+    2141,
+    3893,
+    2271,
+    3996
+   ],
+   "depth_px": 86
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    4401.0,
+    3930.5
+   ],
+   "bbox_source": [
+    4361,
+    3907,
+    4441,
+    3954
+   ],
+   "depth_px": 38
+  },
+  {
+   "text": "Commercial",
+   "modern": [
+    "COMMERCIAL DR",
+    "COMMERCIAL ST",
+    "NORTH COMMERCIAL DR"
+   ],
+   "px": [
+    2484.5,
+    4028.0
+   ],
+   "bbox_source": [
+    2402,
+    3999,
+    2567,
+    4057
+   ],
+   "depth_px": 268
+  },
+  {
+   "text": "Hotel.",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    2476.5,
+    4044.5
+   ],
+   "bbox_source": [
+    2427,
+    4004,
+    2526,
+    4085
+   ],
+   "depth_px": 251
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    4136.5,
+    4027.5
+   ],
+   "bbox_source": [
+    4089,
+    4006,
+    4184,
+    4049
+   ],
+   "depth_px": 35
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    3312.0,
+    4065.5
+   ],
+   "bbox_source": [
+    3289,
+    4022,
+    3335,
+    4109
+   ],
+   "depth_px": 28
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    2671.0,
+    4184.5
+   ],
+   "bbox_source": [
+    2617,
+    4129,
+    2725,
+    4240
+   ],
+   "depth_px": 195
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    3821.5,
+    4202.0
+   ],
+   "bbox_source": [
+    3797,
+    4160,
+    3846,
+    4244
+   ],
+   "depth_px": 99
+  },
+  {
+   "text": "Hotel.",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    3475.5,
+    4202.0
+   ],
+   "bbox_source": [
+    3431,
+    4183,
+    3520,
+    4221
+   ],
+   "depth_px": 38
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    4071.5,
+    4224.0
+   ],
+   "bbox_source": [
+    4025,
+    4191,
+    4118,
+    4257
+   ],
+   "depth_px": 56
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    3661.0,
+    4387.5
+   ],
+   "bbox_source": [
+    3642,
+    4354,
+    3680,
+    4421
+   ],
+   "depth_px": 61
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    3620.0,
+    4425.5
+   ],
+   "bbox_source": [
+    3593,
+    4384,
+    3647,
+    4467
+   ],
+   "depth_px": 108
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    4363.0,
+    4437.0
+   ],
+   "bbox_source": [
+    4339,
+    4395,
+    4387,
+    4479
+   ],
+   "depth_px": 39
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    3883.5,
+    4560.0
+   ],
+   "bbox_source": [
+    3842,
+    4510,
+    3925,
+    4610
+   ],
+   "depth_px": 68
+  },
+  {
+   "text": "Hotel",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    4389.0,
+    4577.0
+   ],
+   "bbox_source": [
+    4352,
+    4543,
+    4426,
+    4611
+   ],
+   "depth_px": 24
+  },
+  {
+   "text": "HOTEL",
+   "modern": [
+    "NORTH HOTEL RD"
+   ],
+   "px": [
+    4323.5,
+    4638.5
+   ],
+   "bbox_source": [
+    4271,
+    4584,
+    4376,
+    4693
+   ],
+   "depth_px": 29
+  }
+ ],
+ "rotation_source": "label positions (the text direction placed fewer labels)",
+ "near": null,
+ "fuzzy": false,
+ "affine_source_px_to_map": {
+  "a11": 0.17294668974595556,
+  "a12": 0.0029833658502980143,
+  "tx": 491625.2888537393,
+  "a21": 0.0007008571706411643,
+  "a22": -0.17535786157816538,
+  "ty": 5459600.893805201
+ },
+ "affine_map_to_source_px": {
+  "a11": 5.781729976411669,
+  "a12": 0.09836465620665776,
+  "tx": -3379476.43467242,
+  "a21": 0.02310798544308687,
+  "a22": -5.702231148499965,
+  "ty": 31120545.805015977
+ },
+ "scale_m_per_px": {
+  "x": 0.1729481098331446,
+  "y": 0.17538323776536838
+ },
+ "rotation_deg": 0.2321867979159744,
+ "shear_deg": -0.7424931018071277,
+ "implied_dpi_if_50ft_per_inch": 88.11891621540772,
+ "implied_dpi_if_100ft_per_inch": 176.23783243081544,
+ "rms_m": 0.4897920555996554,
+ "median_m": 0.3348110868429838,
+ "max_m": 0.8846019148864075,
+ "n_labels": 12,
+ "n_outliers": 1,
+ "outlier_threshold_m": 12.0,
+ "dropped_far": [],
+ "coarse_seed": {
+  "rotation_deg": 340.0,
+  "scale_m_per_px": 0.22
+ },
+ "stated_scale_ft_per_inch": null,
+ "implied_dpi_from_stated_scale": null,
+ "labels": [
+  {
+   "text": "GRANVILLE ST.",
+   "id": 251,
+   "rotation_view": 0,
+   "modern": [
+    "GRANVILLE ST"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    695.0,
+    2222.5
+   ],
+   "bbox_source": [
+    516,
+    2057,
+    874,
+    2388
+   ],
+   "text_direction_deg": null,
+   "outlier": false,
+   "residual_similarity_m": 1.06,
+   "residual_m": 0.36,
+   "snapped_map": [
+    491751.868,
+    5459211.907
+   ]
+  },
+  {
+   "text": "CORDOVA ST. WEST",
+   "id": 427,
+   "rotation_view": 0,
+   "modern": [
+    "WEST CORDOVA ST"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    1335.0,
+    2391.5
+   ],
+   "bbox_source": [
+    1134,
+    2201,
+    1536,
+    2582
+   ],
+   "text_direction_deg": null,
+   "outlier": false,
+   "residual_similarity_m": 0.25,
+   "residual_m": 0.08,
+   "snapped_map": [
+    491863.363,
+    5459182.518
+   ]
+  },
+  {
+   "text": "SEYMOUR ST.",
+   "id": 1058,
+   "rotation_view": 30,
+   "modern": [
+    "SEYMOUR ST"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    1120.0,
+    2591.5
+   ],
+   "bbox_source": [
+    957,
+    2386,
+    1283,
+    2797
+   ],
+   "text_direction_deg": 120.0212253575505,
+   "outlier": false,
+   "residual_similarity_m": 0.66,
+   "residual_m": 0.88,
+   "snapped_map": [
+    491827.352,
+    5459146.62
+   ]
+  },
+  {
+   "text": "RICHARDS ST.",
+   "id": 1075,
+   "rotation_view": 30,
+   "modern": [
+    "RICHARDS ST"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    1528.0,
+    2986.5
+   ],
+   "bbox_source": [
+    1363,
+    2777,
+    1693,
+    3196
+   ],
+   "text_direction_deg": 119.99609826310325,
+   "outlier": false,
+   "residual_similarity_m": 0.47,
+   "residual_m": 0.81,
+   "snapped_map": [
+    491897.885,
+    5459078.828
+   ]
+  },
+  {
+   "text": "HASTINGS ST. WEST",
+   "id": 435,
+   "rotation_view": 0,
+   "modern": [
+    "WEST HASTINGS ST"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    1328.0,
+    3236.0
+   ],
+   "bbox_source": [
+    1120,
+    3011,
+    1536,
+    3461
+   ],
+   "text_direction_deg": null,
+   "outlier": false,
+   "residual_similarity_m": 0.46,
+   "residual_m": 0.19,
+   "snapped_map": [
+    491864.481,
+    5459034.232
+   ]
+  },
+  {
+   "text": "WATER ST.",
+   "id": 249,
+   "rotation_view": 0,
+   "modern": [
+    "WATER ST"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    3412.0,
+    3269.5
+   ],
+   "bbox_source": [
+    3257,
+    3206,
+    3567,
+    3333
+   ],
+   "text_direction_deg": 0.0,
+   "outlier": false,
+   "residual_similarity_m": 0.16,
+   "residual_m": 0.34,
+   "snapped_map": [
+    492225.045,
+    5459029.627
+   ]
+  },
+  {
+   "text": "HOMER ST.",
+   "id": 1614,
+   "rotation_view": 60,
+   "modern": [
+    "HOMER ST"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    1919.5,
+    3399.5
+   ],
+   "bbox_source": [
+    1758,
+    3275,
+    2081,
+    3524
+   ],
+   "text_direction_deg": 150.04910200576978,
+   "outlier": false,
+   "residual_similarity_m": 0.97,
+   "residual_m": 0.01,
+   "snapped_map": [
+    491967.397,
+    5459006.116
+   ]
+  },
+  {
+   "text": "CAMBIE",
+   "id": 1456,
+   "rotation_view": 30,
+   "modern": [
+    "CAMBIE ST"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    2497.0,
+    3423.5
+   ],
+   "bbox_source": [
+    2406,
+    3306,
+    2588,
+    3541
+   ],
+   "text_direction_deg": 119.87129207807186,
+   "outlier": false,
+   "residual_similarity_m": 0.91,
+   "residual_m": 0.53,
+   "snapped_map": [
+    492067.865,
+    5459002.167
+   ]
+  },
+  {
+   "text": "Alexander",
+   "id": 275,
+   "rotation_view": 0,
+   "modern": [
+    "ALEXANDER ST"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    4414.5,
+    3392.5
+   ],
+   "bbox_source": [
+    4373,
+    3324,
+    4456,
+    3461
+   ],
+   "text_direction_deg": null,
+   "outlier": true,
+   "residual_similarity_m": 77.14,
+   "residual_m": 79.52,
+   "snapped_map": [
+    492473.856,
+    5458982.586
+   ]
+  },
+  {
+   "text": "ABBOTT",
+   "id": 263,
+   "rotation_view": 0,
+   "modern": [
+    "ABBOTT ST"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    3573.0,
+    3496.5
+   ],
+   "bbox_source": [
+    3524,
+    3386,
+    3622,
+    3607
+   ],
+   "text_direction_deg": 90.0,
+   "outlier": false,
+   "residual_similarity_m": 1.13,
+   "residual_m": 0.23,
+   "snapped_map": [
+    492253.438,
+    5458990.324
+   ]
+  },
+  {
+   "text": "CORDOVA ST.WEST",
+   "id": 2259,
+   "rotation_view": 30,
+   "modern": [
+    "WEST CORDOVA ST"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    3558.5,
+    3963.5
+   ],
+   "bbox_source": [
+    3301,
+    3769,
+    3816,
+    4158
+   ],
+   "text_direction_deg": 29.98544008390267,
+   "outlier": false,
+   "residual_similarity_m": 0.79,
+   "residual_m": 0.81,
+   "snapped_map": [
+    492252.766,
+    5458909.141
+   ]
+  },
+  {
+   "text": "CORDOVA ST. WEST",
+   "id": 487,
+   "rotation_view": 0,
+   "modern": [
+    "WEST CORDOVA ST"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    3586.0,
+    3964.5
+   ],
+   "bbox_source": [
+    3341,
+    3877,
+    3831,
+    4052
+   ],
+   "text_direction_deg": 0.0,
+   "outlier": false,
+   "residual_similarity_m": 0.35,
+   "residual_m": 0.33,
+   "snapped_map": [
+    492257.213,
+    5458907.882
+   ]
+  },
+  {
+   "text": "HASTINGS ST. WEST",
+   "id": 355,
+   "rotation_view": 0,
+   "modern": [
+    "WEST HASTINGS ST"
+   ],
+   "fuzzy": null,
+   "alias": false,
+   "px": [
+    3396.0,
+    4559.5
+   ],
+   "bbox_source": [
+    3099,
+    4458,
+    3693,
+    4661
+   ],
+   "text_direction_deg": 0.0,
+   "outlier": false,
+   "residual_similarity_m": 0.46,
+   "residual_m": 0.21,
+   "snapped_map": [
+    492226.163,
+    5458803.529
+   ]
+  }
+ ],
+ "unmatched_tokens": [
+  "& Company",
+  "219,915)Water Line",
+  "4 Company",
+  "ALLEY",
+  "Atlantec",
+  "Ave",
+  "B.C. Electric Ry Co",
+  "B.C. Electric Ry Co.",
+  "BANK",
+  "BLACK",
+  "BLM.",
+  "BOR",
+  "BRISBERRY BLACK",
+  "BRON",
+  "Bank",
+  "Bldg.",
+  "Blein Co.",
+  "Bra",
+  "Budweiser",
+  "Building",
+  "Buildings",
+  "Bullers",
+  "Burward",
+  "CRIMID",
+  "Carder",
+  "Clarke & Stewart",
+  "Co Limited",
+  "Cobalt Bros. Ltd.",
+  "Company",
+  "Cordovia",
+  "Crenne",
+  "D. Speer",
+  "D. Speier",
+  "DAT.",
+  "DISTRICT",
+  "DISTRICT LOT 541",
+  "Departmental",
+  "Deportemental",
+  "Dogs",
+  "Dominion",
+  "Express Co.",
+  "FRI",
+  "Fedde",
+  "Freight Shed",
+  "Gavitt Bros.",
+  "Grain Shed",
+  "Griffin Brooke",
+  "Hight shed",
+  "Hobel",
+  "Huckay Smi",
+  "IBIE ST.",
+  "INLET",
+  "Ice House.",
+  "JLockie Co",
+  "Johnston Bros.",
+  "Jones Building",
+  "Kelly, Douglas",
+  "LOT SAL",
+  "Lavare",
+  "Line os on P",
+  "Loray Post",
+  "MAHON BLK",
+  "Mamida",
+  "Mann",
+  "Marlboro",
+  "McClary",
+  "Mercoritise",
+  "Metopole",
+  "Molsons",
+  "Nagle",
+  "New C.P.R Station",
+  "OFFICIAL",
+  "OFTICAL",
+  "OLD GRANVILLE TOWN",
+  "Original Water Line",
+  "Original Water Line as on Plan",
+  "Pado",
+  "Pierce",
+  "Plan No 210",
+  "Proposed",
+  "Proposed Wharf.",
+  "REF",
+  "REF.",
+  "REP.",
+  "Rait",
+  "Raiway",
+  "Ref.",
+  "Ruiter",
+  "Russ",
+  "ST.WEST",
+  "Singhama",
+  "Site for Station",
+  "St.Pancis",
+  "Station & Offices.",
+  "Stimons Wharf",
+  "Sting",
+  "Stinson's Wharf.",
+  "Stoic",
+  "Stor",
+  "Straight Shed",
+  "TOMINSITE",
+  "TOMNSITE",
+  "TOWNISITE",
+  "TROUNCES",
+  "Temples",
+  "The Bronx",
+  "Theatre",
+  "Travellers",
+  "Trusts Bead",
+  "Trusts Bldg.",
+  "Union S.S.Cbs Wharf",
+  "Union SS Cos Wharf.",
+  "Vancouver",
+  "Viaduct",
+  "WALLER BLK",
+  "WARDS",
+  "Winters",
+  "acitic",
+  "ian pacific",
+  "inol",
+  "n Pacific Railway",
+  "ssed",
+  "tway"
+ ],
+ "params": {
+  "run": "runs/hunyuan/2026-09-15_tiles_vancouver_1912_MAP342a_04",
+  "streets": "data/example/vancouver_1912_MAP342a_04/vancouver_streets_epsg32610.geojson",
+  "epsg": null,
+  "name_field": null,
+  "type_field": null,
+  "intersections": "None",
+  "alias": null,
+  "scales": "0.03,0.045,0.065,0.1,0.15,0.22,0.33,0.5,0.7",
+  "rotations": "0:360:10",
+  "radius_m": 600.0,
+  "outlier_px": 60.0,
+  "outlier_m": 12.0,
+  "grid_m": 25.0,
+  "min_labels": 6,
+  "lonely_m": 300.0,
+  "spelling": "historic",
+  "fuzzy": false,
+  "near": null,
+  "rotation": "labels",
+  "year": 1912,
+  "max_shear_deg": 2.0,
+  "max_anisotropy": 0.04,
+  "huber_m": 6.0,
+  "retrace": "seeded",
+  "neck_px": 16,
+  "floors": "off",
+  "legend": "configs/legend/goad_sanborn_default.json",
+  "lots": "numbered",
+  "block_street_reach_m": 16.0,
+  "overlay_px": 2400,
+  "scales_given": false
+ },
+ "generated_utc": "2026-09-17T08:47:06.669990+00:00",
+ "page_corners_wgs84": {
+  "scan": [
+   [
+    -123.1151666,
+    49.2891004
+   ],
+   [
+    -123.1009182,
+    49.2891515
+   ],
+   [
+    -123.1006652,
+    49.2801307
+   ],
+   [
+    -123.114911,
+    49.2800797
+   ]
+  ],
+  "content": [
+   [
+    -123.1151666,
+    49.2891004
+   ],
+   [
+    -123.1009182,
+    49.2891515
+   ],
+   [
+    -123.1006652,
+    49.2801307
+   ],
+   [
+    -123.114911,
+    49.2800797
+   ]
+  ]
+ },
+ "page_corners_map": {
+  "scan": [
+   [
+    491625.289,
+    5459600.894
+   ],
+   [
+    492661.412,
+    5459605.093
+   ],
+   [
+    492678.474,
+    5458602.221
+   ],
+   [
+    491642.351,
+    5458598.022
+   ]
+  ],
+  "content": [
+   [
+    491625.289,
+    5459600.894
+   ],
+   [
+    492661.412,
+    5459605.093
+   ],
+   [
+    492678.474,
+    5458602.221
+   ],
+   [
+    491642.351,
+    5458598.022
+   ]
+  ]
+ }
+}

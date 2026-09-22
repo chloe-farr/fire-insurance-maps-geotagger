@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# Refuse any push to a public remote that is not the snapshot branch, and audit the snapshot before it leaves.
+#
+# Why: `main` and its history hold material under the RBCM protective order (runs/ outputs, and one georeference
+# overlay of a withheld sheet that was committed and later removed — removal does not remove it from history).
+# `main` must never reach a public remote. The only thing that may be published is refs/heads/public, the squashed
+# snapshot built by scripts/fim_release.sh.
+#
+# Installed by:  git config core.hooksPath scripts/hooks
+# Git passes:    $1 = remote name, $2 = remote URL; stdin = "<local ref> <local sha> <remote ref> <remote sha>" per ref.
+#
+# Fails closed. A remote is treated as PUBLIC unless it has been explicitly declared private:
+#     git config --add fim.privateRemote <url>
+set -uo pipefail
+
+url="${2:-}"
+if [ -z "$url" ]; then
+  echo "pre-push: no remote URL given; refusing (fail closed)." >&2
+  exit 1
+fi
+
+while read -r u; do
+  if [ "$u" = "$url" ]; then exit 0; fi   # declared private: nothing to enforce
+done < <(git config --get-all fim.privateRemote 2>/dev/null || true)
+
+ZERO=0000000000000000000000000000000000000000
+status=0
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ -n "${local_ref:-}" ] || continue
+
+  if [ "$local_sha" = "$ZERO" ]; then
+    echo "pre-push: REFUSED deletion of $remote_ref on the public remote $url" >&2
+    status=1; continue
+  fi
+
+  if [ "$local_ref" != "refs/heads/public" ]; then
+    echo "pre-push: REFUSED  $local_ref -> $remote_ref  on public remote $url" >&2
+    echo "  Only refs/heads/public may be published. '$local_ref' is private and its history is not publishable." >&2
+    echo "  Build the snapshot instead:  scripts/fim_release.sh --check && scripts/fim_release.sh --build -m '...'" >&2
+    status=1; continue
+  fi
+
+  if [ "$remote_ref" != "refs/heads/main" ]; then
+    echo "pre-push: REFUSED  refs/heads/public -> $remote_ref  (the snapshot publishes to refs/heads/main only)" >&2
+    status=1; continue
+  fi
+
+  if ! out=$(scripts/fim_release.sh --audit --source "$local_sha" 2>&1); then
+    echo "pre-push: REFUSED  the snapshot commit $local_sha fails the structural audit:" >&2
+    echo "$out" >&2
+    status=1; continue
+  fi
+done
+
+if [ "$status" -ne 0 ]; then
+  echo "pre-push: nothing was pushed. See docs/PUBLISHING.md." >&2
+fi
+exit $status

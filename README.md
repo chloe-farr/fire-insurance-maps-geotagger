@@ -2,16 +2,9 @@
 
 Turn a scanned historical city plan into GeoJSON, using the text printed on it.
 
-The scripts read every word on the sheet with an OCR model, trace the city blocks and the building outlines inside
-them from the linework, match the street names to today's street centrelines, and from those matches work out where the sheet sits on the Earth: no control
-points to click, no GIS experience needed. Built for Chas. E. Goad's fire insurance plans of Victoria B.C. (1885–1895),
-tested on Goad's 1912 Vancouver atlas and on the Sanborn plans of Tampa, Florida (1884–1915, Library of Congress). Any
-city with named streets on the sheet and in OpenStreetMap should work.
+The scripts read every word on the sheet with Hunyuan OCR vision language model, trace the city blocks and the building outlines inside them from the linework, match the street names to today's street centrelines, and from those matches work out where the sheet sits on the Earth: no control
+points to click, no GIS experience needed. Built for Chas. E. Goad's fire insurance plans of Victoria B.C. (1885–1895), tested on Goad's 1912 Vancouver atlas and on the Sanborn plans of Tampa, Florida (1884–1915, Library of Congress). Any city with named streets on the sheet and in OpenStreetMap should work.
 
-> **Looking for the general tool?** This repository is the fire-insurance-plan work: the colour keys, the block and
-> lot numbering, the index and key sheets. The same pipeline, made genre-neutral for any scanned map with street
-> names on it, is **[mapfit](https://github.com/chloe-farr/mapfit)**. The two are separate copies, not a shared
-> dependency — neither needs the other installed.
 
 ```
 scan  ──▶  1. OCR every word        ──▶  2. trace the blocks   ──▶  4. fit to modern streets  ──▶  GeoJSON + world file
@@ -47,9 +40,7 @@ Check it worked:
 .venv/bin/python -c "import torch; from transformers import HunYuanVLForConditionalGeneration; print('GPU:', torch.cuda.is_available())"
 ```
 
-You should see `GPU: True`. Every command below is written as `python3 scripts/...`; the scripts notice the `.venv`
-and use it themselves, so you do not need to "activate" anything. (If you keep the environment elsewhere, set
-`HUNYUAN_PY=/path/to/that/python`.)
+You should see `GPU: True`. Every command below is written as `python3 scripts/...`; the scripts notice the `.venv` and use it themselves, so you do not need to "activate" anything. (If you keep the environment elsewhere, set `HUNYUAN_PY=/path/to/that/python`.)
 
 Check the CPU stages without a GPU (block tracing, name matching; a few seconds):
 
@@ -60,9 +51,7 @@ python3 -m pytest tests -q
 
 ## Try it on an included sheet (about 30 minutes, mostly waiting)
 
-The repo ships two public-domain sheets. This walk-through uses a tile of Goad's 1912 Vancouver atlas covering downtown and Gastown,
-`data/example/vancouver_1912_MAP342a_04/vancouver_1912_MAP342a_04.tif`, together with the modern street layer beside it. Four commands take it
-from scan to GeoJSON.
+The repo ships two public-domain sheets. This walk-through uses a tile of Goad's 1912 Vancouver atlas covering downtown and Gastown, `data/example/vancouver_1912_MAP342a_04/vancouver_1912_MAP342a_04.tif`, together with the modern street layer beside it. Four commands take it from scan to GeoJSON.
 
 **1. Read the words.** About 25 minutes on the GPU; the model downloads first time.
 
@@ -72,8 +61,7 @@ python3 scripts/fim_tile_ocr.py data/example/vancouver_1912_MAP342a_04/vancouver
     --preset text_coords_vancouver_1912 -o runs/hunyuan/demo_vancouver
 ```
 
-Open `runs/hunyuan/demo_vancouver/vancouver_1912_MAP342a_04_tile_overlay.jpg`: every word the model read, boxed on the
-sheet. Expect around 1,900 words including nine street names.
+Open `runs/hunyuan/demo_vancouver/vancouver_1912_MAP342a_04_tile_overlay.jpg`: every word the model read, boxed on the sheet. Expect around 1,900 words including nine street names.
 
 **2. Trace the blocks.** Seconds.
 
@@ -81,9 +69,7 @@ sheet. Expect around 1,900 words including nine street names.
 python3 scripts/fim_blocks.py runs/hunyuan/demo_vancouver
 ```
 
-Open `..._blocks_overlay.jpg`: each city block filled in a colour, with its block number and neighbouring streets, and
-every enclosed outline inside it in magenta; `..._outlines_px.geojson` holds those outlines with their block id, the
-OCR tokens inside them (numerals and words; `floors` stays null for a person to fill unless `--floors single-numeral-1-3`, the Sanborn convention) and their measured wash colour, which becomes a material only when you
+Open `..._blocks_overlay.jpg`: each city block filled in a colour, with its block number and neighbouring streets, and every enclosed outline inside it in magenta; `..._outlines_px.geojson` holds those outlines with their block id, the OCR tokens inside them (numerals and words; `floors` stays null for a person to fill unless `--floors single-numeral-1-3`, the Sanborn convention) and their measured wash colour, which becomes a material only when you
 pass the plan's colour key as a config (`--legend configs/legend/goad_sanborn_default.json` for Goad and Sanborn). This first pass only closes blocks whose outlines are drawn solid; step 3 traces them again with today's streets as
 evidence, which also recovers residential blocks whose dashed frontage lines let the interior run into the street.
 
@@ -97,8 +83,7 @@ python3 scripts/fim_georef.py runs/hunyuan/demo_vancouver \
 The terminal prints which street labels matched, how far each one lands from its modern centreline, and a summary
 line like `fit (affine): RMS 0.5 m over 12 inlier labels`. Open `..._georef_overlay.jpg`: today's streets (red) drawn
 back onto the 1912 sheet. If they run down the middle of the drawn streets, it worked. The fit then traces the blocks
-a second time with those streets as evidence (`--retrace seeded`, the default) and rewrites `..._blocks_px.geojson` and
-the overlay, so look at the overlay again: it should now show 15 blocks and the outlines inside them.
+a second time with those streets as evidence (`--retrace seeded`, the default) and rewrites `..._blocks_px.geojson` and the overlay, so look at the overlay again: it should now show 15 blocks and the outlines inside them.
 
 The same command puts the outlines on the Earth: every outline in `..._outlines_px.geojson` is written again as
 `..._outlines_wgs84.geojson` (and `..._outlines_epsg32610.geojson` in the street layer's CRS), linked to the block
@@ -115,8 +100,7 @@ python3 scripts/fim_viewer.py runs/hunyuan/demo_vancouver -o runs/hunyuan/demo_v
 
 Open `viewer.html` in a browser: blocks over modern centrelines, every word, the sheet outline, a table of residuals.
 Or drag `..._blocks_wgs84.geojson` and `..._outlines_wgs84.geojson` onto <https://geojson.io> (the viewer does not
-draw the outlines yet), or open the scan in QGIS: copy
-`..._georef.jgw` next to the `.tif`, rename it `vancouver_1912_MAP342a_04.tfw`, and QGIS reads the scan georeferenced.
+draw the outlines yet), or open the scan in QGIS: copy `..._georef.jgw` next to the `.tif`, rename it `vancouver_1912_MAP342a_04.tfw`, and QGIS reads the scan georeferenced.
 
 This tile was georectified by the City of Vancouver in 2014, so you can check the answer: the fit from the OCR alone
 lands within about 3 m of the City's placement across the drawn area.
@@ -133,8 +117,7 @@ and `fim_areas.py` for the colour-washed areas.
 
 ## Run it on your own map
 
-You need: a scan (JPG, PNG or TIFF, any size; 300 dpi originals work best) and about an hour per sheet the first time.
-Only four things are decided by you; everything else is worked out from the data.
+You need: a scan (JPG, PNG or TIFF, any size; 300 dpi originals work best) and about an hour per sheet the first time. Only four things are decided by you; everything else is worked out from the data.
 
 ### Step 1. Check the scan from the console
 
@@ -209,11 +192,8 @@ placed, using the modern centrelines to tell street space from the open interior
 street evidence — good on residential sheets, it merges blocks on dense downtown ones, so it is not the default.
 
 Every enclosed outline inside a block also comes out, in `<stem>_outlines_px.geojson`, linked to its block by id and
-carrying only what the OCR read inside it (`text_inside`, split into `numerals_inside` and `words_inside`), a `floors`
-field left null for a person to fill (or `--floors single-numeral-1-3` on Sanborn plans), and its measured wash colour.
-The colour becomes a `material` only through the plan's key given as a config: `--legend configs/legend/<edition>.json`
-(the Goad/Sanborn key is included; write one per edition from the sheet's printed legend, colour words are enough).
-`--outlines off` skips the file.
+carrying only what the OCR read inside it (`text_inside`, split into `numerals_inside` and `words_inside`), a `floors` field left null for a person to fill (or `--floors single-numeral-1-3` on Sanborn plans), and its measured wash colour.
+The colour becomes a `material` only through the plan's key given as a config: `--legend configs/legend/<edition>.json` (the Goad/Sanborn key is included; write one per edition from the sheet's printed legend, colour words are enough). `--outlines off` skips the file.
 
 ### Step 4. Get a modern street layer for the area (once per area)
 

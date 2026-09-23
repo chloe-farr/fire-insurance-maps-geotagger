@@ -7,6 +7,9 @@ type: software
 authors:
   - family-names: Farr
     given-names: Chloe
+    affiliation: University of Victoria, Leibniz TIB
+  - family-names: Hurd
+    given-names: Emilia
     affiliation: University of Victoria
 date-released: "2026-09-20"
 version: "2026.09.20"

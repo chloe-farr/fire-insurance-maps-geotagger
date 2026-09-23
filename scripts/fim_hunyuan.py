@@ -27,6 +27,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 PROMPTS_DIR = PROJECT_ROOT / "configs" / "prompts"
+DEFAULT_MODEL = "tencent/HunyuanOCR"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _hunyuan_compat import ensure_hunyuan_python as _ensure_hunyuan_python, hunyuan_infer_one, load_pil, resize_max_edge  # noqa: E402
@@ -56,7 +57,7 @@ def main() -> None:
     ap.add_argument("--max-new-tokens", type=int, default=16384)
     ap.add_argument("--model", default=DEFAULT_MODEL)
     ap.add_argument("--revision", default=None, help="Hub revision (default: pinned pre-reformat commit, see _hunyuan_compat.py)")
-    ap.add_argument("--attn", default="eager", help="attn_implementation: eager (default, matches prior runs) or sdpa")
+    ap.add_argument("--attn", default="sdpa", help="attn_implementation: sdpa (default) or eager")
     args = ap.parse_args()
 
     prompt = load_preset(args.preset) if args.preset else args.prompt.strip()

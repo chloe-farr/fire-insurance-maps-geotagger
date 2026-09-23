@@ -316,6 +316,81 @@ def draw_overlay(work: Image.Image, plan: list[dict], tokens: list[dict], skippe
     img.convert("RGB").save(out, quality=88)
 
 
+# --------------------------------------------------------------------------- worker
+def _tile_worker(job: dict) -> list[dict]:
+    """Load model once and infer all assigned tile+angle pairs, writing per-tile content/metadata files.
+    Runs directly (--workers 1) or in a subprocess (--workers N>1); prefixes output with worker id when N>1."""
+    from _hunyuan_compat import load_hunyuan
+
+    out_dir = Path(job["out_dir"])
+    tiles_dir = out_dir / "tiles"
+    stem, prompt, resume = job["stem"], job["prompt"], job["resume"]
+    src, work_scale = Path(job["src"]), job["work_scale"]
+    wid, n_workers = job["worker_id"], job["n_workers"]
+    prefix = f"[w{wid}] " if n_workers > 1 else ""
+
+    # Determine which tiles need inference; skip cleanly resumed ones
+    need = []
+    for t, a in job["tiles"]:
+        tid, sfx = f"r{t['r']}c{t['c']}", "" if a == 0 else f"_rot{a:03d}"
+        content_path = tiles_dir / f"{stem}_{tid}{sfx}_content.txt"
+        meta_path    = tiles_dir / f"{stem}_{tid}{sfx}_metadata.json"
+        if resume and content_path.exists() and meta_path.exists():
+            prior = json.loads(meta_path.read_text())
+            same_geom = all(prior.get("tile", {}).get(k) == t[k] for k in ("x0", "y0", "x1", "y1"))
+            if same_geom and not (job.get("redo_capped") and prior.get("hit_cap")):
+                print(f"{prefix}{tid}{sfx}: resumed", flush=True)
+                continue
+        need.append((t, a))
+
+    if not need:
+        return []
+
+    work = None
+    if any(a != 0 for _, a in need):
+        sheet = load_pil(src)
+        sw, sh = sheet.size
+        work = sheet.resize((round(sw * work_scale), round(sh * work_scale)), Image.Resampling.LANCZOS) \
+               if work_scale < 1.0 else sheet
+
+    print(f"{prefix}Loading {job['model']} ...", flush=True)
+    t0 = time.perf_counter()
+    model, processor = load_hunyuan(job["model"], job["attn"], job["revision"])
+    load_s = round(time.perf_counter() - t0, 3)
+
+    results = []
+    for t, a in need:
+        tid, sfx = f"r{t['r']}c{t['c']}", "" if a == 0 else f"_rot{a:03d}"
+        png          = tiles_dir / f"{stem}_{tid}{sfx}.png"
+        content_path = tiles_dir / f"{stem}_{tid}{sfx}_content.txt"
+        meta_path    = tiles_dir / f"{stem}_{tid}{sfx}_metadata.json"
+        if a != 0:
+            view, _ = rotated_view(work, t, a)
+            view.save(png)
+        crop = Image.open(png).convert("RGB")
+        content, m = hunyuan_infer_one(model=model, processor=processor, image_pil=crop, image_path=png,
+                                       user_prompt=prompt, max_new_tokens=job["max_new_tokens"])
+        content_path.write_text(content, encoding="utf-8")
+        meta_path.write_text(json.dumps({
+            "processed_width": m["processed_width"], "processed_height": m["processed_height"],
+            "saved_width": crop.width, "saved_height": crop.height,
+            "scale_x": m["scale_x"], "scale_y": m["scale_y"],
+            "context_prompt": prompt, "model_name_or_path": job["model"], "model_revision": job["revision"],
+            "input_tokens": m["input_tokens"], "output_tokens": m["output_tokens"], "total_tokens": m["total_tokens"],
+            "tile": {**t, "id": tid}, "rotation_deg": a, "source_image": str(src), "work_scale": work_scale,
+            "max_new_tokens": job["max_new_tokens"], "attn_implementation": job["attn"],
+            "run_utc": datetime.now(timezone.utc).isoformat(), "compute": m.get("compute"),
+        }, indent=2), encoding="utf-8")
+        secs = (m.get("compute") or {}).get("generate_elapsed_seconds")
+        hit_cap = m["output_tokens"] >= job["max_new_tokens"]
+        print(f"{prefix}{tid}{sfx}: {m['output_tokens']} tok{' (HIT CAP)' if hit_cap else ''}"
+              f"{f', {secs:.0f}s' if secs else ''}", flush=True)
+        results.append({"tid": tid, "sfx": sfx, "t": t, "a": a,
+                        "generate_s": secs or 0.0, "px": crop.width * crop.height, "load_s": load_s})
+        load_s = 0.0  # attribute load time to first result only
+    return results
+
+
 # --------------------------------------------------------------------------- main
 def load_preset(name: str) -> str:
     """A preset name (stem of a file in configs/prompts/) or a path to any prompt text file."""
@@ -334,7 +409,7 @@ def main() -> None:
     ap.add_argument("--crop", metavar="X0,Y0,X1,Y1", default=None,
                     help="Content box in SOURCE pixels; tiling and coordinates are relative to the full sheet, but only this box is tiled. "
                          "Use it to drop the scan margin, colour bar and ruler (e.g. 1895 sheets: 300,150,7000,7980).")
-    ap.add_argument("--work-max-edge", type=int, default=4096, help="Downscale the sheet to this longest edge before tiling (0 = native). Default 4096.")
+    ap.add_argument("--work-max-edge", type=int, default=0, help="Downscale the sheet to this longest edge before tiling (0 = native, the default).")
     ap.add_argument("--tile", type=int, default=1536, help="Tile size in work-image px (fed to the model unresized). Default 1536.")
     ap.add_argument("--overlap", type=int, default=192, help="Minimum tile overlap in work-image px (default 192, ~2 text heights at 4096); actual overlap is spread evenly.")
     ap.add_argument("--shift", metavar="DX,DY", default=None,
@@ -354,6 +429,7 @@ def main() -> None:
     ap.add_argument("--max-tiles", type=int, default=None, help="Stop after N processed tiles (testing).")
     ap.add_argument("--dry-run", action="store_true", help="Plan, save tile PNGs and the grid overlay; no model.")
     ap.add_argument("--resume", action="store_true", help="Reuse tiles that already have *_content.txt in the output dir.")
+    ap.add_argument("--redo-capped", action="store_true", help="With --resume, re-run tiles that previously hit --max-new-tokens instead of skipping them.")
     g = ap.add_mutually_exclusive_group()
     g.add_argument("--preset", default="text_coords", help="prompt preset name in configs/prompts/, or a path to a prompt .txt file")
     g.add_argument("--prompt")
@@ -362,7 +438,11 @@ def main() -> None:
     ap.add_argument("--no-labels", action="store_true", help="Overlay boxes only, no text labels.")
     ap.add_argument("--model", default=DEFAULT_MODEL)
     ap.add_argument("--revision", default=None, help="Hub revision (default: pinned pre-reformat commit, see _hunyuan_compat.py)")
-    ap.add_argument("--attn", default="eager")
+    ap.add_argument("--attn", default="sdpa")
+    ap.add_argument("--workers", type=int, default=1,
+                    help="Parallel model workers (each loads its own model instance). "
+                         "GPU: set to floor(VRAM / model_size) — e.g. 4 on an RTX 6000 with a ~2 GB model. "
+                         "MPS/CPU: 2 is usually the practical limit before memory pressure hurts throughput.")
     args = ap.parse_args()
 
     src = args.image.expanduser().resolve()
@@ -455,63 +535,43 @@ def ocr_sheet(args: argparse.Namespace, src: Path, stem: str, out_dir: Path, log
     n_new = n_resumed = px_new = 0  # views inferred in this execution / reused with --resume / work px inferred now
     load_s = gen_new = 0.0
     if not args.dry_run and todo:
-        # 3. model
+        # 3. model — split tiles across workers; each subprocess loads its own model instance
         rotations = [int(a) % 360 for a in args.rotations.split(",")]
-        need_model = [(t, a) for t in todo for a in rotations
-                      if not (args.resume and (tiles_dir / f"{stem}_r{t['r']}c{t['c']}{'' if a == 0 else f'_rot{a:03d}'}_content.txt").exists())]
-        model = processor = None
-        if need_model:
-            from _hunyuan_compat import DEFAULT_REVISION, load_hunyuan
-            print(f"Loading {args.model} (attn={args.attn}) ...", flush=True)
-            t_load = time.perf_counter()
-            model, processor = load_hunyuan(args.model, args.attn, args.revision or DEFAULT_REVISION)
-            load_s += time.perf_counter() - t_load
-        jobs = [(t, a) for t in todo for a in rotations]
-        for i, (t, a) in enumerate(jobs, 1):
-            tid = f"r{t['r']}c{t['c']}"
-            sfx = "" if a == 0 else f"_rot{a:03d}"
-            png = tiles_dir / f"{stem}_{tid}{sfx}.png"
+        all_jobs = [(t, a) for t in todo for a in rotations]
+        from _hunyuan_compat import DEFAULT_REVISION
+        n_workers = min(max(1, args.workers), len(all_jobs))
+        chunks = [all_jobs[i::n_workers] for i in range(n_workers)]
+        base = {
+            "out_dir": str(out_dir), "stem": stem, "prompt": prompt, "resume": args.resume,
+            "src": str(src), "work_scale": work_scale, "model": args.model, "attn": args.attn,
+            "revision": args.revision or DEFAULT_REVISION, "max_new_tokens": args.max_new_tokens,
+            "n_workers": n_workers, "redo_capped": args.redo_capped,
+        }
+        worker_jobs = [{**base, "tiles": chunk, "worker_id": i} for i, chunk in enumerate(chunks)]
+        if n_workers == 1:
+            worker_results = [_tile_worker(worker_jobs[0])]
+        else:
+            from concurrent.futures import ProcessPoolExecutor
+            with ProcessPoolExecutor(max_workers=n_workers) as ex:
+                worker_results = list(ex.map(_tile_worker, worker_jobs))
+        inferred = {(s["tid"], s["sfx"]): s for results in worker_results for s in results}
+        for s in inferred.values():
+            n_new += 1; gen_new += s["generate_s"]; px_new += s["px"]; load_s += s["load_s"]
+
+        # 4. tokens — sweep tiles in order, reading files workers wrote
+        for i, (t, a) in enumerate(all_jobs, 1):
+            tid, sfx = f"r{t['r']}c{t['c']}", "" if a == 0 else f"_rot{a:03d}"
             content_path = tiles_dir / f"{stem}_{tid}{sfx}_content.txt"
-            meta_path = tiles_dir / f"{stem}_{tid}{sfx}_metadata.json"
+            meta_path    = tiles_dir / f"{stem}_{tid}{sfx}_metadata.json"
+            if not content_path.exists():
+                continue
+            content = content_path.read_text(encoding="utf-8")
+            meta    = json.loads(meta_path.read_text())
+            if (tid, sfx) not in inferred:
+                n_resumed += 1
             geom = None
             if a != 0:
-                view, geom = rotated_view(work, t, a)
-                view.save(png)
-            prior = json.loads(meta_path.read_text()) if (args.resume and meta_path.exists()) else None
-            same_geom = prior is not None and all(prior.get("tile", {}).get(k) == t[k] for k in ("x0", "y0", "x1", "y1"))
-            if same_geom and content_path.exists():
-                content = content_path.read_text(encoding="utf-8")
-                meta = prior
-                n_resumed += 1
-                print(f"[{i}/{len(jobs)}] {tid}{sfx}: resumed ({len(content)} chars)", flush=True)
-            else:
-                if model is None:  # --resume found a geometry mismatch after we decided no model was needed
-                    from _hunyuan_compat import DEFAULT_REVISION, load_hunyuan
-                    print(f"Loading {args.model} (attn={args.attn}) ...", flush=True)
-                    t_load = time.perf_counter()
-                    model, processor = load_hunyuan(args.model, args.attn, args.revision or DEFAULT_REVISION)
-                    load_s += time.perf_counter() - t_load
-                crop = Image.open(png).convert("RGB")
-                content, m = hunyuan_infer_one(model=model, processor=processor, image_pil=crop, image_path=png,
-                                               user_prompt=prompt, max_new_tokens=args.max_new_tokens)
-                n_new += 1; gen_new += float((m.get("compute") or {}).get("generate_elapsed_seconds") or 0.0); px_new += crop.width * crop.height
-                content_path.write_text(content, encoding="utf-8")
-                meta = {
-                    "processed_width": m["processed_width"], "processed_height": m["processed_height"],
-                    "saved_width": crop.width, "saved_height": crop.height,
-                    "scale_x": m["scale_x"], "scale_y": m["scale_y"],
-                    "context_prompt": prompt, "model_name_or_path": args.model, "model_revision": args.revision or DEFAULT_REVISION,
-                    "input_tokens": m["input_tokens"], "output_tokens": m["output_tokens"], "total_tokens": m["total_tokens"],
-                    "tile": {**t, "id": tid}, "rotation_deg": a, "source_image": str(src), "work_scale": work_scale,
-                    "max_new_tokens": args.max_new_tokens, "attn_implementation": args.attn,
-                    "run_utc": datetime.now(timezone.utc).isoformat(), "compute": m.get("compute"),
-                }
-                meta_path.write_text(json.dumps(meta, indent=2), encoding="utf-8")
-                secs = (m.get("compute") or {}).get("generate_elapsed_seconds")
-                print(f"[{i}/{len(jobs)}] {tid}{sfx}: {m['output_tokens']} tok, {len(content)} chars"
-                      f"{' (HIT CAP)' if m['output_tokens'] >= args.max_new_tokens else ''}"
-                      f"{f', {secs:.0f}s' if secs else ''}", flush=True)
-            # 4. tokens
+                _, geom = rotated_view(work, t, a)
             toks, n_run = drop_runaway(parse_tile_tokens(content, t, work_scale, geom))
             if n_run:
                 print(f"    {tid}{sfx}: dropped {n_run} tokens from repetition loops (the same word {5}+ times in a row)", flush=True)

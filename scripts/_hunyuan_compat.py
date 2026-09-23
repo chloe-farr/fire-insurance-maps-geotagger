@@ -87,17 +87,23 @@ def ensure_hunyuan_python() -> None:
              "  or point HUNYUAN_PY at a python that has transformers>=5.13 (see README, Setup).")
 
 
-def load_hunyuan(model_name: str, attn: str = "eager", revision: str | None = DEFAULT_REVISION) -> tuple[Any, Any]:
+def load_hunyuan(model_name: str, attn: str = "sdpa", revision: str | None = DEFAULT_REVISION) -> tuple[Any, Any]:
     import torch
     from transformers import AutoProcessor, HunYuanVLForConditionalGeneration
 
     rev = {"revision": revision} if revision else {}
-    # Image-processor backend: the PIL one is what every run so far used; HUNYUAN_FAST_PROCESSOR=1 selects the torchvision
-    # one (transformers >= 5.13 calls PIL "slow" and warns).
     fast = os.environ.get("HUNYUAN_FAST_PROCESSOR", "0") == "1"
     processor = AutoProcessor.from_pretrained(model_name, use_fast=fast, **rev)
+
+    if torch.cuda.is_available():
+        device_map = "auto"
+    elif torch.backends.mps.is_available():
+        device_map = {"": "mps"}
+    else:
+        device_map = "auto"  # CPU fallback
+
     model = HunYuanVLForConditionalGeneration.from_pretrained(
-        model_name, attn_implementation=attn, dtype=torch.bfloat16, device_map="auto", **rev
+        model_name, attn_implementation=attn, dtype=torch.bfloat16, device_map=device_map, **rev
     ).eval()
     # Vision blocks can be left with config._attn_implementation = None -> KeyError: None in generate.
     for module in model.modules():
@@ -192,6 +198,8 @@ def hunyuan_infer_one(*, model, processor, image_pil: Image.Image, image_path: P
     t3 = time.perf_counter()
     text = clean_repeated_substrings(raw[0] if raw else "")
     n_total = int(out.shape[-1])
+    if torch.backends.mps.is_available():
+        torch.mps.empty_cache()
     meta = {
         "processed_width": pw, "processed_height": ph, "image_width_pixels": w, "image_height_pixels": h,
         "scale_x": w / pw if pw else None, "scale_y": h / ph if ph else None,
